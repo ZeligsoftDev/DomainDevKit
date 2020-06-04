@@ -1,0 +1,13 @@
+/**
+ * Copyright (c) 2010 Zeligsoft Ltd.
+ *
+ * All rights reserved. 
+ *  
+ * THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND
+ * IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, 
+ * DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,
+ * IS STRICTLY PROHIBITED.
+ */
+
+String getFunctionPrefix() :
+JAVA com.zeligsoft.domain.zml.oaw.generation.ZMLCommonUtils.getFunctionPrefix();

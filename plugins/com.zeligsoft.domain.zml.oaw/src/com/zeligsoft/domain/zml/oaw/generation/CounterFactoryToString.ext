@@ -1,0 +1,28 @@
+/**
+ * Copyright (c) 2008 Zeligsoft Inc.
+ *
+ * All rights reserved. 
+ *  
+ * THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND
+ * IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, 
+ * DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,
+ * IS STRICTLY PROHIBITED.
+ */
+
+import uml;
+
+Void CreateCounter(String countername) :
+JAVA com.zeligsoft.domain.zml.oaw.generation.CounterFactoryToString.CreateCounter(java.lang.String)
+;
+
+Void CounterIncrement(String countername) :
+JAVA com.zeligsoft.domain.zml.oaw.generation.CounterFactoryToString.CounterIncrement(java.lang.String)
+;
+
+String CounterGet(String countername) :
+JAVA com.zeligsoft.domain.zml.oaw.generation.CounterFactoryToString.CounterGet(java.lang.String)
+;
+
+String IsCounterGreaterThan(String countername,String val) :
+JAVA com.zeligsoft.domain.zml.oaw.generation.CounterFactoryToString.IsCounterGreaterThan(java.lang.String,java.lang.String)
+;

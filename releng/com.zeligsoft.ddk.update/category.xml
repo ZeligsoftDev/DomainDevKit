@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (c) 2020 Northrop Grumman Systems Corporation.
+   
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+   
+    http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+ -->
+
+<site>
+   <feature url="features/com.zeligsoft.base.feature_3.6.5.qualifier.jar" id="com.zeligsoft.base.feature" version="3.6.5.qualifier">
+      <category name="com.zeligsoft.ddkmaster.category"/>
+   </feature>
+   <feature url="features/com.zeligsoft.cx.feature_3.6.5.qualifier.jar" id="com.zeligsoft.cx.feature" version="3.6.5.qualifier">
+ 	<category name="com.zeligsoft.ddkmaster.category"/>
+   </feature>
+   <feature url="features/com.zeligsoft.ddk.feature_3.6.0.qualifier.jar" id="com.zeligsoft.ddk.feature" version="3.6.0.qualifier">
+   	<category name="com.zeligsoft.ddkmaster.category"/>
+   </feature>
+   
+
+   <category-def name="com.zeligsoft.ddkmaster.category" label="DDK">
+      <description>
+         Primary components for DDK. Required.
+      </description>
+   </category-def>
+</site>

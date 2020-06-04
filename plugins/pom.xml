@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (c) 2020 Northrop Grumman Systems Corporation.
+   
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+   
+    http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+ -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.zeligsoft.ddk</groupId>
+	<artifactId>com.zeligsoft.ddk.plugins</artifactId>
+	<version>2.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<parent>
+		<groupId>com.zeligsoft.ddk</groupId>
+		<artifactId>com.zeligsoft.ddk.root</artifactId>
+		<version>2.0.0-SNAPSHOT</version>
+	</parent>
+	
+	<modules>
+        <module> com.zeligsoft.base </module> 
+		<module> com.zeligsoft.base.diagram </module> 
+		<module> com.zeligsoft.base.licensing </module> 
+		<module> com.zeligsoft.base.licensing.ui </module> 
+		<module> com.zeligsoft.base.testsupport </module> 
+		<module> com.zeligsoft.base.toolingmodel </module> 
+		<module> com.zeligsoft.base.ui </module> 
+		<module> com.zeligsoft.base.ui.menus </module> 
+		<module> com.zeligsoft.base.validation </module> 
+		<module> com.zeligsoft.base.validation.ui </module> 
+		<module> com.zeligsoft.base.zdl </module> 
+		<module> com.zeligsoft.base.zdl.domain.staticapi </module> 
+		<module> com.zeligsoft.base.zdl.ocl </module> 
+		<module> com.zeligsoft.base.zdl.staticapi </module> 
+		<module> com.zeligsoft.cx </module> 
+		<module> com.zeligsoft.cx.build </module> 
+		<module> com.zeligsoft.cx.codegen </module> 
+		<module> com.zeligsoft.cx.codegen.ui </module> 
+		<module> com.zeligsoft.cx.deployment.treeeditor </module> 
+		<module> com.zeligsoft.cx.deployment.ui </module> 
+		<module> com.zeligsoft.cx.langc </module> 
+		<module> com.zeligsoft.cx.problem.navigation </module> 
+		<module> com.zeligsoft.cx.ui </module> 
+		<module> com.zeligsoft.cx.ui.properties </module> 
+		<module> com.zeligsoft.ddk </module> 
+		<module> com.zeligsoft.ddk.docs </module> 
+		<module> com.zeligsoft.ddk.rsm.ui </module> 
+		<module> com.zeligsoft.ddk.tools </module> 
+		<module> com.zeligsoft.ddk.zdl </module> 
+		<module> com.zeligsoft.ddk.zdl.rsm.tooling </module> 
+		<module> com.zeligsoft.ddk.zdl.rsm.tooling.ext </module> 
+		<module> com.zeligsoft.ddk.zdl.zdlgen </module> 
+		<module> com.zeligsoft.ddk.zdl.zdlgen.edit </module> 
+		<module> com.zeligsoft.ddk.zdl.zdlgen.editor </module> 
+		<module> com.zeligsoft.ddk.zdl2zdlgen </module> 
+		<module> com.zeligsoft.ddk.zdlgen2umlprofile </module> 
+		<module> com.zeligsoft.domain.zml </module> 
+		<module> com.zeligsoft.domain.zml.api </module> 
+		<module> com.zeligsoft.domain.zml.oaw </module> 
+		<module> com.zeligsoft.domain.zml.ui </module> 
+    </modules>
+</project>

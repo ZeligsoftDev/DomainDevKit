@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+    Copyright (c) 2020 Northrop Grumman Systems Corporation.
+   
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+   
+    http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+ -->
+<plugin>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+      		adaptable="false"
+            objectClass="org.eclipse.gmf.runtime.common.core.util.IAdaptableSelection"
+            id="com.zeligsoft.tools.rsm.umlActions">
+         <visibility>
+            <objectState name="umlType" value="Element" />
+         </visibility>
+         <menu
+               id="com.zeligsoft.tools.rsm.umlActionsMenu"
+               label="%menu.label.ztools"
+               path="additions">
+         </menu>
+         <action
+               class="com.zeligsoft.ddk.rsm.ui.actions.SpecifySubsetActionDelegate"
+               enablesFor="2"
+               id="com.zeligsoft.tools.rsm.specifySubsetAction"
+               label="%action.label.configSubset"
+               menubarPath="com.zeligsoft.tools.rsm.umlActionsMenu/additions"
+               style="push"
+               tooltip="%action.tooltip.configSubset">
+               <enablement>
+               	  <objectState name="umlType" value="Property" />
+               </enablement>
+         </action>
+         <action
+               class="com.zeligsoft.ddk.rsm.ui.actions.SpecifyRedefinitionActionDelegate"
+               enablesFor="2"
+               id="com.zeligsoft.tools.rsm.specifyRedefinitionAction"
+               label="%action.label.configRedefinition"
+               menubarPath="com.zeligsoft.tools.rsm.umlActionsMenu/additions"
+               style="push"
+               tooltip="%action.tooltip.configRedefinition">
+               <enablement>
+                  <objectState name="umlType" value="RedefinableElement" />
+               </enablement>
+         </action>
+      </objectContribution>
+            <objectContribution
+      		adaptable="false"
+            objectClass="org.eclipse.gmf.runtime.common.core.util.IAdaptableSelection"
+            id="com.zeligsoft.tools.rsm.umlActions">
+         <visibility>
+            <and>
+               <objectState
+                     name="isSingleSelection"
+                     value="visibility">
+               </objectState>
+               <objectState
+                     name="hasStereotype"
+                     value="ZDL::DomainModel">
+               </objectState>
+            </and>
+         </visibility>
+         <menu
+               id="com.zeligsoft.tools.rsm.umlActionsMenu"
+               label="%menu.label.ztools"
+               path="additions">
+         </menu>
+         <action
+               class="com.zeligsoft.ddk.rsm.ui.actions.GenerateConceptActionDelegate"
+               enablesFor="1"
+               id="com.zeligsoft.tools.rsm.generateConceptConstants"
+               label="%action.label.generateConceptConstants"
+               menubarPath="com.zeligsoft.tools.rsm.umlActionsMenu/additions"
+               tooltip="%action.tooltip.generateConceptConstants">
+               <enablement>
+               	  <objectState name="hasStereotype" value="ZDL::DomainModel" />
+               </enablement>
+         </action>
+      </objectContribution>
+    </extension>  
+    
+   <!-- Add the ZDL-driven dynamic palette to Class and Free-form diagrams -->
+   <extension
+         point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+      <paletteProvider
+            class="com.zeligsoft.base.ui.providers.ZDLPaletteProvider">
+         <Priority
+               name="Low">
+         </Priority>
+         <content>
+            <method
+                  name="getDiagram().getType()"
+                  value="Class,Freeform"/>
+         </content>         
+      </paletteProvider>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="com.zeligsoft.base.ui.preferences.RootPreferencePage"
+            id="com.zeligsoft"
+            name="%preference.root.zeligsoft">
+      </page>
+      <page
+            category="com.zeligsoft"
+            class="com.zeligsoft.ddk.rsm.ui.preferences.DomainDevelopmentPreferencePage"
+            id="com.zeligsoft.ddk.rsm.ui.domainDevelopmentPrefPage"
+            name="%page.name.0">
+      </page>
+   </extension>
+   <extension
+          point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+       <propertyTabs
+             contributorId="com.ibm.xtools.modeler.ui.properties">
+          <propertyTab
+                afterTab="modeler.property.tab.GeneralPropertySection"
+                category="Core"
+                id="com.zeligsoft.propertyTab.ZDLDomainPropertyTab"
+                label="%zdl.propertyTab.label">
+          </propertyTab>
+       </propertyTabs>
+    </extension>
+    <extension
+          point="org.eclipse.ui.views.properties.tabbed.propertySections">
+       <propertySections
+             contributorId="com.ibm.xtools.modeler.ui.properties">
+          <propertySection
+                class="com.zeligsoft.cx.ui.properties.sections.DomainPropertySection"
+                filter="com.zeligsoft.ddk.rsm.ui.filters.ZDLDomainFilter"
+                id="com.zeligsoft.propertyTab.ZDLDomainPropertySection"
+                tab="com.zeligsoft.propertyTab.ZDLDomainPropertyTab">
+          </propertySection>
+       </propertySections>
+    </extension>
+    <extension
+          point="org.eclipse.ui.perspectives">
+       <perspective
+             class="com.zeligsoft.ddk.ui.perspectives.DDKPerspective"
+             icon="icons/view16/cx-perspective.gif"
+             id="com.zeligsoft.ddk.ui.perspectives.DDKPerspective"
+             name="%perspective.name.0">
+       </perspective>
+    </extension>
+    <extension point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension targetID="com.zeligsoft.ddk.ui.perspectives.DDKPerspective">
+         <showInPart id="org.eclipse.ui.navigator.ProjectExplorer">
+         </showInPart>         
+         <actionSet id="com.ibm.xtools.modeler.ui.actions.ModelingActionSet">
+         </actionSet>
+         <actionSet id="org.eclipse.gmf.runtime.diagram.ui.DiagramActionSet">
+         </actionSet>
+         <view ratio="0.26" relative="org.eclipse.ui.editorss" visible="true" relationship="left" id="org.eclipse.ui.navigator.ProjectExplorer" minimized="false">
+         </view>
+         <view ratio=".66" relative="org.eclipse.ui.navigator.ProjectExplorer" visible="true" relationship="bottom" id="org.eclipse.ui.views.ContentOutline" minimized="false">
+         </view>         
+         <view ratio=".66" relative="org.eclipse.ui.editorss" visible="true" relationship="bottom" id="org.eclipse.ui.views.PropertySheet" minimized="false">
+         </view>
+         <view relative="org.eclipse.ui.views.PropertySheet" visible="true" relationship="stack" id="org.eclipse.ui.views.TaskList" minimized="false">
+         </view>
+         <view relative="org.eclipse.ui.views.PropertySheet" visible="true" relationship="stack" id="org.eclipse.ui.console.ConsoleView" minimized="false">
+         </view>
+         <view relative="org.eclipse.ui.views.PropertySheet" visible="true" relationship="stack" id="org.eclipse.ui.views.BookmarkView" minimized="false">
+         </view>
+         <viewShortcut id="org.eclipse.ui.views.TaskList">
+         </viewShortcut>
+         <viewShortcut id="org.eclipse.ui.views.PropertySheet">
+         </viewShortcut> 
+         <viewShortcut id="org.eclipse.ui.navigator.ProjectExplorer">
+         </viewShortcut>                       
+         <viewShortcut id="org.eclipse.ui.console.ConsoleView">
+         </viewShortcut>
+         <viewShortcut id="org.eclipse.ui.views.BookmarkView">
+         </viewShortcut>
+         <viewShortcut id="org.eclipse.ui.views.ContentOutline">
+         </viewShortcut>
+         <viewShortcut id="org.eclipse.gef.ui.palette_view">
+         </viewShortcut>                
+         <newWizardShortcut id="org.eclipse.ui.wizards.new.folder">
+         </newWizardShortcut>
+         <newWizardShortcut id="org.eclipse.ui.wizards.new.file">
+         </newWizardShortcut>
+         <perspectiveShortcut id="org.eclipse.cdt.ui.CPerspective">
+         </perspectiveShortcut>
+      </perspectiveExtension>
+      <perspectiveExtension targetID="org.eclipse.ui.resourcePerspective">
+         <perspectiveShortcut id="com.zeligsoft.ddk.ui.perspectives.DDKPerspective">
+         </perspectiveShortcut>
+      </perspectiveExtension>
+      <perspectiveExtension targetID="org.eclipse.cdt.ui.CPerspective">
+         <perspectiveShortcut id="com.zeligsoft.ddk.ui.perspectives.DDKPerspective">
+         </perspectiveShortcut>
+      </perspectiveExtension>      
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension targetID="com.zeligsoft.ddk.ui.perspectives.DDKPerspective">
+         <actionSet id="org.eclipse.debug.ui.analysisActionSet"/>
+      </perspectiveExtension>
+   </extension> 
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension targetID="com.zeligsoft.ddk.ui.perspectives.DDKPerspective">
+         <actionSet id="rmpSearchActionSet"/>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="com.zeligsoft.ddk.ui.newDDKProjectWizard"
+            name="%category.name.0"
+            parentCategory="com.zeligsoft">
+      </category>
+      <wizard
+            canFinishEarly="false"
+            category="com.zeligsoft/com.zeligsoft.ddk.ui.newDDKProjectWizard"
+            class="com.zeligsoft.ddk.ui.wizard.ZDLNewProjectWizard"
+            finalPerspective="com.zeligsoft.ddk.ui.perspectives.DDKPerspective"
+            id="com.zeligsoft.ddk.ui.NewDDKProjectWizard"
+            name="%wizard.name.0"
+            project="true">
+      </wizard>
+   </extension>
+</plugin>

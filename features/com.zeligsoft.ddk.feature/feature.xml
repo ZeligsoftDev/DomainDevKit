@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (c) 2020 Northrop Grumman Systems Corporation.
+   
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+   
+    http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+ -->
+
+<feature
+      id="com.zeligsoft.ddk.feature"
+      label="%featureName"
+      version="3.6.0.qualifier"
+      provider-name="%providerName"
+      plugin="com.zeligsoft.ddk">
+
+   <description url="http://www.zeligsoft.com/tools/zeligsoft-cx">
+      %description
+   </description>
+
+   <copyright>
+      Copyright (c) 2008 Zeligsoft Inc.
+ 
+All rights reserved.
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <url>
+      <update label="%updateSiteName" url="http://www.zeligsoft.com/services/CX/updates/"/>
+      <discovery label="%updateSiteName" url="http://www.zeligsoft.com/services/CX/updates/"/>
+   </url>
+
+   <plugin
+         id="com.zeligsoft.ddk.docs"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.ddk.zdl.rsm.tooling.ext"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.ddk.zdl.rsm.tooling"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.ddk.zdlgen2umlprofile"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.ddk.zdl2zdlgen"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.ddk.rsm.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.ddk.zdl.zdlgen.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.ddk.zdl.zdlgen.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.ddk.zdl.zdlgen"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.ddk.zdl"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.ddk"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.base.toolingmodel"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.ddk.tools"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

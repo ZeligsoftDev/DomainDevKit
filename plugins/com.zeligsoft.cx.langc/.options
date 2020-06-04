@@ -1,0 +1,15 @@
+#
+# Copyright (c) 2009 Zeligsoft Inc.
+# 
+# All rights reserved. 
+#  
+# THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND
+# IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, 
+# DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,
+# IS STRICTLY PROHIBITED.
+#
+
+com.zeligsoft.cx.langc/trace-codestream-newfile=true
+com.zeligsoft.cx.langc/trace-namespace-rebindings=true
+com.zeligsoft.cx.langc/trace-namespace-bindings=true
+com.zeligsoft.cx.langc/trace-namespace-lookup=true

@@ -1,0 +1,93 @@
+target "DDK RSA 9.1 target"
+
+with source requirements
+
+environment linux gtk x86_64
+
+location rsa91 "platform:/resource/target-platform/deps/rsa91_p2" {
+	com.ibm.xtools.common.ui.reduction
+	com.ibm.xtools.common.ui.wizards
+	com.ibm.xtools.modeler
+	com.ibm.xtools.modeler.ui
+	com.ibm.xtools.uml.navigator
+	com.ibm.xtools.uml.ui.diagram
+	// core eclipse
+	org.eclipse.platform
+	org.eclipse.equinox.common
+//	org.eclipse.core.resources
+	org.eclipse.core.runtime
+	org.eclipse.core.expressions
+	org.eclipse.core.filesystem
+	// look for org.eclipse.emf
+	org.eclipse.emf
+	org.eclipse.emf.common
+	org.eclipse.emf.codegen
+	org.eclipse.emf.ecore
+	org.eclipse.emf.ecore.edit
+	org.eclipse.emf.ecore.xmi
+	org.eclipse.emf.edit
+	org.eclipse.emf.edit.ui
+	// emf transaction
+	org.eclipse.emf.transaction
+	// look for emf.query
+	org.eclipse.emf.query.ocl
+	// look for emf.validation
+	org.eclipse.emf.validation
+	org.eclipse.emf.validation.ocl
+	org.eclipse.emf.validation.ui
+	// don't know who owns this one
+	org.eclipse.emf.workspace
+	// look for org.eclipse.emf.runtime
+	org.eclipse.gmf.runtime.common.ui.action.ide
+	org.eclipse.gmf.runtime.common.ui.services
+	org.eclipse.gmf.runtime.diagram.core
+	org.eclipse.gmf.runtime.diagram.ui
+	org.eclipse.gmf.runtime.emf.commands.core
+	org.eclipse.gmf.runtime.emf.core
+	org.eclipse.gmf.runtime.emf.type.core
+	org.eclipse.gmf.runtime.emf.type.ui
+	org.eclipse.gmf.runtime.emf.ui.properties
+	org.eclipse.gmf.runtime.notation
+	// org.eclipse.jdt
+	org.eclipse.jdt.core
+	org.eclipse.jdt.ui
+	// harder: core eclipse. 
+	org.eclipse.jface
+	org.eclipse.jface.text
+	// org.eclipse.ocl
+	org.eclipse.ocl.ecore
+	org.eclipse.ocl.uml
+	// core eclipse
+	org.eclipse.osgi
+	// language tool kit (ltk), maybe eclipse.ide or eclipse.workbench
+	org.eclipse.ltk.core.refactoring
+	// org.eclipse.pde ?
+	org.eclipse.pde.core
+	org.eclipse.swt.gtk.linux.x86_64
+	// core eclipse, or workbench or ide
+	org.eclipse.text
+	org.eclipse.ui
+	org.eclipse.ui.cheatsheets
+	org.eclipse.ui.ide
+	org.eclipse.ui.navigator
+	org.eclipse.ui.views.properties.tabbed
+	org.eclipse.uml2.common
+	org.eclipse.uml2.uml
+	org.eclipse.uml2.uml.edit
+	org.eclipse.uml2.uml.resources
+	com.ibm.xtools.diagram.ui.compatibility
+	com.ibm.xtools.uml.msl
+	com.ibm.xtools.uml.type
+	com.ibm.xtools.umlnotation
+	org.apache.commons.logging
+}
+
+
+location juno "https://download.eclipse.org/releases/juno/" {
+	org.eclipse.xtend.typesystem.xsd.feature.group
+	org.eclipse.xtend.typesystem.uml2.feature.group
+	org.eclipse.cdt.platform.feature.group 
+	org.eclipse.emf.ecore.xcore.feature.group
+	org.eclipse.xtend.sdk.feature.group
+	org.eclipse.xtext.runtime.feature.group
+}

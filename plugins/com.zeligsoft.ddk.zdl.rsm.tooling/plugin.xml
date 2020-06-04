@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+    Copyright (c) 2020 Northrop Grumman Systems Corporation.
+   
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+   
+    http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+ -->
+
+<plugin>
+   <extension
+      	id="Zeligsoft ZDL Actions"
+   		name="Zeligsoft ZDL Actions"
+   		point="org.eclipse.ui.popupMenus">
+   		<viewerContribution
+   			id="com.zeligsoft.deployment.AddZDLMenuContribution"
+   			targetID="org.eclipse.ui.navigator.ProjectExplorer#PopupMenu">   			        
+			<menu id="zeligsoft.menu" label="%_UI_ActionGroup__ZDL_name" path="group.new">
+			<separator name="zdl.menu"/>     	
+			</menu>
+		</viewerContribution>
+	</extension>	
+	<!--
+	Note: The ActionIds in the following actions are used in a Map in a
+	single ActionDelegate, don't change these ids without changing the 
+	Map.
+	-->		
+   <extension
+      	id="addZDL_DomainPackage_PopupMenuId"
+   		name="DomainPackage PopupActions"
+   		point="org.eclipse.ui.popupMenus">
+   		<viewerContribution		
+   			id="addZDL_DomainPackage_ViewerContributionId"
+   			targetID="org.eclipse.ui.navigator.ProjectExplorer#PopupMenu">  
+   			<visibility>
+				<or>					
+					<objectState name="isZDLConcept" value="ZDL::Constructs::DomainModel"/>
+					<objectState name="isZDLConcept" value="ZDL::Constructs::DomainPackage"/>
+				</or>   			
+   			</visibility>	
+			<action
+   				label="%_UI_ElementType__DomainPackage__Package_stereotypename"
+   				icon="icons/obj16/ZDL_DomainPackage.gif"
+   				class="com.zeligsoft.ddk.zdl.rsm.tooling.actions.AddZDLActionDelegate"
+   				menubarPath="zeligsoft.menu/zdl.menu"
+   				enablesFor="1"
+   				id="addZDL_Domain_Package_ActionId">
+   			</action> 			
+   			<action
+   				label="%_UI_ElementType__DomainBlock__Package_stereotypename"
+   				icon="icons/obj16/ZDL_DomainBlock.gif"
+   				class="com.zeligsoft.ddk.zdl.rsm.tooling.actions.AddZDLActionDelegate"
+   				menubarPath="zeligsoft.menu/zdl.menu"
+   				enablesFor="1"
+   				id="addZDL_Domain_Block_ActionId">			
+   			</action>
+   			<action
+   				label="%_UI_ElementType__DomainSpecialization__Class_stereotypename"
+   				icon="icons/obj16/ZDL_DomainSpecialization.gif"
+   				class="com.zeligsoft.ddk.zdl.rsm.tooling.actions.AddZDLActionDelegate"
+   				menubarPath="zeligsoft.menu/zdl.menu"
+   				enablesFor="1"
+   				id="addZDL_Domain_Specialization_ActionId">			
+   			</action>	
+   		</viewerContribution>
+	</extension>   		
+ 	<extension
+      	id="addZDL_DomainBlock_PopupMenuId"
+   		name="DomainBlock PopupActions"
+   		point="org.eclipse.ui.popupMenus">
+   		<viewerContribution		
+   			id="addZDL_DomainBlock_ViewerContributionId"
+   			targetID="org.eclipse.ui.navigator.ProjectExplorer#PopupMenu">  
+   			<visibility>
+  				<objectState name="isZDLConcept" value="ZDL::Constructs::DomainBlock"/>
+   			</visibility>	
+            <action
+                label="%_UI_ElementType__DomainLinkConstraint__Constraint_stereotypename"
+                icon="icons/obj16/ZDL_DomainConstraint.gif"
+                class="com.zeligsoft.ddk.zdl.rsm.tooling.actions.AddZDLActionDelegate"
+                menubarPath="zeligsoft.menu/zdl.menu"
+                enablesFor="1"
+                id="addZDL_Domain_Link_Constraint_ActionId">              
+            </action>
+   			<action
+   				label="%_UI_ElementType__DomainDataType__DataType_stereotypename"
+   				icon="icons/obj16/ZDL_DomainDataType.gif"
+   				class="com.zeligsoft.ddk.zdl.rsm.tooling.actions.AddZDLActionDelegate"
+   				menubarPath="zeligsoft.menu/zdl.menu"
+   				enablesFor="1"
+   				id="addZDL_Domain_Data_Type_ActionId">			
+   			</action>
+		    <action
+   				label="%_UI_ElementType__DomainEnum__Enumeration_stereotypename"
+   				icon="icons/obj16/ZDL_DomainEnum.gif"
+   				class="com.zeligsoft.ddk.zdl.rsm.tooling.actions.AddZDLActionDelegate"
+   				menubarPath="zeligsoft.menu/zdl.menu"
+   				enablesFor="1"
+   				id="addZDL_Domain_Enumeration_ActionId">  				
+   			</action>   		
+   			<action
+   				label="%_UI_ElementType__DomainConcept__Class_stereotypename"
+   				icon="icons/obj16/ZDL_DomainConcept.gif"
+   				class="com.zeligsoft.ddk.zdl.rsm.tooling.actions.AddZDLActionDelegate"
+   				menubarPath="zeligsoft.menu/zdl.menu"
+   				enablesFor="1"
+   				id="addZDL_Domain_Concept_ActionId">			
+   			</action>
+   			<action
+   				label="%_UI_ElementType__DomainModelLibrary__Artifact_stereotypename"
+   				icon="icons/obj16/ZDL_DomainModelLibrary.gif"
+   				class="com.zeligsoft.ddk.zdl.rsm.tooling.actions.AddZDLActionDelegate"
+   				menubarPath="zeligsoft.menu/zdl.menu"
+   				enablesFor="1"
+   				id="addZDL_Domain_Model_Library_ActionId">			
+   			</action>
+   		</viewerContribution>
+   	</extension>    			
+ 	<extension
+      	id="addZDL_DomainConcept_PopupMenuId"
+   		name="DomainConcept PopupActions"
+   		point="org.eclipse.ui.popupMenus">
+   		<viewerContribution		
+   			id="addZDL_DomainConcept_ViewerContributionId"
+   			targetID="org.eclipse.ui.navigator.ProjectExplorer#PopupMenu">  
+   			<visibility>		
+   					<objectState name="isZDLConcept" value="ZDL::Constructs::DomainConcept"/>
+   			</visibility>				
+            <action
+                label="%_UI_ElementType__DomainLinkConstraint__Constraint_stereotypename"
+                icon="icons/obj16/ZDL_DomainConstraint.gif"
+                class="com.zeligsoft.ddk.zdl.rsm.tooling.actions.AddZDLActionDelegate"
+                menubarPath="zeligsoft.menu/zdl.menu"
+                enablesFor="1"
+                id="addZDL_Domain_Link_Constraint_ActionId">              
+            </action>
+            <action
+                label="%_UI_ElementType__DomainConstraint__Constraint_stereotypename"
+                icon="icons/obj16/ZDL_DomainConstraint.gif"
+                class="com.zeligsoft.ddk.zdl.rsm.tooling.actions.AddZDLActionDelegate"
+                menubarPath="zeligsoft.menu/zdl.menu"
+                enablesFor="1"
+                id="addZDL_Domain_Constraint_ActionId">              
+            </action>
+   			<action
+   				label="%_UI_ElementType__DomainAttribute__Property_stereotypename"
+   				icon="icons/obj16/ZDL_DomainAttribute.gif"
+   				class="com.zeligsoft.ddk.zdl.rsm.tooling.actions.AddZDLActionDelegate"
+   				menubarPath="zeligsoft.menu/zdl.menu"
+   				enablesFor="1"
+   				id="addZDL_Domain_Attribute_ActionId">				
+   			</action>
+   		</viewerContribution>
+   	</extension>   		
+    <extension
+        id="addZDL_DomainReference_PopupMenuId"
+        name="DomainReference PopupActions"
+        point="org.eclipse.ui.popupMenus">
+        <viewerContribution     
+            id="addZDL_DomainReference_ViewerContributionId"
+            targetID="org.eclipse.ui.navigator.ProjectExplorer#PopupMenu">  
+            <visibility>        
+                    <objectState name="isZDLConcept" value="ZDL::Constructs::DomainReference"/>
+            </visibility>               
+            <action
+                label="%_UI_ElementType__DomainLinkConstraint__Constraint_stereotypename"
+                icon="icons/obj16/ZDL_DomainConstraint.gif"
+                class="com.zeligsoft.ddk.zdl.rsm.tooling.actions.AddZDLActionDelegate"
+                menubarPath="zeligsoft.menu/zdl.menu"
+                enablesFor="1"
+                id="addZDL_Domain_Link_Constraint_ActionId">              
+            </action>
+        </viewerContribution>
+    </extension>        
+   <extension
+      	id="addZDL_DomainEnum_PopupMenuId"
+   		name="DomainEnum PopupActions"
+   		point="org.eclipse.ui.popupMenus">  				
+   		<viewerContribution		
+   			id="addZDL_DomainEnum_ViewerContributionId"
+   			targetID="org.eclipse.ui.navigator.ProjectExplorer#PopupMenu">    
+   			<visibility>		
+   				<objectState name="isZDLConcept" value="ZDL::Constructs::DomainEnum"/>
+   			</visibility>   
+   			<action
+   				label="%_UI_ElementType__DomainEnumLiteral__EnumerationLiteral_stereotypename"
+   				icon="icons/obj16/ZDL_DomainEnumLiteral.gif"
+   				class="com.zeligsoft.ddk.zdl.rsm.tooling.actions.AddZDLActionDelegate"
+   				menubarPath="zeligsoft.menu/zdl.menu"
+   				enablesFor="1"
+   				id="addZDL_Domain_Enumeration_Literal_ActionId">
+   			</action>
+   		</viewerContribution>
+   	</extension> 
+	<!--
+	Note: The ActionId in the above actions are used in a Map in a
+	single ActionDelegate, don't change these ids without changing the 
+	Map.
+	-->	   	
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            canFinishEarly="true"
+            category="com.zeligsoft/ddk"
+            class="com.zeligsoft.ddk.zdl.rsm.tooling.wizards.ZDLProjectWizard"
+            hasPages="true"
+            icon="icons/obj16/ZDLModel.gif"
+            id="com.zeligsoft.ddk.zdl.rsm.tooling.ZDLProjectWizard"
+            name="%wizard.project.name"           
+            project="true">
+         <description>
+            %wizard.project.description
+         </description>
+      </wizard>
+      <wizard
+            canFinishEarly="true"
+            category="com.zeligsoft/ddk"
+            class="com.zeligsoft.ddk.zdl.rsm.tooling.wizards.ZDLModelWizard"
+            hasPages="true"
+            icon="icons/obj16/ZDLModel.gif"
+            id="com.zeligsoft.ddk.zdl.rsm.tooling.ZDLModelWizard"
+            name="%wizard.model.name"
+            project="false">
+         <description>
+            %wizard.model.description
+         </description>
+      </wizard>      
+   </extension>   
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension targetID="com.zeligsoft.ddk.ui.perspectives.DDKPerspective">
+         <newWizardShortcut id="com.zeligsoft.ddk.zdl.rsm.tooling.ZDLProjectWizard">
+         </newWizardShortcut>
+         <newWizardShortcut id="com.zeligsoft.ddk.zdl.rsm.tooling.ZDLModelWizard">
+         </newWizardShortcut>
+      </perspectiveExtension>
+   </extension>  
+</plugin>
