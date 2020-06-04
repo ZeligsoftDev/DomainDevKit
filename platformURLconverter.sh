@@ -27,7 +27,7 @@
 cd "${0%/*}"
 
 # Ensure that no one has changed the tpd file before proceeding.
-if [ target-platform/ddk_target.tpd -nt target-platform/ddk_target.target]; then
+if [ target-platform/ddk_target.tpd -nt target-platform/ddk_target.target ]; then
 	echo "ddk_target.tpd is newer than ddk_target.target. Update .target file before proceeding."
 	exit 1;
 fi

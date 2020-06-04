@@ -40,4 +40,4 @@ sed 's+platform:/resource/target-platform/deps/rsa91_p2+file://'`pwd`'/target-pl
 echo "platform url replaced"
 # Run Maven Build
 
-./mvnw -D "ddk.root"=`pwd` clean verify
+./mvnw clean verify
