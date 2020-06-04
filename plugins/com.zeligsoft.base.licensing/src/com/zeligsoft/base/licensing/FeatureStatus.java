@@ -21,7 +21,6 @@ import java.util.HashMap;
 
 import org.eclipse.osgi.util.NLS;
 
-import com.macrovision.flexlm.FlexlmConstants;
 import com.zeligsoft.base.licensing.internal.l10n.Messages;
 
 /**
@@ -82,28 +81,7 @@ public final class FeatureStatus {
 	 * @param expiry
 	 *            the "days remaining" code from Flex
 	 */
-	public FeatureStatus(String feature, int expiry, String licType) {
-		this.feature = feature;
-		
-		if (expiry == EXPIRY_INVALID) {
-			this.expiry = expiry;
-			status = Messages.FeatureStatus_invalid;
-		} else if (expiry == EXPIRY_TODAY) {
-			this.expiry = expiry;
-			status = Messages.FeatureStatus_today;
-		} else if (expiry == FlexlmConstants.LM_LONGGONE) {
-			this.expiry = EXPIRY_EXPIRED;
-			status = Messages.FeatureStatus_expired;
-		} else if (expiry == FlexlmConstants.LM_FOREVER) {
-			this.expiry = EXPIRY_NEVER;
-			status = Messages.FeatureStatus_permanent;
-		} else {
-			this.expiry = expiry;
-			status = NLS.bind(Messages.FeatureStatus_days, expiry);
-		}
-		
-		this.licenseType = licType;
-	}
+
 	
 	/*
 	 * This is an additional constructor for RLM. RLM expiration and Flex
