@@ -26,12 +26,6 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.osgi.util.NLS;
 import org.osgi.framework.Bundle;
 
-import com.zeligsoft.base.licensing.exceptions.LicenseException;
-import com.zeligsoft.base.licensing.exceptions.RuntimeLicenseException;
-import com.zeligsoft.base.licensing.internal.FlexLicenseManager;
-import com.zeligsoft.base.licensing.internal.RlmLicenseManager;
-import com.zeligsoft.base.licensing.internal.l10n.Messages;
-
 /**
  * Static utility class for verifying the licenses governing key ("trigger")
  * bundles.
@@ -57,11 +51,8 @@ public final class LicenseCheck {
 	 * @param bundle
 	 *            a bundle
 	 * 
-	 * @throws LicenseException
-	 *             if the license is not available for any reason
 	 */
-	public static void require(Bundle bundle)
-			throws LicenseException {
+	public static void require(Bundle bundle) {
 		require(bundle, null);
 	}
 	
@@ -74,11 +65,8 @@ public final class LicenseCheck {
 	 * @param notifyListeners
 	 * 			  whether or not listeners should be notified
 	 * 
-	 * @throws LicenseException
-	 *             if the license is not available for any reason
 	 */
-	public static void require(Bundle bundle, boolean notifyListeners)
-			throws LicenseException {
+	public static void require(Bundle bundle, boolean notifyListeners) {
 		require(bundle, null, false, null, notifyListeners);
 	}
 	
@@ -91,11 +79,8 @@ public final class LicenseCheck {
 	 * @param bundleName
 	 * 			  Name of bundle to display in any messages to user
 	 * 
-	 * @throws LicenseException
-	 *             if the license is not available for any reason
 	 */
-	public static void require(Bundle bundle, String bundleName)
-			throws LicenseException {
+	public static void require(Bundle bundle, String bundleName) {
 		require(bundle, bundleName, false);
 	}
 	
@@ -109,16 +94,15 @@ public final class LicenseCheck {
 	 * @param cancelOnError
 	 * 			  determines whether CANCEL IStatus should be used in place
 	 * 			of the ERROR IStatus
-	 * @throws LicenseException
 	 *             if the license is not available for any reason
 	 */
 	public static void require(Bundle bundle, String bundleName, boolean cancelOnError)
-			throws LicenseException {
+			 {
 		require(bundle, bundleName, cancelOnError, null);
 	}
 	
 	public static void require(Bundle bundle, String bundleName, boolean cancelOnError, String message)
-			throws LicenseException{
+			{
 		require(bundle, bundleName, cancelOnError, message, true);
 	}
 	
@@ -134,30 +118,11 @@ public final class LicenseCheck {
 	 * 			of the ERROR IStatus
 	 * @param message
 	 *			  optional message to display to users on failure
-	 * @throws LicenseException
-	 *             if the license is not available for any reason
 	 */
 	public static void require(Bundle bundle, String bundleName, boolean cancelOnError, String message, boolean notifyListeners)
-			throws LicenseException {
+			{
 		
-		
-		if (bundleName == null){ bundleName = "CX"; } //$NON-NLS-1$
-		//IStatus result = FlexLicenseManager.getInstance().check(bundle, bundleName, cancelOnError, message, notifyListeners);
-
 		IStatus result = Status.OK_STATUS;
-		
-		if (result.getSeverity() >= IStatus.ERROR) {
-			result = RlmLicenseManager.getInstance().check(bundle, bundleName, cancelOnError, message, notifyListeners);
-				
-			if (result.getSeverity() >= IStatus.ERROR) {		
-				//if still an error - throw exception
-				throw new LicenseException(result);
-			}
-		} else {
-			//only notify listeners for FlexLM if result is OK,
-			//otherwise we delegate to Rlm
-			FlexLicenseManager.getInstance().notify(bundle, bundleName, result, message);
-		}
 	}
 	
 	/**
@@ -174,23 +139,16 @@ public final class LicenseCheck {
 	 * 			of the ERROR IStatus
 	 * @param message
 	 *			  optional message to display to users on failure
-	 * @throws LicenseException
-	 *             if the license is not available for any reason
 	 */
 	public static void require(Bundle bundle, String productName, String version, boolean cancelOnError, String message)
-			throws LicenseException {
+			 {
 		
 		
 		//We only check RLM as we're phasing Flex out
 		//IStatus 	result = RlmLicenseManager.getInstance().checkProduct(bundle, productName, version, cancelOnError, message);
 		
-		
 		IStatus result = Status.OK_STATUS;
-		
-		if (result.getSeverity() >= IStatus.ERROR) {		
-			//if still an error - throw exception
-			throw new LicenseException(result);
-		}
+
 	}
 	
 	/**
@@ -268,6 +226,7 @@ public final class LicenseCheck {
 	 * @param licenseListenerRequired
 	 *            if true, throws a runtime exception if the license listener can not be found
 	 */
+	/*
 	public static void checkRegisteredLicensees(String modelLocation, String errorMessage, boolean licenseListenerRequired) throws LicenseException {
 		
 		//we have the location to the model, the bundle location will be the first element after the
@@ -319,5 +278,5 @@ public final class LicenseCheck {
 	
 	public static void checkRegisteredLicensees(String modelLocation, String errorMessage) throws LicenseException {
 		checkRegisteredLicensees(modelLocation, errorMessage, false);
-	}
+	}*/
 }

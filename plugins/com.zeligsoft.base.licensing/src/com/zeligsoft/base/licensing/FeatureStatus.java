@@ -21,8 +21,6 @@ import java.util.HashMap;
 
 import org.eclipse.osgi.util.NLS;
 
-import com.zeligsoft.base.licensing.internal.l10n.Messages;
-
 /**
  * Summary information about the licensing status of a feature.
  * 
@@ -92,7 +90,7 @@ public final class FeatureStatus {
 	 */
 	public FeatureStatus(String feature, String expiry, int isPermanent, String licType) {
 		this.feature = feature;
-		
+		/*
 		if (expiry.toLowerCase().contains(RLM_PERMANENT)) {
 			this.expiry = EXPIRY_NEVER;
 			status = Messages.FeatureStatus_permanent;
@@ -101,7 +99,7 @@ public final class FeatureStatus {
 			status = NLS.bind(Messages.FeatureStatus_days, this.expiry);
 		}
 		
-		this.licenseType = licType;
+		this.licenseType = licType;*/
 	}
 	
 	/**
