@@ -14,7 +14,6 @@
     See the License for the specific language governing permissions and
     limitations under the License.
  -->
-
 <feature
       id="com.zeligsoft.ddk.feature"
       label="%featureName"
@@ -40,6 +39,14 @@ All rights reserved.
       <update label="%updateSiteName" url="http://www.zeligsoft.com/services/CX/updates/"/>
       <discovery label="%updateSiteName" url="http://www.zeligsoft.com/services/CX/updates/"/>
    </url>
+
+   <includes
+         id="com.zeligsoft.base.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="com.zeligsoft.cx.feature"
+         version="0.0.0"/>
 
    <plugin
          id="com.zeligsoft.ddk.docs"
