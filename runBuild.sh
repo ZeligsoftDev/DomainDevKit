@@ -26,16 +26,7 @@
 # change working directory to my directory
 cd "${0%/*}"
 
-# Ensure that no one has changed the tpd file before proceeding.
-if [ target-platform/ddk_target.tpd -nt target-platform/ddk_target.target ]; then
-	echo "ddk_target.tpd is newer than ddk_target.target. Update .target file before proceeding."
-	exit 1;
-fi
-
-
-# Swap out the platform:/ url for the absolute path that Tycho demands.
-sed 's+platform:/resource/target-platform/deps/rsa91_p2+file://'`pwd`'/target-platform/deps/rsa91_p2+' target-platform/ddk_target.target > target-platform/ddk_adjustedTarget.target
-
+./platformURLConverter.sh
 
 echo "platform url replaced"
 # Run Maven Build
