@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="DDK RSA 9.1 target" sequenceNumber="1591292089">
+<target name="DDK RSA 9.1 target" sequenceNumber="1591651833">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="com.ibm.xtools.common.ui.reduction" version="7.60.500.v20130513_1310"/>
@@ -73,6 +73,7 @@
       <unit id="org.eclipse.emf.ecore.xcore.feature.group" version="1.0.2.v20130212-0719"/>
       <unit id="org.eclipse.xtend.sdk.feature.group" version="2.3.1.v201208210947"/>
       <unit id="org.eclipse.xtext.runtime.feature.group" version="2.3.1.v201208210947"/>
+      <unit id="org.eclipse.emf.mwe.core" version="1.2.1.v201206110920"/>
       <repository id="juno" location="https://download.eclipse.org/releases/juno/"/>
     </location>
   </locations>
