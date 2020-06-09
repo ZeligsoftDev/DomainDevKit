@@ -23,6 +23,8 @@
 hs_err_pid*
 
 
+.DS_Store
+
 **/.polyglot.build.properties
 bin/
 target/

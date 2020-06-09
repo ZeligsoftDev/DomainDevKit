@@ -14,7 +14,7 @@ location rsa91 "platform:/resource/target-platform/deps/rsa91_p2" {
 	// core eclipse
 	org.eclipse.platform
 	org.eclipse.equinox.common
-//	org.eclipse.core.resources
+	// org.eclipse.core.resources
 	org.eclipse.core.runtime
 	org.eclipse.core.expressions
 	org.eclipse.core.filesystem
@@ -82,12 +82,12 @@ location rsa91 "platform:/resource/target-platform/deps/rsa91_p2" {
 	org.apache.commons.logging
 }
 
-
 location juno "https://download.eclipse.org/releases/juno/" {
 	org.eclipse.xtend.typesystem.xsd.feature.group
 	org.eclipse.xtend.typesystem.uml2.feature.group
-	org.eclipse.cdt.platform.feature.group 
+	org.eclipse.cdt.platform.feature.group
 	org.eclipse.emf.ecore.xcore.feature.group
 	org.eclipse.xtend.sdk.feature.group
 	org.eclipse.xtext.runtime.feature.group
+	org.eclipse.emf.mwe.core
 }
