@@ -411,6 +411,13 @@ public class GenDomainStructuralFeatureItemProvider extends
 		return label == null || label.length() == 0 ? getString("_UI_GenDomainStructuralFeature_type") : //$NON-NLS-1$
 				getString("_UI_GenDomainStructuralFeature_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
+	
+	
+	private boolean includesCardinality(Property p, int cardinality) {
+		// TODO: UML 5 Migration verify
+		// replaces pre-UML 5.0 p.includesCardinality(cardinality)
+		return p.getLower() <= cardinality && cardinality <= p.getUpper();
+	}
 
 	@Override
 	public String getTextForTree(EObject object) {
@@ -438,8 +445,7 @@ public class GenDomainStructuralFeatureItemProvider extends
 			if (!domainFeature.is(1, 1)) {
 				String multiplicity = domainFeature.is(0,
 						LiteralUnlimitedNatural.UNLIMITED) ? "*" //$NON-NLS-1$
-						: domainFeature
-								.includesCardinality(LiteralUnlimitedNatural.UNLIMITED) ? (String
+						: includesCardinality(domainFeature, LiteralUnlimitedNatural.UNLIMITED) ? (String
 								.valueOf(domainFeature.getLower()) + "..*") //$NON-NLS-1$
 								: (String.valueOf(domainFeature.getLower())
 										+ ".." + String //$NON-NLS-1$

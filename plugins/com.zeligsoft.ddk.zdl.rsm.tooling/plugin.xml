@@ -24,7 +24,7 @@
    		point="org.eclipse.ui.popupMenus">
    		<viewerContribution
    			id="com.zeligsoft.deployment.AddZDLMenuContribution"
-   			targetID="org.eclipse.ui.navigator.ProjectExplorer#PopupMenu">   			        
+   			targetID="org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup#PopupMenu">   			        
 			<menu id="zeligsoft.menu" label="%_UI_ActionGroup__ZDL_name" path="group.new">
 			<separator name="zdl.menu"/>     	
 			</menu>
@@ -41,7 +41,7 @@
    		point="org.eclipse.ui.popupMenus">
    		<viewerContribution		
    			id="addZDL_DomainPackage_ViewerContributionId"
-   			targetID="org.eclipse.ui.navigator.ProjectExplorer#PopupMenu">  
+   			targetID="org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup#PopupMenu">  
    			<visibility>
 				<or>					
 					<objectState name="isZDLConcept" value="ZDL::Constructs::DomainModel"/>
@@ -80,7 +80,7 @@
    		point="org.eclipse.ui.popupMenus">
    		<viewerContribution		
    			id="addZDL_DomainBlock_ViewerContributionId"
-   			targetID="org.eclipse.ui.navigator.ProjectExplorer#PopupMenu">  
+   			targetID="org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup#PopupMenu">  
    			<visibility>
   				<objectState name="isZDLConcept" value="ZDL::Constructs::DomainBlock"/>
    			</visibility>	
@@ -132,7 +132,7 @@
    		point="org.eclipse.ui.popupMenus">
    		<viewerContribution		
    			id="addZDL_DomainConcept_ViewerContributionId"
-   			targetID="org.eclipse.ui.navigator.ProjectExplorer#PopupMenu">  
+   			targetID="org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup#PopupMenu">  
    			<visibility>		
    					<objectState name="isZDLConcept" value="ZDL::Constructs::DomainConcept"/>
    			</visibility>				
@@ -168,7 +168,7 @@
         point="org.eclipse.ui.popupMenus">
         <viewerContribution     
             id="addZDL_DomainReference_ViewerContributionId"
-            targetID="org.eclipse.ui.navigator.ProjectExplorer#PopupMenu">  
+            targetID="org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup#PopupMenu">  
             <visibility>        
                     <objectState name="isZDLConcept" value="ZDL::Constructs::DomainReference"/>
             </visibility>               
@@ -188,7 +188,7 @@
    		point="org.eclipse.ui.popupMenus">  				
    		<viewerContribution		
    			id="addZDL_DomainEnum_ViewerContributionId"
-   			targetID="org.eclipse.ui.navigator.ProjectExplorer#PopupMenu">    
+   			targetID="org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup#PopupMenu">    
    			<visibility>		
    				<objectState name="isZDLConcept" value="ZDL::Constructs::DomainEnum"/>
    			</visibility>   

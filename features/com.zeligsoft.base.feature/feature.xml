@@ -36,13 +36,6 @@ All rights reserved.
    </license>
 
    <plugin
-         id="com.zeligsoft.base.diagram"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="com.zeligsoft.base.ui"
          download-size="0"
          install-size="0"

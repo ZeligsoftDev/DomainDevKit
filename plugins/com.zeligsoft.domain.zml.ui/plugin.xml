@@ -18,6 +18,16 @@
 
 <plugin>
    <extension
+         point="org.eclipse.emf.transaction.listeners">
+      <listener
+            class="com.zeligsoft.domain.zml.ui.WorkerFunctionImplListener">
+         <editingDomain
+               id="org.eclipse.papyrus.SharedEditingDomainID">
+         </editingDomain>
+       </listener>
+   </extension>
+<!--
+   <extension
          point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">
       <editpolicyProvider
             class="com.zeligsoft.domain.zml.ui.providers.ZMLComponentEditPolicyProvider">
@@ -36,10 +46,11 @@
    <extension
          point="org.eclipse.emf.transaction.listeners">
       <listener
-            class="com.zeligsoft.domain.zml.ui.WorkerFunctionImplListener">
-      </listener>
-      <listener
             class="com.zeligsoft.domain.zml.ui.PortConjugationListener">
+         <editingDomain
+               id="org.eclipse.papyrus.SharedEditingDomainID">
+         </editingDomain>
       </listener>
    </extension>
+   -->
 </plugin>

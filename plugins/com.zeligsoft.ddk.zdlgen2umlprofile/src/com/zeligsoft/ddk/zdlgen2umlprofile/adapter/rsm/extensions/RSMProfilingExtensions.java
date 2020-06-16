@@ -18,6 +18,7 @@ package com.zeligsoft.ddk.zdlgen2umlprofile.adapter.rsm.extensions;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.EnumerationLiteral;
@@ -28,7 +29,6 @@ import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.util.UMLUtil;
 
-import com.ibm.xtools.modeler.ui.UMLModeler;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnumLiteral;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel;
@@ -70,7 +70,7 @@ public class RSMProfilingExtensions {
 		}
 
 		if (rset == null) {
-			rset = UMLModeler.getEditingDomain().getResourceSet();
+			rset = TransactionUtil.getEditingDomain(specialization).getResourceSet();
 		}
 
 		Package umlMetamodel = loadPackage(rset, UMLResource.UML_METAMODEL_URI);
@@ -106,11 +106,10 @@ public class RSMProfilingExtensions {
 	 *            the package's location URI
 	 * @return the package at the specified location URI
 	 */
-	private static <T extends Package> T loadPackage(ResourceSet rset,
+	public static <T extends Package> T loadPackage(ResourceSet rset,
 			String uri) {
-		return com.zeligsoft.base.util.RSMUtil.loadPackage(rset, URI.createURI(uri));
+		return (T) rset.getResource(URI.createURI(uri), true).getContents().get(0);
 	}
-
 	private static GenDomainModel getGenDomainModel(
 			GenDomainSpecialization specialization) {
 		GenDomainModel result = null;
@@ -233,7 +232,7 @@ public class RSMProfilingExtensions {
 		}
 
 		if (rset == null) {
-			rset = UMLModeler.getEditingDomain().getResourceSet();
+			rset = TransactionUtil.getEditingDomain(modelLibrary).getResourceSet();
 		}
 
 		Profile std = loadPackage(rset, UMLResource.STANDARD_PROFILE_URI);

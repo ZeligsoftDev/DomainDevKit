@@ -18,8 +18,8 @@ package com.zeligsoft.ddk.zdl.rsm.tooling.ext;
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
 
-import com.ibm.xtools.modeler.ui.UMLModeler;
-import com.zeligsoft.ddk.zdl.rsm.tooling.ext.types.ConfigureDomainConstraintAdvice;
+//import com.ibm.xtools.modeler.ui.UMLModeler;
+//import com.zeligsoft.ddk.zdl.rsm.tooling.ext.types.ConfigureDomainConstraintAdvice;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -44,17 +44,17 @@ public class Activator
 	public void start(BundleContext context)
 			throws Exception {
 		super.start(context);
-		plugin = this;
-
-		UMLModeler.getEditingDomain().addResourceSetListener(
-			ConfigureDomainConstraintAdvice.INSTANCE);
+		plugin = this;		
+		
+	//	UMLModeler.getEditingDomain().addResourceSetListener(
+	//		ConfigureDomainConstraintAdvice.INSTANCE);
 	}
 
 	@Override
 	public void stop(BundleContext context)
 			throws Exception {
-		UMLModeler.getEditingDomain().removeResourceSetListener(
-			ConfigureDomainConstraintAdvice.INSTANCE);
+	//	UMLModeler.getEditingDomain().removeResourceSetListener(
+	//		ConfigureDomainConstraintAdvice.INSTANCE);
 
 		plugin = null;
 		super.stop(context);

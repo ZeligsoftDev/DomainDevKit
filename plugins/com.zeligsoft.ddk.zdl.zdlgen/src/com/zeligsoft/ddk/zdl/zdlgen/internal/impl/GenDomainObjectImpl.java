@@ -191,7 +191,7 @@ public abstract class GenDomainObjectImpl extends EObjectImpl implements
 	 * @generated NOT
 	 */
 	protected CacheAdapter getCacheAdapter() {
-		return CacheAdapter.INSTANCE;
+		return CacheAdapter.getInstance();
 	}
 
 	@Override
