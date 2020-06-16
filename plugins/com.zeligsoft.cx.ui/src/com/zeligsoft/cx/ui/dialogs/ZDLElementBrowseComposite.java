@@ -18,20 +18,42 @@ package com.zeligsoft.cx.ui.dialogs;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.jface.viewers.IFilter;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.ITreeContentProvider;
+import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.ui.model.BaseWorkbenchContentProvider;
+import org.eclipse.ui.model.WorkbenchLabelProvider;
+import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.uml2.uml.Model;
+import org.eclipse.uml2.uml.TypedElement;
 
-import com.ibm.xtools.common.ui.navigator.viewers.NavigatorSelectionComposite;
-import com.ibm.xtools.modeler.ui.UMLModeler;
-import com.ibm.xtools.uml.navigator.ClosedModelerResourceViewerElement;
-import com.ibm.xtools.uml.navigator.ModelFolderViewerElement;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
+import com.zeligsoft.cx.ui.l10n.Messages;
+import com.zeligsoft.cx.ui.providers.ZDLElementContentProvider;
+import com.zeligsoft.cx.ui.providers.ZDLElementLabelProvider;
 
 /**
  * ZDL Element Browse Composite
@@ -39,77 +61,221 @@ import com.zeligsoft.base.zdl.util.ZDLUtil;
  * @author ysroh
  * 
  */
-@SuppressWarnings("rawtypes")
-public class ZDLElementBrowseComposite extends NavigatorSelectionComposite {
+public abstract class ZDLElementBrowseComposite {
 
 	protected Object browseTabLastSelectedElement = null;
 
-	protected List<String> concepts;
+	protected EObject context;
+
+	protected List<String> concepts = new ArrayList<String>();
 
 	protected IFilter filter = null;
 
-	protected ArrayList<EObject> selectedList = new ArrayList<EObject>();
+	protected IStructuredSelection selection = null;
 
-	public ZDLElementBrowseComposite(String selectionTitle, boolean multiselectable,
-			List initialSelectedElements, List<String> concpets) {
-		super(selectionTitle, multiselectable, initialSelectedElements);
-		this.concepts = concpets;
+	boolean includeImportedPackages;
+
+	protected TreeViewer treeViewer;
+
+	public ZDLElementBrowseComposite(EObject context, List<String> concepts, boolean includeImportedPackages) {
+		this.context = context;
+		if (context instanceof TypedElement && ((TypedElement) context).getType() != null) {
+			selection = new StructuredSelection(((TypedElement) context).getType());
+		} else {
+			selection = new StructuredSelection(EcoreUtil.getRootContainer(context));
+		}
+		if (concepts != null) {
+			this.concepts = concepts;
+		}
+		this.includeImportedPackages = includeImportedPackages;
+	}
+
+	public Composite createComposite(Composite parent) {
+		Composite composite = new Composite(parent, SWT.NULL);
+
+		GridLayout layout = new GridLayout();
+		layout.numColumns = 1;
+		layout.marginHeight = 0;
+		layout.marginWidth = 0;
+		layout.verticalSpacing = 0;
+		layout.horizontalSpacing = 0;
+		composite.setLayout(layout);
+		composite.setLayoutData(new GridData(GridData.FILL_BOTH));
+
+		createBrowseArea(composite);
+
+		return composite;
+
+	}
+
+	/**
+	 * Create element selection area
+	 * 
+	 * @param parent
+	 */
+	private void createBrowseArea(Composite parent) {
+
+		Composite listAreaComposite = new Composite(parent, SWT.NULL);
+		GridLayout layout = new GridLayout();
+		layout.marginHeight = 0;
+		layout.marginWidth = 0;
+		layout.horizontalSpacing = 0;
+		listAreaComposite.setLayout(layout);
+		listAreaComposite
+				.setLayoutData(new GridData(GridData.FILL_BOTH | GridData.GRAB_HORIZONTAL | GridData.GRAB_VERTICAL));
+
+		int listStyle = SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER | SWT.MULTI;
+
+		GridData viewerData = new GridData(GridData.FILL_BOTH | GridData.GRAB_HORIZONTAL | GridData.GRAB_VERTICAL);
+
+		viewerData.heightHint = 250;
+		viewerData.widthHint = 550;
+
+		Label listLabel = new Label(listAreaComposite, SWT.NONE);
+		listLabel.setText(Messages.ZDLElementSelectionComposite_ElementListViewerTitle);
+
+		treeViewer = new TreeViewer(listAreaComposite, listStyle);
+		treeViewer.getTree().setLayoutData(viewerData);
+		treeViewer.setContentProvider(new DelegatingContentProvider());
+		treeViewer.setLabelProvider(new DelegatingLabelProvider());
+		treeViewer.setInput(ResourcesPlugin.getWorkspace().getRoot());
+		treeViewer.setSelection(selection);
+		treeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			@Override
+			public void selectionChanged(SelectionChangedEvent event) {
+
+				IStructuredSelection currentSelection = (IStructuredSelection) treeViewer.getSelection();
+				selection = currentSelection;
+				handleSelection(selection);
+			}
+		});
+	}
+
+	/**
+	 * Subclass to override to handle selection
+	 * 
+	 * @param IStructuredSelection selection
+	 */
+	protected abstract void handleSelection(IStructuredSelection selection);
+
+	private class DelegatingLabelProvider extends LabelProvider {
+
+		private WorkbenchLabelProvider wlp = new WorkbenchLabelProvider();
+		private ZDLElementLabelProvider zlp = new ZDLElementLabelProvider();
+
+		@Override
+		public Image getImage(Object element) {
+			if (element instanceof IResource) {
+				return wlp.getImage(element);
+			}
+			return zlp.getImage(element);
+		}
+
+		@Override
+		public String getText(Object element) {
+			if (element instanceof IResource) {
+				return wlp.getText(element);
+			}
+			return zlp.getText(element);
+		}
+	}
+
+	private class DelegatingContentProvider implements ITreeContentProvider {
+
+		private BaseWorkbenchContentProvider wcp = new BaseWorkbenchContentProvider();
+		private ZDLElementContentProvider zcp = new ZDLElementContentProvider(context, concepts, filter,
+				includeImportedPackages);
+
+		public DelegatingContentProvider() {
+			zcp.loadAllResources(context.eResource().getResourceSet(), ResourcesPlugin.getWorkspace().getRoot());
+		}
+
+		@Override
+		public Object[] getElements(Object inputElement) {
+			return getChildren(inputElement);
+		}
+
+		private boolean hasUml(IContainer container) throws CoreException {
+			for (IResource res : container.members()) {
+				if (res instanceof IFile) {
+					String fileExt = ((IFile) res).getFullPath().getFileExtension();
+					if (!UML2Util.isEmpty(fileExt) && "uml".equals(fileExt.toLowerCase())) {
+						URI uri = URI.createPlatformResourceURI(((IFile) res).getFullPath().toString(), true);
+						ResourceSet rset = context.eResource().getResourceSet();
+						Resource eres = rset.getResource(uri, false);
+						if (eres != null) {
+							// Resource already loaded
+							return true;
+						}
+					}
+				} else if (res instanceof IContainer) {
+					if(hasUml((IContainer) res)) {
+						return true;
+					}
+				}
+			}
+			return false;
+		}
+
+		@Override
+		public Object[] getChildren(Object element) {
+			if (element instanceof IProject && !((IProject) element).isOpen()) {
+				return new Object[0];
+			}
+			List<Object> result = new ArrayList<Object>();
+			if (element instanceof IContainer) {
+				try {
+					for (IResource res : ((IContainer) element).members()) {
+						if (res instanceof IProject) {
+							if (((IProject) res).isOpen()) {
+								result.add(res);
+							}
+						} else if (res instanceof IContainer) {
+							if (hasUml((IContainer) res)) {
+								result.add(res);
+							}
+						} else if (res instanceof IFile) {
+
+							String ext = ((IFile) res).getFullPath().getFileExtension();
+							if (!UML2Util.isEmpty(ext) && "uml".equals(ext.toLowerCase())) {
+								URI uri = URI.createPlatformResourceURI(((IFile) res).getFullPath().toString(), true);
+								ResourceSet rset = context.eResource().getResourceSet();
+								Resource eres = rset.getResource(uri, false);
+								if (eres != null) {
+									result.add(eres.getContents().get(0));
+								}
+							}
+						}
+					}
+				} catch (CoreException e) {
+					// Don't do anything
+				}
+			} else if (element instanceof EObject) {
+				return zcp.getChildren(element);
+			}
+			return result.toArray();
+		}
+
+		@Override
+		public Object getParent(Object element) {
+			if (element instanceof IResource) {
+				return wcp.getParent(element);
+			} else if (element instanceof Model) {
+				return wcp.getParent(WorkspaceSynchronizer.getFile(((EObject) element).eResource()));
+			}
+			return zcp.getParent(element);
+		}
+
+		@Override
+		public boolean hasChildren(Object element) {
+			return getChildren(element).length != 0;
+		}
+
 	}
 
 	public void setFilter(IFilter filter) {
 		this.filter = filter;
-	}
-
-	@Override
-	protected Object getInput() {
-		return ResourcesPlugin.getWorkspace().getRoot();
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	protected List getContentProviders() {
-		List<String> providers = new ArrayList<String>();
-		providers.add("com.ibm.xtools.modeler.ui.navigator.internal.providers.content.umlModelContent"); //$NON-NLS-1$
-		providers.add("org.eclipse.ui.navigator.resourceContent"); //$NON-NLS-1$
-		return providers;
-	}
-
-	@Override
-	public void handleSelection(boolean isValid) {
-		// open closed model file
-		if (browseTabLastSelectedElement != null) {
-			// open closed model file
-			if (browseTabLastSelectedElement instanceof ClosedModelerResourceViewerElement) {
-				ClosedModelerResourceViewerElement model = (ClosedModelerResourceViewerElement) browseTabLastSelectedElement;
-				UMLModeler.getEditingDomain().getResourceSet()
-						.getResource(
-								URI.createFileURI(model.getFile().getFullPath()
-										.toString()), true);
-			}
-		}
-	}
-
-	@Override
-	protected boolean isDisplayable(Object element) {
-		if (element instanceof IProject || element instanceof ModelFolderViewerElement
-				|| element instanceof ClosedModelerResourceViewerElement) {
-			return true;
-		}
-		if (element instanceof IAdaptable) {
-			EObject eObject = (EObject) ((IAdaptable) element).getAdapter(EObject.class);
-			if (eObject == null) {
-				return false;
-			}
-			if (isSelectedElementValid(eObject)) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	@Override
-	protected boolean isDisplayableRuleRecursive(Object element) {
-		return true;
 	}
 
 	/**
@@ -118,35 +284,14 @@ public class ZDLElementBrowseComposite extends NavigatorSelectionComposite {
 	 * @return
 	 */
 	public IStructuredSelection getSelection() {
-		return new StructuredSelection(selectedList);
+		return selection;
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public List getSelectedElements() {
-		return selectedList;
-	}
-
-	@Override
-	protected boolean isValidSelection(List currentSelectedElements) {
-		selectedList.clear();
-		for (Object obj : currentSelectedElements) {
-			browseTabLastSelectedElement = obj;
-			if (obj instanceof IAdaptable) {
-				EObject selectedElement = (EObject) ((IAdaptable) obj)
-						.getAdapter(EObject.class);
-				if (selectedElement != null) {
-					selectedList.add(selectedElement);
-					if (!isSelectedElementValid(selectedElement)) {
-						selectedList.clear();
-						return false;
-					}
-				} else {
-					return false;
-				}
-			}
+	protected boolean isValidSelection() {
+		if (selection.getFirstElement() instanceof EObject) {
+			return isSelectedElementValid((EObject) selection.getFirstElement());
 		}
-		return true;
+		return false;
 	}
 
 	/**

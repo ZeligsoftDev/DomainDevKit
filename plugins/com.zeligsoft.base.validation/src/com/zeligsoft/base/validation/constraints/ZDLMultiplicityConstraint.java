@@ -68,6 +68,11 @@ public class ZDLMultiplicityConstraint
 		return attribute;
 	}
 
+	private boolean includesCardinality(Property p, int cardinality) {
+		// TODO: UML 5 Migration verify
+		// replaces pre-UML 5.0 p.includesCardinality(cardinality)
+		return p.getLower() <= cardinality && cardinality <= p.getUpper();
+	}
 	@Override
 	public IStatus validate(IValidationContext ctx) {
 		EObject target = ctx.getTarget();
@@ -88,7 +93,7 @@ public class ZDLMultiplicityConstraint
 				: 1;
 		}
 
-		if (!attribute.includesCardinality(cardinality)) {
+		if (!includesCardinality(attribute, cardinality)) {
 			int lower = attribute.getLower();
 			int upper = attribute.getUpper();
 

@@ -17,8 +17,6 @@ package com.zeligsoft.base;
 
 import org.osgi.framework.BundleContext;
 
-import com.zeligsoft.base.licensing.LicenseCheck;
-
 /**
  * The activator class controls the plug-in life cycle
  */
@@ -42,8 +40,6 @@ public class Activator
 	public void start(BundleContext context)
 			throws Exception {
 		
-		LicenseCheck.require(context.getBundle(), PLUGIN_ID, "0.01", false, null); //$NON-NLS-1$
-	
 		super.start(context);
 		plugin = this;
 	}

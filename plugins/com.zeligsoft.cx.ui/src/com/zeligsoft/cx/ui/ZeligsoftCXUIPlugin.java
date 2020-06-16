@@ -13,12 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-
 package com.zeligsoft.cx.ui;
 
 import org.osgi.framework.BundleContext;
 
-import com.zeligsoft.base.licensing.LicenseCheck;
 import com.zeligsoft.base.ui.ZeligsoftAbstractUIPlugin;
 
 /**
@@ -50,8 +48,6 @@ public class ZeligsoftCXUIPlugin
 	public void start(BundleContext context)
 			throws Exception {
 		
-		LicenseCheck.require(context.getBundle(), PLUGIN_ID, "0.01", false, null);
-
 		super.start(context);
 		plugin = this;
 

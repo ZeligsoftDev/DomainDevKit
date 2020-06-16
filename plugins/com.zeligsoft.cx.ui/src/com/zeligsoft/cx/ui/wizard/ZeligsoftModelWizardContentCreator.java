@@ -89,10 +89,11 @@ public class ZeligsoftModelWizardContentCreator {
 	 *            Model folder that is relative to the project folder path
 	 * @param modelName
 	 *            Name of the new model.
-	 * @param templatePath
-	 *            The URI to the template file.
 	 * @param templateFileName
 	 *            The Filename of the template model.
+	 * @param modelCustomizer TODO
+	 * @param templatePath
+	 *            The URI to the template file.
 	 * @return
 	 */
 	public static boolean createContent(String projectName, 
@@ -104,10 +105,10 @@ public class ZeligsoftModelWizardContentCreator {
 			String cdtProjectName, 
 			URI templateURI,
 			String templateFileName,
-			String perspectiveID) {
+			String perspectiveID, INewModelCustomizer modelCustomizer) {
 		return createContent(projectName, destFolder, modelFolder, modelName, modelConcept, cdtProjectName, templateURI, 
 				templateFileName, perspectiveID, MODEL_CONFIGURATION_URI, MODEL_CONFIGURATION_QUALIFIED_NAME, 
-				new HashMap<String, String>());
+				new HashMap<String, String>(), modelCustomizer);
 	}
 	
 	public static boolean createContent(String projectName, 
@@ -122,7 +123,7 @@ public class ZeligsoftModelWizardContentCreator {
 			String perspectiveID,
 			URI modelConfigurationUri,
 			String modelConfigurationName,
-			HashMap<String, String> modelConfigurationAttributes) {
+			HashMap<String, String> modelConfigurationAttributes, INewModelCustomizer modelCustomizer) {
 		
 		if (perspectiveID == null){
 			perspectiveID = "com.zeligsoft.cx.ui.CXPerspective"; //$NON-NLS-1$
@@ -227,7 +228,10 @@ public class ZeligsoftModelWizardContentCreator {
 				value.setValue(modelConfigurationAttributes.get(p.getName()));
 			}
 		}
-
+			
+		if(modelCustomizer != null) {
+			modelCustomizer.customizeModel(model);
+		}
 		// Save the model
 		try {
 			modelResource.save(Collections.EMPTY_MAP);

@@ -53,7 +53,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.Package;
 
-import com.ibm.xtools.uml.type.UMLElementFactory;
+//import com.ibm.xtools.uml.type.UMLElementFactory;
 import com.zeligsoft.base.diagram.ui.Activator;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 

@@ -26,7 +26,6 @@ import com.zeligsoft.cx.codegen.editor.ICodeLocator;
 import com.zeligsoft.cx.codegen.editor.IEditSourceExtraParamFactory;
 import com.zeligsoft.cx.codegen.editor.IUserEditableElementDescriptor;
 import com.zeligsoft.cx.codegen.editor.IValidationFactory;
-import com.zeligsoft.cx.codegen.editor.UIProviderLicenser;
 import com.zeligsoft.cx.codegen.ui.CodeGenUIPlugin;
 import com.zeligsoft.cx.codegen.ui.l10n.Messages;
 
@@ -65,7 +64,6 @@ public class UserEditableElementFactory
 		public String property;
 		public ICodeLocator codeLocator;
 		public IValidationFactory validationFactory;
-		public UIProviderLicenser licenser;
 		public List<IUserEditableElementDescriptor.IM2MTransformationDescriptor> m2mDescs = new LinkedList<IUserEditableElementDescriptor.IM2MTransformationDescriptor>();
 		public List<IUserEditableElementDescriptor.IM2TTransformationDescriptor> m2tDescs = new LinkedList<IUserEditableElementDescriptor.IM2TTransformationDescriptor>();
 
@@ -81,9 +79,6 @@ public class UserEditableElementFactory
 		public ICodeLocator getCodeLocator() { return this.codeLocator; }
 		@Override
 		public IValidationFactory getValidationFactory() { return this.validationFactory; }
-		@Override
-		public UIProviderLicenser getLicenser() { return this.licenser; }
-
 		@Override
 		public Iterable<IUserEditableElementDescriptor.IM2MTransformationDescriptor> getM2MDescriptors() { return this.m2mDescs; }
 		@Override
@@ -183,7 +178,6 @@ public class UserEditableElementFactory
 
 		desc.codeLocator = getCodeLocatorAttr( configElement, CODELOCATOR_ATTR, Messages.UserEditableElement_ExtensionMissingAttribute );
 		desc.validationFactory = getValidationFactoryAttr( configElement, VALIDATIONFACTORY_ATTR, null );
-		desc.licenser = getLicenserAttr( configElement, LICENSER_ATTR, null );
 
 		for( IConfigurationElement child : configElement.getChildren() )
 		{
@@ -296,48 +290,6 @@ public class UserEditableElementFactory
 		return (IValidationFactory)inst;
 	}
 	
-	private static UIProviderLicenser getLicenserAttr( IConfigurationElement configElement, String attrName, String errorMessage )
-	{
-		if( configElement.getAttribute( attrName ) == null )
-		{
-			// attribute is optional when #errorMessage is null
-			if( errorMessage != null )
-				CodeGenUIPlugin.getDefault().error(
-						NLS.bind( errorMessage, configElement.getNamespaceIdentifier() ),
-						null );
-			return null;
-		}
-
-		Object inst = null;
-		try
-		{
-			inst = configElement.createExecutableExtension( attrName );
-		}
-		catch( CoreException e )
-		{
-			CodeGenUIPlugin.getDefault().error(
-					NLS.bind(
-						Messages.UserEditableElement_BadClassName,
-						ICodeLocator.class.getName(),
-						configElement.getNamespaceIdentifier() ),
-					e );
-			return null;
-		}
-
-		if( inst == null
-		 || ! ( inst instanceof UIProviderLicenser ) )
-		{
-			CodeGenUIPlugin.getDefault().error(
-					NLS.bind(
-						Messages.EditSourceActionProvider_LicenserWrongClass,
-						configElement.getNamespaceIdentifier() ),
-					null );
-			return null;
-		}
-
-		return (UIProviderLicenser)inst;
-	}
-
 	private static IEditSourceExtraParamFactory getEditSourceParamFactory( IConfigurationElement configElement, String attrName, String errorMessage )
 	{
 		if( configElement.getAttribute( attrName ) == null )

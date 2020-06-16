@@ -1,17 +1,18 @@
-/**
- * Copyright (c) 2009 Zeligsoft Inc.
+/*******************************************************************************
+ * Copyright (c) 2020 Northrop Grumman Systems Corporation.
  *
- * All rights reserved. 
- *  
- * THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND
- * IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, 
- * DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,
- * IS STRICTLY PROHIBITED.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- */
-/**
- * The Software and documentation are Copyright 2013 PrismTech Canada Inc. All rights reserved.
- */
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *******************************************************************************/
 package com.zeligsoft.cx.ui.providers;
 
 import java.util.ArrayList;
@@ -21,22 +22,32 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
-import org.eclipse.gmf.runtime.emf.core.util.ResourceUtil;
 import org.eclipse.jface.viewers.IFilter;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
+import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageImport;
+import org.eclipse.uml2.uml.UMLPackage;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.preferences.CXPreferenceConstants;
@@ -48,7 +59,7 @@ import com.zeligsoft.cx.ui.ZeligsoftCXUIPlugin;
  * @author ysroh
  * 
  */
-public class ZDLElementContentProvider implements IStructuredContentProvider {
+public class ZDLElementContentProvider implements IStructuredContentProvider, ITreeContentProvider {
 
 	private EObject context;
 
@@ -64,6 +75,12 @@ public class ZDLElementContentProvider implements IStructuredContentProvider {
 
 	private Set<EObject> projectContentList = new HashSet<EObject>();
 
+	private static List<URI> testedResources = new ArrayList<URI>();
+	
+	private static List<URI> loadedResources = new ArrayList<URI>();
+	
+	private ResourceSet tmpRset = null;
+
 	/**
 	 * Constructor
 	 * 
@@ -78,7 +95,62 @@ public class ZDLElementContentProvider implements IStructuredContentProvider {
 		this.concepts = concepts;
 		this.filter = filter;
 		this.includeImportedPackages = includeImportedPackages;
+		testedResources.add(context.eResource().getURI());
+		loadedResources.add(context.eResource().getURI());
+	}
+	private ResourceSet getTmpResourceSet() {
+		if(tmpRset == null) {
+			tmpRset = new ResourceSetImpl();
+		}
+		return tmpRset;
+	}
+	/**
+	 * Load all UML resources in a folder
+	 * 
+	 * @param rset
+	 * @param container
+	 */
+	public void loadAllResources(ResourceSet rset, IContainer container) {
+		try {
+			IResource[] members = container.members();
 
+			for (IResource member : members) {
+				if (member instanceof IProject) {
+					if (!((IProject) member).isOpen()) {
+						// Ignore closed projects
+						continue;
+					}
+				}
+				if (member instanceof IContainer) {
+					loadAllResources(rset, (IContainer) member);
+				} else if (member instanceof IFile) {
+					IFile file = (IFile) member;
+					String ext = file.getFullPath().getFileExtension();
+					if (!UML2Util.isEmpty(ext) && "uml".equals(ext.toLowerCase())) {
+						URI uri = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
+						if (!testedResources.contains(uri)) {
+							testedResources.add(uri);
+							Package root = UML2Util.load(getTmpResourceSet(), uri, UMLPackage.Literals.PACKAGE);
+							if (root != null && ZDLUtil.isZDLProfile(root, "cxDDS4CCM")) {
+								boolean found = false;
+								for(Resource r: rset.getResources()) {
+									if(uri.equals(rset.getURIConverter().normalize(r.getURI()))){
+										found = true;
+										break;
+									}
+								}
+								if(!found) {
+									rset.getResource(uri, true);
+								}
+								loadedResources.add(uri);
+							}
+						}
+					}
+				}
+			}
+		} catch (CoreException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -88,7 +160,7 @@ public class ZDLElementContentProvider implements IStructuredContentProvider {
 	 */
 	private Object[] getContents() {
 
-		final IEclipsePreferences store = new InstanceScope()
+		final IEclipsePreferences store = InstanceScope.INSTANCE
 				.getNode(ZeligsoftCXUIPlugin.PLUGIN_ID);
 		boolean searchWorkspace = store.getBoolean(
 				CXPreferenceConstants.SEARCH_WORKSPACE,
@@ -98,13 +170,14 @@ public class ZDLElementContentProvider implements IStructuredContentProvider {
 				CXPreferenceConstants.SEARCH_PROJECT,
 				CXPreferenceConstants.DEFAULT_SEARCH_PROJECT);
 
+		
+		ResourceSet rset = context.eResource().getResourceSet();
 		if (searchWorkspace) {
 			if (workspaceContentList.isEmpty()) {
-				Object[] resources = ResourceUtil.getResourceSet()
-						.getResources().toArray();
-				for (Object o : resources) {
-					workspaceContentList.addAll(getZDLElements((Resource) o,
-							includeImportedPackages));
+				loadAllResources(rset, ResourcesPlugin.getWorkspace().getRoot());
+				for (URI o : loadedResources) {
+					Resource res = rset.getResource(o, true);
+					workspaceContentList.addAll(getZDLElements(res, includeImportedPackages));
 				}
 			}
 			return workspaceContentList.toArray();
@@ -112,11 +185,11 @@ public class ZDLElementContentProvider implements IStructuredContentProvider {
 			IProject project = WorkspaceSynchronizer.getFile(
 					context.eResource()).getProject();
 			if (projectContentList.isEmpty()) {
+				loadAllResources(rset, project);
 				projectContentList.addAll(getZDLElements(context.eResource(),
 						includeImportedPackages));
-				Object[] resources = ResourceUtil.getResourceSet()
-						.getResources().toArray();
-				for (Object res : resources) {
+				for (URI o : loadedResources) {
+					Resource res = rset.getResource(o, true);
 					IFile f = WorkspaceSynchronizer.getFile((Resource) res);
 					if (f != null && !res.equals(context.eResource())) {
 						IProject thisProject = WorkspaceSynchronizer.getFile(
@@ -164,30 +237,31 @@ public class ZDLElementContentProvider implements IStructuredContentProvider {
 				continue;
 			}
 
-			if (filter != null) {
-				if (!filter.select(o)) {
-					continue;
-				}
-				if (concepts.isEmpty()) {
-					list.add(o);
-					continue;
-				}
-			}
-
-			boolean hasConcept = false;
-			for (String concept : concepts) {
-				if (ZDLUtil.isZDLConcept(o, concept)) {
-					hasConcept = true;
-					break;
-				}
-			}
-
-			if (hasConcept && !list.contains(o)) {
+			if(isValid(o) && !list.contains(o)) {
 				list.add(o);
 			}
 		}
 
 		return list;
+	}
+	
+	boolean isValid(EObject o) {
+		if (filter != null) {
+			if (!filter.select(o)) {
+				return false;
+			}
+			if (concepts.isEmpty()) {
+				return true;
+			}
+		}
+
+		for (String concept : concepts) {
+			if (ZDLUtil.isZDLConcept(o, concept)) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	/*
@@ -251,6 +325,37 @@ public class ZDLElementContentProvider implements IStructuredContentProvider {
 
 	public void setFilter(IFilter filter) {
 		this.filter = filter;
+	}
+
+	@Override
+	public Object[] getChildren(Object element) {
+		List<Object> result = new ArrayList<Object>();
+		if (element instanceof Package) {
+			for (NamedElement child : ((Package) element).getMembers()) {
+				if (child instanceof Package) {
+					result.add(child);
+				} else {
+					if (isValid(child)) {
+						result.add(child);
+					}
+				}
+			}
+			return result.toArray();
+		}
+		return new Object[0];
+	}
+
+	@Override
+	public Object getParent(Object element) {
+		if(element instanceof EObject) {
+			return ((EObject)element).eContainer();
+		}
+		return null;
+	}
+
+	@Override
+	public boolean hasChildren(Object element) {
+		return getChildren(element).length != 0;
 	}
 
 }

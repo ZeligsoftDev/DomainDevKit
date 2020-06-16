@@ -15,6 +15,7 @@
  *******************************************************************************/
 package com.zeligsoft.cx.ui.properties.sections;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -30,7 +31,9 @@ import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.emf.workspace.EMFCommandOperation;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.layout.GridLayout;
@@ -48,8 +51,6 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.util.UMLUtil;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
-import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 /**
  * Abstract class for CXPropertySection
@@ -62,7 +63,7 @@ public abstract class AbstractCXPropertySection extends AbstractPropertySection
 
 	private EObject selectedEObject = null;
 
-	private List<EObject> selectedEObjects = null;
+	private List<EObject> selectedEObjects = new ArrayList<EObject>();
 
 	private Composite mainComposite = null;
 
@@ -77,7 +78,7 @@ public abstract class AbstractCXPropertySection extends AbstractPropertySection
 	private TransactionalEditingDomain domain = null;
 
 	private static final String DEFAULT_VALUE_PROPERTY_NAME = "_defaultInstance"; //$NON-NLS-1$
-
+	
 	/** listens for undo and redo operation history */
 	final IOperationHistoryListener operationHistoryListener = new IOperationHistoryListener() {
 
@@ -90,6 +91,12 @@ public abstract class AbstractCXPropertySection extends AbstractPropertySection
 				return;
 			}
 			String className = event.getOperation().getClass().getName();
+			if (event.getOperation() instanceof EMFCommandOperation) {
+				if (((EMFCommandOperation) event.getOperation()).getCommand() instanceof GMFtoEMFCommandWrapper) {
+					className = ((GMFtoEMFCommandWrapper) ((EMFCommandOperation) event.getOperation()).getCommand())
+							.getGMFCommand().getClass().getName();
+				}
+			}
 			if (!className.startsWith("com.zeligsoft")) { //$NON-NLS-1$
 				return;
 			}
@@ -127,6 +134,9 @@ public abstract class AbstractCXPropertySection extends AbstractPropertySection
 					EObject notifier = (EObject) notification.getNotifier();
 					boolean refreshRequired = false;
 
+					/*
+					 * No need to refresh properties for packageable elements
+					 */
 					if (notification.getFeature() instanceof EReference) {
 						if (((EReference) notification.getFeature())
 								.getEReferenceType()
@@ -153,46 +163,24 @@ public abstract class AbstractCXPropertySection extends AbstractPropertySection
 						continue;
 					}
 
-					// refresh only if it is history action or indirect
-					// modification
+					// check base element of stereotype
 					if (notifier instanceof DynamicEObjectImpl) {
 						Element baseElement = UMLUtil
 								.getBaseElement((EObject) notification
 										.getNotifier());
-						if (baseElement == null) {
-							// check for conjugation change
-							if (notification.getFeature() instanceof EReference
-									&& notification.getOldValue() instanceof EObject
-									&& notification.getNewValue() == null) {
-								if (((EReference) notification.getFeature())
-										.getName().equals("base_Port") //$NON-NLS-1$
-										&& ZDLUtil.isZDLConcept(
-												(EObject) notification
-														.getOldValue(),
-												ZMLMMNames.PORT)) {
-									baseElement = (Element) notification
-											.getOldValue();
-								} else if ("base_StructuredClassifier" //$NON-NLS-1$
-										.equals(((EReference) notification
-												.getFeature()).getName())) {
-									baseElement = (Element) notification
-											.getOldValue();
-								}
-							}
+						if (selectedEObject != baseElement) {
+							continue;
 						}
-						if (baseElement == null) {
-							return;
-						}
-
-						if (selectedEObject == baseElement) {
-							refreshRequired = true;
-						}
+						
+						refreshRequired = true;
 					} else {
 						if (notifier == selectedEObject) {
 							refreshRequired = true;
 						}
 					}
 
+					// refresh only if it is history action or indirect
+					// modification
 					if (refreshRequired) {
 						if (isHistoryAction) {
 							internalRefresh();
@@ -284,6 +272,19 @@ public abstract class AbstractCXPropertySection extends AbstractPropertySection
 	 */
 	protected abstract Composite createContents(Composite parent);
 
+//  // We need this if we want to use our own view
+//	public void setInput(EObject input) {
+//		selectedEObject = input;
+//		selectedEObjects.clear();
+//		selectedEObjects.add(selectedEObject);
+//		if (domain == null) {
+//			domain = TransactionUtil.getEditingDomain(selectedEObject);
+//			domain.addResourceSetListener(resourceSetListener);
+//		}
+//
+//		internalRefresh();
+//	}
+	
 	@Override
 	public void setInput(IWorkbenchPart part, ISelection selection) {
 		super.setInput(part, selection);
@@ -295,12 +296,10 @@ public abstract class AbstractCXPropertySection extends AbstractPropertySection
 		if (!selectedEObjects.isEmpty()) {
 			selectedEObject = selectedEObjects.get(0);
 		}
-
 		if (domain == null) {
 			domain = TransactionUtil.getEditingDomain(selectedEObject);
 			domain.addResourceSetListener(resourceSetListener);
 		}
-
 		internalRefresh();
 
 	}

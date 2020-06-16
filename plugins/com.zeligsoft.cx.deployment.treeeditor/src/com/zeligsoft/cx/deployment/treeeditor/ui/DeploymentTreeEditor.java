@@ -18,6 +18,7 @@ package com.zeligsoft.cx.deployment.treeeditor.ui;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -33,12 +34,17 @@ import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.papyrus.infra.core.sashwindows.di.service.IPageManager;
+import org.eclipse.papyrus.infra.core.services.ServiceException;
+import org.eclipse.papyrus.infra.core.services.ServicesRegistry;
+import org.eclipse.papyrus.infra.core.utils.ServiceUtils;
+import org.eclipse.papyrus.infra.emf.utils.ServiceUtilsForResource;
+import org.eclipse.papyrus.infra.ui.editor.IMultiDiagramEditor;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
-import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
@@ -48,8 +54,7 @@ import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.UMLPackage;
 
-import com.ibm.xtools.modeler.ui.UMLModeler;
-import com.ibm.xtools.uml.msl.resources.ILogicalResource;
+import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.deployment.treeeditor.DeploymentEditorInput;
 import com.zeligsoft.cx.deployment.treeeditor.l10n.DeploymentEditorMessages;
@@ -82,11 +87,16 @@ public class DeploymentTreeEditor extends FormEditor implements
 
 	protected Viewer currentViewer;
 
+	
+	public DeploymentTreeEditor(Component deployment) {
+		this.deployment = deployment;
+	}
 	@Override
 	public String getContributorId() {
 		return "properties.DeploymentTreeEditor";//$NON-NLS-1$
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Object getAdapter(Class adapter) {
 		if (adapter == IPropertySheetPage.class)
@@ -106,7 +116,11 @@ public class DeploymentTreeEditor extends FormEditor implements
 			throws PartInitException {
 
 		setSite(site);
-		setInput(input);	
+		DeploymentEditorInput realInput = new DeploymentEditorInput();
+		realInput.setName(deployment.getName());
+		realInput.setToolTipText(deployment.getName());
+		realInput.setDeployment(deployment);
+		setInput(realInput);	
 		site.setSelectionProvider(this);
 		
 
@@ -139,18 +153,25 @@ public class DeploymentTreeEditor extends FormEditor implements
 	 * happening on main ui thread.
 	 */
 	private void closeEditor() {
-		Display.getDefault().syncExec(new Runnable() {
-			@Override
-			public void run() {
-				IWorkbenchPage page = getSite().getWorkbenchWindow()
-						.getActivePage();
-				page.closeEditor(getEditor(), false);
+		ServicesRegistry serviceRegistry;
+		IEditorPart editor = BaseUIUtil.getActivepage().getActiveEditor();
+		if (editor instanceof IMultiDiagramEditor) {
+			IMultiDiagramEditor multiEditor = (IMultiDiagramEditor) editor;
+			serviceRegistry = multiEditor.getServicesRegistry();
+		} else {
+			return;
+		}
+		IPageManager pageManager;
+		try {
+			pageManager = ServiceUtils.getInstance().getIPageManager(serviceRegistry);
+			if(pageManager.isOpen(deployment)) {
+				pageManager.closePage(deployment);
 			}
-		});
-	}
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-	private IEditorPart getEditor() {
-		return this;
 	}
 
 	/*
@@ -206,12 +227,11 @@ public class DeploymentTreeEditor extends FormEditor implements
 	 * @seeorg.eclipse.ui.part.EditorPart#doSave(org.eclipse.core.runtime.
 	 * IProgressMonitor)
 	 */
-	@SuppressWarnings("deprecation")
 	@Override
 	public void doSave(IProgressMonitor monitor) {
 		Model model = deployment.getModel();
 		try {
-			UMLModeler.saveModel(model);
+			model.eResource().save(Collections.EMPTY_MAP);
 		} catch (Exception e) {
 			Activator
 					.getDefault()
@@ -251,12 +271,14 @@ public class DeploymentTreeEditor extends FormEditor implements
 		if (domain == null || deployment == null) {
 			return false;
 		}
-		ILogicalResource logicalResource = UMLModeler
-				.getLogicalResource(deployment);
-		if (logicalResource == null) {
-			return false;
-		}
-		return logicalResource.isModified();
+//		ILogicalResource logicalResource = UMLModeler
+//				.getLogicalResource(deployment);
+//		if (logicalResource == null) {
+//			return false;
+//		}
+//		return logicalResource.isModified();
+		// ToDO:
+		return true;
 	}
 
 	// Added to support properties view
@@ -284,6 +306,9 @@ public class DeploymentTreeEditor extends FormEditor implements
 	 */
 	@Override
 	public ISelection getSelection() {
+		if(editorSelection == null) {
+			return StructuredSelection.EMPTY;
+		}
 		return editorSelection;
 	}
 
@@ -351,6 +376,7 @@ public class DeploymentTreeEditor extends FormEditor implements
 	 * care of synchronization.
 	 */
 	void updateTabLabel() {
+		
 		Display myDisplay = getEditorSite().getShell().getDisplay();
 		if (myDisplay == null || myDisplay.isDisposed()) {
 			// I am disposed. Ignore the request
@@ -366,7 +392,22 @@ public class DeploymentTreeEditor extends FormEditor implements
 					return;
 				}
 
-				setPartName(computePartName(deployment));
+				ServicesRegistry serviceRegistry;
+				try {
+					serviceRegistry = ServiceUtilsForResource.getInstance().getServiceRegistry(deployment.eResource());
+					final IPageManager pageManager = ServiceUtils.getInstance().getIPageManager(serviceRegistry);
+
+					Display.getDefault().syncExec(new Runnable() {
+						@Override
+						public void run() {
+							if (pageManager.isOpen(deployment)) {
+								pageManager.reloadPage(deployment);
+							}
+						}
+					});
+				} catch (ServiceException e) {
+					// do nothing
+				}
 			}
 		};
 
@@ -401,7 +442,7 @@ public class DeploymentTreeEditor extends FormEditor implements
 			for (Notification notification : event.getNotifications()) {
 				int eventType = notification.getEventType();
 
-				if (notification.getOldValue() != null
+				if (notification.getNotifier() instanceof org.eclipse.uml2.uml.Package
 						&& notification.getOldValue() instanceof Component) {
 					Component component = (Component) notification
 							.getOldValue();
@@ -440,7 +481,7 @@ public class DeploymentTreeEditor extends FormEditor implements
 					}
 				}
 			}
-			markDirty();
+			//markDirty();
 		}
 	}
 }

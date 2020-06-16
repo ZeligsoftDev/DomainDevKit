@@ -33,7 +33,11 @@ import org.eclipse.swt.widgets.Layout;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
+import org.eclipse.ui.ISharedImages;
+import org.eclipse.ui.PlatformUI;
 import org.osgi.framework.Bundle;
+
+import com.zeligsoft.cx.ui.ZeligsoftCXUIPlugin;
 
 /**
  * Widget factory for CX Property Pages
@@ -47,28 +51,27 @@ public class CXWidgetFactory {
 
 	public static final Color redColor = new Color(null, 255, 0, 0);
 
-	public static final Image ADD_OBJECT_IMAGE = getWorkbenchImage(
-			"org.eclipse.ui", "icons/full/obj16/add_obj.gif"); //$NON-NLS-1$//$NON-NLS-2$
+	public static final Image ADD_OBJECT_IMAGE = 
+			PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_ADD);
 
-	public static final Image DELETE_OBJECT_IMAGE = getWorkbenchImage(
-			"org.eclipse.ui", "icons/full/obj16/delete_obj.gif"); //$NON-NLS-1$//$NON-NLS-2$
+	public static final Image DELETE_OBJECT_IMAGE = 
+			PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_TOOL_DELETE);
 
 	public static final Image EDIT_OBJECT_IMAGE = getWorkbenchImage(
-			"org.eclipse.ui.workbench.texteditor", //$NON-NLS-1$
-			"icons/full/elcl16/edit_template.gif"); //$NON-NLS-1$
+			ZeligsoftCXUIPlugin.PLUGIN_ID, 
+			"icons/obj16/edit_template.png"); //$NON-NLS-1$
 
-	public static final Image FORWARD_NAV_IMAGE = getWorkbenchImage(
-			"org.eclipse.ui", //$NON-NLS-1$
-			"icons/full/elcl16/forward_nav.gif"); //$NON-NLS-1$
+	public static final Image FORWARD_NAV_IMAGE = 
+			PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_TOOL_FORWARD);
 
 	public static final Image EDIT_WORKERCODE_IMAGE = getWorkbenchImage(
-			"org.eclipse.jdt.ui", "icons/full/etool16/segment_edit.gif"); //$NON-NLS-1$//$NON-NLS-2$
+			ZeligsoftCXUIPlugin.PLUGIN_ID, "icons/obj16/segment_edit.png"); //$NON-NLS-1$
 	
 	public static final Image DELETE_ID_IMAGE = getWorkbenchImage(
-			"org.eclipse.ui.workbench.texteditor", "icons/full/elcl16/delete_template.gif"); //$NON-NLS-1$//$NON-NLS-2$
+			ZeligsoftCXUIPlugin.PLUGIN_ID, "icons/obj16/delete_template.png"); //$NON-NLS-1$
 	
 	public static final Image INSERT_ID_IMAGE = getWorkbenchImage(
-			"org.eclipse.ui.workbench.texteditor", "icons/full/elcl16/insert_template.gif"); //$NON-NLS-1$//$NON-NLS-2$
+			ZeligsoftCXUIPlugin.PLUGIN_ID, "icons/obj16/insert_template.png"); //$NON-NLS-1$
 
 	public static final Image UP_NAV_IMAGE = new Image(
 			FORWARD_NAV_IMAGE.getDevice(), rotate(

@@ -49,7 +49,6 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
 
 import com.zeligsoft.base.ZeligsoftAbstractPlugin;
-import com.zeligsoft.base.util.RSMUtil;
 import com.zeligsoft.base.zdl.Activator;
 import com.zeligsoft.base.zdl.l10n.Messages;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
@@ -446,10 +445,9 @@ public class ZDLElementTypeManager {
 			this.stereotype = stereotype;
 			this.base = new IElementType[]{uml, zdl};
 		}
-
+		
 		public String getKindName() {
-			// TODO RSM-dependent
-			return "com.ibm.xtools.uml.type.IStereotypedElementType"; //$NON-NLS-1$
+			return "org.eclipse.gmf.runtime.emf.type.core.IHintedType"; //$NON-NLS-1$
 		}
 
 		public String getParamValue(String paramName) {
@@ -571,10 +569,6 @@ public class ZDLElementTypeManager {
 		static {
 			try {
 				resource = "com.zeligsoft.base.zdl.type.elementTypes"; //$NON-NLS-1$
-	
-				if (RSMUtil.isRSMAvailable()) {
-					resource = resource + "_rsm"; //$NON-NLS-1$
-				}
 	
 				ResourceBundle bundle = ResourceBundle.getBundle(resource);
 	

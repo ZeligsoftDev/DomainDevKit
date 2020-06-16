@@ -1,4 +1,3 @@
-package com.zeligsoft.cx.codegen.ui.actions;
 /*******************************************************************************
  * Copyright (c) 2020 Northrop Grumman Systems Corporation.
  *
@@ -14,6 +13,8 @@ package com.zeligsoft.cx.codegen.ui.actions;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
+package com.zeligsoft.cx.codegen.ui.actions;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;

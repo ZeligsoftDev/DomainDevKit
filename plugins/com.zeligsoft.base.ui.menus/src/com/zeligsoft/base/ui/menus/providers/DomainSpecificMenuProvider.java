@@ -1,5 +1,5 @@
-/*******************************************************************************
- * Copyright (c) 2020 Northrop Grumman Systems Corporation.
+/**
+ * Copyright 2018 ADLINK Technology Limited.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,7 +12,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *******************************************************************************/
+ *
+ */
 package com.zeligsoft.base.ui.menus.providers;
 
 import java.util.Collection;
@@ -20,12 +21,13 @@ import java.util.Collections;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IContributionItem;
-import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.papyrus.infra.emf.utils.EMFHelper;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.CompoundContributionItem;
 import org.eclipse.uml2.uml.Element;
-
-import com.zeligsoft.base.ui.utils.BaseUIUtil;
 
 /**
  * Dynamic action group which consults the menu model of
@@ -62,11 +64,10 @@ public class DomainSpecificMenuProvider extends CompoundContributionItem {
 	}
 	
 	private EObject getSelectedEObject() {
-		ISelection selection = BaseUIUtil.getSelection();
-		if(selection instanceof IStructuredSelection && ((IStructuredSelection)selection).size() > 1){
-			return null;
-		}
-		return selection == null ? null : BaseUIUtil
-				.getEObjectFromSelection(selection);
+		IWorkbench workbench = PlatformUI.getWorkbench();
+		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+		IStructuredSelection selection = (IStructuredSelection) window.getActivePage().getSelection();
+		EObject eObject = EMFHelper.getEObject(selection.getFirstElement());
+		return eObject;
 	}
 }

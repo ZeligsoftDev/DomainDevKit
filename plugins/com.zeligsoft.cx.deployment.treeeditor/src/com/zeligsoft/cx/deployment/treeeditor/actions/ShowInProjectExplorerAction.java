@@ -92,7 +92,7 @@ public class ShowInProjectExplorerAction
 					elements.add(modelElement);
 				}
 			}
-			BaseUIUtil.showInProjectExplorer(elements);
+			BaseUIUtil.revealTarget(elements);
 		}
 	}
 }

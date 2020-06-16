@@ -15,6 +15,7 @@
  *******************************************************************************/
 package com.zeligsoft.cx.ui.properties.utils;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -496,7 +497,7 @@ public class CXPropertiesWidgetFactory extends CXWidgetFactory{
 				@Override
 				public void widgetSelected(SelectionEvent e) {
 					if (object != null) {
-						BaseUIUtil.showInProjectExplorer(object);
+						BaseUIUtil.revealTarget(Arrays.asList(object));
 					}
 				}
 			});
@@ -805,7 +806,7 @@ public class CXPropertiesWidgetFactory extends CXWidgetFactory{
 		final boolean isIntegerType;
 
 		if (descriptor.getProperty().getType().getLabel().equals(
-			UMLPackage.Literals.INTEGER.getName())) {
+			UMLPackage.Literals.LITERAL_INTEGER.getName())) {
 			isIntegerType = true;
 		} else {
 			isIntegerType = false;

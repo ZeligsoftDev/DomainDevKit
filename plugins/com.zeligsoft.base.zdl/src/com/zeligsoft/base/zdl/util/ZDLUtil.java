@@ -1112,7 +1112,7 @@ public class ZDLUtil
 		public static CacheAdapter ensureCacheAdapter(Class concept) {
 			CacheAdapter cache = CacheAdapter.getCacheAdapter(concept);
 			if (cache == null) {
-				cache = CacheAdapter.INSTANCE;
+				cache = CacheAdapter.getInstance();
 				cache.adapt(concept);
 			}
 			return cache;
@@ -3063,7 +3063,7 @@ public class ZDLUtil
 		private static CacheAdapter ensureCacheAdapter(EObject element) {
 			CacheAdapter result = CacheAdapter.getCacheAdapter(element);
 			if (result == null) {
-				result = CacheAdapter.INSTANCE;
+				result = CacheAdapter.getInstance();
 				result.adapt(element);
 			}
 			return result;

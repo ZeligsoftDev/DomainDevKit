@@ -15,31 +15,32 @@
  *******************************************************************************/
 package com.zeligsoft.cx.ui.actions;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.core.commands.AbstractHandler;
+import org.eclipse.core.commands.ExecutionEvent;
+import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gef.EditPart;
-import org.eclipse.gmf.runtime.common.ui.services.editor.EditorService;
-import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditorInput;
-import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.papyrus.infra.core.sashwindows.di.service.IPageManager;
+import org.eclipse.papyrus.infra.core.services.ServiceException;
+import org.eclipse.papyrus.infra.core.services.ServicesRegistry;
+import org.eclipse.papyrus.infra.core.utils.ServiceUtils;
+import org.eclipse.papyrus.infra.gmfdiag.common.SynchronizableGmfDiagramEditor;
+import org.eclipse.papyrus.infra.gmfdiag.common.model.NotationUtils;
+import org.eclipse.papyrus.infra.ui.editor.IMultiDiagramEditor;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IViewActionDelegate;
-import org.eclipse.ui.IViewPart;
-import org.eclipse.uml2.uml.Component;
-import org.eclipse.uml2.uml.Package;
-import org.eclipse.uml2.uml.PackageImport;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.handlers.HandlerUtil;
 
-import com.zeligsoft.base.diagram.utils.BaseDiagramUtil;
+import com.zeligsoft.base.ui.utils.BaseDiagramUtil;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
+import com.zeligsoft.cx.ui.ZeligsoftCXUIPlugin;
 import com.zeligsoft.cx.ui.l10n.Messages;
 
 /**
@@ -49,84 +50,60 @@ import com.zeligsoft.cx.ui.l10n.Messages;
  * @author ysroh
  * 
  */
-public class LocateElementOnDiagram implements IViewActionDelegate {
-
-	private EObject selectedEObject;
+public class LocateElementOnDiagram extends AbstractHandler {
 
 	@Override
-	public void run(IAction action) {
+	public Object execute(ExecutionEvent event) throws ExecutionException {
+		EObject selectedEObject = BaseUIUtil.getEObjectFromSelection(BaseUIUtil.getSelection());
 		if (selectedEObject == null) {
-			return;
+			return null;
 		}
-		EditPart part = null;
-		Diagram diagram = null;
-		List<Diagram> diagrams = new ArrayList<Diagram>();
-		TreeIterator<EObject> itor = selectedEObject.eResource()
-				.getAllContents();
-		while (itor.hasNext()) {
-			EObject o = itor.next();
-			if (o instanceof EAnnotation) {
-				if ("uml2.diagrams" //$NON-NLS-1$
-				.equals(((EAnnotation) o).getSource())) {
-					for (Object e : ((EAnnotation) o).getContents()) {
-						if (o.eContainer() == selectedEObject.eContainer()) {
-							diagrams.add(0, (Diagram) e);
-						} else {
-							diagrams.add((Diagram) e);
-						}
-					}
-				}
-			}
-			if (!(o instanceof Package || o instanceof Component)
-					|| o instanceof PackageImport) {
-				itor.prune();
-				continue;
-			}
-		}
+		Resource diagramResource = NotationUtils.getNotationResourceForDiagram(selectedEObject,
+				TransactionUtil.getEditingDomain(selectedEObject));
+		List<Diagram> diagrams = diagramResource.getContents().stream().filter(Diagram.class::isInstance)
+				.map(Diagram.class::cast).collect(Collectors.toList());
+
+		Diagram theDiagram = null;
+
 		for (Diagram d : diagrams) {
-			View v = (View) BaseDiagramUtil.findElementFromDiagram(d,
-					selectedEObject);
+			View v = (View) BaseDiagramUtil.findElementFromDiagram(d, selectedEObject);
 			if (v != null) {
-				if (v.getType() != null
-						&& (v.getType().contains("InterfaceProvided") //$NON-NLS-1$
-						|| v.getType().contains("InterfaceRequired"))) { //$NON-NLS-1$
-					// don't select antennas
-					continue;
-				}
-				diagram = d;
+				theDiagram = d;
 				break;
 			}
 		}
 
-		if (diagram != null) {
-			IDiagramWorkbenchPart editor = (IDiagramWorkbenchPart) EditorService
-					.getInstance().openEditor(new DiagramEditorInput(diagram));
-			if (editor != null) {
-				part = BaseDiagramUtil.findEditPartFromEditor(editor,
-						selectedEObject);
+		if (theDiagram == null) {
+			MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
+					Messages.LocateElementInDiagram_DiagramTitle, Messages.LocateElementInDiagram_NotFoundMsg);
+			return null;
+		}
+
+		if (!(HandlerUtil.getActiveEditor(event) instanceof IMultiDiagramEditor)) {
+			return null;
+		}
+
+		IMultiDiagramEditor multiEditor = (IMultiDiagramEditor) HandlerUtil.getActiveEditor(event);
+		ServicesRegistry serviceRegistry = multiEditor.getServicesRegistry();
+
+		try {
+			IPageManager pageManager = ServiceUtils.getInstance().getIPageManager(serviceRegistry);
+			if (pageManager.isOpen(theDiagram)) {
+				pageManager.selectPage(theDiagram);
+			} else {
+				pageManager.openPage(theDiagram);
 			}
-		}
-		if (part != null) {
-			part.getViewer().setSelection(new StructuredSelection(part));
-			part.getViewer().setFocus(part);
-			part.getViewer().reveal(part);
-			return;
+		} catch (ServiceException e1) {
+			ZeligsoftCXUIPlugin.getDefault().error(e1.getMessage(), e1);
+			return null;
 		}
 
-		MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
-				Messages.LocateElementInDiagram_DiagramTitle,
-				Messages.LocateElementInDiagram_NotFoundMsg);
-
-	}
-
-	@Override
-	public void selectionChanged(IAction action, ISelection selection) {
-		selectedEObject = BaseUIUtil.getEObjectFromSelection(selection);
-	}
-
-	@Override
-	public void init(IViewPart view) {
-		// TODO Auto-generated method stub
+		IEditorPart editor = multiEditor.getActiveEditor();
+		if (editor instanceof SynchronizableGmfDiagramEditor) {
+			SynchronizableGmfDiagramEditor syncEditor = (SynchronizableGmfDiagramEditor) multiEditor.getActiveEditor();
+			syncEditor.revealElement(selectedEObject);
+		}
+		return null;
 
 	}
 }

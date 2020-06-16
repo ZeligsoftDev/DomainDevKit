@@ -13,9 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-/**
- * 
- */
 package com.zeligsoft.base.util;
 
 import org.eclipse.uml2.uml.Element;

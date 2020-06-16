@@ -21,13 +21,16 @@ import java.util.HashSet;
 import java.util.List;
 
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.ListenerList;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IChangeNotifier;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CompositeCommand;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
+import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Property;
@@ -49,6 +52,9 @@ public class DeploymentView
 
 	private Component deployment;
 
+	private TransactionalEditingDomain editingDomain;
+	
+	@SuppressWarnings("rawtypes")
 	private ListenerList listenerList;
 
 	/**
@@ -56,10 +62,11 @@ public class DeploymentView
 	 * 
 	 * @param deployment
 	 */
+	@SuppressWarnings("rawtypes")
 	public DeploymentView(Component deployment) {
 		visibleItems = new HashSet<Property>();
 		this.deployment = deployment;
-
+		this.editingDomain = TransactionUtil.getEditingDomain(deployment);
 		listenerList = new ListenerList();
 	}
 
@@ -167,6 +174,7 @@ public class DeploymentView
 	 * 
 	 * @see org.eclipse.emf.edit.provider.IChangeNotifier#addListener(org.eclipse.emf.edit.provider.INotifyChangedListener)
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void addListener(INotifyChangedListener listener) {
 		listenerList.add(listener);
@@ -267,6 +275,10 @@ public class DeploymentView
 		remove(element);		
 	}
 	
+	public TransactionalEditingDomain getEditingDomain() {
+		return editingDomain;
+	}
+	
 	/**
 	 * Undeploy
 	 * 
@@ -283,8 +295,11 @@ public class DeploymentView
 		}
 		command.reduce();
 
-		OperationHistoryFactory.getOperationHistory().execute(command, null,
-			null);
+		Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
+		
+		if(emfCommand.canExecute()) {
+			editingDomain.getCommandStack().execute(emfCommand);
+		}
 
 	}
 }

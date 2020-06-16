@@ -47,7 +47,6 @@ public interface IUserEditableElementDescriptor
 	public String getProperty();
 	public ICodeLocator getCodeLocator();
 	public IValidationFactory getValidationFactory();
-	public UIProviderLicenser getLicenser();
 
 	public Iterable<IM2MTransformationDescriptor> getM2MDescriptors();
 	public Iterable<IM2TTransformationDescriptor> getM2TDescriptors();

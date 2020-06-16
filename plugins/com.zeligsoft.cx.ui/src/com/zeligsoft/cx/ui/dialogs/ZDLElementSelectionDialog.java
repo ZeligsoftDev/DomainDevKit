@@ -15,11 +15,9 @@
  *******************************************************************************/
 package com.zeligsoft.cx.ui.dialogs;
 
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.TrayDialog;
 import org.eclipse.jface.viewers.DoubleClickEvent;
@@ -42,10 +40,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.TabItem;
-import org.eclipse.uml2.uml.TypedElement;
 
-import com.ibm.xtools.uml.navigator.IModelServerElement;
-import com.ibm.xtools.uml.navigator.factory.UMLNavigatorWrapperFactory;
 import com.zeligsoft.cx.ui.l10n.Messages;
 
 /**
@@ -279,33 +274,14 @@ public class ZDLElementSelectionDialog
 	}
 	
 	private void createBrowseContent(Composite parent) {
-		EObject initialSelectionElement = null;
-		if (context instanceof TypedElement && ((TypedElement) context).getType() != null) {
-			initialSelectionElement = ((TypedElement) context).getType();
-		} else {
-			initialSelectionElement = EcoreUtil.getRootContainer(context);
-		}
-		@SuppressWarnings("rawtypes")
-		List initialSelection = Collections.EMPTY_LIST;
-		if (initialSelectionElement != null) {
-			IModelServerElement modelElement = UMLNavigatorWrapperFactory.getInstance()
-					.getViewerElement(initialSelectionElement);
-			initialSelection = Collections.singletonList(modelElement);
-		}
-
-		browseComposite = new ZDLElementBrowseComposite(
-				Messages.ZDLElementSelectionDialog_BrowseCompositeTitle, false,
-				initialSelection, concepts){
+		browseComposite = new ZDLElementBrowseComposite(context, concepts, includeImportedPackages){
 			@Override
-			public void handleSelection(boolean isValid) {
-				super.handleSelection(isValid);
-				getButton(IDialogConstants.OK_ID).setEnabled(isValid);
+			public void handleSelection(IStructuredSelection selection) {
+				getButton(IDialogConstants.OK_ID).setEnabled(isValidSelection());
 			}
 		};
 		browseComposite.setFilter(filter);
-		browseComposite.setContextObject(EcoreUtil.getRootContainer(context));
 		Composite resultComposite = browseComposite.createComposite(parent);
-		browseComposite.handleSelectionChange();
 
 		if (resultComposite != null) {
 			browseTab.setControl(resultComposite);

@@ -15,9 +15,9 @@
  *******************************************************************************/
 package com.zeligsoft.base.ui.utils;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -27,31 +27,47 @@ import java.util.Map;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProduct;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.gef.EditPart;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.common.ui.services.icon.IconService;
 import org.eclipse.gmf.runtime.emf.type.core.ElementTypeRegistry;
+import org.eclipse.gmf.runtime.emf.type.core.IClientContext;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.emf.type.core.ISpecializationType;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
+import org.eclipse.gmf.runtime.emf.type.core.requests.CreateRelationshipRequest;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.papyrus.infra.core.services.ServiceException;
+import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
+import org.eclipse.papyrus.infra.services.edit.context.TypeContext;
+import org.eclipse.papyrus.infra.services.edit.service.ElementEditServiceUtils;
+import org.eclipse.papyrus.infra.services.edit.service.IElementEditService;
+import org.eclipse.papyrus.infra.widgets.util.IRevealSemanticElement;
+import org.eclipse.papyrus.infra.widgets.util.RevealResultCommand;
+import org.eclipse.papyrus.views.modelexplorer.ModelExplorerPageBookView;
+import org.eclipse.papyrus.views.modelexplorer.ModelExplorerView;
+import org.eclipse.papyrus.views.modelexplorer.core.ui.pagebookview.MultiViewPageBookView;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
@@ -62,22 +78,15 @@ import org.eclipse.uml2.uml.InstanceValue;
 import org.eclipse.uml2.uml.LiteralBoolean;
 import org.eclipse.uml2.uml.LiteralString;
 import org.eclipse.uml2.uml.NamedElement;
-import org.eclipse.uml2.uml.Operation;
-import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Slot;
 import org.eclipse.uml2.uml.util.UMLUtil;
 import org.osgi.framework.Bundle;
 
-import com.ibm.xtools.common.ui.navigator.utils.NavigatorInlineEditUtil;
-import com.ibm.xtools.modeler.ui.UMLModeler;
-import com.ibm.xtools.uml.navigator.ClosedModelerResourceViewerElement;
-import com.ibm.xtools.uml.navigator.LogicalFolderViewerElement;
-import com.ibm.xtools.uml.navigator.util.UMLNavigatorUtil;
-import com.ibm.xtools.uml.type.UMLElementTypes;
-import com.ibm.xtools.uml.ui.diagram.internal.editparts.UMLOperationListItemEditPart;
+import com.zeligsoft.base.ui.commands.EditResultCommand;
 import com.zeligsoft.base.util.BaseUtil;
+import com.zeligsoft.base.zdl.type.ZDLElementTypeManager;
 import com.zeligsoft.base.zdl.type.ZDLElementTypeUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
@@ -90,8 +99,198 @@ import com.zeligsoft.base.zdl.util.ZDLUtil;
 @SuppressWarnings("rawtypes")
 public class BaseUIUtil {
 
-	public static String BUILD_CONFIG_PROPERTY_NAME = "build_config"; //$NON-NLS-1$
+	public static IElementType PACKAGE_ELEMENT_TYPE = ZDLElementTypeManager.INSTANCE
+			.getElementTypeFromHint("package");//$NON-NLS-1$;
 	
+	public static String BUILD_CONFIG_PROPERTY_NAME = "build_config"; //$NON-NLS-1$
+
+	public static Command buildCommand(TransactionalEditingDomain editingDomain, IClientContext context,
+			CreateElementRequest req, EObject target) {
+
+		IElementEditService provider = ElementEditServiceUtils.getCommandProvider(target, context);
+		if (provider == null) {
+			return UnexecutableCommand.INSTANCE;
+		}
+
+		ICommand createGMFCommand = provider.getEditCommand(req);
+
+		if (createGMFCommand != null) {
+			return GMFtoEMFCommandWrapper.wrap(createGMFCommand);
+		}
+		return UnexecutableCommand.INSTANCE;
+	}
+
+	public static Command getRevealCommand(Command command, EObject container) {
+		IViewPart viewPart = getModelExplorerViewPart();
+		if (viewPart != null) {
+			return RevealResultCommand.wrap(command, viewPart, container);
+		}
+		return null;
+	}
+	
+	public static void revealTarget(EObject target) {
+		revealTarget(Arrays.asList(target));
+	}
+	
+	/**
+	 * Reveal target elements in the model explorer
+	 * @param target
+	 */
+	public static void revealTarget(final List<?> target) {
+		Display.getCurrent().asyncExec(new Runnable() {
+
+			@Override
+			public void run() {
+				IViewPart viewPart = getModelExplorerViewPart();
+				if (viewPart instanceof ModelExplorerView) {
+					((IRevealSemanticElement) viewPart).revealSemanticElement(target);
+					((ModelExplorerView) viewPart).setFocus();
+				}
+			}
+		});
+	}
+
+	public static Command getDirectEditCommand(Command command) {
+		IViewPart viewPart = getModelExplorerViewPart();
+		if (viewPart != null) {
+			return EditResultCommand.wrap(command, viewPart);
+		}
+		return null;
+
+	}
+	
+	public static Command getCreatePackageCommand(EObject selectedEObject) {
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(selectedEObject);
+		IClientContext context = null;
+		try {
+			context = TypeContext.getContext(selectedEObject);
+		} catch (ServiceException e) {
+			com.zeligsoft.base.ui.Activator.getDefault().error(e.getMessage(), e);
+			return UnexecutableCommand.INSTANCE;
+		}
+		final CreateElementRequest req = new CreateElementRequest(editingDomain, selectedEObject, PACKAGE_ELEMENT_TYPE);
+		final EObject target = ElementEditServiceUtils.getTargetFromContext(editingDomain, selectedEObject, req);
+		if (target == null) {
+			return UnexecutableCommand.INSTANCE;
+		}
+
+		return BaseUIUtil.buildCommand(editingDomain, context, req, target);
+
+	}
+
+	/**
+	 * Gets the active view part.
+	 *
+	 * @return the active view part
+	 */
+	public static IViewPart getModelExplorerViewPart() {
+		IViewPart activeView = null;
+		// Get Model Explorer view part
+		IViewPart modelExplorerView = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+				.findView(ModelExplorerPageBookView.VIEW_ID);
+
+		if (modelExplorerView instanceof MultiViewPageBookView) {
+			MultiViewPageBookView pageBook = (MultiViewPageBookView) modelExplorerView;
+			activeView = pageBook.getActiveView();
+		}
+
+		return activeView;
+	}
+	
+	/**
+	 * Create a Relationship instance with the given container, type, source and target
+	 * 
+	 * @param container
+	 * @param typeToCreate
+	 * @param source
+	 * @param target
+	 * 
+	 * @return the created Relationship instance, or null, if the instance is failed to be created
+	 */
+	public static EObject createRelationship(EObject container, IElementType typeToCreate, EObject source, EObject target) {
+		
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(container);	
+		final CreateRelationshipRequest req = new CreateRelationshipRequest(container, source, target, typeToCreate);
+		final EObject targetFromContext = ElementEditServiceUtils.getTargetFromContext(editingDomain, container, req);
+		
+		if (targetFromContext == null) {
+			return null;
+		}
+
+		IClientContext context = null;
+		try {
+			context = TypeContext.getContext(container);
+		} catch (ServiceException e) {
+			com.zeligsoft.base.ui.Activator.getDefault().error(e.getMessage(), e);
+			return null;
+		}
+		Command command = BaseUIUtil.buildCommand(editingDomain, context, req, targetFromContext);
+		if (command == null || !command.canExecute()) {
+			return null;
+		}
+		
+		editingDomain.getCommandStack().execute(command);
+		
+		if(!command.getResult().isEmpty()) {
+			return (EObject)command.getResult().iterator().next();
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * Create a ZDL element with given context and concept
+	 * 
+	 * @param context
+	 * @param conceptToCreate
+	 * @return
+	 */
+	public static EObject createZDLModelElement(EObject container, String conceptToCreate) {
+
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(container);
+		IClientContext context = null;
+		try {
+			context = TypeContext.getContext(container);
+		} catch (ServiceException e) {
+			com.zeligsoft.base.ui.Activator.getDefault().error(e.getMessage(), e);
+			return null;
+		}
+		
+		IElementType type = null;
+		try {
+			type = ZDLElementTypeUtil.getElementType(container, conceptToCreate);
+		} catch (IllegalArgumentException e) {
+			// There was problem getting element type so return null
+			return null;
+		}
+
+		final CreateElementRequest req = new CreateElementRequest(editingDomain, container, type);
+		final EObject target = ElementEditServiceUtils.getTargetFromContext(editingDomain, container, req);
+		if (target == null) {
+			return null;
+		}
+
+		Command command = BaseUIUtil.buildCommand(editingDomain, context, req, target);
+		if (command == null || !command.canExecute()) {
+			return null;
+		}
+		
+		editingDomain.getCommandStack().execute(command);
+		if(!command.getResult().isEmpty()) {
+			return (EObject)command.getResult().iterator().next();
+		}
+		return null;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 	/**
 	 * Get the first selected EObject from the given selection object
 	 * 
@@ -112,7 +311,7 @@ public class BaseUIUtil {
 
 			if (tempObject instanceof IAdaptable) {
 				IAdaptable tempAdaptableObject = (IAdaptable) tempObject;
-				return (EObject) (tempAdaptableObject.getAdapter(EObject.class));
+				return (tempAdaptableObject.getAdapter(EObject.class));
 			} else if (tempObject instanceof EObject) {
 				return (EObject) tempObject;
 			}
@@ -123,8 +322,7 @@ public class BaseUIUtil {
 	/**
 	 * Get the selected EObjects from the given selection object
 	 * 
-	 * @param ISelection
-	 *            selection
+	 * @param ISelection selection
 	 * @return List<EObject>
 	 */
 	public static List<EObject> getEObjectsFromSelection(ISelection selection) {
@@ -140,8 +338,7 @@ public class BaseUIUtil {
 				Object tempObject = selections.get(i);
 				if (tempObject instanceof IAdaptable) {
 					IAdaptable tempAdaptableObject = (IAdaptable) tempObject;
-					EObject eo = (EObject) (tempAdaptableObject
-							.getAdapter(EObject.class));
+					EObject eo = (tempAdaptableObject.getAdapter(EObject.class));
 					if (eo != null) {
 						eObjects.add(eo);
 					}
@@ -157,41 +354,23 @@ public class BaseUIUtil {
 	/**
 	 * Returns corresponding IResource object from the given selection
 	 * 
-	 * @param selection
-	 *            IStructuredSelection
+	 * @param selection IStructuredSelection
 	 * @return IResource or null if it is of unknown type
 	 */
-	public static IResource getIResourceFromSelection(
-			IStructuredSelection selection) {
+	public static IResource getIResourceFromSelection(IStructuredSelection selection) {
 		if (selection == null || selection.isEmpty()) {
 			return null;
 		}
 		Object tempObject = selection.getFirstElement();
 		IResource resource = null;
 		if (tempObject != null) {
-			if (tempObject instanceof LogicalFolderViewerElement) {
-				// Diagram or Model folder
-				resource = (IProject) ((LogicalFolderViewerElement) tempObject)
-						.getElement();
-			} else if (tempObject instanceof IResource) {
-				// just a regular IResource
-				resource = (IResource) tempObject;
-			} else if (tempObject instanceof ClosedModelerResourceViewerElement) {
-				ClosedModelerResourceViewerElement element = (ClosedModelerResourceViewerElement) tempObject;
-				return element.getFile();
-			} else if (tempObject instanceof IAdaptable) {
+			if (tempObject instanceof IAdaptable) {
 				// check for EObject
-				EObject eObject = (EObject) (((IAdaptable) tempObject)
-						.getAdapter(EObject.class));
-				
-				if (eObject != null
-						&& eObject.eResource().getURI().toPlatformString(true) != null) {
-					resource = ResourcesPlugin
-							.getWorkspace()
-							.getRoot()
-							.getFile(
-									new Path(eObject.eResource().getURI()
-											.toPlatformString(true)));
+				EObject eObject = (((IAdaptable) tempObject).getAdapter(EObject.class));
+
+				if (eObject != null && eObject.eResource().getURI().toPlatformString(true) != null) {
+					resource = ResourcesPlugin.getWorkspace().getRoot()
+							.getFile(new Path(eObject.eResource().getURI().toPlatformString(true)));
 				}
 			}
 		}
@@ -201,20 +380,17 @@ public class BaseUIUtil {
 	/**
 	 * Create a model element from the CreateElementRequest
 	 * 
-	 * @param request
-	 *            CreateElementRequest
+	 * @param request CreateElementRequest
 	 * @return CommandResult
 	 * @throws ExecutionException
 	 */
-	public static CommandResult createModelElement(CreateElementRequest request)
-			throws ExecutionException {
+	public static CommandResult createModelElement(CreateElementRequest request) throws ExecutionException {
 
 		CommandResult result = null;
 		ICommand command = getCommand(request);
 		if (command != null) {
 
-			OperationHistoryFactory.getOperationHistory().execute(command,
-					null, null);
+			OperationHistoryFactory.getOperationHistory().execute(command, null, null);
 
 			result = command.getCommandResult();
 		}
@@ -229,8 +405,7 @@ public class BaseUIUtil {
 	 */
 	public static ICommand getCommand(CreateElementRequest request) {
 		if (request != null) {
-			IElementType contextType = ElementTypeRegistry.getInstance()
-					.getElementType(request.getEditHelperContext());
+			IElementType contextType = ElementTypeRegistry.getInstance().getElementType(request.getEditHelperContext());
 
 			if (contextType != null) {
 				ICommand createCommand = contextType.getEditCommand(request);
@@ -289,8 +464,7 @@ public class BaseUIUtil {
 			while (values.hasNext()) {
 				Object value = values.next();
 				if (value instanceof LiteralString) {
-					finalString = finalString
-						+ ((LiteralString) value).getValue();
+					finalString = finalString + ((LiteralString) value).getValue();
 					if (values.hasNext()) {
 						finalString = finalString + newLiner;
 					}
@@ -298,8 +472,8 @@ public class BaseUIUtil {
 				if (value instanceof InstanceValue) {
 					return ((InstanceValue) value).getInstance();
 				}
-				if(value instanceof LiteralBoolean){
-					return Boolean.valueOf(((LiteralBoolean)value).booleanValue());
+				if (value instanceof LiteralBoolean) {
+					return Boolean.valueOf(((LiteralBoolean) value).booleanValue());
 				}
 			}
 		}
@@ -309,10 +483,10 @@ public class BaseUIUtil {
 		}
 		return finalString;
 	}
-	
+
 	/**
-	 * Creates map where key is the defining feature of the slot and value is
-	 * the slot itself
+	 * Creates map where key is the defining feature of the slot and value is the
+	 * slot itself
 	 * 
 	 * @return
 	 */
@@ -330,48 +504,6 @@ public class BaseUIUtil {
 		}
 		return map;
 	}
-	
-	/**
-	 * Select the provided elements in the Project Explorer.
-	 * 
-	 * @param elementsToSelect
-	 */
-	public static void showInProjectExplorer(
-			List<EObject> elementsToSelect) {
-
-		UMLNavigatorUtil.navigateToModelerNavigator(elementsToSelect);
-	}
-
-	/**
-	 * Selects the given element in the project explorer.
-	 * 
-	 * @param eObject
-	 */
-	public static void showInProjectExplorer(EObject eObject) {
-		List<EObject> contents = new ArrayList<EObject>();
-		contents.add(eObject);
-		showInProjectExplorer(contents);
-	}
-
-	/**
-	 * Starts the in-line edit for the given element in the Project Explorer.
-	 * 
-	 * @param eObject
-	 */
-	public static void startInLineEdit(EObject eObject) {
-		NavigatorInlineEditUtil.startInlineEdit(eObject,
-				new ModelerContentDescriber());
-	}
-
-	/**
-	 * Returns the worker function EditPart for the given operation.
-	 * 
-	 * @param operation
-	 * @return the EditPart
-	 */
-	public static EditPart createWorkerFunctionEditPart(Operation operation) {
-		return new UMLOperationListItemEditPart(operation);
-	}
 
 	/**
 	 * Queries the icon of the given eObject
@@ -386,19 +518,18 @@ public class BaseUIUtil {
 			icon = ZDLImageRegistry.getInstance().getIcon(concept);
 		}
 		if (icon == null) {
-			IElementType type = ElementTypeRegistry.getInstance()
-					.getElementType(element);
+			IElementType type = ElementTypeRegistry.getInstance().getElementType(element);
 			icon = IconService.getInstance().getIcon(type);
 		}
 		return icon;
 	}
 
 	/**
-	 * Deprecated. Use ZDLUtil.isZDLProfile instead. 
+	 * Deprecated. Use ZDLUtil.isZDLProfile instead.
 	 * 
 	 * @param container
 	 * @return boolean isProfileApplied
-	 */ 
+	 */
 	@Deprecated
 	public static boolean isDomainProfileApplied(Element container, String profileName) {
 		if (container == null || profileName == null) {
@@ -416,46 +547,22 @@ public class BaseUIUtil {
 		return isProfileApplied;
 	}
 
-	public static String getProfileApplyingConcept(URI modelURI,
-			String conceptHint) {
-		Resource res = UMLModeler.getEditingDomain().getResourceSet()
-				.getResource(modelURI, true);
-		if (!res.isLoaded() || res.getContents().isEmpty()) {
-			return null;
-		}
-
-		Package p = (Package) res.getContents().get(0);
-
-		for (Profile profile : p.getAllAppliedProfiles()) {
-
-			if (profile.getPackagedElement(conceptHint) != null) {
-				return profile.eResource().getURI().toString();
-			}
-		}
-
-		return null;
-	}
-
 	/**
 	 * Queries the build configuration instance of the given implementation.
 	 * 
 	 * @param implementation
 	 * @return
 	 */
-	public static InstanceSpecification getBuildConfiguration(
-			NamedElement implementation) {
+	public static InstanceSpecification getBuildConfiguration(NamedElement implementation) {
 
-		Resource resource = EcoreUtil.getRootContainer(implementation)
-				.eResource();
+		Resource resource = EcoreUtil.getRootContainer(implementation).eResource();
 		Collection<NamedElement> elements = UMLUtil.findNamedElements(resource,
-				implementation.getQualifiedName() + NamedElement.SEPARATOR
-						+ BaseUIUtil.BUILD_CONFIG_PROPERTY_NAME);
+				implementation.getQualifiedName() + NamedElement.SEPARATOR + BaseUIUtil.BUILD_CONFIG_PROPERTY_NAME);
 		if (elements.iterator().hasNext()) {
 			NamedElement e = elements.iterator().next();
 			if (e instanceof Property) {
 				Property property = (Property) e;
-				return ((InstanceValue) property.getDefaultValue())
-						.getInstance();
+				return ((InstanceValue) property.getDefaultValue()).getInstance();
 			}
 		}
 
@@ -478,10 +585,8 @@ public class BaseUIUtil {
 		if (activePart == null)
 			return selection;
 
-		ISelectionProvider selectionProvider = activePart.getSite()
-				.getSelectionProvider();
-		if (selectionProvider != null
-				&& selectionProvider.getSelection() instanceof IStructuredSelection)
+		ISelectionProvider selectionProvider = activePart.getSite().getSelectionProvider();
+		if (selectionProvider != null && selectionProvider.getSelection() instanceof IStructuredSelection)
 			selection = selectionProvider.getSelection();
 
 		return selection;
@@ -493,8 +598,7 @@ public class BaseUIUtil {
 	 * @return
 	 */
 	public static IWorkbenchPage getActivepage() {
-		return PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-				.getActivePage();
+		return PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 	}
 
 	/**
@@ -503,22 +607,20 @@ public class BaseUIUtil {
 	 * @param extension
 	 * @return
 	 */
-	public static IFile getFirstSelectedFile(IStructuredSelection selection,
-			String extension) {
+	public static IFile getFirstSelectedFile(IStructuredSelection selection, String extension) {
 
 		if (selection != null) {
 			Iterator i = selection.iterator();
 			while (i.hasNext()) {
 				Object o = i.next();
-				if (o instanceof IFile
-						&& extension.equals(((IFile) o).getFileExtension())) {
+				if (o instanceof IFile && extension.equals(((IFile) o).getFileExtension())) {
 					return (IFile) o;
 				}
 			}
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Get icon image descriptor from the product plugin.
 	 * 
@@ -543,86 +645,7 @@ public class BaseUIUtil {
 		return imageDescriptor;
 	}
 
-	/**
-	 * Returns the resource resolved by the URI.
-	 * 
-	 * @param uri
-	 * @param loadOnDemand
-	 * @return
-	 */
-	public static Resource getResource(URI uri, boolean loadOnDemand) {
-		return UMLModeler.getEditingDomain().getResourceSet().getResource(uri,
-				loadOnDemand);
-	}
 
-	/**
-	 * Return open model resolved by model URI.
-	 * 
-	 * @param modelURI
-	 * @return open model or null if model is not open
-	 */
-	public static Element getOpenModel(URI modelURI) {
-		Resource resource = UMLModeler.getEditingDomain().getResourceSet().getResource(
-				modelURI, false);
-		if (resource == null) {
-			return null;
-		}
-		return (Element) resource.getContents().get(0);
-	}
-
-	/**
-	 * Save model resource
-	 * 
-	 * @param model
-	 * @throws IOException
-	 */
-	public static void saveModelResource(Element model) throws IOException {
-		UMLModeler.saveModelResource(model);
-	}
-	
-	/**
-	 * Create a ZDL element with given context and concept
-	 * 
-	 * @param context
-	 * @param conceptToCreate
-	 * @return
-	 */
-	public static EObject createZDLModelElement(EObject context, String conceptToCreate) {
-
-		IElementType type = null;
-		try {
-			type = ZDLElementTypeUtil.getElementType(context, conceptToCreate);
-			CreateElementRequest request = new CreateElementRequest(context, type);
-			CommandResult result = BaseUIUtil.createModelElement(request);
-
-			return (EObject) result.getReturnValue();
-		} catch (Exception e) {
-			// do nothing
-		}
-		return null;
-	}
-	
-
-	/**
-	 * Queries if the type is port
-	 * 
-	 * @param type
-	 * @return
-	 */
-	public static boolean isUMLPort(IElementType type) {
-		return isSubtype(type, UMLElementTypes.PORT);
-	}
-
-	/**
-	 * Queries if the type is part
-	 * 
-	 * @param type
-	 * @return
-	 */
-	public static boolean isUMLPart(IElementType type) {
-		return isSubtype(type, UMLElementTypes.PART);
-	}
-	
 	/**
 	 * Queries if the type1 is same or subtype of type2
 	 * 
@@ -652,7 +675,7 @@ public class BaseUIUtil {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Return sorted list of give EObjects
 	 * 
@@ -660,8 +683,27 @@ public class BaseUIUtil {
 	 * @return
 	 * @throws IllegalArgumentException
 	 */
-	public static List sortEObjectsByName(Collection elements)
-			throws IllegalArgumentException {
+	public static List sortEObjectsByName(Collection elements) throws IllegalArgumentException {
 		return BaseUtil.sortEObjectsByName(elements);
 	}
+	
+	public static String getProfileApplyingConcept(URI modelURI, String conceptHint,
+			TransactionalEditingDomain editingDomain) {
+		Resource res = editingDomain.getResourceSet().getResource(modelURI, true);
+		if (!res.isLoaded() || res.getContents().isEmpty()) {
+			return null;
+		}
+
+		org.eclipse.uml2.uml.Package p = (org.eclipse.uml2.uml.Package) res.getContents().get(0);
+
+		for (Profile profile : p.getAllAppliedProfiles()) {
+
+			if (profile.getPackagedElement(conceptHint) != null) {
+				return profile.eResource().getURI().toString();
+			}
+		}
+
+		return null;
+	}
+
 }

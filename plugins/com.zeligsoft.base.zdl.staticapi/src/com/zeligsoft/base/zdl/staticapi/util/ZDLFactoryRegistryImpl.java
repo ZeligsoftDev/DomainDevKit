@@ -84,7 +84,7 @@ public class ZDLFactoryRegistryImpl implements ZDLFactoryRegistry {
     	
 		CacheAdapter cache = CacheAdapter.getCacheAdapter(src);
 		if (cache == null) {
-			cache = CacheAdapter.INSTANCE;
+			cache = CacheAdapter.getInstance();
 			cache.adapt(src);
 		}
 		
