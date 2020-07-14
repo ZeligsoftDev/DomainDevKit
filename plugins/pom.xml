@@ -31,9 +31,6 @@
 
 	<modules>
 		<module> com.zeligsoft.base </module>
-		<module> com.zeligsoft.base.licensing </module>
-		<module> com.zeligsoft.base.licensing.ui </module>
-		<module> com.zeligsoft.base.testsupport </module>
 		<module> com.zeligsoft.base.toolingmodel </module>
 		<module> com.zeligsoft.base.ui </module>
 		<module> com.zeligsoft.base.ui.menus </module>
@@ -65,7 +62,6 @@
 		<module> com.zeligsoft.ddk.zdl.zdlgen.editor </module>
 		<module> com.zeligsoft.ddk.zdl2zdlgen </module>
 		<module> com.zeligsoft.ddk.zdlgen2umlprofile </module>
-		<module> com.zeligsoft.domain.zdl.architecture</module>
 		<module> com.zeligsoft.domain.zml </module>
 		<module> com.zeligsoft.domain.zml.api </module>
 		<module> com.zeligsoft.domain.zml.oaw </module>
