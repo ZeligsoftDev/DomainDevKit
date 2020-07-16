@@ -33,29 +33,6 @@
       </page>
    </extension>
    <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            adaptable="true"
-            id="com.zeligsoft.ddk.tools.ui.contribution1"
-            objectClass="org.eclipse.core.resources.IFile">
-         <menu
-               id="com.zeligsoft.ddk.tools.ui.ddkTools"
-               label="%menu.label"
-               path="additions">
-            <separator
-                  name="additions">
-            </separator>
-         </menu>
-         <action
-               class="com.zeligsoft.ddk.tools.ui.internal.actions.QuickExportToUMLActionDelegate"
-               enablesFor="1"
-               id="com.zeligsoft.ddk.tools.ui.quickExport"
-               label="%action.label"
-               menubarPath="com.zeligsoft.ddk.tools.ui.ddkTools/additions">
-         </action>
-      </objectContribution>
-   </extension>
-   <extension
          point="org.eclipse.ui.preferencePages">
       <page
             category="com.zeligsoft.ddk.tools"

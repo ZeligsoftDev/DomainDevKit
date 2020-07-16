@@ -23,8 +23,7 @@ Export-Package: com.zeligsoft.ddk.rsm.ui,
  com.zeligsoft.ddk.rsm.ui.actions,
  com.zeligsoft.ddk.rsm.ui.filters,
  com.zeligsoft.ddk.rsm.ui.l10n;x-internal:=true,
- com.zeligsoft.ddk.rsm.ui.preferences;x-internal:=true,
- com.zeligsoft.ddk.ui.creators
+ com.zeligsoft.ddk.rsm.ui.preferences;x-internal:=true
 Bundle-Localization: plugin
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

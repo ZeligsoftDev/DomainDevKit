@@ -92,20 +92,6 @@
     
    <!-- Add the ZDL-driven dynamic palette to Class and Free-form diagrams -->
    <extension
-         point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
-      <paletteProvider
-            class="com.zeligsoft.base.ui.providers.ZDLPaletteProvider">
-         <Priority
-               name="Low">
-         </Priority>
-         <content>
-            <method
-                  name="getDiagram().getType()"
-                  value="Class,Freeform"/>
-         </content>         
-      </paletteProvider>
-   </extension>
-   <extension
          point="org.eclipse.ui.preferencePages">
       <page
             class="com.zeligsoft.base.ui.preferences.RootPreferencePage"
@@ -119,22 +105,21 @@
             name="%page.name.0">
       </page>
    </extension>
-   <extension
-          point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
-       <propertyTabs
-             contributorId="com.ibm.xtools.modeler.ui.properties">
-          <propertyTab
-                afterTab="modeler.property.tab.GeneralPropertySection"
-                category="Core"
-                id="com.zeligsoft.propertyTab.ZDLDomainPropertyTab"
-                label="%zdl.propertyTab.label">
-          </propertyTab>
-       </propertyTabs>
-    </extension>
+   
+       <!-- CBDDS properties tab and sections -->
+    <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs contributorId="TreeOutlinePage">
+         <propertyTab
+               afterTab="uml"
+               category="org.eclipse.papyrus"
+               id="com.zeligsoft.propertyTab.ZDLDomainPropertyTab"
+               label="ZDL"/>
+      </propertyTabs>
+    </extension>    
     <extension
           point="org.eclipse.ui.views.properties.tabbed.propertySections">
        <propertySections
-             contributorId="com.ibm.xtools.modeler.ui.properties">
+             contributorId="TreeOutlinePage">
           <propertySection
                 class="com.zeligsoft.cx.ui.properties.sections.DomainPropertySection"
                 filter="com.zeligsoft.ddk.rsm.ui.filters.ZDLDomainFilter"
@@ -143,92 +128,4 @@
           </propertySection>
        </propertySections>
     </extension>
-    <extension
-          point="org.eclipse.ui.perspectives">
-       <perspective
-             class="com.zeligsoft.ddk.ui.perspectives.DDKPerspective"
-             icon="icons/view16/cx-perspective.gif"
-             id="com.zeligsoft.ddk.ui.perspectives.DDKPerspective"
-             name="%perspective.name.0">
-       </perspective>
-    </extension>
-    <extension point="org.eclipse.ui.perspectiveExtensions">
-      <perspectiveExtension targetID="com.zeligsoft.ddk.ui.perspectives.DDKPerspective">
-         <showInPart id="org.eclipse.ui.navigator.ProjectExplorer">
-         </showInPart>         
-         <actionSet id="com.ibm.xtools.modeler.ui.actions.ModelingActionSet">
-         </actionSet>
-         <actionSet id="org.eclipse.gmf.runtime.diagram.ui.DiagramActionSet">
-         </actionSet>
-         <view ratio="0.26" relative="org.eclipse.ui.editorss" visible="true" relationship="left" id="org.eclipse.ui.navigator.ProjectExplorer" minimized="false">
-         </view>
-         <view ratio=".66" relative="org.eclipse.ui.navigator.ProjectExplorer" visible="true" relationship="bottom" id="org.eclipse.ui.views.ContentOutline" minimized="false">
-         </view>         
-         <view ratio=".66" relative="org.eclipse.ui.editorss" visible="true" relationship="bottom" id="org.eclipse.ui.views.PropertySheet" minimized="false">
-         </view>
-         <view relative="org.eclipse.ui.views.PropertySheet" visible="true" relationship="stack" id="org.eclipse.ui.views.TaskList" minimized="false">
-         </view>
-         <view relative="org.eclipse.ui.views.PropertySheet" visible="true" relationship="stack" id="org.eclipse.ui.console.ConsoleView" minimized="false">
-         </view>
-         <view relative="org.eclipse.ui.views.PropertySheet" visible="true" relationship="stack" id="org.eclipse.ui.views.BookmarkView" minimized="false">
-         </view>
-         <viewShortcut id="org.eclipse.ui.views.TaskList">
-         </viewShortcut>
-         <viewShortcut id="org.eclipse.ui.views.PropertySheet">
-         </viewShortcut> 
-         <viewShortcut id="org.eclipse.ui.navigator.ProjectExplorer">
-         </viewShortcut>                       
-         <viewShortcut id="org.eclipse.ui.console.ConsoleView">
-         </viewShortcut>
-         <viewShortcut id="org.eclipse.ui.views.BookmarkView">
-         </viewShortcut>
-         <viewShortcut id="org.eclipse.ui.views.ContentOutline">
-         </viewShortcut>
-         <viewShortcut id="org.eclipse.gef.ui.palette_view">
-         </viewShortcut>                
-         <newWizardShortcut id="org.eclipse.ui.wizards.new.folder">
-         </newWizardShortcut>
-         <newWizardShortcut id="org.eclipse.ui.wizards.new.file">
-         </newWizardShortcut>
-         <perspectiveShortcut id="org.eclipse.cdt.ui.CPerspective">
-         </perspectiveShortcut>
-      </perspectiveExtension>
-      <perspectiveExtension targetID="org.eclipse.ui.resourcePerspective">
-         <perspectiveShortcut id="com.zeligsoft.ddk.ui.perspectives.DDKPerspective">
-         </perspectiveShortcut>
-      </perspectiveExtension>
-      <perspectiveExtension targetID="org.eclipse.cdt.ui.CPerspective">
-         <perspectiveShortcut id="com.zeligsoft.ddk.ui.perspectives.DDKPerspective">
-         </perspectiveShortcut>
-      </perspectiveExtension>      
-   </extension>
-   <extension
-         point="org.eclipse.ui.perspectiveExtensions">
-      <perspectiveExtension targetID="com.zeligsoft.ddk.ui.perspectives.DDKPerspective">
-         <actionSet id="org.eclipse.debug.ui.analysisActionSet"/>
-      </perspectiveExtension>
-   </extension> 
-   <extension
-         point="org.eclipse.ui.perspectiveExtensions">
-      <perspectiveExtension targetID="com.zeligsoft.ddk.ui.perspectives.DDKPerspective">
-         <actionSet id="rmpSearchActionSet"/>
-      </perspectiveExtension>
-   </extension>
-   <extension
-         point="org.eclipse.ui.newWizards">
-      <category
-            id="com.zeligsoft.ddk.ui.newDDKProjectWizard"
-            name="%category.name.0"
-            parentCategory="com.zeligsoft">
-      </category>
-      <wizard
-            canFinishEarly="false"
-            category="com.zeligsoft/com.zeligsoft.ddk.ui.newDDKProjectWizard"
-            class="com.zeligsoft.ddk.ui.wizard.ZDLNewProjectWizard"
-            finalPerspective="com.zeligsoft.ddk.ui.perspectives.DDKPerspective"
-            id="com.zeligsoft.ddk.ui.NewDDKProjectWizard"
-            name="%wizard.name.0"
-            project="true">
-      </wizard>
-   </extension>
 </plugin>
