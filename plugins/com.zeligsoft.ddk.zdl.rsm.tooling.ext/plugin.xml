@@ -43,4 +43,13 @@
          </adviceBinding>
       </metamodel>
    </extension>
+   <extension
+         point="org.eclipse.emf.transaction.listeners">
+      <listener
+            class="com.zeligsoft.ddk.zdl.rsm.tooling.ext.types.ConfigureDomainConstraintAdvice">
+         <editingDomain
+               id="org.eclipse.papyrus.SharedEditingDomainID">
+         </editingDomain>
+      </listener>
+   </extension>
 </plugin>

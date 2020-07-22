@@ -33,6 +33,7 @@
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/umldi.elementtypesconfigurations#_ScP1oFYCEeS0WsAAtVmToA"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#_ScP1oFYCEeS0WsAAtVmToA"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/com.zeligsoft.ddk.zdl.rsm.tooling/elementtypes/ZDL_diagram.elementtypesconfigurations#_1gwyEMeGEeqlwPkW5oxhsg"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/com.zeligsoft.ddk.zdl.rsm.tooling.ext/elementtypes/zdl_tooling.elementtypesconfigurations#_V24_8MwpEeq9yqn7Z26VHA"/>
     <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" xmi:id="_y30dEMeKEeqlZZn7FHcr3w" name="Package Diagram" icon="platform:/plugin/org.eclipse.papyrus.infra.viewpoints.policy/icons/Diagram_Package.gif" concerns="_xlJ3UKzbEeqR1cqQjLb39Q" implementationID="PapyrusUMLClassDiagram">
       <paletteRules xmi:type="gmfdiagrepresentation:PaletteRule" xmi:id="_wwYLQMeREeqndL47ikRM6Q" permit="false" element="clazz.group.*"/>
       <palettes xmi:type="paletteconfiguration:PaletteConfiguration" href="platform:/plugin/com.zeligsoft.ddk.zdl.rsm.tooling/palettes/ZDL.paletteconfiguration#/"/>
