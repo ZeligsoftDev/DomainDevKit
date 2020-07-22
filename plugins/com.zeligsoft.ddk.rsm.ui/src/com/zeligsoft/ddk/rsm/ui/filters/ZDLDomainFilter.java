@@ -51,7 +51,7 @@ public class ZDLDomainFilter
 		if (toTest instanceof EObject) {
 			eObject = (EObject) toTest;
 		} else if (toTest instanceof IAdaptable) {
-			eObject = (EObject) ((IAdaptable) toTest).getAdapter(EObject.class);
+			eObject = ((IAdaptable) toTest).getAdapter(EObject.class);
 		} else if (toTest instanceof StructuredSelection) {
 			eObject = BaseUIUtil
 				.getEObjectFromSelection((StructuredSelection) toTest);

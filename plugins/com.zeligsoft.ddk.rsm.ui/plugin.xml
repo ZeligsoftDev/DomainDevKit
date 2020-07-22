@@ -16,79 +16,98 @@
     limitations under the License.
  -->
 <plugin>
+
+	<extension
+          point="org.eclipse.ui.menus">
+       <menuContribution
+             allPopups="false"
+             locationURI="popup:org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup">
+          <menu
+                id="com.zeligsoft.ddk.ui.zeligsoftTools"
+                label="Zeligsoft Tools">
+          </menu>
+       </menuContribution>
+    </extension>
+    
+    <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="true"
+            locationURI="popup:com.zeligsoft.ddk.ui.zeligsoftTools">
+         <command
+               commandId="com.zeligsoft.ddk.zdl.ui.generateConceptsConstantCommand"
+               id="com.zeligsoft.ddk.zdl.ui.generateConceptsConstant"
+               label="Generate Concepts Constant">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <test
+                        property="com.zeligsoft.zdl.tester.isZDLConcept"
+                        value="ZDL::Constructs::DomainModel">
+                  </test>
+               </with>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="com.zeligsoft.ddk.zdl.ui.configureRedefinitionCommand"
+               id="com.zeligsoft.ddk.zdl.ui.configureRedefinition"
+               label="Configure Redefinition">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <test
+                        property="org.eclipse.papyrus.views.modelexplorer.tester.eClass"
+                        value="uml::RedefinableElement">
+                  </test>
+                  <count
+                        value="2">
+                  </count>
+               </with>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="com.zeligsoft.ddk.zdl.ui.configureSubsettingCommand"
+               id="com.zeligsoft.ddk.zdl.ui.configureSubsetting"
+               label="Configure Subsetting">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <test
+                        property="org.eclipse.papyrus.views.modelexplorer.tester.eClass"
+                        value="uml::Property">
+                  </test>
+                  <count
+                        value="2">
+                  </count>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
    <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-      		adaptable="false"
-            objectClass="org.eclipse.gmf.runtime.common.core.util.IAdaptableSelection"
-            id="com.zeligsoft.tools.rsm.umlActions">
-         <visibility>
-            <objectState name="umlType" value="Element" />
-         </visibility>
-         <menu
-               id="com.zeligsoft.tools.rsm.umlActionsMenu"
-               label="%menu.label.ztools"
-               path="additions">
-         </menu>
-         <action
-               class="com.zeligsoft.ddk.rsm.ui.actions.SpecifySubsetActionDelegate"
-               enablesFor="2"
-               id="com.zeligsoft.tools.rsm.specifySubsetAction"
-               label="%action.label.configSubset"
-               menubarPath="com.zeligsoft.tools.rsm.umlActionsMenu/additions"
-               style="push"
-               tooltip="%action.tooltip.configSubset">
-               <enablement>
-               	  <objectState name="umlType" value="Property" />
-               </enablement>
-         </action>
-         <action
-               class="com.zeligsoft.ddk.rsm.ui.actions.SpecifyRedefinitionActionDelegate"
-               enablesFor="2"
-               id="com.zeligsoft.tools.rsm.specifyRedefinitionAction"
-               label="%action.label.configRedefinition"
-               menubarPath="com.zeligsoft.tools.rsm.umlActionsMenu/additions"
-               style="push"
-               tooltip="%action.tooltip.configRedefinition">
-               <enablement>
-                  <objectState name="umlType" value="RedefinableElement" />
-               </enablement>
-         </action>
-      </objectContribution>
-            <objectContribution
-      		adaptable="false"
-            objectClass="org.eclipse.gmf.runtime.common.core.util.IAdaptableSelection"
-            id="com.zeligsoft.tools.rsm.umlActions">
-         <visibility>
-            <and>
-               <objectState
-                     name="isSingleSelection"
-                     value="visibility">
-               </objectState>
-               <objectState
-                     name="hasStereotype"
-                     value="ZDL::DomainModel">
-               </objectState>
-            </and>
-         </visibility>
-         <menu
-               id="com.zeligsoft.tools.rsm.umlActionsMenu"
-               label="%menu.label.ztools"
-               path="additions">
-         </menu>
-         <action
-               class="com.zeligsoft.ddk.rsm.ui.actions.GenerateConceptActionDelegate"
-               enablesFor="1"
-               id="com.zeligsoft.tools.rsm.generateConceptConstants"
-               label="%action.label.generateConceptConstants"
-               menubarPath="com.zeligsoft.tools.rsm.umlActionsMenu/additions"
-               tooltip="%action.tooltip.generateConceptConstants">
-               <enablement>
-               	  <objectState name="hasStereotype" value="ZDL::DomainModel" />
-               </enablement>
-         </action>
-      </objectContribution>
-    </extension>  
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="com.zeligsoft.ddk.rsm.ui.actions.GenerateConceptsConstantHandler"
+            id="com.zeligsoft.ddk.zdl.ui.generateConceptsConstantCommand"
+            name="Generate Concepts Constant">
+      </command>
+      <command
+            defaultHandler="com.zeligsoft.ddk.rsm.ui.actions.ConfigureRedefinitionHandler"
+            id="com.zeligsoft.ddk.zdl.ui.configureRedefinitionCommand"
+            name="Configure Redefinition">
+      </command>
+      <command
+            defaultHandler="com.zeligsoft.ddk.rsm.ui.actions.ConfigureSubsettingHandler"
+            id="com.zeligsoft.ddk.zdl.ui.configureSubsettingCommand"
+            name="Configure Subsetting">
+      </command>
+   </extension>
+
+
+
     
    <!-- Add the ZDL-driven dynamic palette to Class and Free-form diagrams -->
    <extension
