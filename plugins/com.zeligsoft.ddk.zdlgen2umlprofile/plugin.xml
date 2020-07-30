@@ -21,7 +21,7 @@
          name="IBM Rational Software Architect 9.0"
          point="com.zeligsoft.ddk.zdl.zdlgen.codegentargets">
       <menuLabel
-            label="RSA">
+            label="Papyrus">
       </menuLabel>
       <action
             class="com.zeligsoft.ddk.zdlgen2umlprofile.ui.actions.GenerateProfilePopupAction"

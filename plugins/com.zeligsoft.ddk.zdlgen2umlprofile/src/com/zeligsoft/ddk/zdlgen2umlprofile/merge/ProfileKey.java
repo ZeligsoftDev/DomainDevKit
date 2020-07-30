@@ -40,7 +40,9 @@ public class ProfileKey extends AbstractHierarchicalKey<ProfileKey> {
 				nsURI = nsURI.substring(0, nsURI.lastIndexOf('/'));
 			}
 		} else {
-			throw new IllegalArgumentException(ZDLGen2UMLProfileMessages.ProfileKey_NeedEPackageStereotypeApplied);
+			nsURI = element.getURI();
+			nsURI = nsURI.substring(0, nsURI.lastIndexOf('/'));
+			//throw new IllegalArgumentException(ZDLGen2UMLProfileMessages.ProfileKey_NeedEPackageStereotypeApplied);
 		}
 		
 	}

@@ -186,8 +186,7 @@ public class ZDLConverterPage
 
 	boolean isZDLModel(IFile file) {
 		// TODO: Use content-type service.  EMF 2.4
-		return "emx".equalsIgnoreCase(file.getFileExtension()) //$NON-NLS-1$
-			|| UMLResource.FILE_EXTENSION.equalsIgnoreCase(file.getFileExtension());
+		return UMLResource.FILE_EXTENSION.equalsIgnoreCase(file.getFileExtension());
 	}
 
 	private void fileTextChanged() {
