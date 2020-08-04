@@ -30,8 +30,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  * @see com.zeligsoft.ddk.zdl.zdlgen.util.ZDLGenResourceImpl
  * @generated
  */
-public class ZDLGenResourceFactoryImpl extends ResourceFactoryImpl implements
-		ZDLGenResource.Factory {
+public class ZDLGenResourceFactoryImpl extends ResourceFactoryImpl implements ZDLGenResource.Factory {
 
 	/**
 	 * Creates an instance of the resource factory.

@@ -130,8 +130,7 @@ public class ZDLGenAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseGenDomainPackageableElement(
-				GenDomainPackageableElement object) {
+		public Adapter caseGenDomainPackageableElement(GenDomainPackageableElement object) {
 			return createGenDomainPackageableElementAdapter();
 		}
 
@@ -151,8 +150,7 @@ public class ZDLGenAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseGenPaletteToolContainer(
-				GenPaletteToolContainer object) {
+		public Adapter caseGenPaletteToolContainer(GenPaletteToolContainer object) {
 			return createGenPaletteToolContainerAdapter();
 		}
 
@@ -207,8 +205,7 @@ public class ZDLGenAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseGenDomainGeneralization(
-				GenDomainGeneralization object) {
+		public Adapter caseGenDomainGeneralization(GenDomainGeneralization object) {
 			return createGenDomainGeneralizationAdapter();
 		}
 
@@ -223,14 +220,12 @@ public class ZDLGenAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseGenDomainStructuralFeature(
-				GenDomainStructuralFeature object) {
+		public Adapter caseGenDomainStructuralFeature(GenDomainStructuralFeature object) {
 			return createGenDomainStructuralFeatureAdapter();
 		}
 
 		@Override
-		public Adapter caseGenDomainAttributePresentation(
-				GenDomainAttributePresentation object) {
+		public Adapter caseGenDomainAttributePresentation(GenDomainAttributePresentation object) {
 			return createGenDomainAttributePresentationAdapter();
 		}
 
@@ -255,20 +250,17 @@ public class ZDLGenAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseGenDomainBlockReference(
-				GenDomainBlockReference object) {
+		public Adapter caseGenDomainBlockReference(GenDomainBlockReference object) {
 			return createGenDomainBlockReferenceAdapter();
 		}
 
 		@Override
-		public Adapter caseGenDomainSpecialization(
-				GenDomainSpecialization object) {
+		public Adapter caseGenDomainSpecialization(GenDomainSpecialization object) {
 			return createGenDomainSpecializationAdapter();
 		}
 
 		@Override
-		public Adapter caseGenDomainModelLibraryReference(
-				GenDomainModelLibraryReference object) {
+		public Adapter caseGenDomainModelLibraryReference(GenDomainModelLibraryReference object) {
 			return createGenDomainModelLibraryReferenceAdapter();
 		}
 

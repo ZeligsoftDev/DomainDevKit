@@ -24,12 +24,12 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenMenuCreateAction#getTypeHint <em>Type Hint</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenMenuCreateAction#getCreateConcept <em>Create Concept</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenMenuCreateAction#getExpressions <em>Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenMenuCreateAction()
  * @model

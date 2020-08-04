@@ -37,9 +37,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenPaletteToolItemProvider extends GenPaletteItemItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class GenPaletteToolItemProvider extends GenPaletteItemItemProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -75,15 +73,11 @@ public class GenPaletteToolItemProvider extends GenPaletteItemItemProvider
 	 */
 	protected void addOverridesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenPaletteTool_overrides_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenPaletteTool_overrides_feature", "_UI_GenPaletteTool_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_PALETTE_TOOL__OVERRIDES,
-						true, false, true, null, null, null));
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenPaletteTool_overrides_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenPaletteTool_overrides_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenPaletteTool_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_PALETTE_TOOL__OVERRIDES, true, false, true, null, null, null));
 	}
 
 	/**
@@ -94,8 +88,7 @@ public class GenPaletteToolItemProvider extends GenPaletteItemItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/GenPaletteTool")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/GenPaletteTool")); //$NON-NLS-1$
 	}
 
 	/**
@@ -121,7 +114,6 @@ public class GenPaletteToolItemProvider extends GenPaletteItemItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-		super.notifyChanged(notification);
 	}
 
 	/**
@@ -132,8 +124,7 @@ public class GenPaletteToolItemProvider extends GenPaletteItemItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

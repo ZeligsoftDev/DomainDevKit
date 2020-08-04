@@ -24,6 +24,7 @@ import org.eclipse.uml2.uml.Model;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel#getDomainModel <em>Domain Model</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel#getNsURI <em>Ns URI</em>}</li>
@@ -35,7 +36,6 @@ import org.eclipse.uml2.uml.Model;
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel#getMenuModel <em>Menu Model</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel#getOwningGenModel <em>Owning Gen Model</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainModel()
  * @model
@@ -47,16 +47,16 @@ public interface GenDomainModel extends GenDomainPackage {
 	 * Returns the value of the '<em><b>Domain Model</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainNamedElement#getDomainElement() <em>Domain Element</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <p>
 	 * This feature redefines the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainPackage#getDomainPackage() <em>Domain Package</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Domain Model</em>' reference isn't clear,
@@ -67,6 +67,8 @@ public interface GenDomainModel extends GenDomainPackage {
 	 * @see #setDomainModel(Model)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainModel_DomainModel()
 	 * @model required="true"
+	 *        annotation="redefines"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	Model getDomainModel();
@@ -215,10 +217,10 @@ public interface GenDomainModel extends GenDomainPackage {
 	 * Returns the value of the '<em><b>Palette</b></em>' containment reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwnedObjects() <em>Owned Object</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Palette</em>' containment reference isn't clear,
@@ -229,6 +231,7 @@ public interface GenDomainModel extends GenDomainPackage {
 	 * @see #setPalette(GenPalette)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainModel_Palette()
 	 * @model containment="true" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	GenPalette getPalette();
@@ -274,10 +277,10 @@ public interface GenDomainModel extends GenDomainPackage {
 	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenModel#getOwnedModels <em>Owned Model</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwner() <em>Owner</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owning Gen Model</em>' container reference isn't clear,
@@ -289,6 +292,7 @@ public interface GenDomainModel extends GenDomainPackage {
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainModel_OwningGenModel()
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenModel#getOwnedModels
 	 * @model opposite="ownedModel" required="true" transient="false" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	GenModel getOwningGenModel();

@@ -68,8 +68,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ZDLGenPackage eINSTANCE = com.zeligsoft.ddk.zdl.zdlgen.internal.impl.ZDLGenPackageImpl
-			.init();
+	ZDLGenPackage eINSTANCE = com.zeligsoft.ddk.zdl.zdlgen.internal.impl.ZDLGenPackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainClassifierImpl <em>Gen Domain Classifier</em>}' class.
@@ -2095,13 +2094,22 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_CONCEPT__ATTRIBUTE = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Icon Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_DOMAIN_CONCEPT__ICON_URI = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 8;
+
+	/**
 	 * The feature id for the '<em><b>Is RSM Suppressed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_CONCEPT__IS_RSM_SUPPRESSED = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 8;
+	int GEN_DOMAIN_CONCEPT__IS_RSM_SUPPRESSED = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Is RSMUI Read Only</b></em>' attribute.
@@ -2110,7 +2118,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_CONCEPT__IS_RSMUI_READ_ONLY = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 9;
+	int GEN_DOMAIN_CONCEPT__IS_RSMUI_READ_ONLY = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Is RSM Properties UI Read Only</b></em>' attribute.
@@ -2119,7 +2127,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_CONCEPT__IS_RSM_PROPERTIES_UI_READ_ONLY = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 10;
+	int GEN_DOMAIN_CONCEPT__IS_RSM_PROPERTIES_UI_READ_ONLY = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Is Rhapsody Suppressed</b></em>' attribute.
@@ -2128,7 +2136,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_CONCEPT__IS_RHAPSODY_SUPPRESSED = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 11;
+	int GEN_DOMAIN_CONCEPT__IS_RHAPSODY_SUPPRESSED = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Rhapsody Metaclass</b></em>' attribute.
@@ -2137,7 +2145,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_CONCEPT__RHAPSODY_METACLASS = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 12;
+	int GEN_DOMAIN_CONCEPT__RHAPSODY_METACLASS = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 13;
 
 	/**
 	 * The feature id for the '<em><b>Rhapsody Stereotype Name</b></em>' attribute.
@@ -2146,7 +2154,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_CONCEPT__RHAPSODY_STEREOTYPE_NAME = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 13;
+	int GEN_DOMAIN_CONCEPT__RHAPSODY_STEREOTYPE_NAME = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 14;
 
 	/**
 	 * The feature id for the '<em><b>Rhapsody Add New</b></em>' attribute list.
@@ -2155,7 +2163,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_CONCEPT__RHAPSODY_ADD_NEW = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 14;
+	int GEN_DOMAIN_CONCEPT__RHAPSODY_ADD_NEW = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 15;
 
 	/**
 	 * The feature id for the '<em><b>Rhapsody Add New Concept</b></em>' reference list.
@@ -2164,7 +2172,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_CONCEPT__RHAPSODY_ADD_NEW_CONCEPT = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 15;
+	int GEN_DOMAIN_CONCEPT__RHAPSODY_ADD_NEW_CONCEPT = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 16;
 
 	/**
 	 * The feature id for the '<em><b>Rhapsody Display Name</b></em>' attribute.
@@ -2173,7 +2181,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_CONCEPT__RHAPSODY_DISPLAY_NAME = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 16;
+	int GEN_DOMAIN_CONCEPT__RHAPSODY_DISPLAY_NAME = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 17;
 
 	/**
 	 * The feature id for the '<em><b>Rhapsody To Add New</b></em>' reference list.
@@ -2182,7 +2190,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_CONCEPT__RHAPSODY_TO_ADD_NEW = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 17;
+	int GEN_DOMAIN_CONCEPT__RHAPSODY_TO_ADD_NEW = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 18;
 
 	/**
 	 * The feature id for the '<em><b>Override</b></em>' containment reference list.
@@ -2191,7 +2199,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_CONCEPT__OVERRIDE = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 18;
+	int GEN_DOMAIN_CONCEPT__OVERRIDE = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 19;
 
 	/**
 	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
@@ -2200,7 +2208,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_CONCEPT__GENERALIZATION = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 19;
+	int GEN_DOMAIN_CONCEPT__GENERALIZATION = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 20;
 
 	/**
 	 * The number of structural features of the '<em>Gen Domain Concept</em>' class.
@@ -2209,7 +2217,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_CONCEPT_FEATURE_COUNT = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 20;
+	int GEN_DOMAIN_CONCEPT_FEATURE_COUNT = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 21;
 
 	/**
 	 * The number of structural features of the '<em>Gen Palettable</em>' class.
@@ -4410,6 +4418,17 @@ public interface ZDLGenPackage extends EPackage {
 	EReference getGenDomainConcept_Attribute();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getIconUri <em>Icon Uri</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Icon Uri</em>'.
+	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getIconUri()
+	 * @see #getGenDomainConcept()
+	 * @generated
+	 */
+	EAttribute getGenDomainConcept_IconUri();
+
+	/**
 	 * Returns the meta object for the attribute '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#isRSMSuppressed <em>Is RSM Suppressed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6206,8 +6225,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_DOMAIN_CONCEPT__CATEGORY = eINSTANCE
-				.getGenDomainConcept_Category();
+		EAttribute GEN_DOMAIN_CONCEPT__CATEGORY = eINSTANCE.getGenDomainConcept_Category();
 
 		/**
 		 * The meta object literal for the '<em><b>Feature</b></em>' containment reference list feature.
@@ -6215,8 +6233,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_CONCEPT__FEATURE = eINSTANCE
-				.getGenDomainConcept_Feature();
+		EReference GEN_DOMAIN_CONCEPT__FEATURE = eINSTANCE.getGenDomainConcept_Feature();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPalettableImpl <em>Gen Palettable</em>}' class.
@@ -6252,8 +6269,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_PALETTE_ITEM__DESCRIPTION = eINSTANCE
-				.getGenPaletteItem_Description();
+		EAttribute GEN_PALETTE_ITEM__DESCRIPTION = eINSTANCE.getGenPaletteItem_Description();
 
 		/**
 		 * The meta object literal for the '<em><b>Generalization</b></em>' containment reference list feature.
@@ -6261,8 +6277,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_CONCEPT__GENERALIZATION = eINSTANCE
-				.getGenDomainConcept_Generalization();
+		EReference GEN_DOMAIN_CONCEPT__GENERALIZATION = eINSTANCE.getGenDomainConcept_Generalization();
 
 		/**
 		 * The meta object literal for the '<em><b>Domain Concept</b></em>' reference feature.
@@ -6270,8 +6285,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_CONCEPT__DOMAIN_CONCEPT = eINSTANCE
-				.getGenDomainConcept_DomainConcept();
+		EReference GEN_DOMAIN_CONCEPT__DOMAIN_CONCEPT = eINSTANCE.getGenDomainConcept_DomainConcept();
 
 		/**
 		 * The meta object literal for the '<em><b>Uml Metaclass</b></em>' reference list feature.
@@ -6279,8 +6293,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_CONCEPT__UML_METACLASS = eINSTANCE
-				.getGenDomainConcept_UmlMetaclass();
+		EReference GEN_DOMAIN_CONCEPT__UML_METACLASS = eINSTANCE.getGenDomainConcept_UmlMetaclass();
 
 		/**
 		 * The meta object literal for the '<em><b>General</b></em>' reference list feature.
@@ -6288,8 +6301,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_CONCEPT__GENERAL = eINSTANCE
-				.getGenDomainConcept_General();
+		EReference GEN_DOMAIN_CONCEPT__GENERAL = eINSTANCE.getGenDomainConcept_General();
 
 		/**
 		 * The meta object literal for the '<em><b>Reference</b></em>' reference list feature.
@@ -6297,8 +6309,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_CONCEPT__REFERENCE = eINSTANCE
-				.getGenDomainConcept_Reference();
+		EReference GEN_DOMAIN_CONCEPT__REFERENCE = eINSTANCE.getGenDomainConcept_Reference();
 
 		/**
 		 * The meta object literal for the '<em><b>Attribute</b></em>' reference list feature.
@@ -6306,8 +6317,15 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_CONCEPT__ATTRIBUTE = eINSTANCE
-				.getGenDomainConcept_Attribute();
+		EReference GEN_DOMAIN_CONCEPT__ATTRIBUTE = eINSTANCE.getGenDomainConcept_Attribute();
+
+		/**
+		 * The meta object literal for the '<em><b>Icon Uri</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEN_DOMAIN_CONCEPT__ICON_URI = eINSTANCE.getGenDomainConcept_IconUri();
 
 		/**
 		 * The meta object literal for the '<em><b>Is RSM Suppressed</b></em>' attribute feature.
@@ -6315,8 +6333,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_DOMAIN_CONCEPT__IS_RSM_SUPPRESSED = eINSTANCE
-				.getGenDomainConcept_IsRSMSuppressed();
+		EAttribute GEN_DOMAIN_CONCEPT__IS_RSM_SUPPRESSED = eINSTANCE.getGenDomainConcept_IsRSMSuppressed();
 
 		/**
 		 * The meta object literal for the '<em><b>Is RSMUI Read Only</b></em>' attribute feature.
@@ -6324,8 +6341,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_DOMAIN_CONCEPT__IS_RSMUI_READ_ONLY = eINSTANCE
-				.getGenDomainConcept_IsRSMUIReadOnly();
+		EAttribute GEN_DOMAIN_CONCEPT__IS_RSMUI_READ_ONLY = eINSTANCE.getGenDomainConcept_IsRSMUIReadOnly();
 
 		/**
 		 * The meta object literal for the '<em><b>Is RSM Properties UI Read Only</b></em>' attribute feature.
@@ -6342,8 +6358,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_DOMAIN_CONCEPT__IS_RHAPSODY_SUPPRESSED = eINSTANCE
-				.getGenDomainConcept_IsRhapsodySuppressed();
+		EAttribute GEN_DOMAIN_CONCEPT__IS_RHAPSODY_SUPPRESSED = eINSTANCE.getGenDomainConcept_IsRhapsodySuppressed();
 
 		/**
 		 * The meta object literal for the '<em><b>Rhapsody Metaclass</b></em>' attribute feature.
@@ -6351,8 +6366,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_DOMAIN_CONCEPT__RHAPSODY_METACLASS = eINSTANCE
-				.getGenDomainConcept_RhapsodyMetaclass();
+		EAttribute GEN_DOMAIN_CONCEPT__RHAPSODY_METACLASS = eINSTANCE.getGenDomainConcept_RhapsodyMetaclass();
 
 		/**
 		 * The meta object literal for the '<em><b>Rhapsody Stereotype Name</b></em>' attribute feature.
@@ -6369,8 +6383,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_DOMAIN_CONCEPT__RHAPSODY_ADD_NEW = eINSTANCE
-				.getGenDomainConcept_RhapsodyAddNew();
+		EAttribute GEN_DOMAIN_CONCEPT__RHAPSODY_ADD_NEW = eINSTANCE.getGenDomainConcept_RhapsodyAddNew();
 
 		/**
 		 * The meta object literal for the '<em><b>Rhapsody Add New Concept</b></em>' reference list feature.
@@ -6378,8 +6391,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_CONCEPT__RHAPSODY_ADD_NEW_CONCEPT = eINSTANCE
-				.getGenDomainConcept_RhapsodyAddNewConcept();
+		EReference GEN_DOMAIN_CONCEPT__RHAPSODY_ADD_NEW_CONCEPT = eINSTANCE.getGenDomainConcept_RhapsodyAddNewConcept();
 
 		/**
 		 * The meta object literal for the '<em><b>Rhapsody Display Name</b></em>' attribute feature.
@@ -6387,8 +6399,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_DOMAIN_CONCEPT__RHAPSODY_DISPLAY_NAME = eINSTANCE
-				.getGenDomainConcept_RhapsodyDisplayName();
+		EAttribute GEN_DOMAIN_CONCEPT__RHAPSODY_DISPLAY_NAME = eINSTANCE.getGenDomainConcept_RhapsodyDisplayName();
 
 		/**
 		 * The meta object literal for the '<em><b>Rhapsody To Add New</b></em>' reference list feature.
@@ -6396,8 +6407,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_CONCEPT__RHAPSODY_TO_ADD_NEW = eINSTANCE
-				.getGenDomainConcept_RhapsodyToAddNew();
+		EReference GEN_DOMAIN_CONCEPT__RHAPSODY_TO_ADD_NEW = eINSTANCE.getGenDomainConcept_RhapsodyToAddNew();
 
 		/**
 		 * The meta object literal for the '<em><b>Override</b></em>' containment reference list feature.
@@ -6405,8 +6415,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_CONCEPT__OVERRIDE = eINSTANCE
-				.getGenDomainConcept_Override();
+		EReference GEN_DOMAIN_CONCEPT__OVERRIDE = eINSTANCE.getGenDomainConcept_Override();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainClassifierImpl <em>Gen Domain Classifier</em>}' class.
@@ -6424,8 +6433,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_CLASSIFIER__BLOCK = eINSTANCE
-				.getGenDomainClassifier_Block();
+		EReference GEN_DOMAIN_CLASSIFIER__BLOCK = eINSTANCE.getGenDomainClassifier_Block();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainNamedElementImpl <em>Gen Domain Named Element</em>}' class.
@@ -6443,8 +6451,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_DOMAIN_NAMED_ELEMENT__NAME = eINSTANCE
-				.getGenDomainNamedElement_Name();
+		EAttribute GEN_DOMAIN_NAMED_ELEMENT__NAME = eINSTANCE.getGenDomainNamedElement_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Domain Element</b></em>' reference feature.
@@ -6452,8 +6459,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_NAMED_ELEMENT__DOMAIN_ELEMENT = eINSTANCE
-				.getGenDomainNamedElement_DomainElement();
+		EReference GEN_DOMAIN_NAMED_ELEMENT__DOMAIN_ELEMENT = eINSTANCE.getGenDomainNamedElement_DomainElement();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainStructuralFeatureImpl <em>Gen Domain Structural Feature</em>}' class.
@@ -6463,8 +6469,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * @see com.zeligsoft.ddk.zdl.zdlgen.internal.impl.ZDLGenPackageImpl#getGenDomainStructuralFeature()
 		 * @generated
 		 */
-		EClass GEN_DOMAIN_STRUCTURAL_FEATURE = eINSTANCE
-				.getGenDomainStructuralFeature();
+		EClass GEN_DOMAIN_STRUCTURAL_FEATURE = eINSTANCE.getGenDomainStructuralFeature();
 
 		/**
 		 * The meta object literal for the '<em><b>Uml Metaattribute</b></em>' reference feature.
@@ -6499,8 +6504,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT = eINSTANCE
-				.getGenDomainStructuralFeature_Concept();
+		EReference GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT = eINSTANCE.getGenDomainStructuralFeature_Concept();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainGeneralizationImpl <em>Gen Domain Generalization</em>}' class.
@@ -6510,8 +6514,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * @see com.zeligsoft.ddk.zdl.zdlgen.internal.impl.ZDLGenPackageImpl#getGenDomainGeneralization()
 		 * @generated
 		 */
-		EClass GEN_DOMAIN_GENERALIZATION = eINSTANCE
-				.getGenDomainGeneralization();
+		EClass GEN_DOMAIN_GENERALIZATION = eINSTANCE.getGenDomainGeneralization();
 
 		/**
 		 * The meta object literal for the '<em><b>General</b></em>' reference feature.
@@ -6519,8 +6522,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_GENERALIZATION__GENERAL = eINSTANCE
-				.getGenDomainGeneralization_General();
+		EReference GEN_DOMAIN_GENERALIZATION__GENERAL = eINSTANCE.getGenDomainGeneralization_General();
 
 		/**
 		 * The meta object literal for the '<em><b>Domain Generalization</b></em>' reference feature.
@@ -6537,8 +6539,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_GENERALIZATION__SPECIFIC = eINSTANCE
-				.getGenDomainGeneralization_Specific();
+		EReference GEN_DOMAIN_GENERALIZATION__SPECIFIC = eINSTANCE.getGenDomainGeneralization_Specific();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainBlockImpl <em>Gen Domain Block</em>}' class.
@@ -6556,8 +6557,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_BLOCK__CLASSIFIER = eINSTANCE
-				.getGenDomainBlock_Classifier();
+		EReference GEN_DOMAIN_BLOCK__CLASSIFIER = eINSTANCE.getGenDomainBlock_Classifier();
 
 		/**
 		 * The meta object literal for the '<em><b>Relation</b></em>' containment reference list feature.
@@ -6565,8 +6565,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_BLOCK__RELATION = eINSTANCE
-				.getGenDomainBlock_Relation();
+		EReference GEN_DOMAIN_BLOCK__RELATION = eINSTANCE.getGenDomainBlock_Relation();
 
 		/**
 		 * The meta object literal for the '<em><b>Domain Block</b></em>' reference feature.
@@ -6574,8 +6573,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_BLOCK__DOMAIN_BLOCK = eINSTANCE
-				.getGenDomainBlock_DomainBlock();
+		EReference GEN_DOMAIN_BLOCK__DOMAIN_BLOCK = eINSTANCE.getGenDomainBlock_DomainBlock();
 
 		/**
 		 * The meta object literal for the '<em><b>Import</b></em>' reference list feature.
@@ -6583,8 +6581,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_BLOCK__IMPORT = eINSTANCE
-				.getGenDomainBlock_Import();
+		EReference GEN_DOMAIN_BLOCK__IMPORT = eINSTANCE.getGenDomainBlock_Import();
 
 		/**
 		 * The meta object literal for the '<em><b>Merge</b></em>' reference list feature.
@@ -6592,8 +6589,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_BLOCK__MERGE = eINSTANCE
-				.getGenDomainBlock_Merge();
+		EReference GEN_DOMAIN_BLOCK__MERGE = eINSTANCE.getGenDomainBlock_Merge();
 
 		/**
 		 * The meta object literal for the '<em><b>Rsm Stereotypes Suppressed</b></em>' attribute feature.
@@ -6638,8 +6634,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_OBJECT__OWNER = eINSTANCE
-				.getGenDomainObject_Owner();
+		EReference GEN_DOMAIN_OBJECT__OWNER = eINSTANCE.getGenDomainObject_Owner();
 
 		/**
 		 * The meta object literal for the '<em><b>Owned Object</b></em>' reference list feature.
@@ -6647,8 +6642,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_OBJECT__OWNED_OBJECT = eINSTANCE
-				.getGenDomainObject_OwnedObject();
+		EReference GEN_DOMAIN_OBJECT__OWNED_OBJECT = eINSTANCE.getGenDomainObject_OwnedObject();
 
 		/**
 		 * The meta object literal for the '<em><b>Gen Model</b></em>' reference feature.
@@ -6656,8 +6650,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_OBJECT__GEN_MODEL = eINSTANCE
-				.getGenDomainObject_GenModel();
+		EReference GEN_DOMAIN_OBJECT__GEN_MODEL = eINSTANCE.getGenDomainObject_GenModel();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainBlockRelationImpl <em>Gen Domain Block Relation</em>}' class.
@@ -6667,8 +6660,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * @see com.zeligsoft.ddk.zdl.zdlgen.internal.impl.ZDLGenPackageImpl#getGenDomainBlockRelation()
 		 * @generated
 		 */
-		EClass GEN_DOMAIN_BLOCK_RELATION = eINSTANCE
-				.getGenDomainBlockRelation();
+		EClass GEN_DOMAIN_BLOCK_RELATION = eINSTANCE.getGenDomainBlockRelation();
 
 		/**
 		 * The meta object literal for the '<em><b>Source</b></em>' container reference feature.
@@ -6676,8 +6668,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_BLOCK_RELATION__SOURCE = eINSTANCE
-				.getGenDomainBlockRelation_Source();
+		EReference GEN_DOMAIN_BLOCK_RELATION__SOURCE = eINSTANCE.getGenDomainBlockRelation_Source();
 
 		/**
 		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
@@ -6685,8 +6676,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_BLOCK_RELATION__TARGET = eINSTANCE
-				.getGenDomainBlockRelation_Target();
+		EReference GEN_DOMAIN_BLOCK_RELATION__TARGET = eINSTANCE.getGenDomainBlockRelation_Target();
 
 		/**
 		 * The meta object literal for the '<em><b>Domain Block Relation</b></em>' reference feature.
@@ -6713,8 +6703,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_ATTRIBUTE__TYPE = eINSTANCE
-				.getGenDomainAttribute_Type();
+		EReference GEN_DOMAIN_ATTRIBUTE__TYPE = eINSTANCE.getGenDomainAttribute_Type();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainDataTypeImpl <em>Gen Domain Data Type</em>}' class.
@@ -6732,8 +6721,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_DATA_TYPE__DOMAIN_DATA_TYPE = eINSTANCE
-				.getGenDomainDataType_DomainDataType();
+		EReference GEN_DOMAIN_DATA_TYPE__DOMAIN_DATA_TYPE = eINSTANCE.getGenDomainDataType_DomainDataType();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenAttributeOverrideImpl <em>Gen Attribute Override</em>}' class.
@@ -6751,8 +6739,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_ATTRIBUTE_OVERRIDE__NAME = eINSTANCE
-				.getGenAttributeOverride_Name();
+		EAttribute GEN_ATTRIBUTE_OVERRIDE__NAME = eINSTANCE.getGenAttributeOverride_Name();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenMenuImpl <em>Gen Menu</em>}' class.
@@ -6796,8 +6783,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_MENU_ITEM__DESCRIPTION = eINSTANCE
-				.getGenMenuItem_Description();
+		EAttribute GEN_MENU_ITEM__DESCRIPTION = eINSTANCE.getGenMenuItem_Description();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -6813,8 +6799,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_MENU_ITEM__OVERRIDES = eINSTANCE
-				.getGenMenuItem_Overrides();
+		EReference GEN_MENU_ITEM__OVERRIDES = eINSTANCE.getGenMenuItem_Overrides();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenUMLMenuImpl <em>Gen UML Menu</em>}' class.
@@ -6832,8 +6817,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_UML_MENU__UML_METACLASS = eINSTANCE
-				.getGenUMLMenu_UmlMetaclass();
+		EReference GEN_UML_MENU__UML_METACLASS = eINSTANCE.getGenUMLMenu_UmlMetaclass();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenMenuTargetImpl <em>Gen Menu Target</em>}' class.
@@ -6889,8 +6873,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_PALETTE__OWNED_DRAWER = eINSTANCE
-				.getGenPalette_OwnedDrawer();
+		EReference GEN_PALETTE__OWNED_DRAWER = eINSTANCE.getGenPalette_OwnedDrawer();
 
 		/**
 		 * The meta object literal for the '<em><b>Drawer</b></em>' reference list feature.
@@ -6916,8 +6899,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_PALETTE_DRAWER__SPECIALIZES = eINSTANCE
-				.getGenPaletteDrawer_Specializes();
+		EReference GEN_PALETTE_DRAWER__SPECIALIZES = eINSTANCE.getGenPaletteDrawer_Specializes();
 
 		/**
 		 * The meta object literal for the '<em><b>Palette</b></em>' container reference feature.
@@ -6925,8 +6907,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_PALETTE_DRAWER__PALETTE = eINSTANCE
-				.getGenPaletteDrawer_Palette();
+		EReference GEN_PALETTE_DRAWER__PALETTE = eINSTANCE.getGenPaletteDrawer_Palette();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPaletteToolContainerImpl <em>Gen Palette Tool Container</em>}' class.
@@ -6936,8 +6917,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * @see com.zeligsoft.ddk.zdl.zdlgen.internal.impl.ZDLGenPackageImpl#getGenPaletteToolContainer()
 		 * @generated
 		 */
-		EClass GEN_PALETTE_TOOL_CONTAINER = eINSTANCE
-				.getGenPaletteToolContainer();
+		EClass GEN_PALETTE_TOOL_CONTAINER = eINSTANCE.getGenPaletteToolContainer();
 
 		/**
 		 * The meta object literal for the '<em><b>Owned Tool</b></em>' containment reference list feature.
@@ -6945,8 +6925,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_PALETTE_TOOL_CONTAINER__OWNED_TOOL = eINSTANCE
-				.getGenPaletteToolContainer_OwnedTool();
+		EReference GEN_PALETTE_TOOL_CONTAINER__OWNED_TOOL = eINSTANCE.getGenPaletteToolContainer_OwnedTool();
 
 		/**
 		 * The meta object literal for the '<em><b>Tool</b></em>' reference list feature.
@@ -6954,8 +6933,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_PALETTE_TOOL_CONTAINER__TOOL = eINSTANCE
-				.getGenPaletteToolContainer_Tool();
+		EReference GEN_PALETTE_TOOL_CONTAINER__TOOL = eINSTANCE.getGenPaletteToolContainer_Tool();
 
 		/**
 		 * The meta object literal for the '<em><b>Target Diagram</b></em>' attribute list feature.
@@ -6963,8 +6941,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_PALETTE_TOOL_CONTAINER__TARGET_DIAGRAM = eINSTANCE
-				.getGenPaletteToolContainer_TargetDiagram();
+		EAttribute GEN_PALETTE_TOOL_CONTAINER__TARGET_DIAGRAM = eINSTANCE.getGenPaletteToolContainer_TargetDiagram();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPaletteToolImpl <em>Gen Palette Tool</em>}' class.
@@ -6982,8 +6959,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_PALETTE_TOOL__OVERRIDES = eINSTANCE
-				.getGenPaletteTool_Overrides();
+		EReference GEN_PALETTE_TOOL__OVERRIDES = eINSTANCE.getGenPaletteTool_Overrides();
 
 		/**
 		 * The meta object literal for the '<em><b>Container</b></em>' container reference feature.
@@ -6991,8 +6967,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_PALETTE_TOOL__CONTAINER = eINSTANCE
-				.getGenPaletteTool_Container();
+		EReference GEN_PALETTE_TOOL__CONTAINER = eINSTANCE.getGenPaletteTool_Container();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenMenuModelImpl <em>Gen Menu Model</em>}' class.
@@ -7018,8 +6993,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_MENU_MODEL__UML_MENUS = eINSTANCE
-				.getGenMenuModel_UmlMenus();
+		EReference GEN_MENU_MODEL__UML_MENUS = eINSTANCE.getGenMenuModel_UmlMenus();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainBlockReferenceImpl <em>Gen Domain Block Reference</em>}' class.
@@ -7029,8 +7003,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * @see com.zeligsoft.ddk.zdl.zdlgen.internal.impl.ZDLGenPackageImpl#getGenDomainBlockReference()
 		 * @generated
 		 */
-		EClass GEN_DOMAIN_BLOCK_REFERENCE = eINSTANCE
-				.getGenDomainBlockReference();
+		EClass GEN_DOMAIN_BLOCK_REFERENCE = eINSTANCE.getGenDomainBlockReference();
 
 		/**
 		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
@@ -7038,8 +7011,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_BLOCK_REFERENCE__TARGET = eINSTANCE
-				.getGenDomainBlockReference_Target();
+		EReference GEN_DOMAIN_BLOCK_REFERENCE__TARGET = eINSTANCE.getGenDomainBlockReference_Target();
 
 		/**
 		 * The meta object literal for the '<em><b>Domain Block Reference</b></em>' reference feature.
@@ -7075,8 +7047,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_ENUM__LITERAL = eINSTANCE
-				.getGenDomainEnum_Literal();
+		EReference GEN_DOMAIN_ENUM__LITERAL = eINSTANCE.getGenDomainEnum_Literal();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainEnumLiteralImpl <em>Gen Domain Enum Literal</em>}' class.
@@ -7094,8 +7065,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_ENUM_LITERAL__DOMAIN_ENUM_LITERAL = eINSTANCE
-				.getGenDomainEnumLiteral_DomainEnumLiteral();
+		EReference GEN_DOMAIN_ENUM_LITERAL__DOMAIN_ENUM_LITERAL = eINSTANCE.getGenDomainEnumLiteral_DomainEnumLiteral();
 
 		/**
 		 * The meta object literal for the '<em><b>Enumeration</b></em>' container reference feature.
@@ -7103,8 +7073,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_ENUM_LITERAL__ENUMERATION = eINSTANCE
-				.getGenDomainEnumLiteral_Enumeration();
+		EReference GEN_DOMAIN_ENUM_LITERAL__ENUMERATION = eINSTANCE.getGenDomainEnumLiteral_Enumeration();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPaletteCreationToolImpl <em>Gen Palette Creation Tool</em>}' class.
@@ -7114,8 +7083,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * @see com.zeligsoft.ddk.zdl.zdlgen.internal.impl.ZDLGenPackageImpl#getGenPaletteCreationTool()
 		 * @generated
 		 */
-		EClass GEN_PALETTE_CREATION_TOOL = eINSTANCE
-				.getGenPaletteCreationTool();
+		EClass GEN_PALETTE_CREATION_TOOL = eINSTANCE.getGenPaletteCreationTool();
 
 		/**
 		 * The meta object literal for the '<em><b>Type</b></em>' reference feature.
@@ -7123,8 +7091,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_PALETTE_CREATION_TOOL__TYPE = eINSTANCE
-				.getGenPaletteCreationTool_Type();
+		EReference GEN_PALETTE_CREATION_TOOL__TYPE = eINSTANCE.getGenPaletteCreationTool_Type();
 
 		/**
 		 * The meta object literal for the '<em><b>Element Type Hint</b></em>' attribute feature.
@@ -7132,8 +7099,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_PALETTE_CREATION_TOOL__ELEMENT_TYPE_HINT = eINSTANCE
-				.getGenPaletteCreationTool_ElementTypeHint();
+		EAttribute GEN_PALETTE_CREATION_TOOL__ELEMENT_TYPE_HINT = eINSTANCE.getGenPaletteCreationTool_ElementTypeHint();
 
 		/**
 		 * The meta object literal for the '<em><b>Expression</b></em>' containment reference list feature.
@@ -7141,8 +7107,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_PALETTE_CREATION_TOOL__EXPRESSION = eINSTANCE
-				.getGenPaletteCreationTool_Expression();
+		EReference GEN_PALETTE_CREATION_TOOL__EXPRESSION = eINSTANCE.getGenPaletteCreationTool_Expression();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.ExpressionImpl <em>Expression</em>}' class.
@@ -7168,8 +7133,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute EXPRESSION__EXPRESSION = eINSTANCE
-				.getExpression_Expression();
+		EAttribute EXPRESSION__EXPRESSION = eINSTANCE.getExpression_Expression();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPaletteStackImpl <em>Gen Palette Stack</em>}' class.
@@ -7187,8 +7151,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_PALETTE_STACK__ACTIVE_TOOL = eINSTANCE
-				.getGenPaletteStack_ActiveTool();
+		EReference GEN_PALETTE_STACK__ACTIVE_TOOL = eINSTANCE.getGenPaletteStack_ActiveTool();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.OawExpressionImpl <em>Oaw Expression</em>}' class.
@@ -7206,8 +7169,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute OAW_EXPRESSION__VARIABLE_NAME = eINSTANCE
-				.getOawExpression_VariableName();
+		EAttribute OAW_EXPRESSION__VARIABLE_NAME = eINSTANCE.getOawExpression_VariableName();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.OawXtendImpl <em>Oaw Xtend</em>}' class.
@@ -7225,8 +7187,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute OAW_XTEND__EXTENSION_FILE = eINSTANCE
-				.getOawXtend_ExtensionFile();
+		EAttribute OAW_XTEND__EXTENSION_FILE = eINSTANCE.getOawXtend_ExtensionFile();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenMenuActionImpl <em>Gen Menu Action</em>}' class.
@@ -7254,8 +7215,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_MENU_DELEGATE_ACTION__HOST_BUNDLE = eINSTANCE
-				.getGenMenuDelegateAction_HostBundle();
+		EAttribute GEN_MENU_DELEGATE_ACTION__HOST_BUNDLE = eINSTANCE.getGenMenuDelegateAction_HostBundle();
 
 		/**
 		 * The meta object literal for the '<em><b>Class Name</b></em>' attribute feature.
@@ -7263,8 +7223,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_MENU_DELEGATE_ACTION__CLASS_NAME = eINSTANCE
-				.getGenMenuDelegateAction_ClassName();
+		EAttribute GEN_MENU_DELEGATE_ACTION__CLASS_NAME = eINSTANCE.getGenMenuDelegateAction_ClassName();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenMenuCreateActionImpl <em>Gen Menu Create Action</em>}' class.
@@ -7282,8 +7241,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_MENU_CREATE_ACTION__TYPE_HINT = eINSTANCE
-				.getGenMenuCreateAction_TypeHint();
+		EAttribute GEN_MENU_CREATE_ACTION__TYPE_HINT = eINSTANCE.getGenMenuCreateAction_TypeHint();
 
 		/**
 		 * The meta object literal for the '<em><b>Create Concept</b></em>' reference feature.
@@ -7291,8 +7249,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_MENU_CREATE_ACTION__CREATE_CONCEPT = eINSTANCE
-				.getGenMenuCreateAction_CreateConcept();
+		EReference GEN_MENU_CREATE_ACTION__CREATE_CONCEPT = eINSTANCE.getGenMenuCreateAction_CreateConcept();
 
 		/**
 		 * The meta object literal for the '<em><b>Expression</b></em>' containment reference list feature.
@@ -7300,8 +7257,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_MENU_CREATE_ACTION__EXPRESSION = eINSTANCE
-				.getGenMenuCreateAction_Expression();
+		EReference GEN_MENU_CREATE_ACTION__EXPRESSION = eINSTANCE.getGenMenuCreateAction_Expression();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenMenuSeparatorImpl <em>Gen Menu Separator</em>}' class.
@@ -7339,8 +7295,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_REFERENCE__TARGET = eINSTANCE
-				.getGenDomainReference_Target();
+		EReference GEN_DOMAIN_REFERENCE__TARGET = eINSTANCE.getGenDomainReference_Target();
 
 		/**
 		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
@@ -7348,8 +7303,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_REFERENCE__SOURCE = eINSTANCE
-				.getGenDomainReference_Source();
+		EReference GEN_DOMAIN_REFERENCE__SOURCE = eINSTANCE.getGenDomainReference_Source();
 
 		/**
 		 * The meta object literal for the '<em><b>Domain Reference</b></em>' reference feature.
@@ -7357,8 +7311,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_REFERENCE__DOMAIN_REFERENCE = eINSTANCE
-				.getGenDomainReference_DomainReference();
+		EReference GEN_DOMAIN_REFERENCE__DOMAIN_REFERENCE = eINSTANCE.getGenDomainReference_DomainReference();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainAttributePresentationImpl <em>Gen Domain Attribute Presentation</em>}' class.
@@ -7368,8 +7321,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * @see com.zeligsoft.ddk.zdl.zdlgen.internal.impl.ZDLGenPackageImpl#getGenDomainAttributePresentation()
 		 * @generated
 		 */
-		EClass GEN_DOMAIN_ATTRIBUTE_PRESENTATION = eINSTANCE
-				.getGenDomainAttributePresentation();
+		EClass GEN_DOMAIN_ATTRIBUTE_PRESENTATION = eINSTANCE.getGenDomainAttributePresentation();
 
 		/**
 		 * The meta object literal for the '<em><b>Visible</b></em>' attribute feature.
@@ -7377,8 +7329,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE = eINSTANCE
-				.getGenDomainAttributePresentation_Visible();
+		EAttribute GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE = eINSTANCE.getGenDomainAttributePresentation_Visible();
 
 		/**
 		 * The meta object literal for the '<em><b>Read Only</b></em>' attribute feature.
@@ -7413,8 +7364,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER = eINSTANCE
-				.getGenDomainAttributePresentation_Order();
+		EAttribute GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER = eINSTANCE.getGenDomainAttributePresentation_Order();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainSpecializationImpl <em>Gen Domain Specialization</em>}' class.
@@ -7424,8 +7374,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * @see com.zeligsoft.ddk.zdl.zdlgen.internal.impl.ZDLGenPackageImpl#getGenDomainSpecialization()
 		 * @generated
 		 */
-		EClass GEN_DOMAIN_SPECIALIZATION = eINSTANCE
-				.getGenDomainSpecialization();
+		EClass GEN_DOMAIN_SPECIALIZATION = eINSTANCE.getGenDomainSpecialization();
 
 		/**
 		 * The meta object literal for the '<em><b>Domain Block</b></em>' containment reference list feature.
@@ -7433,8 +7382,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK = eINSTANCE
-				.getGenDomainSpecialization_DomainBlock();
+		EReference GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK = eINSTANCE.getGenDomainSpecialization_DomainBlock();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelLibraryReferenceImpl <em>Gen Domain Model Library Reference</em>}' class.
@@ -7444,8 +7392,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * @see com.zeligsoft.ddk.zdl.zdlgen.internal.impl.ZDLGenPackageImpl#getGenDomainModelLibraryReference()
 		 * @generated
 		 */
-		EClass GEN_DOMAIN_MODEL_LIBRARY_REFERENCE = eINSTANCE
-				.getGenDomainModelLibraryReference();
+		EClass GEN_DOMAIN_MODEL_LIBRARY_REFERENCE = eINSTANCE.getGenDomainModelLibraryReference();
 
 		/**
 		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
@@ -7453,8 +7400,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__TARGET = eINSTANCE
-				.getGenDomainModelLibraryReference_Target();
+		EReference GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__TARGET = eINSTANCE.getGenDomainModelLibraryReference_Target();
 
 		/**
 		 * The meta object literal for the '<em><b>Domain Model Library Reference</b></em>' reference feature.
@@ -7517,8 +7463,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_SPECIALIZATION__DOMAIN_CONCEPT = eINSTANCE
-				.getGenDomainSpecialization_DomainConcept();
+		EReference GEN_DOMAIN_SPECIALIZATION__DOMAIN_CONCEPT = eINSTANCE.getGenDomainSpecialization_DomainConcept();
 
 		/**
 		 * The meta object literal for the '<em><b>Plugin Name</b></em>' attribute feature.
@@ -7526,8 +7471,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_DOMAIN_SPECIALIZATION__PLUGIN_NAME = eINSTANCE
-				.getGenDomainSpecialization_PluginName();
+		EAttribute GEN_DOMAIN_SPECIALIZATION__PLUGIN_NAME = eINSTANCE.getGenDomainSpecialization_PluginName();
 
 		/**
 		 * The meta object literal for the '<em><b>Resource Name</b></em>' attribute feature.
@@ -7535,8 +7479,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_DOMAIN_SPECIALIZATION__RESOURCE_NAME = eINSTANCE
-				.getGenDomainSpecialization_ResourceName();
+		EAttribute GEN_DOMAIN_SPECIALIZATION__RESOURCE_NAME = eINSTANCE.getGenDomainSpecialization_ResourceName();
 
 		/**
 		 * The meta object literal for the '<em><b>Domain Model Library</b></em>' containment reference list feature.
@@ -7580,8 +7523,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_DOMAIN_SPECIALIZATION__VERSION = eINSTANCE
-				.getGenDomainSpecialization_Version();
+		EAttribute GEN_DOMAIN_SPECIALIZATION__VERSION = eINSTANCE.getGenDomainSpecialization_Version();
 
 		/**
 		 * The meta object literal for the '<em><b>Code Gen Target</b></em>' attribute feature.
@@ -7589,8 +7531,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_DOMAIN_SPECIALIZATION__CODE_GEN_TARGET = eINSTANCE
-				.getGenDomainSpecialization_CodeGenTarget();
+		EAttribute GEN_DOMAIN_SPECIALIZATION__CODE_GEN_TARGET = eINSTANCE.getGenDomainSpecialization_CodeGenTarget();
 
 		/**
 		 * The meta object literal for the '<em><b>Rhapsody Java Project</b></em>' attribute feature.
@@ -7644,8 +7585,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_MODEL__DOMAIN_MODEL = eINSTANCE
-				.getGenDomainModel_DomainModel();
+		EReference GEN_DOMAIN_MODEL__DOMAIN_MODEL = eINSTANCE.getGenDomainModel_DomainModel();
 
 		/**
 		 * The meta object literal for the '<em><b>Ns URI</b></em>' attribute feature.
@@ -7653,8 +7593,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_DOMAIN_MODEL__NS_URI = eINSTANCE
-				.getGenDomainModel_NsURI();
+		EAttribute GEN_DOMAIN_MODEL__NS_URI = eINSTANCE.getGenDomainModel_NsURI();
 
 		/**
 		 * The meta object literal for the '<em><b>Root Package</b></em>' attribute feature.
@@ -7662,8 +7601,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_DOMAIN_MODEL__ROOT_PACKAGE = eINSTANCE
-				.getGenDomainModel_RootPackage();
+		EAttribute GEN_DOMAIN_MODEL__ROOT_PACKAGE = eINSTANCE.getGenDomainModel_RootPackage();
 
 		/**
 		 * The meta object literal for the '<em><b>Implementation Sub Package</b></em>' attribute feature.
@@ -7680,8 +7618,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_DOMAIN_MODEL__IMPL_SUFFIX = eINSTANCE
-				.getGenDomainModel_ImplSuffix();
+		EAttribute GEN_DOMAIN_MODEL__IMPL_SUFFIX = eINSTANCE.getGenDomainModel_ImplSuffix();
 
 		/**
 		 * The meta object literal for the '<em><b>Api Project</b></em>' attribute feature.
@@ -7689,8 +7626,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GEN_DOMAIN_MODEL__API_PROJECT = eINSTANCE
-				.getGenDomainModel_ApiProject();
+		EAttribute GEN_DOMAIN_MODEL__API_PROJECT = eINSTANCE.getGenDomainModel_ApiProject();
 
 		/**
 		 * The meta object literal for the '<em><b>Palette</b></em>' containment reference feature.
@@ -7698,8 +7634,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_MODEL__PALETTE = eINSTANCE
-				.getGenDomainModel_Palette();
+		EReference GEN_DOMAIN_MODEL__PALETTE = eINSTANCE.getGenDomainModel_Palette();
 
 		/**
 		 * The meta object literal for the '<em><b>Menu Model</b></em>' containment reference feature.
@@ -7707,8 +7642,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_MODEL__MENU_MODEL = eINSTANCE
-				.getGenDomainModel_MenuModel();
+		EReference GEN_DOMAIN_MODEL__MENU_MODEL = eINSTANCE.getGenDomainModel_MenuModel();
 
 		/**
 		 * The meta object literal for the '<em><b>Owning Gen Model</b></em>' container reference feature.
@@ -7716,8 +7650,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_MODEL__OWNING_GEN_MODEL = eINSTANCE
-				.getGenDomainModel_OwningGenModel();
+		EReference GEN_DOMAIN_MODEL__OWNING_GEN_MODEL = eINSTANCE.getGenDomainModel_OwningGenModel();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenModelImpl <em>Gen Model</em>}' class.
@@ -7735,8 +7668,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_MODEL__REFERENCED_MODEL = eINSTANCE
-				.getGenModel_ReferencedModel();
+		EReference GEN_MODEL__REFERENCED_MODEL = eINSTANCE.getGenModel_ReferencedModel();
 
 		/**
 		 * The meta object literal for the '<em><b>Owned Model</b></em>' containment reference list feature.
@@ -7752,8 +7684,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_MODEL__DOMAIN_MODEL = eINSTANCE
-				.getGenModel_DomainModel();
+		EReference GEN_MODEL__DOMAIN_MODEL = eINSTANCE.getGenModel_DomainModel();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainPackageableElementImpl <em>Gen Domain Packageable Element</em>}' class.
@@ -7763,8 +7694,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * @see com.zeligsoft.ddk.zdl.zdlgen.internal.impl.ZDLGenPackageImpl#getGenDomainPackageableElement()
 		 * @generated
 		 */
-		EClass GEN_DOMAIN_PACKAGEABLE_ELEMENT = eINSTANCE
-				.getGenDomainPackageableElement();
+		EClass GEN_DOMAIN_PACKAGEABLE_ELEMENT = eINSTANCE.getGenDomainPackageableElement();
 
 		/**
 		 * The meta object literal for the '<em><b>Package</b></em>' container reference feature.
@@ -7772,8 +7702,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE = eINSTANCE
-				.getGenDomainPackageableElement_Package();
+		EReference GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE = eINSTANCE.getGenDomainPackageableElement_Package();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainPackageImpl <em>Gen Domain Package</em>}' class.
@@ -7791,8 +7720,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_PACKAGE__ELEMENT = eINSTANCE
-				.getGenDomainPackage_Element();
+		EReference GEN_DOMAIN_PACKAGE__ELEMENT = eINSTANCE.getGenDomainPackage_Element();
 
 		/**
 		 * The meta object literal for the '<em><b>Domain Package</b></em>' reference feature.
@@ -7800,8 +7728,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GEN_DOMAIN_PACKAGE__DOMAIN_PACKAGE = eINSTANCE
-				.getGenDomainPackage_DomainPackage();
+		EReference GEN_DOMAIN_PACKAGE__DOMAIN_PACKAGE = eINSTANCE.getGenDomainPackage_DomainPackage();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConceptCategory <em>Gen Domain Concept Category</em>}' enum.
@@ -7811,8 +7738,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * @see com.zeligsoft.ddk.zdl.zdlgen.internal.impl.ZDLGenPackageImpl#getGenDomainConceptCategory()
 		 * @generated
 		 */
-		EEnum GEN_DOMAIN_CONCEPT_CATEGORY = eINSTANCE
-				.getGenDomainConceptCategory();
+		EEnum GEN_DOMAIN_CONCEPT_CATEGORY = eINSTANCE.getGenDomainConceptCategory();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainAttributePresentationKind <em>Gen Domain Attribute Presentation Kind</em>}' enum.
@@ -7822,8 +7748,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * @see com.zeligsoft.ddk.zdl.zdlgen.internal.impl.ZDLGenPackageImpl#getGenDomainAttributePresentationKind()
 		 * @generated
 		 */
-		EEnum GEN_DOMAIN_ATTRIBUTE_PRESENTATION_KIND = eINSTANCE
-				.getGenDomainAttributePresentationKind();
+		EEnum GEN_DOMAIN_ATTRIBUTE_PRESENTATION_KIND = eINSTANCE.getGenDomainAttributePresentationKind();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenAllDomainCassifiersMode <em>Gen All Domain Cassifiers Mode</em>}' enum.
@@ -7833,8 +7758,7 @@ public interface ZDLGenPackage extends EPackage {
 		 * @see com.zeligsoft.ddk.zdl.zdlgen.internal.impl.ZDLGenPackageImpl#getGenAllDomainCassifiersMode()
 		 * @generated
 		 */
-		EEnum GEN_ALL_DOMAIN_CASSIFIERS_MODE = eINSTANCE
-				.getGenAllDomainCassifiersMode();
+		EEnum GEN_ALL_DOMAIN_CASSIFIERS_MODE = eINSTANCE.getGenAllDomainCassifiersMode();
 
 	}
 

@@ -60,8 +60,7 @@ public class GenModelOperations extends GenDomainObjectOperations {
 	 * 
 	 * @generated NOT
 	 */
-	public static EList<Model> findUsedDomainModels(GenModel genModel,
-			Model model) {
+	public static EList<Model> findUsedDomainModels(GenModel genModel, Model model) {
 
 		// initial set of models to crawl, looking for external cross-references
 		Set<Model> initialModels = Collections.singleton(model);
@@ -92,11 +91,9 @@ public class GenModelOperations extends GenDomainObjectOperations {
 			}
 
 			@Override
-			protected boolean crossReference(EObject object,
-					EReference reference, EObject crossReferencedEObject) {
+			protected boolean crossReference(EObject object, EReference reference, EObject crossReferencedEObject) {
 
-				EObject root = EcoreUtil
-						.getRootContainer(crossReferencedEObject);
+				EObject root = EcoreUtil.getRootContainer(crossReferencedEObject);
 				if ((root instanceof Model) && !allModels.contains(root)) {
 					newModels.add((Model) root);
 				}
@@ -109,15 +106,13 @@ public class GenModelOperations extends GenDomainObjectOperations {
 		Set<Model> newModels = new java.util.HashSet<Model>(initialModels);
 
 		do {
-			newModels = new ModelCrossReferencer(newModels, result)
-					.findReferencedModels();
+			newModels = new ModelCrossReferencer(newModels, result).findReferencedModels();
 			result.addAll(newModels);
 		} while (!newModels.isEmpty());
 
 		result.removeAll(initialModels); // these are my own models, not referenced
 
-		return new BasicEList.UnmodifiableEList<Model>(result.size(),
-				result.toArray());
+		return new BasicEList.UnmodifiableEList<Model>(result.size(), result.toArray());
 	}
 
 	/**
@@ -125,8 +120,7 @@ public class GenModelOperations extends GenDomainObjectOperations {
 	 * 
 	 * @generated NOT
 	 */
-	public static EList<Model> getDomainModels(GenModel genModel,
-			EList<String> uris) {
+	public static EList<Model> getDomainModels(GenModel genModel, EList<String> uris) {
 
 		Set<Model> result = new java.util.LinkedHashSet<Model>(); // ordered
 
@@ -145,8 +139,7 @@ public class GenModelOperations extends GenDomainObjectOperations {
 			}
 		}
 
-		return new BasicEList.UnmodifiableEList<Model>(result.size(),
-				result.toArray());
+		return new BasicEList.UnmodifiableEList<Model>(result.size(), result.toArray());
 	}
 
 } // GenModelOperations

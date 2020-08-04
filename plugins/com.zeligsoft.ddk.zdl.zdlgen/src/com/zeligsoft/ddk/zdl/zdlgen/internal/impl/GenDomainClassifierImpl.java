@@ -33,16 +33,15 @@ import org.eclipse.emf.common.notify.NotificationChain;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainClassifierImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainClassifierImpl#getBlock <em>Block</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class GenDomainClassifierImpl extends GenDomainNamedElementImpl
-		implements GenDomainClassifier {
+public abstract class GenDomainClassifierImpl extends GenDomainNamedElementImpl implements GenDomainClassifier {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -71,8 +70,7 @@ public abstract class GenDomainClassifierImpl extends GenDomainNamedElementImpl
 	@Override
 	public GenDomainObject getOwner() {
 		GenDomainObject owner = basicGetOwner();
-		return owner != null && owner.eIsProxy() ? (GenDomainObject) eResolveProxy((InternalEObject) owner)
-				: owner;
+		return owner != null && owner.eIsProxy() ? (GenDomainObject) eResolveProxy((InternalEObject) owner) : owner;
 	}
 
 	/**
@@ -98,7 +96,7 @@ public abstract class GenDomainClassifierImpl extends GenDomainNamedElementImpl
 	public GenDomainBlock getBlock() {
 		if (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK)
 			return null;
-		return (GenDomainBlock) eContainer();
+		return (GenDomainBlock) eInternalContainer();
 	}
 
 	/**
@@ -106,10 +104,8 @@ public abstract class GenDomainClassifierImpl extends GenDomainNamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetBlock(GenDomainBlock newBlock,
-			NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newBlock,
-				ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK, msgs);
+	public NotificationChain basicSetBlock(GenDomainBlock newBlock, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newBlock, ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK, msgs);
 		return msgs;
 	}
 
@@ -123,21 +119,18 @@ public abstract class GenDomainClassifierImpl extends GenDomainNamedElementImpl
 		if (newBlock != eInternalContainer()
 				|| (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK && newBlock != null)) {
 			if (EcoreUtil.isAncestor(this, newBlock))
-				throw new IllegalArgumentException(
-						"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newBlock != null)
-				msgs = ((InternalEObject) newBlock).eInverseAdd(this,
-						ZDLGenPackage.GEN_DOMAIN_BLOCK__CLASSIFIER,
+				msgs = ((InternalEObject) newBlock).eInverseAdd(this, ZDLGenPackage.GEN_DOMAIN_BLOCK__CLASSIFIER,
 						GenDomainBlock.class, msgs);
 			msgs = basicSetBlock(newBlock, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK, newBlock,
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK, newBlock,
 					newBlock));
 	}
 
@@ -147,8 +140,7 @@ public abstract class GenDomainClassifierImpl extends GenDomainNamedElementImpl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK:
 			if (eInternalContainer() != null)
@@ -164,8 +156,7 @@ public abstract class GenDomainClassifierImpl extends GenDomainNamedElementImpl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK:
 			return basicSetBlock(null, msgs);
@@ -179,12 +170,10 @@ public abstract class GenDomainClassifierImpl extends GenDomainNamedElementImpl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(
-			NotificationChain msgs) {
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 		case ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK:
-			return eInternalContainer().eInverseRemove(this,
-					ZDLGenPackage.GEN_DOMAIN_BLOCK__CLASSIFIER,
+			return eInternalContainer().eInverseRemove(this, ZDLGenPackage.GEN_DOMAIN_BLOCK__CLASSIFIER,
 					GenDomainBlock.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
@@ -242,6 +231,8 @@ public abstract class GenDomainClassifierImpl extends GenDomainNamedElementImpl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__OWNER:
+			return isSetOwner();
 		case ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK:
 			return getBlock() != null;
 		}
@@ -255,8 +246,7 @@ public abstract class GenDomainClassifierImpl extends GenDomainNamedElementImpl
 	 */
 	@Override
 	public boolean isSetOwner() {
-		return super.isSetOwner()
-				|| eIsSet(ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK);
+		return super.isSetOwner() || eIsSet(ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK);
 	}
 
 } //GenDomainClassifierImpl

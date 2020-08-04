@@ -22,10 +22,10 @@ package com.zeligsoft.ddk.zdl.zdlgen;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainPackageableElement#getPackage <em>Package</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainPackageableElement()
  * @model abstract="true"
@@ -38,10 +38,10 @@ public interface GenDomainPackageableElement extends GenDomainNamedElement {
 	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainPackage#getElements <em>Element</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwner() <em>Owner</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Package</em>' container reference isn't clear,
@@ -53,6 +53,7 @@ public interface GenDomainPackageableElement extends GenDomainNamedElement {
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainPackageableElement_Package()
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainPackage#getElements
 	 * @model opposite="element" transient="false" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	GenDomainPackage getPackage();

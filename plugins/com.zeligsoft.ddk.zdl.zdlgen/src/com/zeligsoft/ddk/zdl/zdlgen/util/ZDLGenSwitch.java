@@ -84,7 +84,7 @@ public class ZDLGenSwitch<T> extends Switch<T> {
 	 * Checks whether this is a switch for the given package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @parameter ePackage the package in question.
+	 * @param ePackage the package in question.
 	 * @return whether this is a switch for the given package.
 	 * @generated
 	 */
@@ -1181,8 +1181,7 @@ public class ZDLGenSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseGenDomainAttributePresentation(
-			GenDomainAttributePresentation object) {
+	public T caseGenDomainAttributePresentation(GenDomainAttributePresentation object) {
 		return null;
 	}
 
@@ -1212,8 +1211,7 @@ public class ZDLGenSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseGenDomainModelLibraryReference(
-			GenDomainModelLibraryReference object) {
+	public T caseGenDomainModelLibraryReference(GenDomainModelLibraryReference object) {
 		return null;
 	}
 

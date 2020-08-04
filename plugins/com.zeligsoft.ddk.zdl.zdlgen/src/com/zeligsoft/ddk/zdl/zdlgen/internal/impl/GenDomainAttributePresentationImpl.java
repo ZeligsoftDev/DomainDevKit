@@ -34,6 +34,7 @@ import org.eclipse.uml2.common.util.CacheAdapter;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainAttributePresentationImpl#isVisible <em>Visible</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainAttributePresentationImpl#isReadOnly <em>Read Only</em>}</li>
@@ -41,12 +42,10 @@ import org.eclipse.uml2.common.util.CacheAdapter;
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainAttributePresentationImpl#getPresentationKind <em>Presentation Kind</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainAttributePresentationImpl#getOrder <em>Order</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class GenDomainAttributePresentationImpl extends EObjectImpl
-		implements GenDomainAttributePresentation {
+public abstract class GenDomainAttributePresentationImpl extends EObjectImpl implements GenDomainAttributePresentation {
 	/**
 	 * The default value of the '{@link #isVisible() <em>Visible</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -191,8 +190,7 @@ public abstract class GenDomainAttributePresentationImpl extends EObjectImpl
 			eFlags &= ~VISIBLE_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE,
-					oldVisible, newVisible));
+					ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE, oldVisible, newVisible));
 	}
 
 	/**
@@ -219,8 +217,7 @@ public abstract class GenDomainAttributePresentationImpl extends EObjectImpl
 			eFlags &= ~READ_ONLY_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__READ_ONLY,
-					oldReadOnly, newReadOnly));
+					ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__READ_ONLY, oldReadOnly, newReadOnly));
 	}
 
 	/**
@@ -243,11 +240,9 @@ public abstract class GenDomainAttributePresentationImpl extends EObjectImpl
 		String oldPresentationHint = presentationHint;
 		presentationHint = newPresentationHint;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__PRESENTATION_HINT,
-					oldPresentationHint, presentationHint));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__PRESENTATION_HINT, oldPresentationHint,
+					presentationHint));
 	}
 
 	/**
@@ -266,17 +261,13 @@ public abstract class GenDomainAttributePresentationImpl extends EObjectImpl
 	 * @generated
 	 */
 	@Override
-	public void setPresentationKind(
-			GenDomainAttributePresentationKind newPresentationKind) {
+	public void setPresentationKind(GenDomainAttributePresentationKind newPresentationKind) {
 		GenDomainAttributePresentationKind oldPresentationKind = presentationKind;
-		presentationKind = newPresentationKind == null ? PRESENTATION_KIND_EDEFAULT
-				: newPresentationKind;
+		presentationKind = newPresentationKind == null ? PRESENTATION_KIND_EDEFAULT : newPresentationKind;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__PRESENTATION_KIND,
-					oldPresentationKind, presentationKind));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__PRESENTATION_KIND, oldPresentationKind,
+					presentationKind));
 	}
 
 	/**
@@ -300,8 +291,7 @@ public abstract class GenDomainAttributePresentationImpl extends EObjectImpl
 		order = newOrder;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER,
-					oldOrder, order));
+					ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER, oldOrder, order));
 	}
 
 	/**
@@ -413,7 +403,7 @@ public abstract class GenDomainAttributePresentationImpl extends EObjectImpl
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (visible: "); //$NON-NLS-1$
 		result.append((eFlags & VISIBLE_EFLAG) != 0);
 		result.append(", readOnly: "); //$NON-NLS-1$
@@ -436,7 +426,7 @@ public abstract class GenDomainAttributePresentationImpl extends EObjectImpl
 	 * @generated
 	 */
 	protected CacheAdapter getCacheAdapter() {
-		return CacheAdapter.getCacheAdapter(this);
+		return CacheAdapter.getInstance();
 	}
 
 } //GenDomainAttributePresentationImpl

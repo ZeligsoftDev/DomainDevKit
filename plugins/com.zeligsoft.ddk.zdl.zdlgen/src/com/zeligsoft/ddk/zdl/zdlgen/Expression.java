@@ -22,11 +22,11 @@ package com.zeligsoft.ddk.zdl.zdlgen;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.Expression#getName <em>Name</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.Expression#getExpression <em>Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getExpression()
  * @model abstract="true"

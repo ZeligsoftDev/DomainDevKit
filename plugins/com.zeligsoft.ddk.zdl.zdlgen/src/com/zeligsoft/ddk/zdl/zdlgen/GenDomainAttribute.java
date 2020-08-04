@@ -22,10 +22,10 @@ package com.zeligsoft.ddk.zdl.zdlgen;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainAttribute#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainAttribute()
  * @model

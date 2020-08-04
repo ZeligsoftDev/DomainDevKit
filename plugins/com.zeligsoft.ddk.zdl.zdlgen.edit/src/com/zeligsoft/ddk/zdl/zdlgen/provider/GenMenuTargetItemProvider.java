@@ -40,9 +40,8 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenMenuTargetItemProvider extends ItemProviderAdapter implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class GenMenuTargetItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -77,15 +76,11 @@ public class GenMenuTargetItemProvider extends ItemProviderAdapter implements
 	 */
 	protected void addMenuPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenMenuTarget_menu_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenMenuTarget_menu_feature", "_UI_GenMenuTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_MENU_TARGET__MENU, true,
-						false, true, null, null, null));
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenMenuTarget_menu_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenMenuTarget_menu_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenMenuTarget_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_MENU_TARGET__MENU, true, false, true, null, null, null));
 	}
 
 	/**
@@ -109,7 +104,6 @@ public class GenMenuTargetItemProvider extends ItemProviderAdapter implements
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-		super.notifyChanged(notification);
 	}
 
 	/**
@@ -120,8 +114,7 @@ public class GenMenuTargetItemProvider extends ItemProviderAdapter implements
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

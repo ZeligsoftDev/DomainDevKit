@@ -37,11 +37,11 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenMenuImpl#getExtends <em>Extends</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenMenuImpl#getItems <em>Item</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -93,8 +93,7 @@ public class GenMenuImpl extends GenMenuItemImpl implements GenMenu {
 	@Override
 	public EList<GenMenuItem> getItems() {
 		if (items == null) {
-			items = new EObjectResolvingEList<GenMenuItem>(GenMenuItem.class,
-					this, ZDLGenPackage.GEN_MENU__ITEM);
+			items = new EObjectResolvingEList<GenMenuItem>(GenMenuItem.class, this, ZDLGenPackage.GEN_MENU__ITEM);
 		}
 		return items;
 	}
@@ -111,9 +110,8 @@ public class GenMenuImpl extends GenMenuItemImpl implements GenMenu {
 			extends_ = (GenMenu) eResolveProxy(oldExtends);
 			if (extends_ != oldExtends) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ZDLGenPackage.GEN_MENU__EXTENDS, oldExtends,
-							extends_));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ZDLGenPackage.GEN_MENU__EXTENDS,
+							oldExtends, extends_));
 			}
 		}
 		return extends_;
@@ -138,8 +136,8 @@ public class GenMenuImpl extends GenMenuItemImpl implements GenMenu {
 		GenMenu oldExtends = extends_;
 		extends_ = newExtends;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_MENU__EXTENDS, oldExtends, extends_));
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_MENU__EXTENDS, oldExtends,
+					extends_));
 	}
 
 	/**

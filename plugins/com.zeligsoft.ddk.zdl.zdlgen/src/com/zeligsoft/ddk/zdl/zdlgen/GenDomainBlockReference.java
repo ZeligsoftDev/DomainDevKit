@@ -24,12 +24,12 @@ import org.eclipse.uml2.uml.Dependency;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockReference#getTarget <em>Target</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockReference#getDomainBlockReference <em>Domain Block Reference</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockReference#getDomainSpecialization <em>Domain Specialization</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainBlockReference()
  * @model
@@ -94,10 +94,10 @@ public interface GenDomainBlockReference extends GenDomainObject {
 	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getDomainBlocks <em>Domain Block</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwner() <em>Owner</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Domain Specialization</em>' container reference isn't clear,
@@ -109,6 +109,7 @@ public interface GenDomainBlockReference extends GenDomainObject {
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainBlockReference_DomainSpecialization()
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getDomainBlocks
 	 * @model opposite="domainBlock" required="true" transient="false" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	GenDomainSpecialization getDomainSpecialization();

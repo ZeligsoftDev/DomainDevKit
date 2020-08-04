@@ -45,6 +45,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.internal.operations.GenDomainObjectOperation
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainStructuralFeatureImpl#isVisible <em>Visible</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainStructuralFeatureImpl#isReadOnly <em>Read Only</em>}</li>
@@ -58,12 +59,11 @@ import com.zeligsoft.ddk.zdl.zdlgen.internal.operations.GenDomainObjectOperation
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainStructuralFeatureImpl#isRhapsodySuppressed <em>Is Rhapsody Suppressed</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainStructuralFeatureImpl#getConcept <em>Concept</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class GenDomainStructuralFeatureImpl extends
-		GenDomainNamedElementImpl implements GenDomainStructuralFeature {
+public abstract class GenDomainStructuralFeatureImpl extends GenDomainNamedElementImpl
+		implements GenDomainStructuralFeature {
 
 	/**
 	 * The default value of the '{@link #isVisible() <em>Visible</em>}' attribute.
@@ -246,8 +246,7 @@ public abstract class GenDomainStructuralFeatureImpl extends
 		else
 			eFlags &= ~VISIBLE_EFLAG;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__VISIBLE,
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__VISIBLE,
 					oldVisible, newVisible));
 	}
 
@@ -273,8 +272,7 @@ public abstract class GenDomainStructuralFeatureImpl extends
 			eFlags &= ~READ_ONLY_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__READ_ONLY,
-					oldReadOnly, newReadOnly));
+					ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__READ_ONLY, oldReadOnly, newReadOnly));
 	}
 
 	/**
@@ -295,11 +293,9 @@ public abstract class GenDomainStructuralFeatureImpl extends
 		String oldPresentationHint = presentationHint;
 		presentationHint = newPresentationHint;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__PRESENTATION_HINT,
-					oldPresentationHint, presentationHint));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__PRESENTATION_HINT, oldPresentationHint,
+					presentationHint));
 	}
 
 	/**
@@ -316,17 +312,13 @@ public abstract class GenDomainStructuralFeatureImpl extends
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPresentationKind(
-			GenDomainAttributePresentationKind newPresentationKind) {
+	public void setPresentationKind(GenDomainAttributePresentationKind newPresentationKind) {
 		GenDomainAttributePresentationKind oldPresentationKind = presentationKind;
-		presentationKind = newPresentationKind == null ? PRESENTATION_KIND_EDEFAULT
-				: newPresentationKind;
+		presentationKind = newPresentationKind == null ? PRESENTATION_KIND_EDEFAULT : newPresentationKind;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__PRESENTATION_KIND,
-					oldPresentationKind, presentationKind));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__PRESENTATION_KIND, oldPresentationKind,
+					presentationKind));
 	}
 
 	/**
@@ -347,8 +339,7 @@ public abstract class GenDomainStructuralFeatureImpl extends
 		int oldOrder = order;
 		order = newOrder;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__ORDER,
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__ORDER,
 					oldOrder, order));
 	}
 
@@ -360,7 +351,8 @@ public abstract class GenDomainStructuralFeatureImpl extends
 	@Override
 	public NamedElement getDomainElement() {
 		NamedElement domainElement = basicGetDomainElement();
-		return domainElement != null && domainElement.eIsProxy() ? (NamedElement) eResolveProxy((InternalEObject) domainElement)
+		return domainElement != null && domainElement.eIsProxy()
+				? (NamedElement) eResolveProxy((InternalEObject) domainElement)
 				: domainElement;
 	}
 
@@ -385,8 +377,7 @@ public abstract class GenDomainStructuralFeatureImpl extends
 	@Override
 	public GenDomainObject getOwner() {
 		GenDomainObject owner = basicGetOwner();
-		return owner != null && owner.eIsProxy() ? (GenDomainObject) eResolveProxy((InternalEObject) owner)
-				: owner;
+		return owner != null && owner.eIsProxy() ? (GenDomainObject) eResolveProxy((InternalEObject) owner) : owner;
 	}
 
 	/**
@@ -415,11 +406,9 @@ public abstract class GenDomainStructuralFeatureImpl extends
 			umlMetaattribute = (Property) eResolveProxy(oldUmlMetaattribute);
 			if (umlMetaattribute != oldUmlMetaattribute) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__UML_METAATTRIBUTE,
-							oldUmlMetaattribute, umlMetaattribute));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__UML_METAATTRIBUTE, oldUmlMetaattribute,
+							umlMetaattribute));
 			}
 		}
 		return umlMetaattribute;
@@ -444,11 +433,9 @@ public abstract class GenDomainStructuralFeatureImpl extends
 		Property oldUmlMetaattribute = umlMetaattribute;
 		umlMetaattribute = newUmlMetaattribute;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__UML_METAATTRIBUTE,
-					oldUmlMetaattribute, umlMetaattribute));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__UML_METAATTRIBUTE, oldUmlMetaattribute,
+					umlMetaattribute));
 	}
 
 	/**
@@ -457,8 +444,7 @@ public abstract class GenDomainStructuralFeatureImpl extends
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT:
 			if (eInternalContainer() != null)
@@ -474,8 +460,7 @@ public abstract class GenDomainStructuralFeatureImpl extends
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT:
 			return basicSetConcept(null, msgs);
@@ -489,12 +474,10 @@ public abstract class GenDomainStructuralFeatureImpl extends
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(
-			NotificationChain msgs) {
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT:
-			return eInternalContainer().eInverseRemove(this,
-					ZDLGenPackage.GEN_DOMAIN_CONCEPT__FEATURE,
+			return eInternalContainer().eInverseRemove(this, ZDLGenPackage.GEN_DOMAIN_CONCEPT__FEATURE,
 					GenDomainConcept.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
@@ -512,11 +495,9 @@ public abstract class GenDomainStructuralFeatureImpl extends
 			domainAttribute = (Property) eResolveProxy(oldDomainAttribute);
 			if (domainAttribute != oldDomainAttribute) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__DOMAIN_ATTRIBUTE,
-							oldDomainAttribute, domainAttribute));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__DOMAIN_ATTRIBUTE, oldDomainAttribute,
+							domainAttribute));
 			}
 		}
 		return domainAttribute;
@@ -541,11 +522,9 @@ public abstract class GenDomainStructuralFeatureImpl extends
 		Property oldDomainAttribute = domainAttribute;
 		domainAttribute = newDomainAttribute;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__DOMAIN_ATTRIBUTE,
-					oldDomainAttribute, domainAttribute));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__DOMAIN_ATTRIBUTE, oldDomainAttribute,
+					domainAttribute));
 	}
 
 	/**
@@ -569,11 +548,9 @@ public abstract class GenDomainStructuralFeatureImpl extends
 		else
 			eFlags &= ~IS_RHAPSODY_SUPPRESSED_EFLAG;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__IS_RHAPSODY_SUPPRESSED,
-					oldIsRhapsodySuppressed, newIsRhapsodySuppressed));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__IS_RHAPSODY_SUPPRESSED, oldIsRhapsodySuppressed,
+					newIsRhapsodySuppressed));
 	}
 
 	/**
@@ -585,7 +562,7 @@ public abstract class GenDomainStructuralFeatureImpl extends
 	public GenDomainConcept getConcept() {
 		if (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT)
 			return null;
-		return (GenDomainConcept) eContainer();
+		return (GenDomainConcept) eInternalContainer();
 	}
 
 	/**
@@ -593,10 +570,9 @@ public abstract class GenDomainStructuralFeatureImpl extends
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetConcept(GenDomainConcept newConcept,
-			NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newConcept,
-				ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT, msgs);
+	public NotificationChain basicSetConcept(GenDomainConcept newConcept, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newConcept, ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT,
+				msgs);
 		return msgs;
 	}
 
@@ -608,23 +584,21 @@ public abstract class GenDomainStructuralFeatureImpl extends
 	@Override
 	public void setConcept(GenDomainConcept newConcept) {
 		if (newConcept != eInternalContainer()
-				|| (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT && newConcept != null)) {
+				|| (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT
+						&& newConcept != null)) {
 			if (EcoreUtil.isAncestor(this, newConcept))
-				throw new IllegalArgumentException(
-						"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newConcept != null)
-				msgs = ((InternalEObject) newConcept).eInverseAdd(this,
-						ZDLGenPackage.GEN_DOMAIN_CONCEPT__FEATURE,
+				msgs = ((InternalEObject) newConcept).eInverseAdd(this, ZDLGenPackage.GEN_DOMAIN_CONCEPT__FEATURE,
 						GenDomainConcept.class, msgs);
 			msgs = basicSetConcept(newConcept, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT,
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT,
 					newConcept, newConcept));
 	}
 
@@ -759,6 +733,10 @@ public abstract class GenDomainStructuralFeatureImpl extends
 			return presentationKind != PRESENTATION_KIND_EDEFAULT;
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__ORDER:
 			return order != ORDER_EDEFAULT;
+		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__DOMAIN_ELEMENT:
+			return isSetDomainElement();
+		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__OWNER:
+			return isSetOwner();
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__UML_METAATTRIBUTE:
 			return umlMetaattribute != null;
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__DOMAIN_ATTRIBUTE:
@@ -833,7 +811,7 @@ public abstract class GenDomainStructuralFeatureImpl extends
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (visible: "); //$NON-NLS-1$
 		result.append((eFlags & VISIBLE_EFLAG) != 0);
 		result.append(", readOnly: "); //$NON-NLS-1$
@@ -857,8 +835,7 @@ public abstract class GenDomainStructuralFeatureImpl extends
 	 */
 	@Override
 	public boolean isSetDomainElement() {
-		return super.isSetDomainElement()
-				|| eIsSet(ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__DOMAIN_ATTRIBUTE);
+		return super.isSetDomainElement() || eIsSet(ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__DOMAIN_ATTRIBUTE);
 	}
 
 	/**
@@ -868,8 +845,7 @@ public abstract class GenDomainStructuralFeatureImpl extends
 	 */
 	@Override
 	public boolean isSetOwner() {
-		return super.isSetOwner()
-				|| eIsSet(ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT);
+		return super.isSetOwner() || eIsSet(ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT);
 	}
 
 } //GenDomainStructuralFeatureImpl

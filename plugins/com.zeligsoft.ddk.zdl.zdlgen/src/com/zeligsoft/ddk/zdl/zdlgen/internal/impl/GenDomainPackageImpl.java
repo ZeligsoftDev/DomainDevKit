@@ -41,18 +41,17 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainPackageImpl#getOwnedObjects <em>Owned Object</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainPackageImpl#getDomainElement <em>Domain Element</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainPackageImpl#getElements <em>Element</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainPackageImpl#getDomainPackage <em>Domain Package</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class GenDomainPackageImpl extends GenDomainPackageableElementImpl
-		implements GenDomainPackage {
+public class GenDomainPackageImpl extends GenDomainPackageableElementImpl implements GenDomainPackage {
 
 	/**
 	 * The cached value of the '{@link #getElements() <em>Element</em>}' containment reference list.
@@ -104,26 +103,17 @@ public class GenDomainPackageImpl extends GenDomainPackageableElementImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<GenDomainObject> ownedObjects = (EList<GenDomainObject>) cache
-					.get(eResource,
-							this,
-							ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
+			EList<GenDomainObject> ownedObjects = (EList<GenDomainObject>) cache.get(eResource, this,
+					ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
 			if (ownedObjects == null) {
-				cache.put(
-						eResource,
-						this,
-						ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT,
-						ownedObjects = new DerivedUnionEObjectEList<GenDomainObject>(
-								GenDomainObject.class, this,
-								ZDLGenPackage.GEN_DOMAIN_PACKAGE__OWNED_OBJECT,
-								OWNED_OBJECT_ESUBSETS));
+				cache.put(eResource, this, ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT,
+						ownedObjects = new DerivedUnionEObjectEList<GenDomainObject>(GenDomainObject.class, this,
+								ZDLGenPackage.GEN_DOMAIN_PACKAGE__OWNED_OBJECT, OWNED_OBJECT_ESUBSETS));
 			}
 			return ownedObjects;
 		}
-		return new DerivedUnionEObjectEList<GenDomainObject>(
-				GenDomainObject.class, this,
-				ZDLGenPackage.GEN_DOMAIN_PACKAGE__OWNED_OBJECT,
-				OWNED_OBJECT_ESUBSETS);
+		return new DerivedUnionEObjectEList<GenDomainObject>(GenDomainObject.class, this,
+				ZDLGenPackage.GEN_DOMAIN_PACKAGE__OWNED_OBJECT, OWNED_OBJECT_ESUBSETS);
 	}
 
 	/**
@@ -144,7 +134,8 @@ public class GenDomainPackageImpl extends GenDomainPackageableElementImpl
 	@Override
 	public NamedElement getDomainElement() {
 		NamedElement domainElement = basicGetDomainElement();
-		return domainElement != null && domainElement.eIsProxy() ? (NamedElement) eResolveProxy((InternalEObject) domainElement)
+		return domainElement != null && domainElement.eIsProxy()
+				? (NamedElement) eResolveProxy((InternalEObject) domainElement)
 				: domainElement;
 	}
 
@@ -170,8 +161,7 @@ public class GenDomainPackageImpl extends GenDomainPackageableElementImpl
 	public EList<GenDomainPackageableElement> getElements() {
 		if (elements == null) {
 			elements = new EObjectContainmentWithInverseEList<GenDomainPackageableElement>(
-					GenDomainPackageableElement.class, this,
-					ZDLGenPackage.GEN_DOMAIN_PACKAGE__ELEMENT,
+					GenDomainPackageableElement.class, this, ZDLGenPackage.GEN_DOMAIN_PACKAGE__ELEMENT,
 					ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE);
 		}
 		return elements;
@@ -193,14 +183,12 @@ public class GenDomainPackageImpl extends GenDomainPackageableElementImpl
 	 * @generated
 	 */
 	@Override
-	public GenDomainPackageableElement getElement(String name,
-			boolean ignoreCase, EClass eClass) {
+	public GenDomainPackageableElement getElement(String name, boolean ignoreCase, EClass eClass) {
 		elementLoop: for (GenDomainPackageableElement element : getElements()) {
 			if (eClass != null && !eClass.isInstance(element))
 				continue elementLoop;
 			if (name != null
-					&& !(ignoreCase ? name.equalsIgnoreCase(element.getName())
-							: name.equals(element.getName())))
+					&& !(ignoreCase ? name.equalsIgnoreCase(element.getName()) : name.equals(element.getName())))
 				continue elementLoop;
 			return element;
 		}
@@ -214,12 +202,10 @@ public class GenDomainPackageImpl extends GenDomainPackageableElementImpl
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_PACKAGE__ELEMENT:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getElements())
-					.basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getElements()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -237,8 +223,7 @@ public class GenDomainPackageImpl extends GenDomainPackageableElementImpl
 			if (domainPackage != oldDomainPackage) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ZDLGenPackage.GEN_DOMAIN_PACKAGE__DOMAIN_PACKAGE,
-							oldDomainPackage, domainPackage));
+							ZDLGenPackage.GEN_DOMAIN_PACKAGE__DOMAIN_PACKAGE, oldDomainPackage, domainPackage));
 			}
 		}
 		return domainPackage;
@@ -263,8 +248,7 @@ public class GenDomainPackageImpl extends GenDomainPackageableElementImpl
 		org.eclipse.uml2.uml.Package oldDomainPackage = domainPackage;
 		domainPackage = newDomainPackage;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_PACKAGE__DOMAIN_PACKAGE,
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_PACKAGE__DOMAIN_PACKAGE,
 					oldDomainPackage, domainPackage));
 	}
 
@@ -274,12 +258,10 @@ public class GenDomainPackageImpl extends GenDomainPackageableElementImpl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_PACKAGE__ELEMENT:
-			return ((InternalEList<?>) getElements()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getElements()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -313,8 +295,7 @@ public class GenDomainPackageImpl extends GenDomainPackageableElementImpl
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_PACKAGE__ELEMENT:
 			getElements().clear();
-			getElements()
-					.addAll((Collection<? extends GenDomainPackageableElement>) newValue);
+			getElements().addAll((Collection<? extends GenDomainPackageableElement>) newValue);
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_PACKAGE__DOMAIN_PACKAGE:
 			setDomainPackage((org.eclipse.uml2.uml.Package) newValue);
@@ -349,6 +330,10 @@ public class GenDomainPackageImpl extends GenDomainPackageableElementImpl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case ZDLGenPackage.GEN_DOMAIN_PACKAGE__OWNED_OBJECT:
+			return isSetOwnedObjects();
+		case ZDLGenPackage.GEN_DOMAIN_PACKAGE__DOMAIN_ELEMENT:
+			return isSetDomainElement();
 		case ZDLGenPackage.GEN_DOMAIN_PACKAGE__ELEMENT:
 			return elements != null && !elements.isEmpty();
 		case ZDLGenPackage.GEN_DOMAIN_PACKAGE__DOMAIN_PACKAGE:
@@ -364,8 +349,7 @@ public class GenDomainPackageImpl extends GenDomainPackageableElementImpl
 	 */
 	@Override
 	public boolean isSetOwnedObjects() {
-		return super.isSetOwnedObjects()
-				|| eIsSet(ZDLGenPackage.GEN_DOMAIN_PACKAGE__ELEMENT);
+		return super.isSetOwnedObjects() || eIsSet(ZDLGenPackage.GEN_DOMAIN_PACKAGE__ELEMENT);
 	}
 
 	/**
@@ -375,8 +359,7 @@ public class GenDomainPackageImpl extends GenDomainPackageableElementImpl
 	 */
 	@Override
 	public boolean isSetDomainElement() {
-		return super.isSetDomainElement()
-				|| eIsSet(ZDLGenPackage.GEN_DOMAIN_PACKAGE__DOMAIN_PACKAGE);
+		return super.isSetDomainElement() || eIsSet(ZDLGenPackage.GEN_DOMAIN_PACKAGE__DOMAIN_PACKAGE);
 	}
 
 } //GenDomainPackageImpl

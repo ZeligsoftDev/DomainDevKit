@@ -30,16 +30,15 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.ExpressionImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.ExpressionImpl#getExpression <em>Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class ExpressionImpl extends GenDomainObjectImpl implements
-		Expression {
+public abstract class ExpressionImpl extends GenDomainObjectImpl implements Expression {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -119,8 +118,7 @@ public abstract class ExpressionImpl extends GenDomainObjectImpl implements
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.EXPRESSION__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.EXPRESSION__NAME, oldName, name));
 	}
 
 	/**
@@ -143,8 +141,7 @@ public abstract class ExpressionImpl extends GenDomainObjectImpl implements
 		String oldExpression = expression;
 		expression = newExpression;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.EXPRESSION__EXPRESSION, oldExpression,
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.EXPRESSION__EXPRESSION, oldExpression,
 					expression));
 	}
 
@@ -209,11 +206,9 @@ public abstract class ExpressionImpl extends GenDomainObjectImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case ZDLGenPackage.EXPRESSION__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case ZDLGenPackage.EXPRESSION__EXPRESSION:
-			return EXPRESSION_EDEFAULT == null ? expression != null
-					: !EXPRESSION_EDEFAULT.equals(expression);
+			return EXPRESSION_EDEFAULT == null ? expression != null : !EXPRESSION_EDEFAULT.equals(expression);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -228,7 +223,7 @@ public abstract class ExpressionImpl extends GenDomainObjectImpl implements
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
 		result.append(", expression: "); //$NON-NLS-1$

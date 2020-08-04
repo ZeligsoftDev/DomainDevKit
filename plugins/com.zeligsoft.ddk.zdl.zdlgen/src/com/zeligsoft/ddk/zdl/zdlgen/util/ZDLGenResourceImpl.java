@@ -25,8 +25,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
  * @see com.zeligsoft.ddk.zdl.zdlgen.util.ZDLGenResourceFactoryImpl
  * @generated
  */
-public class ZDLGenResourceImpl extends XMIResourceImpl implements
-		ZDLGenResource {
+public class ZDLGenResourceImpl extends XMIResourceImpl implements ZDLGenResource {
 
 	/**
 	 * Creates an instance of the resource.

@@ -26,12 +26,12 @@ import org.eclipse.uml2.uml.Model;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenModel#getOwnedModels <em>Owned Model</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenModel#getDomainModels <em>Domain Model</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenModel#getReferencedModels <em>Referenced Model</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenModel()
  * @model
@@ -44,10 +44,10 @@ public interface GenModel extends GenDomainObject {
 	 * The list contents are of type {@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenModel#getDomainModels() <em>Domain Model</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Referenced Model</em>' reference list isn't clear,
@@ -57,6 +57,7 @@ public interface GenModel extends GenDomainObject {
 	 * @return the value of the '<em>Referenced Model</em>' reference list.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenModel_ReferencedModel()
 	 * @model ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	EList<GenDomainModel> getReferencedModels();
@@ -90,11 +91,11 @@ public interface GenModel extends GenDomainObject {
 	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel#getOwningGenModel <em>Owning Gen Model</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenModel#getDomainModels() <em>Domain Model</em>}'</li>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwnedObjects() <em>Owned Object</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Model</em>' containment reference list isn't clear,
@@ -105,6 +106,7 @@ public interface GenModel extends GenDomainObject {
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenModel_OwnedModel()
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel#getOwningGenModel
 	 * @model opposite="owningGenModel" containment="true" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	EList<GenDomainModel> getOwnedModels();
@@ -145,6 +147,7 @@ public interface GenModel extends GenDomainObject {
 	 * @return the value of the '<em>Domain Model</em>' reference list.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenModel_DomainModel()
 	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 *        annotation="union"
 	 * @generated
 	 */
 	EList<GenDomainModel> getDomainModels();

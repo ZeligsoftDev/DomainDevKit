@@ -35,18 +35,17 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainBlockReferenceImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainBlockReferenceImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainBlockReferenceImpl#getDomainBlockReference <em>Domain Block Reference</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainBlockReferenceImpl#getDomainSpecialization <em>Domain Specialization</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class GenDomainBlockReferenceImpl extends GenDomainObjectImpl implements
-		GenDomainBlockReference {
+public class GenDomainBlockReferenceImpl extends GenDomainObjectImpl implements GenDomainBlockReference {
 
 	/**
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
@@ -95,8 +94,7 @@ public class GenDomainBlockReferenceImpl extends GenDomainObjectImpl implements
 	@Override
 	public GenDomainObject getOwner() {
 		GenDomainObject owner = basicGetOwner();
-		return owner != null && owner.eIsProxy() ? (GenDomainObject) eResolveProxy((InternalEObject) owner)
-				: owner;
+		return owner != null && owner.eIsProxy() ? (GenDomainObject) eResolveProxy((InternalEObject) owner) : owner;
 	}
 
 	/**
@@ -126,8 +124,7 @@ public class GenDomainBlockReferenceImpl extends GenDomainObjectImpl implements
 			if (target != oldTarget) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__TARGET,
-							oldTarget, target));
+							ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__TARGET, oldTarget, target));
 			}
 		}
 		return target;
@@ -152,8 +149,7 @@ public class GenDomainBlockReferenceImpl extends GenDomainObjectImpl implements
 		GenDomainBlock oldTarget = target;
 		target = newTarget;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__TARGET,
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__TARGET,
 					oldTarget, target));
 	}
 
@@ -169,11 +165,9 @@ public class GenDomainBlockReferenceImpl extends GenDomainObjectImpl implements
 			domainBlockReference = (Dependency) eResolveProxy(oldDomainBlockReference);
 			if (domainBlockReference != oldDomainBlockReference) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_BLOCK_REFERENCE,
-							oldDomainBlockReference, domainBlockReference));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_BLOCK_REFERENCE, oldDomainBlockReference,
+							domainBlockReference));
 			}
 		}
 		return domainBlockReference;
@@ -198,11 +192,9 @@ public class GenDomainBlockReferenceImpl extends GenDomainObjectImpl implements
 		Dependency oldDomainBlockReference = domainBlockReference;
 		domainBlockReference = newDomainBlockReference;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_BLOCK_REFERENCE,
-					oldDomainBlockReference, domainBlockReference));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_BLOCK_REFERENCE, oldDomainBlockReference,
+					domainBlockReference));
 	}
 
 	/**
@@ -214,7 +206,7 @@ public class GenDomainBlockReferenceImpl extends GenDomainObjectImpl implements
 	public GenDomainSpecialization getDomainSpecialization() {
 		if (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION)
 			return null;
-		return (GenDomainSpecialization) eContainer();
+		return (GenDomainSpecialization) eInternalContainer();
 	}
 
 	/**
@@ -222,13 +214,10 @@ public class GenDomainBlockReferenceImpl extends GenDomainObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDomainSpecialization(
-			GenDomainSpecialization newDomainSpecialization,
+	public NotificationChain basicSetDomainSpecialization(GenDomainSpecialization newDomainSpecialization,
 			NotificationChain msgs) {
-		msgs = eBasicSetContainer(
-				(InternalEObject) newDomainSpecialization,
-				ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION,
-				msgs);
+		msgs = eBasicSetContainer((InternalEObject) newDomainSpecialization,
+				ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION, msgs);
 		return msgs;
 	}
 
@@ -238,30 +227,25 @@ public class GenDomainBlockReferenceImpl extends GenDomainObjectImpl implements
 	 * @generated
 	 */
 	@Override
-	public void setDomainSpecialization(
-			GenDomainSpecialization newDomainSpecialization) {
+	public void setDomainSpecialization(GenDomainSpecialization newDomainSpecialization) {
 		if (newDomainSpecialization != eInternalContainer()
-				|| (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION && newDomainSpecialization != null)) {
+				|| (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION
+						&& newDomainSpecialization != null)) {
 			if (EcoreUtil.isAncestor(this, newDomainSpecialization))
-				throw new IllegalArgumentException(
-						"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newDomainSpecialization != null)
-				msgs = ((InternalEObject) newDomainSpecialization).eInverseAdd(
-						this,
-						ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK,
-						GenDomainSpecialization.class, msgs);
+				msgs = ((InternalEObject) newDomainSpecialization).eInverseAdd(this,
+						ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK, GenDomainSpecialization.class, msgs);
 			msgs = basicSetDomainSpecialization(newDomainSpecialization, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION,
-					newDomainSpecialization, newDomainSpecialization));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION, newDomainSpecialization,
+					newDomainSpecialization));
 	}
 
 	/**
@@ -270,14 +254,12 @@ public class GenDomainBlockReferenceImpl extends GenDomainObjectImpl implements
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION:
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			return basicSetDomainSpecialization(
-					(GenDomainSpecialization) otherEnd, msgs);
+			return basicSetDomainSpecialization((GenDomainSpecialization) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -288,8 +270,7 @@ public class GenDomainBlockReferenceImpl extends GenDomainObjectImpl implements
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION:
 			return basicSetDomainSpecialization(null, msgs);
@@ -303,12 +284,10 @@ public class GenDomainBlockReferenceImpl extends GenDomainObjectImpl implements
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(
-			NotificationChain msgs) {
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 		case ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION:
-			return eInternalContainer().eInverseRemove(this,
-					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK,
+			return eInternalContainer().eInverseRemove(this, ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK,
 					GenDomainSpecialization.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
@@ -386,6 +365,8 @@ public class GenDomainBlockReferenceImpl extends GenDomainObjectImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__OWNER:
+			return isSetOwner();
 		case ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__TARGET:
 			return target != null;
 		case ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_BLOCK_REFERENCE:
@@ -403,8 +384,7 @@ public class GenDomainBlockReferenceImpl extends GenDomainObjectImpl implements
 	 */
 	@Override
 	public boolean isSetOwner() {
-		return super.isSetOwner()
-				|| eIsSet(ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION);
+		return super.isSetOwner() || eIsSet(ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION);
 	}
 
 } //GenDomainBlockReferenceImpl

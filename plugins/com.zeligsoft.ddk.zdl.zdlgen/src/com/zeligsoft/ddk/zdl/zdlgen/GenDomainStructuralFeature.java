@@ -24,20 +24,19 @@ import org.eclipse.uml2.uml.Property;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature#getUmlMetaattribute <em>Uml Metaattribute</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature#getDomainAttribute <em>Domain Attribute</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature#isRhapsodySuppressed <em>Is Rhapsody Suppressed</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature#getConcept <em>Concept</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainStructuralFeature()
  * @model abstract="true"
  * @generated
  */
-public interface GenDomainStructuralFeature extends GenDomainNamedElement,
-		GenDomainAttributePresentation {
+public interface GenDomainStructuralFeature extends GenDomainNamedElement, GenDomainAttributePresentation {
 
 	/**
 	 * Returns the value of the '<em><b>Uml Metaattribute</b></em>' reference.
@@ -69,10 +68,10 @@ public interface GenDomainStructuralFeature extends GenDomainNamedElement,
 	 * Returns the value of the '<em><b>Domain Attribute</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainNamedElement#getDomainElement() <em>Domain Element</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Domain Attribute</em>' reference isn't clear,
@@ -83,6 +82,7 @@ public interface GenDomainStructuralFeature extends GenDomainNamedElement,
 	 * @see #setDomainAttribute(Property)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainStructuralFeature_DomainAttribute()
 	 * @model required="true" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	Property getDomainAttribute();
@@ -129,10 +129,10 @@ public interface GenDomainStructuralFeature extends GenDomainNamedElement,
 	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getFeatures <em>Feature</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwner() <em>Owner</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Concept</em>' container reference isn't clear,
@@ -144,6 +144,7 @@ public interface GenDomainStructuralFeature extends GenDomainNamedElement,
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainStructuralFeature_Concept()
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getFeatures
 	 * @model opposite="feature" required="true" transient="false" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	GenDomainConcept getConcept();

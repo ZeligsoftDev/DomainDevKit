@@ -24,13 +24,10 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Gen Domain Block Import</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public class GenDomainBlockImportImpl extends GenDomainBlockRelationImpl
-		implements GenDomainBlockImport {
+public class GenDomainBlockImportImpl extends GenDomainBlockRelationImpl implements GenDomainBlockImport {
 
 	/**
 	 * <!-- begin-user-doc -->

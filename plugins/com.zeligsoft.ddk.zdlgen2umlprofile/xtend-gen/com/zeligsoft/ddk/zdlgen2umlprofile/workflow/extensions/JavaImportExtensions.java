@@ -1,18 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2020 Northrop Grumman Systems Corporation.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *******************************************************************************/
 package com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions;
 
 import com.google.inject.Inject;
@@ -22,10 +7,12 @@ import com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnum;
 import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.JavaNamingExtensions;
 import java.util.Arrays;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Extension;
 
 @SuppressWarnings("all")
 public class JavaImportExtensions {
   @Inject
+  @Extension
   private JavaNamingExtensions _javaNamingExtensions;
   
   protected CharSequence _generateImport(final GenDomainClassifier concept) {
@@ -37,7 +24,7 @@ public class JavaImportExtensions {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("import ");
     String _qualifiedName = this._javaNamingExtensions.qualifiedName(concept);
-    _builder.append(_qualifiedName, "");
+    _builder.append(_qualifiedName);
     _builder.append(";");
     return _builder;
   }
@@ -46,7 +33,7 @@ public class JavaImportExtensions {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("import ");
     String _qualifiedName = this._javaNamingExtensions.qualifiedName(denum);
-    _builder.append(_qualifiedName, "");
+    _builder.append(_qualifiedName);
     _builder.append(";");
     return _builder;
   }
@@ -60,7 +47,7 @@ public class JavaImportExtensions {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("import ");
     CharSequence _implementationQualifiedName = this._javaNamingExtensions.implementationQualifiedName(concept);
-    _builder.append(_implementationQualifiedName, "");
+    _builder.append(_implementationQualifiedName);
     _builder.append(";");
     return _builder;
   }

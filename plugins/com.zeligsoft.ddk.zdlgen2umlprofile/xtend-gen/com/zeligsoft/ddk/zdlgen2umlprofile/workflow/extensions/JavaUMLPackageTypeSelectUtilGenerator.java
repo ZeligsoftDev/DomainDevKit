@@ -1,18 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2020 Northrop Grumman Systems Corporation.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *******************************************************************************/
 package com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions;
 
 import com.google.common.collect.Iterables;
@@ -25,13 +10,12 @@ import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.GenDomainModelExt
 import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.JavaImportExtensions;
 import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.JavaNamingExtensions;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.Classifier;
-import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -40,12 +24,15 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 @SuppressWarnings("all")
 public class JavaUMLPackageTypeSelectUtilGenerator {
   @Inject
+  @Extension
   private GenDomainModelExtensions _genDomainModelExtensions;
   
   @Inject
+  @Extension
   private JavaNamingExtensions _javaNamingExtensions;
   
   @Inject
+  @Extension
   private JavaImportExtensions _javaImportExtensions;
   
   public CharSequence generateJavaUMLPackageTypeSelectUtil(final GenDomainModel model) {
@@ -55,10 +42,10 @@ public class JavaUMLPackageTypeSelectUtilGenerator {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("package ");
       String _rootPackage = model.getRootPackage();
-      _builder.append(_rootPackage, "");
+      _builder.append(_rootPackage);
       _builder.append(".");
       String _name = model.getName();
-      _builder.append(_name, "");
+      _builder.append(_name);
       _builder.append(".util;");
       _builder.newLineIfNotEmpty();
       _builder.newLine();
@@ -83,14 +70,14 @@ public class JavaUMLPackageTypeSelectUtilGenerator {
       {
         for(final GenDomainClassifier type : packageableElementTypes) {
           CharSequence _generateImport = this._javaImportExtensions.generateImport(type);
-          _builder.append(_generateImport, "");
+          _builder.append(_generateImport);
           _builder.newLineIfNotEmpty();
         }
       }
       _builder.newLine();
       _builder.append("public class ");
       String _name_1 = model.getName();
-      _builder.append(_name_1, "");
+      _builder.append(_name_1);
       _builder.append("TypeSelectUtil {");
       _builder.newLineIfNotEmpty();
       {
@@ -100,8 +87,7 @@ public class JavaUMLPackageTypeSelectUtilGenerator {
           String _javaInterfaceName = this._javaNamingExtensions.javaInterfaceName(type_1);
           _builder.append(_javaInterfaceName, "    ");
           _builder.append("> select");
-          String _name_2 = type_1.getName();
-          String _firstUpper = StringExtensions.toFirstUpper(_name_2);
+          String _firstUpper = StringExtensions.toFirstUpper(type_1.getName());
           _builder.append(_firstUpper, "    ");
           _builder.append("(org.eclipse.uml2.uml.Package pkg) {");
           _builder.newLineIfNotEmpty();
@@ -116,8 +102,7 @@ public class JavaUMLPackageTypeSelectUtilGenerator {
           _builder.append("    ");
           _builder.append("            ");
           _builder.append("new IsZDLConcept(\"");
-          NamedElement _domainElement = type_1.getDomainElement();
-          String _qualifiedName = _domainElement.getQualifiedName();
+          String _qualifiedName = type_1.getDomainElement().getQualifiedName();
           _builder.append(_qualifiedName, "                ");
           _builder.append("\"));");
           _builder.newLineIfNotEmpty();
@@ -154,34 +139,23 @@ public class JavaUMLPackageTypeSelectUtilGenerator {
       }
       _builder.append("}");
       _builder.newLine();
-      _xblockexpression = (_builder);
+      _xblockexpression = _builder;
     }
     return _xblockexpression;
   }
   
   public Iterable<GenDomainClassifier> packageableElementTypes(final GenDomainModel model) {
-    Iterable<GenDomainBlock> _domainBlocks = this._genDomainModelExtensions.domainBlocks(model);
-    final Function1<GenDomainBlock,Iterable<GenDomainClassifier>> _function = new Function1<GenDomainBlock,Iterable<GenDomainClassifier>>() {
-        public Iterable<GenDomainClassifier> apply(final GenDomainBlock block) {
-          Iterable<GenDomainClassifier> _packageableElementTypes = JavaUMLPackageTypeSelectUtilGenerator.this.packageableElementTypes(block);
-          return _packageableElementTypes;
-        }
-      };
-    Iterable<Iterable<GenDomainClassifier>> _map = IterableExtensions.<GenDomainBlock, Iterable<GenDomainClassifier>>map(_domainBlocks, _function);
-    Iterable<GenDomainClassifier> _flatten = Iterables.<GenDomainClassifier>concat(_map);
-    return _flatten;
+    final Function1<GenDomainBlock, Iterable<GenDomainClassifier>> _function = (GenDomainBlock block) -> {
+      return this.packageableElementTypes(block);
+    };
+    return Iterables.<GenDomainClassifier>concat(IterableExtensions.<GenDomainBlock, Iterable<GenDomainClassifier>>map(this._genDomainModelExtensions.domainBlocks(model), _function));
   }
   
   public Iterable<GenDomainClassifier> packageableElementTypes(final GenDomainBlock block) {
-    EList<GenDomainClassifier> _classifiers = block.getClassifiers();
-    final Function1<GenDomainClassifier,Boolean> _function = new Function1<GenDomainClassifier,Boolean>() {
-        public Boolean apply(final GenDomainClassifier classifier) {
-          boolean _mapsToPackageableElement = JavaUMLPackageTypeSelectUtilGenerator.this.mapsToPackageableElement(classifier);
-          return Boolean.valueOf(_mapsToPackageableElement);
-        }
-      };
-    Iterable<GenDomainClassifier> _filter = IterableExtensions.<GenDomainClassifier>filter(_classifiers, _function);
-    return _filter;
+    final Function1<GenDomainClassifier, Boolean> _function = (GenDomainClassifier classifier) -> {
+      return Boolean.valueOf(this.mapsToPackageableElement(classifier));
+    };
+    return IterableExtensions.<GenDomainClassifier>filter(block.getClassifiers(), _function);
   }
   
   private boolean _mapsToPackageableElement(final GenDomainClassifier classifier) {
@@ -192,32 +166,13 @@ public class JavaUMLPackageTypeSelectUtilGenerator {
     boolean _xblockexpression = false;
     {
       boolean result = false;
-      Set<org.eclipse.uml2.uml.Class> _umlMetaclassMapping = this.umlMetaclassMapping(classifier);
-      final Function1<org.eclipse.uml2.uml.Class,Boolean> _function = new Function1<org.eclipse.uml2.uml.Class,Boolean>() {
-          public Boolean apply(final org.eclipse.uml2.uml.Class base) {
-            boolean _or = false;
-            String _name = base.getName();
-            boolean _equals = _name.equals("PackageableElement");
-            if (_equals) {
-              _or = true;
-            } else {
-              EList<Classifier> _allParents = base.allParents();
-              final Function1<Classifier,Boolean> _function = new Function1<Classifier,Boolean>() {
-                  public Boolean apply(final Classifier parent) {
-                    String _name = parent.getName();
-                    boolean _equals = _name.equals("PackageableElement");
-                    return Boolean.valueOf(_equals);
-                  }
-                };
-              boolean _exists = IterableExtensions.<Classifier>exists(_allParents, _function);
-              _or = (_equals || _exists);
-            }
-            return Boolean.valueOf(_or);
-          }
-        };
-      boolean _exists = IterableExtensions.<org.eclipse.uml2.uml.Class>exists(_umlMetaclassMapping, _function);
-      result = _exists;
-      _xblockexpression = (result);
+      final Function1<org.eclipse.uml2.uml.Class, Boolean> _function = (org.eclipse.uml2.uml.Class base) -> {
+        return Boolean.valueOf((base.getName().equals("PackageableElement") || IterableExtensions.<Classifier>exists(base.allParents(), ((Function1<Classifier, Boolean>) (Classifier parent) -> {
+          return Boolean.valueOf(parent.getName().equals("PackageableElement"));
+        }))));
+      };
+      result = IterableExtensions.<org.eclipse.uml2.uml.Class>exists(this.umlMetaclassMapping(classifier), _function);
+      _xblockexpression = result;
     }
     return _xblockexpression;
   }
@@ -226,19 +181,13 @@ public class JavaUMLPackageTypeSelectUtilGenerator {
     Set<org.eclipse.uml2.uml.Class> _xblockexpression = null;
     {
       final Set<org.eclipse.uml2.uml.Class> metaclasses = CollectionLiterals.<org.eclipse.uml2.uml.Class>newHashSet();
-      EList<GenDomainConcept> _allGenerals = concept.allGenerals();
-      final Function1<GenDomainConcept,EList<org.eclipse.uml2.uml.Class>> _function = new Function1<GenDomainConcept,EList<org.eclipse.uml2.uml.Class>>() {
-          public EList<org.eclipse.uml2.uml.Class> apply(final GenDomainConcept base) {
-            EList<org.eclipse.uml2.uml.Class> _umlMetaclasses = base.getUmlMetaclasses();
-            return _umlMetaclasses;
-          }
-        };
-      List<EList<org.eclipse.uml2.uml.Class>> _map = ListExtensions.<GenDomainConcept, EList<org.eclipse.uml2.uml.Class>>map(_allGenerals, _function);
-      final Iterable<org.eclipse.uml2.uml.Class> baseMetaclasses = Iterables.<org.eclipse.uml2.uml.Class>concat(_map);
-      EList<org.eclipse.uml2.uml.Class> _umlMetaclasses = concept.getUmlMetaclasses();
-      metaclasses.addAll(_umlMetaclasses);
+      final Function1<GenDomainConcept, EList<org.eclipse.uml2.uml.Class>> _function = (GenDomainConcept base) -> {
+        return base.getUmlMetaclasses();
+      };
+      final Iterable<org.eclipse.uml2.uml.Class> baseMetaclasses = Iterables.<org.eclipse.uml2.uml.Class>concat(ListExtensions.<GenDomainConcept, EList<org.eclipse.uml2.uml.Class>>map(concept.allGenerals(), _function));
+      metaclasses.addAll(concept.getUmlMetaclasses());
       Iterables.<org.eclipse.uml2.uml.Class>addAll(metaclasses, baseMetaclasses);
-      _xblockexpression = (metaclasses);
+      _xblockexpression = metaclasses;
     }
     return _xblockexpression;
   }

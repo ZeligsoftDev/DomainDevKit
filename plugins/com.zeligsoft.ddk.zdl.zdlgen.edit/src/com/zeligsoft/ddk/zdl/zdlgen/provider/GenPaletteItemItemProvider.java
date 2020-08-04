@@ -42,9 +42,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenPaletteItemItemProvider extends GenDomainObjectItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class GenPaletteItemItemProvider extends GenDomainObjectItemProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -81,14 +79,11 @@ public class GenPaletteItemItemProvider extends GenDomainObjectItemProvider
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_GenPaletteItem_name_feature"), //$NON-NLS-1$
 				getString("_UI_GenPaletteItem_name_description"), //$NON-NLS-1$
-				ZDLGenPackage.Literals.GEN_PALETTE_ITEM__NAME, true, false,
-				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				getString("_UI_DiagramEditorPalettePropertyCategory"), //$NON-NLS-1$
+				ZDLGenPackage.Literals.GEN_PALETTE_ITEM__NAME, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DiagramEditorPalettePropertyCategory"), //$NON-NLS-1$
 				null));
 	}
 
@@ -100,14 +95,11 @@ public class GenPaletteItemItemProvider extends GenDomainObjectItemProvider
 	 */
 	protected void addDescriptionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_GenPaletteItem_description_feature"), //$NON-NLS-1$
 				getString("_UI_GenPaletteItem_description_description"), //$NON-NLS-1$
-				ZDLGenPackage.Literals.GEN_PALETTE_ITEM__DESCRIPTION, true,
-				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				getString("_UI_DiagramEditorPalettePropertyCategory"), //$NON-NLS-1$
+				ZDLGenPackage.Literals.GEN_PALETTE_ITEM__DESCRIPTION, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DiagramEditorPalettePropertyCategory"), //$NON-NLS-1$
 				null));
 	}
 
@@ -140,15 +132,13 @@ public class GenPaletteItemItemProvider extends GenDomainObjectItemProvider
 		drawerName = (drawerName == null || drawerName.length() == 0) ? "???" : drawerName; //$NON-NLS-1$
 
 		String key = "_Label_" + item.eClass().getName(); //$NON-NLS-1$
-		return getResourceLocator().getString(key,
-				new Object[] { modelName, drawerName });
+		return getResourceLocator().getString(key, new Object[] { modelName, drawerName });
 	}
 
 	@Override
 	public String getTextForTree(EObject object) {
 		String key = "_TreeText_" + object.eClass().getName(); //$NON-NLS-1$
-		return getResourceLocator().getString(key,
-				new Object[] { ((GenPaletteItem) object).getName() });
+		return getResourceLocator().getString(key, new Object[] { ((GenPaletteItem) object).getName() });
 	}
 
 	/**
@@ -165,8 +155,7 @@ public class GenPaletteItemItemProvider extends GenDomainObjectItemProvider
 		switch (notification.getFeatureID(GenPaletteItem.class)) {
 		case ZDLGenPackage.GEN_PALETTE_ITEM__NAME:
 		case ZDLGenPackage.GEN_PALETTE_ITEM__DESCRIPTION:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -180,8 +169,7 @@ public class GenPaletteItemItemProvider extends GenDomainObjectItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

@@ -14,7 +14,6 @@ import zdlgen;
 
 extension com::zeligsoft::ddk::zdlgen2umlprofile::adapter::rsm::extensions::rsmProfiling;
 extension com::zeligsoft::ddk::zdlgen2umlprofile::workflow::zdlTrace;
-extension com::zeligsoft::ddk::zdlgen2umlprofile::workflow::palette;
 extension com::zeligsoft::ddk::zdlgen2umlprofile::workflow::modelExplorer;
 
 /**
@@ -36,7 +35,6 @@ create Profile transform(GenDomainSpecialization specialization) :
 	specialization.domainConcept.mapped().toClassifier(this, specialization) ->
 	this.traceToZDL(specialization) ->
 	specialization.domainConcept.select(c|c.isMetaclass()).traceAbstractConceptToZDL(this) ->
-	specialization.generatePalette(this) ->
 	specialization.generateMenuModel(this);
 
 /**
@@ -137,6 +135,7 @@ create Stereotype toStereotype(GenDomainConcept concept, Profile profile, GenDom
     this.populateClass(concept, profile, domainspec) ->
     this.createExtensions(concept.getExtendedMetaclasses()) ->
     this.annotateForRSM(concept) ->
+    this.processIcon(concept) ->
     this.traceToZDL(concept);
 
 /**
@@ -172,12 +171,22 @@ private Void annotateForRSM(Stereotype self, GenDomainConcept concept) :
 	        concept.isRSMUIReadOnly? annot.putDetail("uiReadOnly", "true") : {}
 	        )) : {};
 	        
+private Void processIcon(Stereotype self, GenDomainConcept concept) :
+	concept.hasIconUri()?
+		(let icon = self.createIcon(concept.iconUri) : ( 
+			let annot = icon.createEAnnotation("image_papyrus") : (
+				annot.putDetail("image_kind_key", "icon")
+			))) : {};
+	
 /**
  * Queries whether a domain concept needs to generate RSM's stereotype
  * annotations.
  */
 private Boolean hasRSMAnnotation(GenDomainConcept self) :
     self.isRSMSuppressed || self.isRSMUIReadOnly || self.isRSMPropertiesUIReadOnly;
+
+private Boolean hasIconUri(GenDomainConcept self) :
+    self.iconUri != null && self.iconUri != "";
 
 /**
  * Converts a domain concept to a class, when that is the appropriate mapping.

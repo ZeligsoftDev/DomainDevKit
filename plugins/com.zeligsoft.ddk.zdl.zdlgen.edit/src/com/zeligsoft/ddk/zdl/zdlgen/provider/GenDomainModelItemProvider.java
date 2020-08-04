@@ -41,9 +41,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenDomainModelItemProvider extends GenDomainPackageItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class GenDomainModelItemProvider extends GenDomainPackageItemProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -84,15 +82,11 @@ public class GenDomainModelItemProvider extends GenDomainPackageItemProvider
 	 */
 	protected void addDomainModelPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainModel_domainModel_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainModel_domainModel_feature", "_UI_GenDomainModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_MODEL__DOMAIN_MODEL,
-						false, false, true, null,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainModel_domainModel_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainModel_domainModel_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainModel_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_MODEL__DOMAIN_MODEL, false, false, true, null,
 						getString("_UI_DomainPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
@@ -105,17 +99,12 @@ public class GenDomainModelItemProvider extends GenDomainPackageItemProvider
 	 */
 	protected void addNsURIPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainModel_nsURI_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainModel_nsURI_feature", "_UI_GenDomainModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_MODEL__NS_URI, true,
-						false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_ProfileMappingPropertyCategory"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainModel_nsURI_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainModel_nsURI_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainModel_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_MODEL__NS_URI, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_ProfileMappingPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -127,17 +116,12 @@ public class GenDomainModelItemProvider extends GenDomainPackageItemProvider
 	 */
 	protected void addRootPackagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainModel_rootPackage_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainModel_rootPackage_feature", "_UI_GenDomainModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_MODEL__ROOT_PACKAGE,
-						true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_StaticAPIPropertyCategory"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainModel_rootPackage_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainModel_rootPackage_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainModel_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_MODEL__ROOT_PACKAGE, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_StaticAPIPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -149,17 +133,12 @@ public class GenDomainModelItemProvider extends GenDomainPackageItemProvider
 	 */
 	protected void addImplementationSubPackagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainModel_implementationSubPackage_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainModel_implementationSubPackage_feature", "_UI_GenDomainModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_MODEL__IMPLEMENTATION_SUB_PACKAGE,
-						true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_StaticAPIPropertyCategory"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainModel_implementationSubPackage_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+								"_UI_GenDomainModel_implementationSubPackage_feature", "_UI_GenDomainModel_type"), //$NON-NLS-1$ //$NON-NLS-2$
+						ZDLGenPackage.Literals.GEN_DOMAIN_MODEL__IMPLEMENTATION_SUB_PACKAGE, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_StaticAPIPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -171,17 +150,12 @@ public class GenDomainModelItemProvider extends GenDomainPackageItemProvider
 	 */
 	protected void addImplSuffixPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainModel_implSuffix_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainModel_implSuffix_feature", "_UI_GenDomainModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_MODEL__IMPL_SUFFIX,
-						true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_StaticAPIPropertyCategory"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainModel_implSuffix_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainModel_implSuffix_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainModel_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_MODEL__IMPL_SUFFIX, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_StaticAPIPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -193,17 +167,12 @@ public class GenDomainModelItemProvider extends GenDomainPackageItemProvider
 	 */
 	protected void addApiProjectPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainModel_apiProject_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainModel_apiProject_feature", "_UI_GenDomainModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_MODEL__API_PROJECT,
-						true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_StaticAPIPropertyCategory"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainModel_apiProject_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainModel_apiProject_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainModel_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_MODEL__API_PROJECT, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_StaticAPIPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -216,14 +185,11 @@ public class GenDomainModelItemProvider extends GenDomainPackageItemProvider
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures
-					.add(ZDLGenPackage.Literals.GEN_DOMAIN_MODEL__PALETTE);
-			childrenFeatures
-					.add(ZDLGenPackage.Literals.GEN_DOMAIN_MODEL__MENU_MODEL);
+			childrenFeatures.add(ZDLGenPackage.Literals.GEN_DOMAIN_MODEL__PALETTE);
+			childrenFeatures.add(ZDLGenPackage.Literals.GEN_DOMAIN_MODEL__MENU_MODEL);
 		}
 		return childrenFeatures;
 	}
@@ -249,8 +215,7 @@ public class GenDomainModelItemProvider extends GenDomainPackageItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/GenDomainModel")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/GenDomainModel")); //$NON-NLS-1$
 	}
 
 	/**
@@ -283,13 +248,11 @@ public class GenDomainModelItemProvider extends GenDomainPackageItemProvider
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__IMPLEMENTATION_SUB_PACKAGE:
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__IMPL_SUFFIX:
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__API_PROJECT:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__PALETTE:
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__MENU_MODEL:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), true, false));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -303,16 +266,13 @@ public class GenDomainModelItemProvider extends GenDomainPackageItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-				ZDLGenPackage.Literals.GEN_DOMAIN_MODEL__PALETTE,
+		newChildDescriptors.add(createChildParameter(ZDLGenPackage.Literals.GEN_DOMAIN_MODEL__PALETTE,
 				ZDLGenFactory.eINSTANCE.createGenPalette()));
 
-		newChildDescriptors.add(createChildParameter(
-				ZDLGenPackage.Literals.GEN_DOMAIN_MODEL__MENU_MODEL,
+		newChildDescriptors.add(createChildParameter(ZDLGenPackage.Literals.GEN_DOMAIN_MODEL__MENU_MODEL,
 				ZDLGenFactory.eINSTANCE.createGenMenuModel()));
 	}
 

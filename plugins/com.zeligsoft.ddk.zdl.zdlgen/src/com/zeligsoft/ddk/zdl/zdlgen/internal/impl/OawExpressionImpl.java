@@ -30,10 +30,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.OawExpressionImpl#getVariableName <em>Variable Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -97,8 +97,7 @@ public class OawExpressionImpl extends ExpressionImpl implements OawExpression {
 		String oldVariableName = variableName;
 		variableName = newVariableName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.OAW_EXPRESSION__VARIABLE_NAME,
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.OAW_EXPRESSION__VARIABLE_NAME,
 					oldVariableName, variableName));
 	}
 
@@ -155,8 +154,7 @@ public class OawExpressionImpl extends ExpressionImpl implements OawExpression {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case ZDLGenPackage.OAW_EXPRESSION__VARIABLE_NAME:
-			return VARIABLE_NAME_EDEFAULT == null ? variableName != null
-					: !VARIABLE_NAME_EDEFAULT.equals(variableName);
+			return VARIABLE_NAME_EDEFAULT == null ? variableName != null : !VARIABLE_NAME_EDEFAULT.equals(variableName);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -171,7 +169,7 @@ public class OawExpressionImpl extends ExpressionImpl implements OawExpression {
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (variableName: "); //$NON-NLS-1$
 		result.append(variableName);
 		result.append(')');

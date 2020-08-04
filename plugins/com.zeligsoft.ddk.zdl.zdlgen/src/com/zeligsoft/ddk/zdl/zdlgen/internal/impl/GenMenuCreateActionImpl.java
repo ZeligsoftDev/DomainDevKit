@@ -41,17 +41,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenMenuCreateActionImpl#getTypeHint <em>Type Hint</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenMenuCreateActionImpl#getCreateConcept <em>Create Concept</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenMenuCreateActionImpl#getExpressions <em>Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class GenMenuCreateActionImpl extends GenMenuActionImpl implements
-		GenMenuCreateAction {
+public class GenMenuCreateActionImpl extends GenMenuActionImpl implements GenMenuCreateAction {
 	/**
 	 * The default value of the '{@link #getTypeHint() <em>Type Hint</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -131,8 +130,7 @@ public class GenMenuCreateActionImpl extends GenMenuActionImpl implements
 		String oldTypeHint = typeHint;
 		typeHint = newTypeHint;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_MENU_CREATE_ACTION__TYPE_HINT,
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_MENU_CREATE_ACTION__TYPE_HINT,
 					oldTypeHint, typeHint));
 	}
 
@@ -148,11 +146,8 @@ public class GenMenuCreateActionImpl extends GenMenuActionImpl implements
 			createConcept = (GenDomainConcept) eResolveProxy(oldCreateConcept);
 			if (createConcept != oldCreateConcept) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							ZDLGenPackage.GEN_MENU_CREATE_ACTION__CREATE_CONCEPT,
-							oldCreateConcept, createConcept));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							ZDLGenPackage.GEN_MENU_CREATE_ACTION__CREATE_CONCEPT, oldCreateConcept, createConcept));
 			}
 		}
 		return createConcept;
@@ -177,8 +172,7 @@ public class GenMenuCreateActionImpl extends GenMenuActionImpl implements
 		GenDomainConcept oldCreateConcept = createConcept;
 		createConcept = newCreateConcept;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_MENU_CREATE_ACTION__CREATE_CONCEPT,
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_MENU_CREATE_ACTION__CREATE_CONCEPT,
 					oldCreateConcept, createConcept));
 	}
 
@@ -190,8 +184,7 @@ public class GenMenuCreateActionImpl extends GenMenuActionImpl implements
 	@Override
 	public EList<Expression> getExpressions() {
 		if (expressions == null) {
-			expressions = new EObjectContainmentEList<Expression>(
-					Expression.class, this,
+			expressions = new EObjectContainmentEList<Expression>(Expression.class, this,
 					ZDLGenPackage.GEN_MENU_CREATE_ACTION__EXPRESSION);
 		}
 		return expressions;
@@ -203,12 +196,10 @@ public class GenMenuCreateActionImpl extends GenMenuActionImpl implements
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_MENU_CREATE_ACTION__EXPRESSION:
-			return ((InternalEList<?>) getExpressions()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getExpressions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -250,8 +241,7 @@ public class GenMenuCreateActionImpl extends GenMenuActionImpl implements
 			return;
 		case ZDLGenPackage.GEN_MENU_CREATE_ACTION__EXPRESSION:
 			getExpressions().clear();
-			getExpressions()
-					.addAll((Collection<? extends Expression>) newValue);
+			getExpressions().addAll((Collection<? extends Expression>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -287,8 +277,7 @@ public class GenMenuCreateActionImpl extends GenMenuActionImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_MENU_CREATE_ACTION__TYPE_HINT:
-			return TYPE_HINT_EDEFAULT == null ? typeHint != null
-					: !TYPE_HINT_EDEFAULT.equals(typeHint);
+			return TYPE_HINT_EDEFAULT == null ? typeHint != null : !TYPE_HINT_EDEFAULT.equals(typeHint);
 		case ZDLGenPackage.GEN_MENU_CREATE_ACTION__CREATE_CONCEPT:
 			return createConcept != null;
 		case ZDLGenPackage.GEN_MENU_CREATE_ACTION__EXPRESSION:
@@ -307,7 +296,7 @@ public class GenMenuCreateActionImpl extends GenMenuActionImpl implements
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (typeHint: "); //$NON-NLS-1$
 		result.append(typeHint);
 		result.append(')');

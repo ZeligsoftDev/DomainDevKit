@@ -30,16 +30,15 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenMenuDelegateActionImpl#getHostBundle <em>Host Bundle</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenMenuDelegateActionImpl#getClassName <em>Class Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class GenMenuDelegateActionImpl extends GenMenuActionImpl implements
-		GenMenuDelegateAction {
+public class GenMenuDelegateActionImpl extends GenMenuActionImpl implements GenMenuDelegateAction {
 	/**
 	 * The default value of the '{@link #getHostBundle() <em>Host Bundle</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -119,8 +118,7 @@ public class GenMenuDelegateActionImpl extends GenMenuActionImpl implements
 		String oldHostBundle = hostBundle;
 		hostBundle = newHostBundle;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_MENU_DELEGATE_ACTION__HOST_BUNDLE,
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_MENU_DELEGATE_ACTION__HOST_BUNDLE,
 					oldHostBundle, hostBundle));
 	}
 
@@ -144,8 +142,7 @@ public class GenMenuDelegateActionImpl extends GenMenuActionImpl implements
 		String oldClassName = className;
 		className = newClassName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_MENU_DELEGATE_ACTION__CLASS_NAME,
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_MENU_DELEGATE_ACTION__CLASS_NAME,
 					oldClassName, className));
 	}
 
@@ -210,11 +207,9 @@ public class GenMenuDelegateActionImpl extends GenMenuActionImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_MENU_DELEGATE_ACTION__HOST_BUNDLE:
-			return HOST_BUNDLE_EDEFAULT == null ? hostBundle != null
-					: !HOST_BUNDLE_EDEFAULT.equals(hostBundle);
+			return HOST_BUNDLE_EDEFAULT == null ? hostBundle != null : !HOST_BUNDLE_EDEFAULT.equals(hostBundle);
 		case ZDLGenPackage.GEN_MENU_DELEGATE_ACTION__CLASS_NAME:
-			return CLASS_NAME_EDEFAULT == null ? className != null
-					: !CLASS_NAME_EDEFAULT.equals(className);
+			return CLASS_NAME_EDEFAULT == null ? className != null : !CLASS_NAME_EDEFAULT.equals(className);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -229,7 +224,7 @@ public class GenMenuDelegateActionImpl extends GenMenuActionImpl implements
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (hostBundle: "); //$NON-NLS-1$
 		result.append(hostBundle);
 		result.append(", className: "); //$NON-NLS-1$

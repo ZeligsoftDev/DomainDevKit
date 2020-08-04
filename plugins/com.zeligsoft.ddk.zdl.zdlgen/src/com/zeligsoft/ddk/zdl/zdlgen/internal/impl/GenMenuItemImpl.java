@@ -31,17 +31,16 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenMenuItemImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenMenuItemImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenMenuItemImpl#getOverrides <em>Overrides</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class GenMenuItemImpl extends GenDomainObjectImpl implements
-		GenMenuItem {
+public abstract class GenMenuItemImpl extends GenDomainObjectImpl implements GenMenuItem {
 	/**
 	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -131,9 +130,8 @@ public abstract class GenMenuItemImpl extends GenDomainObjectImpl implements
 		String oldDescription = description;
 		description = newDescription;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_MENU_ITEM__DESCRIPTION, oldDescription,
-					description));
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_MENU_ITEM__DESCRIPTION,
+					oldDescription, description));
 	}
 
 	/**
@@ -156,8 +154,7 @@ public abstract class GenMenuItemImpl extends GenDomainObjectImpl implements
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_MENU_ITEM__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_MENU_ITEM__NAME, oldName, name));
 	}
 
 	/**
@@ -172,8 +169,7 @@ public abstract class GenMenuItemImpl extends GenDomainObjectImpl implements
 			overrides = (GenMenuItem) eResolveProxy(oldOverrides);
 			if (overrides != oldOverrides) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ZDLGenPackage.GEN_MENU_ITEM__OVERRIDES,
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ZDLGenPackage.GEN_MENU_ITEM__OVERRIDES,
 							oldOverrides, overrides));
 			}
 		}
@@ -199,8 +195,7 @@ public abstract class GenMenuItemImpl extends GenDomainObjectImpl implements
 		GenMenuItem oldOverrides = overrides;
 		overrides = newOverrides;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_MENU_ITEM__OVERRIDES, oldOverrides,
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_MENU_ITEM__OVERRIDES, oldOverrides,
 					overrides));
 	}
 
@@ -285,11 +280,9 @@ public abstract class GenMenuItemImpl extends GenDomainObjectImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_MENU_ITEM__DESCRIPTION:
-			return DESCRIPTION_EDEFAULT == null ? description != null
-					: !DESCRIPTION_EDEFAULT.equals(description);
+			return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 		case ZDLGenPackage.GEN_MENU_ITEM__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case ZDLGenPackage.GEN_MENU_ITEM__OVERRIDES:
 			return overrides != null;
 		}
@@ -306,7 +299,7 @@ public abstract class GenMenuItemImpl extends GenDomainObjectImpl implements
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (description: "); //$NON-NLS-1$
 		result.append(description);
 		result.append(", name: "); //$NON-NLS-1$

@@ -38,10 +38,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenDomainBlockRelationItemProvider extends
-		GenDomainObjectItemProvider implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider,
-		IItemLabelProvider, IItemPropertySource {
+public class GenDomainBlockRelationItemProvider extends GenDomainObjectItemProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -78,15 +75,11 @@ public class GenDomainBlockRelationItemProvider extends
 	 */
 	protected void addTargetPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainBlockRelation_target_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainBlockRelation_target_feature", "_UI_GenDomainBlockRelation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK_RELATION__TARGET,
-						false, false, true, null,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainBlockRelation_target_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainBlockRelation_target_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainBlockRelation_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK_RELATION__TARGET, false, false, true, null,
 						getString("_UI_ZDLGeneratorPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
@@ -98,18 +91,14 @@ public class GenDomainBlockRelationItemProvider extends
 	 * @generated
 	 */
 	protected void addDomainBlockRelationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainBlockRelation_domainBlockRelation_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainBlockRelation_domainBlockRelation_feature", "_UI_GenDomainBlockRelation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK_RELATION__DOMAIN_BLOCK_RELATION,
-						false, false, true, null,
-						getString("_UI_DomainPropertyCategory"), //$NON-NLS-1$
-						null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_GenDomainBlockRelation_domainBlockRelation_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+						"_UI_GenDomainBlockRelation_domainBlockRelation_feature", "_UI_GenDomainBlockRelation_type"), //$NON-NLS-1$ //$NON-NLS-2$
+				ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK_RELATION__DOMAIN_BLOCK_RELATION, false, false, true, null,
+				getString("_UI_DomainPropertyCategory"), //$NON-NLS-1$
+				null));
 	}
 
 	/**
@@ -130,8 +119,7 @@ public class GenDomainBlockRelationItemProvider extends
 		GenDomainBlockRelation relation = (GenDomainBlockRelation) object;
 
 		if (relation.getTarget() != null) {
-			return getResourceLocator().getString(key,
-					new Object[] { relation.getTarget().getName() });
+			return getResourceLocator().getString(key, new Object[] { relation.getTarget().getName() });
 		}
 
 		return super.getTextForTree(object);
@@ -147,7 +135,6 @@ public class GenDomainBlockRelationItemProvider extends
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-		super.notifyChanged(notification);
 	}
 
 	/**
@@ -158,8 +145,7 @@ public class GenDomainBlockRelationItemProvider extends
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

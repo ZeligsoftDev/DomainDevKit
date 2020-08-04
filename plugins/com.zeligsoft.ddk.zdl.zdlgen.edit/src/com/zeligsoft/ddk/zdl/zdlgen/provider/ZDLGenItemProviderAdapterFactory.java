@@ -103,8 +103,7 @@ public class ZDLGenItemProviderAdapterFactory extends ZDLGenAdapterFactory
 	@Override
 	public Adapter createGenDomainConceptAdapter() {
 		if (genDomainConceptItemProvider == null) {
-			genDomainConceptItemProvider = new GenDomainConceptItemProvider(
-					this);
+			genDomainConceptItemProvider = new GenDomainConceptItemProvider(this);
 		}
 
 		return genDomainConceptItemProvider;
@@ -127,8 +126,7 @@ public class ZDLGenItemProviderAdapterFactory extends ZDLGenAdapterFactory
 	@Override
 	public Adapter createGenDomainGeneralizationAdapter() {
 		if (genDomainGeneralizationItemProvider == null) {
-			genDomainGeneralizationItemProvider = new GenDomainGeneralizationItemProvider(
-					this);
+			genDomainGeneralizationItemProvider = new GenDomainGeneralizationItemProvider(this);
 		}
 
 		return genDomainGeneralizationItemProvider;
@@ -174,8 +172,7 @@ public class ZDLGenItemProviderAdapterFactory extends ZDLGenAdapterFactory
 	@Override
 	public Adapter createGenDomainAttributeAdapter() {
 		if (genDomainAttributeItemProvider == null) {
-			genDomainAttributeItemProvider = new GenDomainAttributeItemProvider(
-					this);
+			genDomainAttributeItemProvider = new GenDomainAttributeItemProvider(this);
 		}
 
 		return genDomainAttributeItemProvider;
@@ -198,8 +195,7 @@ public class ZDLGenItemProviderAdapterFactory extends ZDLGenAdapterFactory
 	@Override
 	public Adapter createGenDomainDataTypeAdapter() {
 		if (genDomainDataTypeItemProvider == null) {
-			genDomainDataTypeItemProvider = new GenDomainDataTypeItemProvider(
-					this);
+			genDomainDataTypeItemProvider = new GenDomainDataTypeItemProvider(this);
 		}
 
 		return genDomainDataTypeItemProvider;
@@ -222,8 +218,7 @@ public class ZDLGenItemProviderAdapterFactory extends ZDLGenAdapterFactory
 	@Override
 	public Adapter createGenAttributeOverrideAdapter() {
 		if (genAttributeOverrideItemProvider == null) {
-			genAttributeOverrideItemProvider = new GenAttributeOverrideItemProvider(
-					this);
+			genAttributeOverrideItemProvider = new GenAttributeOverrideItemProvider(this);
 		}
 
 		return genAttributeOverrideItemProvider;
@@ -269,8 +264,7 @@ public class ZDLGenItemProviderAdapterFactory extends ZDLGenAdapterFactory
 	@Override
 	public Adapter createGenDomainBlockImportAdapter() {
 		if (genDomainBlockImportItemProvider == null) {
-			genDomainBlockImportItemProvider = new GenDomainBlockImportItemProvider(
-					this);
+			genDomainBlockImportItemProvider = new GenDomainBlockImportItemProvider(this);
 		}
 
 		return genDomainBlockImportItemProvider;
@@ -293,8 +287,7 @@ public class ZDLGenItemProviderAdapterFactory extends ZDLGenAdapterFactory
 	@Override
 	public Adapter createGenDomainBlockMergeAdapter() {
 		if (genDomainBlockMergeItemProvider == null) {
-			genDomainBlockMergeItemProvider = new GenDomainBlockMergeItemProvider(
-					this);
+			genDomainBlockMergeItemProvider = new GenDomainBlockMergeItemProvider(this);
 		}
 
 		return genDomainBlockMergeItemProvider;
@@ -340,8 +333,7 @@ public class ZDLGenItemProviderAdapterFactory extends ZDLGenAdapterFactory
 	@Override
 	public Adapter createGenPaletteDrawerAdapter() {
 		if (genPaletteDrawerItemProvider == null) {
-			genPaletteDrawerItemProvider = new GenPaletteDrawerItemProvider(
-					this);
+			genPaletteDrawerItemProvider = new GenPaletteDrawerItemProvider(this);
 		}
 
 		return genPaletteDrawerItemProvider;
@@ -410,8 +402,7 @@ public class ZDLGenItemProviderAdapterFactory extends ZDLGenAdapterFactory
 	@Override
 	public Adapter createGenDomainBlockReferenceAdapter() {
 		if (genDomainBlockReferenceItemProvider == null) {
-			genDomainBlockReferenceItemProvider = new GenDomainBlockReferenceItemProvider(
-					this);
+			genDomainBlockReferenceItemProvider = new GenDomainBlockReferenceItemProvider(this);
 		}
 
 		return genDomainBlockReferenceItemProvider;
@@ -457,8 +448,7 @@ public class ZDLGenItemProviderAdapterFactory extends ZDLGenAdapterFactory
 	@Override
 	public Adapter createGenDomainEnumLiteralAdapter() {
 		if (genDomainEnumLiteralItemProvider == null) {
-			genDomainEnumLiteralItemProvider = new GenDomainEnumLiteralItemProvider(
-					this);
+			genDomainEnumLiteralItemProvider = new GenDomainEnumLiteralItemProvider(this);
 		}
 
 		return genDomainEnumLiteralItemProvider;
@@ -481,8 +471,7 @@ public class ZDLGenItemProviderAdapterFactory extends ZDLGenAdapterFactory
 	@Override
 	public Adapter createGenPaletteCreationToolAdapter() {
 		if (genPaletteCreationToolItemProvider == null) {
-			genPaletteCreationToolItemProvider = new GenPaletteCreationToolItemProvider(
-					this);
+			genPaletteCreationToolItemProvider = new GenPaletteCreationToolItemProvider(this);
 		}
 
 		return genPaletteCreationToolItemProvider;
@@ -574,8 +563,7 @@ public class ZDLGenItemProviderAdapterFactory extends ZDLGenAdapterFactory
 	@Override
 	public Adapter createGenMenuDelegateActionAdapter() {
 		if (genMenuDelegateActionItemProvider == null) {
-			genMenuDelegateActionItemProvider = new GenMenuDelegateActionItemProvider(
-					this);
+			genMenuDelegateActionItemProvider = new GenMenuDelegateActionItemProvider(this);
 		}
 
 		return genMenuDelegateActionItemProvider;
@@ -598,8 +586,7 @@ public class ZDLGenItemProviderAdapterFactory extends ZDLGenAdapterFactory
 	@Override
 	public Adapter createGenMenuCreateActionAdapter() {
 		if (genMenuCreateActionItemProvider == null) {
-			genMenuCreateActionItemProvider = new GenMenuCreateActionItemProvider(
-					this);
+			genMenuCreateActionItemProvider = new GenMenuCreateActionItemProvider(this);
 		}
 
 		return genMenuCreateActionItemProvider;
@@ -622,8 +609,7 @@ public class ZDLGenItemProviderAdapterFactory extends ZDLGenAdapterFactory
 	@Override
 	public Adapter createGenMenuSeparatorAdapter() {
 		if (genMenuSeparatorItemProvider == null) {
-			genMenuSeparatorItemProvider = new GenMenuSeparatorItemProvider(
-					this);
+			genMenuSeparatorItemProvider = new GenMenuSeparatorItemProvider(this);
 		}
 
 		return genMenuSeparatorItemProvider;
@@ -646,8 +632,7 @@ public class ZDLGenItemProviderAdapterFactory extends ZDLGenAdapterFactory
 	@Override
 	public Adapter createGenDomainReferenceAdapter() {
 		if (genDomainReferenceItemProvider == null) {
-			genDomainReferenceItemProvider = new GenDomainReferenceItemProvider(
-					this);
+			genDomainReferenceItemProvider = new GenDomainReferenceItemProvider(this);
 		}
 
 		return genDomainReferenceItemProvider;
@@ -670,8 +655,7 @@ public class ZDLGenItemProviderAdapterFactory extends ZDLGenAdapterFactory
 	@Override
 	public Adapter createGenDomainSpecializationAdapter() {
 		if (genDomainSpecializationItemProvider == null) {
-			genDomainSpecializationItemProvider = new GenDomainSpecializationItemProvider(
-					this);
+			genDomainSpecializationItemProvider = new GenDomainSpecializationItemProvider(this);
 		}
 
 		return genDomainSpecializationItemProvider;
@@ -694,8 +678,7 @@ public class ZDLGenItemProviderAdapterFactory extends ZDLGenAdapterFactory
 	@Override
 	public Adapter createGenDomainModelLibraryReferenceAdapter() {
 		if (genDomainModelLibraryReferenceItemProvider == null) {
-			genDomainModelLibraryReferenceItemProvider = new GenDomainModelLibraryReferenceItemProvider(
-					this);
+			genDomainModelLibraryReferenceItemProvider = new GenDomainModelLibraryReferenceItemProvider(this);
 		}
 
 		return genDomainModelLibraryReferenceItemProvider;
@@ -718,8 +701,7 @@ public class ZDLGenItemProviderAdapterFactory extends ZDLGenAdapterFactory
 	@Override
 	public Adapter createGenDomainModelLibraryAdapter() {
 		if (genDomainModelLibraryItemProvider == null) {
-			genDomainModelLibraryItemProvider = new GenDomainModelLibraryItemProvider(
-					this);
+			genDomainModelLibraryItemProvider = new GenDomainModelLibraryItemProvider(this);
 		}
 
 		return genDomainModelLibraryItemProvider;
@@ -788,8 +770,7 @@ public class ZDLGenItemProviderAdapterFactory extends ZDLGenAdapterFactory
 	@Override
 	public Adapter createGenDomainPackageAdapter() {
 		if (genDomainPackageItemProvider == null) {
-			genDomainPackageItemProvider = new GenDomainPackageItemProvider(
-					this);
+			genDomainPackageItemProvider = new GenDomainPackageItemProvider(this);
 		}
 
 		return genDomainPackageItemProvider;
@@ -803,8 +784,7 @@ public class ZDLGenItemProviderAdapterFactory extends ZDLGenAdapterFactory
 	 */
 	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory
-				.getRootAdapterFactory();
+		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
 
 	/**
@@ -814,8 +794,7 @@ public class ZDLGenItemProviderAdapterFactory extends ZDLGenAdapterFactory
 	 * @generated
 	 */
 	@Override
-	public void setParentAdapterFactory(
-			ComposedAdapterFactory parentAdapterFactory) {
+	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
 
@@ -849,8 +828,7 @@ public class ZDLGenItemProviderAdapterFactory extends ZDLGenAdapterFactory
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>)
-					|| (((Class<?>) type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>) || (((Class<?>) type).isInstance(adapter))) {
 				return adapter;
 			}
 		}

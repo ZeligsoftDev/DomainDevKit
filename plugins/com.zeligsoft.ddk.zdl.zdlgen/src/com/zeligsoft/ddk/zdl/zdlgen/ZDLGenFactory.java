@@ -33,8 +33,7 @@ public interface ZDLGenFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ZDLGenFactory eINSTANCE = com.zeligsoft.ddk.zdl.zdlgen.internal.impl.ZDLGenFactoryImpl
-			.init();
+	ZDLGenFactory eINSTANCE = com.zeligsoft.ddk.zdl.zdlgen.internal.impl.ZDLGenFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Gen Domain Concept</em>'.

@@ -35,18 +35,17 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainEnumLiteralImpl#getDomainElement <em>Domain Element</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainEnumLiteralImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainEnumLiteralImpl#getDomainEnumLiteral <em>Domain Enum Literal</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainEnumLiteralImpl#getEnumeration <em>Enumeration</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class GenDomainEnumLiteralImpl extends GenDomainNamedElementImpl
-		implements GenDomainEnumLiteral {
+public class GenDomainEnumLiteralImpl extends GenDomainNamedElementImpl implements GenDomainEnumLiteral {
 
 	/**
 	 * The cached value of the '{@link #getDomainEnumLiteral() <em>Domain Enum Literal</em>}' reference.
@@ -85,7 +84,8 @@ public class GenDomainEnumLiteralImpl extends GenDomainNamedElementImpl
 	@Override
 	public NamedElement getDomainElement() {
 		NamedElement domainElement = basicGetDomainElement();
-		return domainElement != null && domainElement.eIsProxy() ? (NamedElement) eResolveProxy((InternalEObject) domainElement)
+		return domainElement != null && domainElement.eIsProxy()
+				? (NamedElement) eResolveProxy((InternalEObject) domainElement)
 				: domainElement;
 	}
 
@@ -110,8 +110,7 @@ public class GenDomainEnumLiteralImpl extends GenDomainNamedElementImpl
 	@Override
 	public GenDomainObject getOwner() {
 		GenDomainObject owner = basicGetOwner();
-		return owner != null && owner.eIsProxy() ? (GenDomainObject) eResolveProxy((InternalEObject) owner)
-				: owner;
+		return owner != null && owner.eIsProxy() ? (GenDomainObject) eResolveProxy((InternalEObject) owner) : owner;
 	}
 
 	/**
@@ -140,11 +139,9 @@ public class GenDomainEnumLiteralImpl extends GenDomainNamedElementImpl
 			domainEnumLiteral = (EnumerationLiteral) eResolveProxy(oldDomainEnumLiteral);
 			if (domainEnumLiteral != oldDomainEnumLiteral) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__DOMAIN_ENUM_LITERAL,
-							oldDomainEnumLiteral, domainEnumLiteral));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__DOMAIN_ENUM_LITERAL, oldDomainEnumLiteral,
+							domainEnumLiteral));
 			}
 		}
 		return domainEnumLiteral;
@@ -170,8 +167,8 @@ public class GenDomainEnumLiteralImpl extends GenDomainNamedElementImpl
 		domainEnumLiteral = newDomainEnumLiteral;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__DOMAIN_ENUM_LITERAL,
-					oldDomainEnumLiteral, domainEnumLiteral));
+					ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__DOMAIN_ENUM_LITERAL, oldDomainEnumLiteral,
+					domainEnumLiteral));
 	}
 
 	/**
@@ -183,7 +180,7 @@ public class GenDomainEnumLiteralImpl extends GenDomainNamedElementImpl
 	public GenDomainEnum getEnumeration() {
 		if (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION)
 			return null;
-		return (GenDomainEnum) eContainer();
+		return (GenDomainEnum) eInternalContainer();
 	}
 
 	/**
@@ -191,10 +188,9 @@ public class GenDomainEnumLiteralImpl extends GenDomainNamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetEnumeration(GenDomainEnum newEnumeration,
-			NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newEnumeration,
-				ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION, msgs);
+	public NotificationChain basicSetEnumeration(GenDomainEnum newEnumeration, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newEnumeration, ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION,
+				msgs);
 		return msgs;
 	}
 
@@ -206,23 +202,21 @@ public class GenDomainEnumLiteralImpl extends GenDomainNamedElementImpl
 	@Override
 	public void setEnumeration(GenDomainEnum newEnumeration) {
 		if (newEnumeration != eInternalContainer()
-				|| (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION && newEnumeration != null)) {
+				|| (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION
+						&& newEnumeration != null)) {
 			if (EcoreUtil.isAncestor(this, newEnumeration))
-				throw new IllegalArgumentException(
-						"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newEnumeration != null)
-				msgs = ((InternalEObject) newEnumeration).eInverseAdd(this,
-						ZDLGenPackage.GEN_DOMAIN_ENUM__LITERAL,
+				msgs = ((InternalEObject) newEnumeration).eInverseAdd(this, ZDLGenPackage.GEN_DOMAIN_ENUM__LITERAL,
 						GenDomainEnum.class, msgs);
 			msgs = basicSetEnumeration(newEnumeration, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION,
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION,
 					newEnumeration, newEnumeration));
 	}
 
@@ -232,8 +226,7 @@ public class GenDomainEnumLiteralImpl extends GenDomainNamedElementImpl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION:
 			if (eInternalContainer() != null)
@@ -249,8 +242,7 @@ public class GenDomainEnumLiteralImpl extends GenDomainNamedElementImpl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION:
 			return basicSetEnumeration(null, msgs);
@@ -264,12 +256,10 @@ public class GenDomainEnumLiteralImpl extends GenDomainNamedElementImpl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(
-			NotificationChain msgs) {
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 		case ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION:
-			return eInternalContainer().eInverseRemove(this,
-					ZDLGenPackage.GEN_DOMAIN_ENUM__LITERAL,
+			return eInternalContainer().eInverseRemove(this, ZDLGenPackage.GEN_DOMAIN_ENUM__LITERAL,
 					GenDomainEnum.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
@@ -337,6 +327,10 @@ public class GenDomainEnumLiteralImpl extends GenDomainNamedElementImpl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__DOMAIN_ELEMENT:
+			return isSetDomainElement();
+		case ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__OWNER:
+			return isSetOwner();
 		case ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__DOMAIN_ENUM_LITERAL:
 			return domainEnumLiteral != null;
 		case ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION:
@@ -352,8 +346,7 @@ public class GenDomainEnumLiteralImpl extends GenDomainNamedElementImpl
 	 */
 	@Override
 	public boolean isSetDomainElement() {
-		return super.isSetDomainElement()
-				|| eIsSet(ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__DOMAIN_ENUM_LITERAL);
+		return super.isSetDomainElement() || eIsSet(ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__DOMAIN_ENUM_LITERAL);
 	}
 
 	/**
@@ -363,8 +356,7 @@ public class GenDomainEnumLiteralImpl extends GenDomainNamedElementImpl
 	 */
 	@Override
 	public boolean isSetOwner() {
-		return super.isSetOwner()
-				|| eIsSet(ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION);
+		return super.isSetOwner() || eIsSet(ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION);
 	}
 
 } //GenDomainEnumLiteralImpl

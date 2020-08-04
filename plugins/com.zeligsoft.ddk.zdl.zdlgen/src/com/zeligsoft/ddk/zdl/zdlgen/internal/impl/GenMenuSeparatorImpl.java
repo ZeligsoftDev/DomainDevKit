@@ -24,13 +24,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Gen Menu Separator</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public class GenMenuSeparatorImpl extends GenMenuItemImpl implements
-		GenMenuSeparator {
+public class GenMenuSeparatorImpl extends GenMenuItemImpl implements GenMenuSeparator {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

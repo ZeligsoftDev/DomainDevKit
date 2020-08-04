@@ -35,6 +35,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainReferenceImpl#getDomainElement <em>Domain Element</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainReferenceImpl#getConcept <em>Concept</em>}</li>
@@ -42,12 +43,10 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainReferenceImpl#getSource <em>Source</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainReferenceImpl#getDomainReference <em>Domain Reference</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class GenDomainReferenceImpl extends GenDomainStructuralFeatureImpl
-		implements GenDomainReference {
+public class GenDomainReferenceImpl extends GenDomainStructuralFeatureImpl implements GenDomainReference {
 
 	/**
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
@@ -106,7 +105,8 @@ public class GenDomainReferenceImpl extends GenDomainStructuralFeatureImpl
 	@Override
 	public NamedElement getDomainElement() {
 		NamedElement domainElement = basicGetDomainElement();
-		return domainElement != null && domainElement.eIsProxy() ? (NamedElement) eResolveProxy((InternalEObject) domainElement)
+		return domainElement != null && domainElement.eIsProxy()
+				? (NamedElement) eResolveProxy((InternalEObject) domainElement)
 				: domainElement;
 	}
 
@@ -132,7 +132,7 @@ public class GenDomainReferenceImpl extends GenDomainStructuralFeatureImpl
 	public GenDomainConcept getConcept() {
 		if (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_REFERENCE__CONCEPT)
 			return null;
-		return (GenDomainConcept) eContainer();
+		return (GenDomainConcept) eInternalContainer();
 	}
 
 	/**
@@ -141,10 +141,8 @@ public class GenDomainReferenceImpl extends GenDomainStructuralFeatureImpl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain basicSetConcept(GenDomainConcept newConcept,
-			NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newConcept,
-				ZDLGenPackage.GEN_DOMAIN_REFERENCE__CONCEPT, msgs);
+	public NotificationChain basicSetConcept(GenDomainConcept newConcept, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newConcept, ZDLGenPackage.GEN_DOMAIN_REFERENCE__CONCEPT, msgs);
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (source != null && source != newConcept) {
@@ -164,22 +162,19 @@ public class GenDomainReferenceImpl extends GenDomainStructuralFeatureImpl
 		if (newConcept != eInternalContainer()
 				|| (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_REFERENCE__CONCEPT && newConcept != null)) {
 			if (EcoreUtil.isAncestor(this, newConcept))
-				throw new IllegalArgumentException(
-						"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newConcept != null)
-				msgs = ((InternalEObject) newConcept).eInverseAdd(this,
-						ZDLGenPackage.GEN_DOMAIN_CONCEPT__FEATURE,
+				msgs = ((InternalEObject) newConcept).eInverseAdd(this, ZDLGenPackage.GEN_DOMAIN_CONCEPT__FEATURE,
 						GenDomainConcept.class, msgs);
 			msgs = basicSetConcept(newConcept, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_REFERENCE__CONCEPT, newConcept,
-					newConcept));
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_REFERENCE__CONCEPT,
+					newConcept, newConcept));
 	}
 
 	/**
@@ -195,8 +190,7 @@ public class GenDomainReferenceImpl extends GenDomainStructuralFeatureImpl
 			if (target != oldTarget) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ZDLGenPackage.GEN_DOMAIN_REFERENCE__TARGET,
-							oldTarget, target));
+							ZDLGenPackage.GEN_DOMAIN_REFERENCE__TARGET, oldTarget, target));
 			}
 		}
 		return target;
@@ -221,8 +215,7 @@ public class GenDomainReferenceImpl extends GenDomainStructuralFeatureImpl
 		GenDomainConcept oldTarget = target;
 		target = newTarget;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_REFERENCE__TARGET, oldTarget,
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_REFERENCE__TARGET, oldTarget,
 					target));
 	}
 
@@ -239,8 +232,7 @@ public class GenDomainReferenceImpl extends GenDomainStructuralFeatureImpl
 			if (source != oldSource) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ZDLGenPackage.GEN_DOMAIN_REFERENCE__SOURCE,
-							oldSource, source));
+							ZDLGenPackage.GEN_DOMAIN_REFERENCE__SOURCE, oldSource, source));
 			}
 		}
 		return source;
@@ -265,8 +257,7 @@ public class GenDomainReferenceImpl extends GenDomainStructuralFeatureImpl
 		GenDomainConcept oldSource = source;
 		source = newSource;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_REFERENCE__SOURCE, oldSource,
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_REFERENCE__SOURCE, oldSource,
 					source));
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
@@ -291,11 +282,8 @@ public class GenDomainReferenceImpl extends GenDomainStructuralFeatureImpl
 			domainReference = (Association) eResolveProxy(oldDomainReference);
 			if (domainReference != oldDomainReference) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							ZDLGenPackage.GEN_DOMAIN_REFERENCE__DOMAIN_REFERENCE,
-							oldDomainReference, domainReference));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							ZDLGenPackage.GEN_DOMAIN_REFERENCE__DOMAIN_REFERENCE, oldDomainReference, domainReference));
 			}
 		}
 		return domainReference;
@@ -320,8 +308,7 @@ public class GenDomainReferenceImpl extends GenDomainStructuralFeatureImpl
 		Association oldDomainReference = domainReference;
 		domainReference = newDomainReference;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_REFERENCE__DOMAIN_REFERENCE,
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_REFERENCE__DOMAIN_REFERENCE,
 					oldDomainReference, domainReference));
 	}
 
@@ -331,8 +318,7 @@ public class GenDomainReferenceImpl extends GenDomainStructuralFeatureImpl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_REFERENCE__CONCEPT:
 			if (eInternalContainer() != null)
@@ -348,8 +334,7 @@ public class GenDomainReferenceImpl extends GenDomainStructuralFeatureImpl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_REFERENCE__CONCEPT:
 			return basicSetConcept(null, msgs);
@@ -363,12 +348,10 @@ public class GenDomainReferenceImpl extends GenDomainStructuralFeatureImpl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(
-			NotificationChain msgs) {
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 		case ZDLGenPackage.GEN_DOMAIN_REFERENCE__CONCEPT:
-			return eInternalContainer().eInverseRemove(this,
-					ZDLGenPackage.GEN_DOMAIN_CONCEPT__FEATURE,
+			return eInternalContainer().eInverseRemove(this, ZDLGenPackage.GEN_DOMAIN_CONCEPT__FEATURE,
 					GenDomainConcept.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
@@ -448,6 +431,10 @@ public class GenDomainReferenceImpl extends GenDomainStructuralFeatureImpl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case ZDLGenPackage.GEN_DOMAIN_REFERENCE__DOMAIN_ELEMENT:
+			return isSetDomainElement();
+		case ZDLGenPackage.GEN_DOMAIN_REFERENCE__CONCEPT:
+			return getConcept() != null;
 		case ZDLGenPackage.GEN_DOMAIN_REFERENCE__TARGET:
 			return target != null;
 		case ZDLGenPackage.GEN_DOMAIN_REFERENCE__SOURCE:
@@ -465,8 +452,7 @@ public class GenDomainReferenceImpl extends GenDomainStructuralFeatureImpl
 	 */
 	@Override
 	public boolean isSetDomainElement() {
-		return super.isSetDomainElement()
-				|| eIsSet(ZDLGenPackage.GEN_DOMAIN_REFERENCE__DOMAIN_REFERENCE);
+		return super.isSetDomainElement() || eIsSet(ZDLGenPackage.GEN_DOMAIN_REFERENCE__DOMAIN_REFERENCE);
 	}
 
 } //GenDomainReferenceImpl

@@ -40,10 +40,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenAttributeOverrideItemProvider extends
-		GenDomainAttributePresentationItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class GenAttributeOverrideItemProvider extends GenDomainAttributePresentationItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -80,15 +77,11 @@ public class GenAttributeOverrideItemProvider extends
 	 */
 	protected void addOwnerPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainObject_owner_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainObject_owner_feature", "_UI_GenDomainObject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNER, false,
-						false, false, null,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainObject_owner_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainObject_owner_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainObject_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNER, false, false, false, null,
 						getString("_UI_ZDLGeneratorPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
@@ -101,15 +94,11 @@ public class GenAttributeOverrideItemProvider extends
 	 */
 	protected void addOwnedObjectPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainObject_ownedObject_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainObject_ownedObject_feature", "_UI_GenDomainObject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT,
-						false, false, false, null,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainObject_ownedObject_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainObject_ownedObject_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainObject_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT, false, false, false, null,
 						getString("_UI_ZDLGeneratorPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
@@ -122,17 +111,12 @@ public class GenAttributeOverrideItemProvider extends
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenAttributeOverride_name_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenAttributeOverride_name_feature", "_UI_GenAttributeOverride_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_ATTRIBUTE_OVERRIDE__NAME,
-						true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenAttributeOverride_name_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenAttributeOverride_name_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenAttributeOverride_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_ATTRIBUTE_OVERRIDE__NAME, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -144,9 +128,7 @@ public class GenAttributeOverrideItemProvider extends
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator()
-						.getImage("full/obj16/GenAttributeOverride")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/GenAttributeOverride")); //$NON-NLS-1$
 	}
 
 	/**
@@ -175,8 +157,7 @@ public class GenAttributeOverrideItemProvider extends
 
 		switch (notification.getFeatureID(GenAttributeOverride.class)) {
 		case ZDLGenPackage.GEN_ATTRIBUTE_OVERRIDE__NAME:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -190,8 +171,7 @@ public class GenAttributeOverrideItemProvider extends
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

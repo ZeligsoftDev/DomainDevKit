@@ -37,12 +37,12 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  *
  * <p>
  * The following operations are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#allGenerals() <em>All Generals</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#allSpecifics() <em>All Specifics</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getGenerals() <em>Get Generals</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -62,21 +62,17 @@ public class GenDomainConceptOperations extends GenDomainNamedElementOperations 
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList<GenDomainConcept> getGenerals(
-			GenDomainConcept genDomainConcept) {
+	public static EList<GenDomainConcept> getGenerals(GenDomainConcept genDomainConcept) {
 		EList<GenDomainConcept> result = new UniqueEList.FastCompare<GenDomainConcept>();
 
-		for (GenDomainGeneralization generalization : genDomainConcept
-				.getGeneralizations()) {
+		for (GenDomainGeneralization generalization : genDomainConcept.getGeneralizations()) {
 			if (generalization.getGeneral() != null) {
 				result.add(generalization.getGeneral());
 			}
 		}
 
-		return new UnionEObjectEList<GenDomainConcept>(
-				(InternalEObject) genDomainConcept,
-				ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__GENERAL,
-				result.size(), result.toArray());
+		return new UnionEObjectEList<GenDomainConcept>((InternalEObject) genDomainConcept,
+				ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__GENERAL, result.size(), result.toArray());
 	}
 
 	/**
@@ -84,14 +80,12 @@ public class GenDomainConceptOperations extends GenDomainNamedElementOperations 
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList<GenDomainConcept> allGenerals(
-			GenDomainConcept genDomainConcept) {
+	public static EList<GenDomainConcept> allGenerals(GenDomainConcept genDomainConcept) {
 		Set<GenDomainConcept> result = new LinkedHashSet<GenDomainConcept>();
 
 		allGeneralsHelper(genDomainConcept, result);
 
-		return new BasicEList.UnmodifiableEList<GenDomainConcept>(
-				result.size(), result.toArray());
+		return new BasicEList.UnmodifiableEList<GenDomainConcept>(result.size(), result.toArray());
 	}
 
 	/**
@@ -100,8 +94,7 @@ public class GenDomainConceptOperations extends GenDomainNamedElementOperations 
 	 * @param genDomainConcept a domain concept
 	 * @param result the accumulator of all generals
 	 */
-	private static void allGeneralsHelper(GenDomainConcept genDomainConcept,
-			Set<GenDomainConcept> result) {
+	private static void allGeneralsHelper(GenDomainConcept genDomainConcept, Set<GenDomainConcept> result) {
 
 		for (GenDomainConcept general : genDomainConcept.getGenerals()) {
 			if (result.add(general)) {
@@ -115,15 +108,13 @@ public class GenDomainConceptOperations extends GenDomainNamedElementOperations 
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList<GenDomainConcept> allSpecifics(
-			GenDomainConcept genDomainConcept) {
+	public static EList<GenDomainConcept> allSpecifics(GenDomainConcept genDomainConcept) {
 
 		Set<GenDomainConcept> result = new LinkedHashSet<GenDomainConcept>();
 
 		allSpecificsHelper(genDomainConcept, result);
 
-		return new BasicEList.UnmodifiableEList<GenDomainConcept>(
-				result.size(), result.toArray());
+		return new BasicEList.UnmodifiableEList<GenDomainConcept>(result.size(), result.toArray());
 	}
 
 	/**
@@ -132,15 +123,12 @@ public class GenDomainConceptOperations extends GenDomainNamedElementOperations 
 	 * @param genDomainConcept a domain concept
 	 * @param result the accumulator of all specifics
 	 */
-	private static void allSpecificsHelper(GenDomainConcept genDomainConcept,
-			Set<GenDomainConcept> result) {
+	private static void allSpecificsHelper(GenDomainConcept genDomainConcept, Set<GenDomainConcept> result) {
 
 		Set<GenDomainConcept> specifics = new java.util.HashSet<GenDomainConcept>();
-		for (EStructuralFeature.Setting setting : UML2Util
-				.getNonNavigableInverseReferences(genDomainConcept)) {
+		for (EStructuralFeature.Setting setting : UML2Util.getNonNavigableInverseReferences(genDomainConcept)) {
 			if (setting.getEStructuralFeature() == ZDLGenPackage.Literals.GEN_DOMAIN_GENERALIZATION__GENERAL) {
-				GenDomainGeneralization generalization = (GenDomainGeneralization) setting
-						.getEObject();
+				GenDomainGeneralization generalization = (GenDomainGeneralization) setting.getEObject();
 				if (generalization.getSpecific() != null) {
 					specifics.add(generalization.getSpecific());
 				}

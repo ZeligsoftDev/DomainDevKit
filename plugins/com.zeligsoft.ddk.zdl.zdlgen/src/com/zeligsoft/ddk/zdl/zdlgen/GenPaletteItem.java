@@ -22,11 +22,11 @@ package com.zeligsoft.ddk.zdl.zdlgen;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteItem#getName <em>Name</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteItem#getDescription <em>Description</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenPaletteItem()
  * @model abstract="true"

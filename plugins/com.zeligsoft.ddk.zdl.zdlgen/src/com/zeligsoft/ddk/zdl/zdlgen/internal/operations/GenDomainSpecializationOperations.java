@@ -37,18 +37,17 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  *
  * <p>
  * The following operations are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getUniqueName(com.zeligsoft.ddk.zdl.zdlgen.GenDomainClassifier) <em>Get Unique Name</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#allClassifiers() <em>All Classifiers</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#isExcluded(com.zeligsoft.ddk.zdl.zdlgen.GenPaletteItem) <em>Is Excluded</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getDomainConcepts() <em>Get Domain Concepts</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class GenDomainSpecializationOperations extends
-		GenDomainNamedElementOperations {
+public class GenDomainSpecializationOperations extends GenDomainNamedElementOperations {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -63,21 +62,18 @@ public class GenDomainSpecializationOperations extends
 	 * 
 	 * @generated NOT
 	 */
-	public static EList<GenDomainConcept> getDomainConcepts(
-			GenDomainSpecialization genDomainSpecialization) {
+	public static EList<GenDomainConcept> getDomainConcepts(GenDomainSpecialization genDomainSpecialization) {
 
 		UniqueEList<GenDomainConcept> domainConcepts = new UniqueEList.FastCompare<GenDomainConcept>();
 		for (GenDomainClassifier gdc : genDomainSpecialization.allClassifiers()) {
-			if ((gdc instanceof GenDomainConcept)
-					&& !domainConcepts.contains(gdc)) {
+			if ((gdc instanceof GenDomainConcept) && !domainConcepts.contains(gdc)) {
 				domainConcepts.add((GenDomainConcept) gdc);
 			}
 		}
 
-		return new UnionEObjectEList<GenDomainConcept>(
-				(InternalEObject) genDomainSpecialization,
-				ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__DOMAIN_CONCEPT,
-				domainConcepts.size(), domainConcepts.toArray());
+		return new UnionEObjectEList<GenDomainConcept>((InternalEObject) genDomainSpecialization,
+				ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__DOMAIN_CONCEPT, domainConcepts.size(),
+				domainConcepts.toArray());
 	}
 
 	/**
@@ -85,15 +81,13 @@ public class GenDomainSpecializationOperations extends
 	 * 
 	 * @generated NOT
 	 */
-	public static String getUniqueName(
-			GenDomainSpecialization genDomainSpecialization,
+	public static String getUniqueName(GenDomainSpecialization genDomainSpecialization,
 			GenDomainClassifier classifier) {
 
 		String result = classifier.getName();
 
 		if (result != null) {
-			EList<GenDomainClassifier> all = genDomainSpecialization
-					.allClassifiers();
+			EList<GenDomainClassifier> all = genDomainSpecialization.allClassifiers();
 
 			for (GenDomainClassifier other : all) {
 				if ((other != classifier) && result.equals(other.getName())) {
@@ -117,14 +111,12 @@ public class GenDomainSpecializationOperations extends
 	 * 
 	 * @generated NOT
 	 */
-	public static EList<GenDomainClassifier> allClassifiers(
-			GenDomainSpecialization genDomainSpecialization) {
+	public static EList<GenDomainClassifier> allClassifiers(GenDomainSpecialization genDomainSpecialization) {
 
 		UniqueEList<GenDomainClassifier> result = new UniqueEList.FastCompare<GenDomainClassifier>();
-		for (GenDomainBlockReference gdbr : genDomainSpecialization
-				.getDomainBlocks()) {
-			for (GenDomainClassifier gdc : gdbr.getTarget().allClassifiers(
-					GenAllDomainCassifiersMode.MERGE_AND_IMPORT)) {
+		for (GenDomainBlockReference gdbr : genDomainSpecialization.getDomainBlocks()) {
+			for (GenDomainClassifier gdc : gdbr.getTarget()
+					.allClassifiers(GenAllDomainCassifiersMode.MERGE_AND_IMPORT)) {
 				result.add(gdc);
 			}
 		}
@@ -137,8 +129,7 @@ public class GenDomainSpecializationOperations extends
 	 * 
 	 * @generated NOT
 	 */
-	public static boolean isExcluded(
-			GenDomainSpecialization genDomainSpecialization, GenPaletteItem item) {
+	public static boolean isExcluded(GenDomainSpecialization genDomainSpecialization, GenPaletteItem item) {
 
 		return genDomainSpecialization.getExcludedPaletteItems().contains(item);
 	}

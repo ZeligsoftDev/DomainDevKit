@@ -33,11 +33,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenUMLMenuImpl#getMenu <em>Menu</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenUMLMenuImpl#getUmlMetaclass <em>Uml Metaclass</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -93,8 +93,8 @@ public class GenUMLMenuImpl extends GenDomainObjectImpl implements GenUMLMenu {
 			menu = (GenMenu) eResolveProxy(oldMenu);
 			if (menu != oldMenu) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ZDLGenPackage.GEN_UML_MENU__MENU, oldMenu, menu));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ZDLGenPackage.GEN_UML_MENU__MENU, oldMenu,
+							menu));
 			}
 		}
 		return menu;
@@ -119,8 +119,7 @@ public class GenUMLMenuImpl extends GenDomainObjectImpl implements GenUMLMenu {
 		GenMenu oldMenu = menu;
 		menu = newMenu;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_UML_MENU__MENU, oldMenu, menu));
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_UML_MENU__MENU, oldMenu, menu));
 	}
 
 	/**
@@ -135,8 +134,7 @@ public class GenUMLMenuImpl extends GenDomainObjectImpl implements GenUMLMenu {
 			umlMetaclass = (org.eclipse.uml2.uml.Class) eResolveProxy(oldUmlMetaclass);
 			if (umlMetaclass != oldUmlMetaclass) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ZDLGenPackage.GEN_UML_MENU__UML_METACLASS,
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ZDLGenPackage.GEN_UML_MENU__UML_METACLASS,
 							oldUmlMetaclass, umlMetaclass));
 			}
 		}
@@ -162,9 +160,8 @@ public class GenUMLMenuImpl extends GenDomainObjectImpl implements GenUMLMenu {
 		org.eclipse.uml2.uml.Class oldUmlMetaclass = umlMetaclass;
 		umlMetaclass = newUmlMetaclass;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_UML_MENU__UML_METACLASS, oldUmlMetaclass,
-					umlMetaclass));
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_UML_MENU__UML_METACLASS,
+					oldUmlMetaclass, umlMetaclass));
 	}
 
 	/**

@@ -40,9 +40,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ExpressionItemProvider extends GenDomainObjectItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ExpressionItemProvider extends GenDomainObjectItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -78,16 +76,12 @@ public class ExpressionItemProvider extends GenDomainObjectItemProvider
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_Expression_name_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_Expression_name_feature", "_UI_Expression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.EXPRESSION__NAME, true, false,
-						false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						null, null));
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Expression_name_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_Expression_name_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_Expression_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.EXPRESSION__NAME, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -98,15 +92,11 @@ public class ExpressionItemProvider extends GenDomainObjectItemProvider
 	 */
 	protected void addExpressionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_Expression_expression_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_Expression_expression_feature", "_UI_Expression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.EXPRESSION__EXPRESSION, true,
-						false, false,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Expression_expression_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_Expression_expression_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_Expression_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.EXPRESSION__EXPRESSION, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -137,8 +127,7 @@ public class ExpressionItemProvider extends GenDomainObjectItemProvider
 		switch (notification.getFeatureID(Expression.class)) {
 		case ZDLGenPackage.EXPRESSION__NAME:
 		case ZDLGenPackage.EXPRESSION__EXPRESSION:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -152,8 +141,7 @@ public class ExpressionItemProvider extends GenDomainObjectItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

@@ -24,11 +24,11 @@ import org.eclipse.uml2.uml.NamedElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainNamedElement#getName <em>Name</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainNamedElement#getDomainElement <em>Domain Element</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainNamedElement()
  * @model abstract="true"
@@ -65,6 +65,7 @@ public interface GenDomainNamedElement extends GenDomainObject {
 	 * @return the value of the '<em>Domain Element</em>' reference.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainNamedElement_DomainElement()
 	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 *        annotation="union"
 	 * @generated
 	 */
 	NamedElement getDomainElement();

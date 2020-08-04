@@ -30,16 +30,15 @@ import com.zeligsoft.ddk.zdl.zdlgen.internal.operations.GenDomainNamedElementOpe
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainNamedElementImpl#getDomainElement <em>Domain Element</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainNamedElementImpl#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class GenDomainNamedElementImpl extends GenDomainObjectImpl
-		implements GenDomainNamedElement {
+public abstract class GenDomainNamedElementImpl extends GenDomainObjectImpl implements GenDomainNamedElement {
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -78,7 +77,8 @@ public abstract class GenDomainNamedElementImpl extends GenDomainObjectImpl
 	@Override
 	public NamedElement getDomainElement() {
 		NamedElement domainElement = basicGetDomainElement();
-		return domainElement != null && domainElement.eIsProxy() ? (NamedElement) eResolveProxy((InternalEObject) domainElement)
+		return domainElement != null && domainElement.eIsProxy()
+				? (NamedElement) eResolveProxy((InternalEObject) domainElement)
 				: domainElement;
 	}
 
@@ -100,11 +100,9 @@ public abstract class GenDomainNamedElementImpl extends GenDomainObjectImpl
 	public String getName() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			String result = (String) cache.get(this,
-					ZDLGenPackage.Literals.GEN_DOMAIN_NAMED_ELEMENT__NAME);
+			String result = (String) cache.get(this, ZDLGenPackage.Literals.GEN_DOMAIN_NAMED_ELEMENT__NAME);
 			if (result == null) {
-				cache.put(this,
-						ZDLGenPackage.Literals.GEN_DOMAIN_NAMED_ELEMENT__NAME,
+				cache.put(this, ZDLGenPackage.Literals.GEN_DOMAIN_NAMED_ELEMENT__NAME,
 						result = GenDomainNamedElementOperations.getName(this));
 			}
 			return result;
@@ -141,8 +139,7 @@ public abstract class GenDomainNamedElementImpl extends GenDomainObjectImpl
 		case ZDLGenPackage.GEN_DOMAIN_NAMED_ELEMENT__DOMAIN_ELEMENT:
 			return isSetDomainElement();
 		case ZDLGenPackage.GEN_DOMAIN_NAMED_ELEMENT__NAME:
-			return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT
-					.equals(getName());
+			return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
 		}
 		return super.eIsSet(featureID);
 	}

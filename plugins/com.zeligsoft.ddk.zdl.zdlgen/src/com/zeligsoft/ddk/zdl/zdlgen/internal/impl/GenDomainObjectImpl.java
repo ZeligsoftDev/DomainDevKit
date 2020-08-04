@@ -36,17 +36,16 @@ import com.zeligsoft.ddk.zdl.zdlgen.internal.operations.GenDomainObjectOperation
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainObjectImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainObjectImpl#getOwnedObjects <em>Owned Object</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainObjectImpl#getGenModel <em>Gen Model</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class GenDomainObjectImpl extends EObjectImpl implements
-		GenDomainObject {
+public abstract class GenDomainObjectImpl extends EObjectImpl implements GenDomainObject {
 
 	private boolean isAdapting;
 
@@ -77,8 +76,7 @@ public abstract class GenDomainObjectImpl extends EObjectImpl implements
 	@Override
 	public GenDomainObject getOwner() {
 		GenDomainObject owner = basicGetOwner();
-		return owner != null && owner.eIsProxy() ? (GenDomainObject) eResolveProxy((InternalEObject) owner)
-				: owner;
+		return owner != null && owner.eIsProxy() ? (GenDomainObject) eResolveProxy((InternalEObject) owner) : owner;
 	}
 
 	/**
@@ -101,24 +99,16 @@ public abstract class GenDomainObjectImpl extends EObjectImpl implements
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<GenDomainObject> ownedObjects = (EList<GenDomainObject>) cache
-					.get(eResource,
-							this,
-							ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
+			EList<GenDomainObject> ownedObjects = (EList<GenDomainObject>) cache.get(eResource, this,
+					ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
 			if (ownedObjects == null) {
-				cache.put(
-						eResource,
-						this,
-						ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT,
-						ownedObjects = new DerivedUnionEObjectEList<GenDomainObject>(
-								GenDomainObject.class, this,
-								ZDLGenPackage.GEN_DOMAIN_OBJECT__OWNED_OBJECT,
-								null));
+				cache.put(eResource, this, ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT,
+						ownedObjects = new DerivedUnionEObjectEList<GenDomainObject>(GenDomainObject.class, this,
+								ZDLGenPackage.GEN_DOMAIN_OBJECT__OWNED_OBJECT, null));
 			}
 			return ownedObjects;
 		}
-		return new DerivedUnionEObjectEList<GenDomainObject>(
-				GenDomainObject.class, this,
+		return new DerivedUnionEObjectEList<GenDomainObject>(GenDomainObject.class, this,
 				ZDLGenPackage.GEN_DOMAIN_OBJECT__OWNED_OBJECT, null);
 	}
 
@@ -216,8 +206,7 @@ public abstract class GenDomainObjectImpl extends EObjectImpl implements
 
 	@Override
 	public boolean eNotificationRequired() {
-		return (getCacheAdapter() != null) ? eDeliver() : super
-				.eNotificationRequired();
+		return (getCacheAdapter() != null) ? eDeliver() : super.eNotificationRequired();
 	}
 
 	@Override

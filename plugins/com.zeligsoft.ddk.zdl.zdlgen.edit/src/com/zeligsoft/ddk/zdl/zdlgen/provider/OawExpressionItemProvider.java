@@ -40,9 +40,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class OawExpressionItemProvider extends ExpressionItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class OawExpressionItemProvider extends ExpressionItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -77,15 +75,11 @@ public class OawExpressionItemProvider extends ExpressionItemProvider implements
 	 */
 	protected void addVariableNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_OawExpression_variableName_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_OawExpression_variableName_feature", "_UI_OawExpression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.OAW_EXPRESSION__VARIABLE_NAME,
-						true, false, false,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_OawExpression_variableName_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_OawExpression_variableName_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_OawExpression_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.OAW_EXPRESSION__VARIABLE_NAME, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -97,8 +91,7 @@ public class OawExpressionItemProvider extends ExpressionItemProvider implements
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/OawExpression")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/OawExpression")); //$NON-NLS-1$
 	}
 
 	/**
@@ -127,8 +120,7 @@ public class OawExpressionItemProvider extends ExpressionItemProvider implements
 
 		switch (notification.getFeatureID(OawExpression.class)) {
 		case ZDLGenPackage.OAW_EXPRESSION__VARIABLE_NAME:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -142,8 +134,7 @@ public class OawExpressionItemProvider extends ExpressionItemProvider implements
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

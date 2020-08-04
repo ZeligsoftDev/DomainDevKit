@@ -137,8 +137,8 @@ public enum GenAllDomainCassifiersMode implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final GenAllDomainCassifiersMode[] VALUES_ARRAY = new GenAllDomainCassifiersMode[] {
-			FLAT, IMPORT, MERGE, MERGE_AND_IMPORT, };
+	private static final GenAllDomainCassifiersMode[] VALUES_ARRAY = new GenAllDomainCassifiersMode[] { FLAT, IMPORT,
+			MERGE, MERGE_AND_IMPORT, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Gen All Domain Cassifiers Mode</b></em>' enumerators.
@@ -153,6 +153,8 @@ public enum GenAllDomainCassifiersMode implements Enumerator {
 	 * Returns the '<em><b>Gen All Domain Cassifiers Mode</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static GenAllDomainCassifiersMode get(String literal) {
@@ -169,6 +171,8 @@ public enum GenAllDomainCassifiersMode implements Enumerator {
 	 * Returns the '<em><b>Gen All Domain Cassifiers Mode</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static GenAllDomainCassifiersMode getByName(String name) {
@@ -185,6 +189,8 @@ public enum GenAllDomainCassifiersMode implements Enumerator {
 	 * Returns the '<em><b>Gen All Domain Cassifiers Mode</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static GenAllDomainCassifiersMode get(int value) {

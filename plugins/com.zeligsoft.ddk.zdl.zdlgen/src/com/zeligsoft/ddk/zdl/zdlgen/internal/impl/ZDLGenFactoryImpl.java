@@ -59,7 +59,7 @@ public class ZDLGenFactoryImpl extends EFactoryImpl implements ZDLGenFactory {
 	public static ZDLGenFactory init() {
 		try {
 			ZDLGenFactory theZDLGenFactory = (ZDLGenFactory) EPackage.Registry.INSTANCE
-					.getEFactory("http://www.zeligsoft.com/zdl/2008/ZDLGen"); //$NON-NLS-1$ 
+					.getEFactory(ZDLGenPackage.eNS_URI);
 			if (theZDLGenFactory != null) {
 				return theZDLGenFactory;
 			}
@@ -148,8 +148,7 @@ public class ZDLGenFactoryImpl extends EFactoryImpl implements ZDLGenFactory {
 		case ZDLGenPackage.GEN_MENU_SEPARATOR:
 			return createGenMenuSeparator();
 		default:
-			throw new IllegalArgumentException(
-					"The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
@@ -162,20 +161,15 @@ public class ZDLGenFactoryImpl extends EFactoryImpl implements ZDLGenFactory {
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
 		case ZDLGenPackage.GEN_PALETTE_DIAGRAM_KIND:
-			return createGenPaletteDiagramKindFromString(eDataType,
-					initialValue);
+			return createGenPaletteDiagramKindFromString(eDataType, initialValue);
 		case ZDLGenPackage.GEN_ALL_DOMAIN_CASSIFIERS_MODE:
-			return createGenAllDomainCassifiersModeFromString(eDataType,
-					initialValue);
+			return createGenAllDomainCassifiersModeFromString(eDataType, initialValue);
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT_CATEGORY:
-			return createGenDomainConceptCategoryFromString(eDataType,
-					initialValue);
+			return createGenDomainConceptCategoryFromString(eDataType, initialValue);
 		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION_KIND:
-			return createGenDomainAttributePresentationKindFromString(
-					eDataType, initialValue);
+			return createGenDomainAttributePresentationKindFromString(eDataType, initialValue);
 		default:
-			throw new IllegalArgumentException(
-					"The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
@@ -188,20 +182,15 @@ public class ZDLGenFactoryImpl extends EFactoryImpl implements ZDLGenFactory {
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 		case ZDLGenPackage.GEN_PALETTE_DIAGRAM_KIND:
-			return convertGenPaletteDiagramKindToString(eDataType,
-					instanceValue);
+			return convertGenPaletteDiagramKindToString(eDataType, instanceValue);
 		case ZDLGenPackage.GEN_ALL_DOMAIN_CASSIFIERS_MODE:
-			return convertGenAllDomainCassifiersModeToString(eDataType,
-					instanceValue);
+			return convertGenAllDomainCassifiersModeToString(eDataType, instanceValue);
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT_CATEGORY:
-			return convertGenDomainConceptCategoryToString(eDataType,
-					instanceValue);
+			return convertGenDomainConceptCategoryToString(eDataType, instanceValue);
 		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION_KIND:
-			return convertGenDomainAttributePresentationKindToString(eDataType,
-					instanceValue);
+			return convertGenDomainAttributePresentationKindToString(eDataType, instanceValue);
 		default:
-			throw new IllegalArgumentException(
-					"The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
@@ -463,8 +452,7 @@ public class ZDLGenFactoryImpl extends EFactoryImpl implements ZDLGenFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GenPaletteDiagramKind createGenPaletteDiagramKindFromString(
-			EDataType eDataType, String initialValue) {
+	public GenPaletteDiagramKind createGenPaletteDiagramKindFromString(EDataType eDataType, String initialValue) {
 		GenPaletteDiagramKind result = GenPaletteDiagramKind.get(initialValue);
 		if (result == null)
 			throw new IllegalArgumentException(
@@ -477,8 +465,7 @@ public class ZDLGenFactoryImpl extends EFactoryImpl implements ZDLGenFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertGenPaletteDiagramKindToString(EDataType eDataType,
-			Object instanceValue) {
+	public String convertGenPaletteDiagramKindToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -564,10 +551,8 @@ public class ZDLGenFactoryImpl extends EFactoryImpl implements ZDLGenFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GenDomainConceptCategory createGenDomainConceptCategoryFromString(
-			EDataType eDataType, String initialValue) {
-		GenDomainConceptCategory result = GenDomainConceptCategory
-				.get(initialValue);
+	public GenDomainConceptCategory createGenDomainConceptCategoryFromString(EDataType eDataType, String initialValue) {
+		GenDomainConceptCategory result = GenDomainConceptCategory.get(initialValue);
 		if (result == null)
 			throw new IllegalArgumentException(
 					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -579,8 +564,7 @@ public class ZDLGenFactoryImpl extends EFactoryImpl implements ZDLGenFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertGenDomainConceptCategoryToString(EDataType eDataType,
-			Object instanceValue) {
+	public String convertGenDomainConceptCategoryToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -589,10 +573,9 @@ public class ZDLGenFactoryImpl extends EFactoryImpl implements ZDLGenFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GenDomainAttributePresentationKind createGenDomainAttributePresentationKindFromString(
-			EDataType eDataType, String initialValue) {
-		GenDomainAttributePresentationKind result = GenDomainAttributePresentationKind
-				.get(initialValue);
+	public GenDomainAttributePresentationKind createGenDomainAttributePresentationKindFromString(EDataType eDataType,
+			String initialValue) {
+		GenDomainAttributePresentationKind result = GenDomainAttributePresentationKind.get(initialValue);
 		if (result == null)
 			throw new IllegalArgumentException(
 					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -604,8 +587,7 @@ public class ZDLGenFactoryImpl extends EFactoryImpl implements ZDLGenFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertGenDomainAttributePresentationKindToString(
-			EDataType eDataType, Object instanceValue) {
+	public String convertGenDomainAttributePresentationKindToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -614,10 +596,9 @@ public class ZDLGenFactoryImpl extends EFactoryImpl implements ZDLGenFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GenAllDomainCassifiersMode createGenAllDomainCassifiersModeFromString(
-			EDataType eDataType, String initialValue) {
-		GenAllDomainCassifiersMode result = GenAllDomainCassifiersMode
-				.get(initialValue);
+	public GenAllDomainCassifiersMode createGenAllDomainCassifiersModeFromString(EDataType eDataType,
+			String initialValue) {
+		GenAllDomainCassifiersMode result = GenAllDomainCassifiersMode.get(initialValue);
 		if (result == null)
 			throw new IllegalArgumentException(
 					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -629,8 +610,7 @@ public class ZDLGenFactoryImpl extends EFactoryImpl implements ZDLGenFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertGenAllDomainCassifiersModeToString(
-			EDataType eDataType, Object instanceValue) {
+	public String convertGenAllDomainCassifiersModeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

@@ -40,9 +40,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenUMLMenuItemProvider extends GenDomainObjectItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class GenUMLMenuItemProvider extends GenDomainObjectItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -78,15 +76,11 @@ public class GenUMLMenuItemProvider extends GenDomainObjectItemProvider
 	 */
 	protected void addMenuPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenMenuTarget_menu_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenMenuTarget_menu_feature", "_UI_GenMenuTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_MENU_TARGET__MENU, true,
-						false, true, null, null, null));
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenMenuTarget_menu_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenMenuTarget_menu_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenMenuTarget_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_MENU_TARGET__MENU, true, false, true, null, null, null));
 	}
 
 	/**
@@ -97,15 +91,11 @@ public class GenUMLMenuItemProvider extends GenDomainObjectItemProvider
 	 */
 	protected void addUmlMetaclassPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenUMLMenu_umlMetaclass_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenUMLMenu_umlMetaclass_feature", "_UI_GenUMLMenu_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_UML_MENU__UML_METACLASS,
-						true, false, true, null, null, null));
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenUMLMenu_umlMetaclass_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenUMLMenu_umlMetaclass_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenUMLMenu_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_UML_MENU__UML_METACLASS, true, false, true, null, null, null));
 	}
 
 	/**
@@ -116,8 +106,7 @@ public class GenUMLMenuItemProvider extends GenDomainObjectItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/GenUMLMenu")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/GenUMLMenu")); //$NON-NLS-1$
 	}
 
 	/**
@@ -142,8 +131,7 @@ public class GenUMLMenuItemProvider extends GenDomainObjectItemProvider
 			name = umlMenu.getUmlMetaclass().getLabel();
 		}
 
-		return getResourceLocator().getString(key,
-				new Object[] { modelName, name });
+		return getResourceLocator().getString(key, new Object[] { modelName, name });
 	}
 
 	/**
@@ -156,7 +144,6 @@ public class GenUMLMenuItemProvider extends GenDomainObjectItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-		super.notifyChanged(notification);
 	}
 
 	/**
@@ -167,8 +154,7 @@ public class GenUMLMenuItemProvider extends GenDomainObjectItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

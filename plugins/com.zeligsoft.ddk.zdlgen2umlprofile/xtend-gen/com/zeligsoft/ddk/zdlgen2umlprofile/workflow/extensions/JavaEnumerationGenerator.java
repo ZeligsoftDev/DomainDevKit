@@ -1,22 +1,6 @@
-/*******************************************************************************
- * Copyright (c) 2020 Northrop Grumman Systems Corporation.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *******************************************************************************/
 package com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions;
 
 import com.google.inject.Inject;
-import com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlock;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainClassifier;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnum;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnumLiteral;
@@ -25,33 +9,32 @@ import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Extension;
 
 @SuppressWarnings("all")
 public class JavaEnumerationGenerator {
   @Inject
+  @Extension
   private JavaNamingExtensions _javaNamingExtensions;
   
   protected CharSequence _compileEnumeration(final GenDomainEnum element, final String pkg) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package ");
-    GenDomainBlock _block = element.getBlock();
-    String _interfaceJavaPackage = this._javaNamingExtensions.interfaceJavaPackage(_block);
-    _builder.append(_interfaceJavaPackage, "");
+    String _interfaceJavaPackage = this._javaNamingExtensions.interfaceJavaPackage(element.getBlock());
+    _builder.append(_interfaceJavaPackage);
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     CharSequence _generateEnumerationImports = this.generateEnumerationImports(element);
-    _builder.append(_generateEnumerationImports, "");
+    _builder.append(_generateEnumerationImports);
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("/**");
     _builder.newLine();
     _builder.append(" ");
     _builder.append("* An enumeration for ");
-    NamedElement _domainElement = element.getDomainElement();
-    String _qualifiedName = _domainElement.getQualifiedName();
+    String _qualifiedName = element.getDomainElement().getQualifiedName();
     _builder.append(_qualifiedName, " ");
     _builder.newLineIfNotEmpty();
     _builder.append(" ");
@@ -67,9 +50,8 @@ public class JavaEnumerationGenerator {
     _builder.append("*/");
     _builder.newLine();
     _builder.append("public enum ");
-    String _name = element.getName();
-    String _validJavaIdentifier = UML2Util.getValidJavaIdentifier(_name);
-    _builder.append(_validJavaIdentifier, "");
+    String _validJavaIdentifier = UML2Util.getValidJavaIdentifier(element.getName());
+    _builder.append(_validJavaIdentifier);
     _builder.append(" {");
     _builder.newLineIfNotEmpty();
     {
@@ -89,8 +71,7 @@ public class JavaEnumerationGenerator {
         _builder.append("* ");
         _builder.newLine();
         {
-          NamedElement _domainElement_1 = literal.getDomainElement();
-          EList<Comment> _ownedComments = _domainElement_1.getOwnedComments();
+          EList<Comment> _ownedComments = literal.getDomainElement().getOwnedComments();
           for(final Comment comment : _ownedComments) {
             _builder.append("    ");
             _builder.append(" ");
@@ -109,8 +90,7 @@ public class JavaEnumerationGenerator {
         _builder.append("*/");
         _builder.newLine();
         _builder.append("    ");
-        String _name_1 = literal.getName();
-        String _upperCase = _name_1.toUpperCase();
+        String _upperCase = literal.getName().toUpperCase();
         _builder.append(_upperCase, "    ");
         _builder.append(" {");
         _builder.newLineIfNotEmpty();
@@ -124,12 +104,11 @@ public class JavaEnumerationGenerator {
         _builder.newLine();
         _builder.append("\t\t\t\t\t");
         _builder.append("\"");
-        NamedElement _domainElement_2 = element.getDomainElement();
-        String _qualifiedName_1 = _domainElement_2.getQualifiedName();
-        _builder.append(_qualifiedName_1, "					");
+        String _qualifiedName_1 = element.getDomainElement().getQualifiedName();
+        _builder.append(_qualifiedName_1, "\t\t\t\t\t");
         _builder.append("\", \"");
-        String _name_2 = literal.getName();
-        _builder.append(_name_2, "					");
+        String _name = literal.getName();
+        _builder.append(_name, "\t\t\t\t\t");
         _builder.append("\");");
         _builder.newLineIfNotEmpty();
         _builder.append("    ");
@@ -158,8 +137,7 @@ public class JavaEnumerationGenerator {
       }
     }
     {
-      EList<GenDomainEnumLiteral> _literals_1 = element.getLiterals();
-      boolean _isEmpty = _literals_1.isEmpty();
+      boolean _isEmpty = element.getLiterals().isEmpty();
       boolean _not = (!_isEmpty);
       if (_not) {
         _builder.append(",");
@@ -258,9 +236,8 @@ public class JavaEnumerationGenerator {
     _builder.append("*/");
     _builder.newLine();
     _builder.append("public static ");
-    String _name = element.getName();
-    String _validJavaIdentifier = UML2Util.getValidJavaIdentifier(_name);
-    _builder.append(_validJavaIdentifier, "");
+    String _validJavaIdentifier = UML2Util.getValidJavaIdentifier(element.getName());
+    _builder.append(_validJavaIdentifier);
     _builder.append(" create(EObject literal) {");
     _builder.newLineIfNotEmpty();
     _builder.append("    ");
@@ -275,19 +252,17 @@ public class JavaEnumerationGenerator {
           _builder.appendImmediate(" else if ", "    ");
         }
         _builder.append("(literal == ZDLUtil.getZDLEnumLiteral(literal, \"");
-        NamedElement _domainElement = element.getDomainElement();
-        String _qualifiedName = _domainElement.getQualifiedName();
+        String _qualifiedName = element.getDomainElement().getQualifiedName();
         _builder.append(_qualifiedName, "    ");
         _builder.append("\", \"");
-        String _name_1 = literal.getName();
-        _builder.append(_name_1, "    ");
+        String _name = literal.getName();
+        _builder.append(_name, "    ");
         _builder.append("\")) { //$NON-NLS-1$//$NON-NLS-2$");
         _builder.newLineIfNotEmpty();
         _builder.append("    ");
         _builder.append("    ");
         _builder.append("return ");
-        String _name_2 = literal.getName();
-        String _upperCase = _name_2.toUpperCase();
+        String _upperCase = literal.getName().toUpperCase();
         _builder.append(_upperCase, "        ");
         _builder.append(";");
         _builder.newLineIfNotEmpty();
@@ -298,8 +273,7 @@ public class JavaEnumerationGenerator {
       }
     }
     {
-      EList<GenDomainEnumLiteral> _literals_1 = element.getLiterals();
-      boolean _isEmpty = _literals_1.isEmpty();
+      boolean _isEmpty = element.getLiterals().isEmpty();
       if (_isEmpty) {
         _builder.append("return UNKNOWN;");
       } else {

@@ -42,9 +42,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenMenuCreateActionItemProvider extends GenMenuActionItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class GenMenuCreateActionItemProvider extends GenMenuActionItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -80,17 +78,12 @@ public class GenMenuCreateActionItemProvider extends GenMenuActionItemProvider
 	 */
 	protected void addTypeHintPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenMenuCreateAction_typeHint_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenMenuCreateAction_typeHint_feature", "_UI_GenMenuCreateAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_MENU_CREATE_ACTION__TYPE_HINT,
-						true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_DomainMenuPropertyCategory"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenMenuCreateAction_typeHint_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenMenuCreateAction_typeHint_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenMenuCreateAction_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_MENU_CREATE_ACTION__TYPE_HINT, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DomainMenuPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -102,15 +95,11 @@ public class GenMenuCreateActionItemProvider extends GenMenuActionItemProvider
 	 */
 	protected void addCreateConceptPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenMenuCreateAction_createConcept_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenMenuCreateAction_createConcept_feature", "_UI_GenMenuCreateAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_MENU_CREATE_ACTION__CREATE_CONCEPT,
-						true, false, true, null,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenMenuCreateAction_createConcept_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenMenuCreateAction_createConcept_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenMenuCreateAction_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_MENU_CREATE_ACTION__CREATE_CONCEPT, true, false, true, null,
 						getString("_UI_DomainMenuPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
@@ -124,12 +113,10 @@ public class GenMenuCreateActionItemProvider extends GenMenuActionItemProvider
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures
-					.add(ZDLGenPackage.Literals.GEN_MENU_CREATE_ACTION__EXPRESSION);
+			childrenFeatures.add(ZDLGenPackage.Literals.GEN_MENU_CREATE_ACTION__EXPRESSION);
 		}
 		return childrenFeatures;
 	}
@@ -155,8 +142,7 @@ public class GenMenuCreateActionItemProvider extends GenMenuActionItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/GenMenuCreateAction")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/GenMenuCreateAction")); //$NON-NLS-1$
 	}
 
 	/**
@@ -183,12 +169,10 @@ public class GenMenuCreateActionItemProvider extends GenMenuActionItemProvider
 
 		switch (notification.getFeatureID(GenMenuCreateAction.class)) {
 		case ZDLGenPackage.GEN_MENU_CREATE_ACTION__TYPE_HINT:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case ZDLGenPackage.GEN_MENU_CREATE_ACTION__EXPRESSION:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), true, false));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -202,16 +186,13 @@ public class GenMenuCreateActionItemProvider extends GenMenuActionItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-				ZDLGenPackage.Literals.GEN_MENU_CREATE_ACTION__EXPRESSION,
+		newChildDescriptors.add(createChildParameter(ZDLGenPackage.Literals.GEN_MENU_CREATE_ACTION__EXPRESSION,
 				ZDLGenFactory.eINSTANCE.createOawExpression()));
 
-		newChildDescriptors.add(createChildParameter(
-				ZDLGenPackage.Literals.GEN_MENU_CREATE_ACTION__EXPRESSION,
+		newChildDescriptors.add(createChildParameter(ZDLGenPackage.Literals.GEN_MENU_CREATE_ACTION__EXPRESSION,
 				ZDLGenFactory.eINSTANCE.createOawXtend()));
 	}
 

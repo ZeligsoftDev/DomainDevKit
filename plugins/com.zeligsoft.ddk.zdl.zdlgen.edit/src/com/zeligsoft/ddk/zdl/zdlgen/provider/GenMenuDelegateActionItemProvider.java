@@ -40,10 +40,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenMenuDelegateActionItemProvider extends
-		GenMenuActionItemProvider implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider,
-		IItemLabelProvider, IItemPropertySource {
+public class GenMenuDelegateActionItemProvider extends GenMenuActionItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -79,17 +76,12 @@ public class GenMenuDelegateActionItemProvider extends
 	 */
 	protected void addHostBundlePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenMenuDelegateAction_hostBundle_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenMenuDelegateAction_hostBundle_feature", "_UI_GenMenuDelegateAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_MENU_DELEGATE_ACTION__HOST_BUNDLE,
-						true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_DomainMenuPropertyCategory"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenMenuDelegateAction_hostBundle_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenMenuDelegateAction_hostBundle_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenMenuDelegateAction_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_MENU_DELEGATE_ACTION__HOST_BUNDLE, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DomainMenuPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -101,17 +93,12 @@ public class GenMenuDelegateActionItemProvider extends
 	 */
 	protected void addClassNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenMenuDelegateAction_className_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenMenuDelegateAction_className_feature", "_UI_GenMenuDelegateAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_MENU_DELEGATE_ACTION__CLASS_NAME,
-						true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_DomainMenuPropertyCategory"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenMenuDelegateAction_className_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenMenuDelegateAction_className_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenMenuDelegateAction_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_MENU_DELEGATE_ACTION__CLASS_NAME, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DomainMenuPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -123,10 +110,7 @@ public class GenMenuDelegateActionItemProvider extends
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(
-				object,
-				getResourceLocator().getImage(
-						"full/obj16/GenMenuDelegateAction")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/GenMenuDelegateAction")); //$NON-NLS-1$
 	}
 
 	/**
@@ -156,8 +140,7 @@ public class GenMenuDelegateActionItemProvider extends
 		switch (notification.getFeatureID(GenMenuDelegateAction.class)) {
 		case ZDLGenPackage.GEN_MENU_DELEGATE_ACTION__HOST_BUNDLE:
 		case ZDLGenPackage.GEN_MENU_DELEGATE_ACTION__CLASS_NAME:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -171,8 +154,7 @@ public class GenMenuDelegateActionItemProvider extends
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

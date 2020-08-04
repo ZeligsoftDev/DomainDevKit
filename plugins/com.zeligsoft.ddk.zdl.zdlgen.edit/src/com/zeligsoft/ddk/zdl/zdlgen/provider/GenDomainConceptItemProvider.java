@@ -51,10 +51,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.util.RhapsodyMetaclasses;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenDomainConceptItemProvider extends
-		GenDomainClassifierItemProvider implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider,
-		IItemLabelProvider, IItemPropertySource {
+public class GenDomainConceptItemProvider extends GenDomainClassifierItemProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -84,6 +81,7 @@ public class GenDomainConceptItemProvider extends
 			addGeneralPropertyDescriptor(object);
 			addReferencePropertyDescriptor(object);
 			addAttributePropertyDescriptor(object);
+			addIconUriPropertyDescriptor(object);
 			addIsRSMSuppressedPropertyDescriptor(object);
 			addIsRSMUIReadOnlyPropertyDescriptor(object);
 			addIsRSMPropertiesUIReadOnlyPropertyDescriptor(object);
@@ -106,17 +104,12 @@ public class GenDomainConceptItemProvider extends
 	 */
 	protected void addCategoryPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainConcept_category_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainConcept_category_feature", "_UI_GenDomainConcept_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__CATEGORY,
-						true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_ProfileMappingPropertyCategory"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainConcept_category_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainConcept_category_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainConcept_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__CATEGORY, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_ProfileMappingPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -128,15 +121,11 @@ public class GenDomainConceptItemProvider extends
 	 */
 	protected void addDomainConceptPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainConcept_domainConcept_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainConcept_domainConcept_feature", "_UI_GenDomainConcept_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__DOMAIN_CONCEPT,
-						false, false, true, null,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainConcept_domainConcept_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainConcept_domainConcept_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainConcept_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__DOMAIN_CONCEPT, false, false, true, null,
 						getString("_UI_DomainPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
@@ -149,15 +138,11 @@ public class GenDomainConceptItemProvider extends
 	 */
 	protected void addUmlMetaclassPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(new ItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainConcept_umlMetaclass_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainConcept_umlMetaclass_feature", "_UI_GenDomainConcept_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__UML_METACLASS,
-						true, false, true, null,
+				.add(new ItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainConcept_umlMetaclass_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainConcept_umlMetaclass_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainConcept_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__UML_METACLASS, true, false, true, null,
 						getString("_UI_ProfileMappingPropertyCategory"), //$NON-NLS-1$
 						null) {
 
@@ -181,8 +166,7 @@ public class GenDomainConceptItemProvider extends
 	 * 
 	 * @return the list of UML metaclasses that are appropriate for the concept
 	 */
-	protected Collection<Class> getAvailableUMLMetaclasses(
-			GenDomainConcept concept) {
+	protected Collection<Class> getAvailableUMLMetaclasses(GenDomainConcept concept) {
 		Collection<Class> result = Collections.emptyList();
 
 		Resource resource = concept.eResource();
@@ -191,18 +175,14 @@ public class GenDomainConceptItemProvider extends
 			ResourceSet rset = resource.getResourceSet();
 
 			if (rset != null) {
-				Resource umlMetamodel = rset.getResource(
-						URI.createURI(UMLResource.UML_METAMODEL_URI), true);
+				Resource umlMetamodel = rset.getResource(URI.createURI(UMLResource.UML_METAMODEL_URI), true);
 
 				if ((umlMetamodel != null) && umlMetamodel.isLoaded()) {
-					Package metamodel = (Package) EcoreUtil.getObjectByType(
-							umlMetamodel.getContents(),
+					Package metamodel = (Package) EcoreUtil.getObjectByType(umlMetamodel.getContents(),
 							UMLPackage.Literals.PACKAGE);
 
 					if (metamodel != null) {
-						result = EcoreUtil.getObjectsByType(
-								metamodel.getOwnedTypes(),
-								UMLPackage.Literals.CLASS);
+						result = EcoreUtil.getObjectsByType(metamodel.getOwnedTypes(), UMLPackage.Literals.CLASS);
 					}
 				}
 			}
@@ -219,15 +199,11 @@ public class GenDomainConceptItemProvider extends
 	 */
 	protected void addGeneralPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainConcept_general_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainConcept_general_feature", "_UI_GenDomainConcept_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__GENERAL,
-						false, false, false, null,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainConcept_general_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainConcept_general_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainConcept_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__GENERAL, false, false, false, null,
 						getString("_UI_ZDLGeneratorPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
@@ -240,15 +216,11 @@ public class GenDomainConceptItemProvider extends
 	 */
 	protected void addReferencePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainConcept_reference_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainConcept_reference_feature", "_UI_GenDomainConcept_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__REFERENCE,
-						false, false, false, null,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainConcept_reference_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainConcept_reference_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainConcept_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__REFERENCE, false, false, false, null,
 						getString("_UI_ZDLGeneratorPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
@@ -261,17 +233,29 @@ public class GenDomainConceptItemProvider extends
 	 */
 	protected void addAttributePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainConcept_attribute_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainConcept_attribute_feature", "_UI_GenDomainConcept_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__ATTRIBUTE,
-						false, false, false, null,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainConcept_attribute_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainConcept_attribute_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainConcept_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__ATTRIBUTE, false, false, false, null,
 						getString("_UI_ZDLGeneratorPropertyCategory"), //$NON-NLS-1$
 						null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Icon Uri feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIconUriPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainConcept_iconUri_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainConcept_iconUri_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainConcept_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__ICON_URI, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -281,16 +265,13 @@ public class GenDomainConceptItemProvider extends
 	 * @generated
 	 */
 	protected void addIsRSMSuppressedPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_GenDomainConcept_isRSMSuppressed_feature"), //$NON-NLS-1$
-				getString("_UI_GenDomainConcept_isRSMSuppressed_description"), //$NON-NLS-1$
-				ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__IS_RSM_SUPPRESSED,
-				true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				getString("_UI_RSMPropertyCategory"), //$NON-NLS-1$
-				null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainConcept_isRSMSuppressed_feature"), //$NON-NLS-1$
+						getString("_UI_GenDomainConcept_isRSMSuppressed_description"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__IS_RSM_SUPPRESSED, true, false, false,
+						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_RSMPropertyCategory"), //$NON-NLS-1$
+						null));
 	}
 
 	/**
@@ -300,16 +281,13 @@ public class GenDomainConceptItemProvider extends
 	 * @generated
 	 */
 	protected void addIsRSMUIReadOnlyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_GenDomainConcept_isRSMUIReadOnly_feature"), //$NON-NLS-1$
-				getString("_UI_GenDomainConcept_isRSMUIReadOnly_description"), //$NON-NLS-1$
-				ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__IS_RSMUI_READ_ONLY,
-				true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				getString("_UI_RSMPropertyCategory"), //$NON-NLS-1$
-				null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainConcept_isRSMUIReadOnly_feature"), //$NON-NLS-1$
+						getString("_UI_GenDomainConcept_isRSMUIReadOnly_description"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__IS_RSMUI_READ_ONLY, true, false, false,
+						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_RSMPropertyCategory"), //$NON-NLS-1$
+						null));
 	}
 
 	/**
@@ -320,16 +298,11 @@ public class GenDomainConceptItemProvider extends
 	 */
 	protected void addIsRSMPropertiesUIReadOnlyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainConcept_isRSMPropertiesUIReadOnly_feature"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainConcept_isRSMPropertiesUIReadOnly_feature"), //$NON-NLS-1$
 						getString("_UI_GenDomainConcept_isRSMPropertiesUIReadOnly_description"), //$NON-NLS-1$
-						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__IS_RSM_PROPERTIES_UI_READ_ONLY,
-						true, false, false,
-						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-						getString("_UI_RSMPropertyCategory"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__IS_RSM_PROPERTIES_UI_READ_ONLY, true, false, false,
+						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_RSMPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -341,17 +314,12 @@ public class GenDomainConceptItemProvider extends
 	 */
 	protected void addIsRhapsodySuppressedPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainConcept_isRhapsodySuppressed_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainConcept_isRhapsodySuppressed_feature", "_UI_GenDomainConcept_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__IS_RHAPSODY_SUPPRESSED,
-						true, false, false,
-						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-						getString("_UI_Rhapsody80PropertyCategory"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainConcept_isRhapsodySuppressed_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+								"_UI_GenDomainConcept_isRhapsodySuppressed_feature", "_UI_GenDomainConcept_type"), //$NON-NLS-1$ //$NON-NLS-2$
+						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__IS_RHAPSODY_SUPPRESSED, true, false, false,
+						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_Rhapsody80PropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -376,17 +344,12 @@ public class GenDomainConceptItemProvider extends
 		//						getString("_UI_Rhapsody80PropertyCategory"), //$NON-NLS-1$
 		//						null));
 		itemPropertyDescriptors
-				.add(new ItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainConcept_rhapsodyMetaclass_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainConcept_rhapsodyMetaclass_feature", "_UI_GenDomainConcept_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__RHAPSODY_METACLASS,
-						true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_Rhapsody80PropertyCategory"), //$NON-NLS-1$
+				.add(new ItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainConcept_rhapsodyMetaclass_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+								"_UI_GenDomainConcept_rhapsodyMetaclass_feature", "_UI_GenDomainConcept_type"), //$NON-NLS-1$ //$NON-NLS-2$
+						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__RHAPSODY_METACLASS, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_Rhapsody80PropertyCategory"), //$NON-NLS-1$
 						null) {
 
 					/* (non-Javadoc)
@@ -407,17 +370,12 @@ public class GenDomainConceptItemProvider extends
 	 */
 	protected void addRhapsodyStereotypeNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainConcept_rhapsodyStereotypeName_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainConcept_rhapsodyStereotypeName_feature", "_UI_GenDomainConcept_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__RHAPSODY_STEREOTYPE_NAME,
-						true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_Rhapsody80PropertyCategory"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainConcept_rhapsodyStereotypeName_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+								"_UI_GenDomainConcept_rhapsodyStereotypeName_feature", "_UI_GenDomainConcept_type"), //$NON-NLS-1$ //$NON-NLS-2$
+						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__RHAPSODY_STEREOTYPE_NAME, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_Rhapsody80PropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -429,17 +387,12 @@ public class GenDomainConceptItemProvider extends
 	 */
 	protected void addRhapsodyAddNewPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(new ItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainConcept_rhapsodyAddNew_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainConcept_rhapsodyAddNew_feature", "_UI_GenDomainConcept_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__RHAPSODY_ADD_NEW,
-						true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_Rhapsody80PropertyCategory"), //$NON-NLS-1$
+				.add(new ItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainConcept_rhapsodyAddNew_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainConcept_rhapsodyAddNew_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainConcept_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__RHAPSODY_ADD_NEW, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_Rhapsody80PropertyCategory"), //$NON-NLS-1$
 						null) {
 
 					/* (non-Javadoc)
@@ -460,14 +413,10 @@ public class GenDomainConceptItemProvider extends
 	 */
 	protected void addRhapsodyAddNewConceptPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainConcept_rhapsodyAddNewConcept_feature"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainConcept_rhapsodyAddNewConcept_feature"), //$NON-NLS-1$
 						getString("_UI_GenDomainConcept_rhapsodyAddNewConcept_description"), //$NON-NLS-1$
-						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__RHAPSODY_ADD_NEW_CONCEPT,
-						true, false, true, null,
+						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__RHAPSODY_ADD_NEW_CONCEPT, true, false, true, null,
 						getString("_UI_Rhapsody80PropertyCategory"), //$NON-NLS-1$
 						null));
 	}
@@ -480,17 +429,12 @@ public class GenDomainConceptItemProvider extends
 	 */
 	protected void addRhapsodyDisplayNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainConcept_rhapsodyDisplayName_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainConcept_rhapsodyDisplayName_feature", "_UI_GenDomainConcept_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__RHAPSODY_DISPLAY_NAME,
-						true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_Rhapsody80PropertyCategory"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainConcept_rhapsodyDisplayName_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+								"_UI_GenDomainConcept_rhapsodyDisplayName_feature", "_UI_GenDomainConcept_type"), //$NON-NLS-1$ //$NON-NLS-2$
+						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__RHAPSODY_DISPLAY_NAME, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_Rhapsody80PropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -502,15 +446,11 @@ public class GenDomainConceptItemProvider extends
 	 */
 	protected void addRhapsodyToAddNewPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainConcept_rhapsodyToAddNew_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainConcept_rhapsodyToAddNew_feature", "_UI_GenDomainConcept_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__RHAPSODY_TO_ADD_NEW,
-						true, false, true, null,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainConcept_rhapsodyToAddNew_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainConcept_rhapsodyToAddNew_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainConcept_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__RHAPSODY_TO_ADD_NEW, true, false, true, null,
 						getString("_UI_Rhapsody80PropertyCategory"), //$NON-NLS-1$
 						null));
 	}
@@ -523,15 +463,11 @@ public class GenDomainConceptItemProvider extends
 	 */
 	protected void addMenuPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenMenuTarget_menu_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenMenuTarget_menu_feature", "_UI_GenMenuTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_MENU_TARGET__MENU, true,
-						false, true, null, null, null));
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenMenuTarget_menu_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenMenuTarget_menu_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenMenuTarget_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_MENU_TARGET__MENU, true, false, true, null, null, null));
 	}
 
 	/**
@@ -543,16 +479,12 @@ public class GenDomainConceptItemProvider extends
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures
-					.add(ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__FEATURE);
-			childrenFeatures
-					.add(ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__OVERRIDE);
-			childrenFeatures
-					.add(ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__GENERALIZATION);
+			childrenFeatures.add(ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__FEATURE);
+			childrenFeatures.add(ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__OVERRIDE);
+			childrenFeatures.add(ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__GENERALIZATION);
 		}
 		return childrenFeatures;
 	}
@@ -578,8 +510,7 @@ public class GenDomainConceptItemProvider extends
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/GenDomainConcept")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/GenDomainConcept")); //$NON-NLS-1$
 	}
 
 	/**
@@ -621,6 +552,7 @@ public class GenDomainConceptItemProvider extends
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__CATEGORY:
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__REFERENCE:
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__ATTRIBUTE:
+		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__ICON_URI:
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__IS_RSM_SUPPRESSED:
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__IS_RSMUI_READ_ONLY:
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__IS_RSM_PROPERTIES_UI_READ_ONLY:
@@ -629,14 +561,12 @@ public class GenDomainConceptItemProvider extends
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__RHAPSODY_STEREOTYPE_NAME:
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__RHAPSODY_ADD_NEW:
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__RHAPSODY_DISPLAY_NAME:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__FEATURE:
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__OVERRIDE:
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__GENERALIZATION:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), true, false));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -650,12 +580,10 @@ public class GenDomainConceptItemProvider extends
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-				ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__OVERRIDE,
+		newChildDescriptors.add(createChildParameter(ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__OVERRIDE,
 				ZDLGenFactory.eINSTANCE.createGenAttributeOverride()));
 	}
 

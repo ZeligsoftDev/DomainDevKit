@@ -41,9 +41,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class OawXtendItemProvider extends ExpressionItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class OawXtendItemProvider extends ExpressionItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -78,15 +76,11 @@ public class OawXtendItemProvider extends ExpressionItemProvider implements
 	 */
 	protected void addExtensionFilePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_OawXtend_extensionFile_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_OawXtend_extensionFile_feature", "_UI_OawXtend_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.OAW_XTEND__EXTENSION_FILE, true,
-						false, false,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_OawXtend_extensionFile_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_OawXtend_extensionFile_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_OawXtend_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.OAW_XTEND__EXTENSION_FILE, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -98,8 +92,7 @@ public class OawXtendItemProvider extends ExpressionItemProvider implements
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/OawXtend")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/OawXtend")); //$NON-NLS-1$
 	}
 
 	/**
@@ -128,8 +121,7 @@ public class OawXtendItemProvider extends ExpressionItemProvider implements
 
 		switch (notification.getFeatureID(OawXtend.class)) {
 		case ZDLGenPackage.OAW_XTEND__EXTENSION_FILE:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -143,8 +135,7 @@ public class OawXtendItemProvider extends ExpressionItemProvider implements
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -152,8 +143,7 @@ public class OawXtendItemProvider extends ExpressionItemProvider implements
 	public String getTextForTree(EObject object) {
 		OawXtend mi = (OawXtend) object;
 		String key = "_TreeText_" + object.eClass().getName(); //$NON-NLS-1$
-		return getResourceLocator().getString(key,
-				new Object[] { mi.getName() });
+		return getResourceLocator().getString(key, new Object[] { mi.getName() });
 	}
 
 }

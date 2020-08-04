@@ -47,6 +47,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.internal.operations.GenDomainBlockOperations
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainBlockImpl#getOwnedObjects <em>Owned Object</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainBlockImpl#getDomainElement <em>Domain Element</em>}</li>
@@ -59,12 +60,10 @@ import com.zeligsoft.ddk.zdl.zdlgen.internal.operations.GenDomainBlockOperations
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainBlockImpl#isRsmStereotypesUIReadOnly <em>Rsm Stereotypes UI Read Only</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainBlockImpl#isRsmStereotypesPropertiesUIReadOnly <em>Rsm Stereotypes Properties UI Read Only</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class GenDomainBlockImpl extends GenDomainPackageableElementImpl
-		implements GenDomainBlock {
+public class GenDomainBlockImpl extends GenDomainPackageableElementImpl implements GenDomainBlock {
 
 	/**
 	 * The cached value of the '{@link #getRelations() <em>Relation</em>}' containment reference list.
@@ -187,26 +186,17 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<GenDomainObject> ownedObjects = (EList<GenDomainObject>) cache
-					.get(eResource,
-							this,
-							ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
+			EList<GenDomainObject> ownedObjects = (EList<GenDomainObject>) cache.get(eResource, this,
+					ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
 			if (ownedObjects == null) {
-				cache.put(
-						eResource,
-						this,
-						ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT,
-						ownedObjects = new DerivedUnionEObjectEList<GenDomainObject>(
-								GenDomainObject.class, this,
-								ZDLGenPackage.GEN_DOMAIN_BLOCK__OWNED_OBJECT,
-								OWNED_OBJECT_ESUBSETS));
+				cache.put(eResource, this, ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT,
+						ownedObjects = new DerivedUnionEObjectEList<GenDomainObject>(GenDomainObject.class, this,
+								ZDLGenPackage.GEN_DOMAIN_BLOCK__OWNED_OBJECT, OWNED_OBJECT_ESUBSETS));
 			}
 			return ownedObjects;
 		}
-		return new DerivedUnionEObjectEList<GenDomainObject>(
-				GenDomainObject.class, this,
-				ZDLGenPackage.GEN_DOMAIN_BLOCK__OWNED_OBJECT,
-				OWNED_OBJECT_ESUBSETS);
+		return new DerivedUnionEObjectEList<GenDomainObject>(GenDomainObject.class, this,
+				ZDLGenPackage.GEN_DOMAIN_BLOCK__OWNED_OBJECT, OWNED_OBJECT_ESUBSETS);
 	}
 
 	/**
@@ -217,8 +207,7 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] OWNED_OBJECT_ESUBSETS = new int[] {
-			ZDLGenPackage.GEN_DOMAIN_BLOCK__CLASSIFIER,
+	protected static final int[] OWNED_OBJECT_ESUBSETS = new int[] { ZDLGenPackage.GEN_DOMAIN_BLOCK__CLASSIFIER,
 			ZDLGenPackage.GEN_DOMAIN_BLOCK__RELATION };
 
 	/**
@@ -229,7 +218,8 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl
 	@Override
 	public NamedElement getDomainElement() {
 		NamedElement domainElement = basicGetDomainElement();
-		return domainElement != null && domainElement.eIsProxy() ? (NamedElement) eResolveProxy((InternalEObject) domainElement)
+		return domainElement != null && domainElement.eIsProxy()
+				? (NamedElement) eResolveProxy((InternalEObject) domainElement)
 				: domainElement;
 	}
 
@@ -254,10 +244,8 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl
 	@Override
 	public EList<GenDomainClassifier> getClassifiers() {
 		if (classifiers == null) {
-			classifiers = new EObjectContainmentWithInverseEList<GenDomainClassifier>(
-					GenDomainClassifier.class, this,
-					ZDLGenPackage.GEN_DOMAIN_BLOCK__CLASSIFIER,
-					ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK);
+			classifiers = new EObjectContainmentWithInverseEList<GenDomainClassifier>(GenDomainClassifier.class, this,
+					ZDLGenPackage.GEN_DOMAIN_BLOCK__CLASSIFIER, ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK);
 		}
 		return classifiers;
 	}
@@ -278,14 +266,12 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl
 	 * @generated
 	 */
 	@Override
-	public GenDomainClassifier getClassifier(String name, boolean ignoreCase,
-			EClass eClass) {
+	public GenDomainClassifier getClassifier(String name, boolean ignoreCase, EClass eClass) {
 		classifierLoop: for (GenDomainClassifier classifier : getClassifiers()) {
 			if (eClass != null && !eClass.isInstance(classifier))
 				continue classifierLoop;
 			if (name != null
-					&& !(ignoreCase ? name.equalsIgnoreCase(classifier
-							.getName()) : name.equals(classifier.getName())))
+					&& !(ignoreCase ? name.equalsIgnoreCase(classifier.getName()) : name.equals(classifier.getName())))
 				continue classifierLoop;
 			return classifier;
 		}
@@ -300,10 +286,8 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl
 	@Override
 	public EList<GenDomainBlockRelation> getRelations() {
 		if (relations == null) {
-			relations = new EObjectContainmentWithInverseEList<GenDomainBlockRelation>(
-					GenDomainBlockRelation.class, this,
-					ZDLGenPackage.GEN_DOMAIN_BLOCK__RELATION,
-					ZDLGenPackage.GEN_DOMAIN_BLOCK_RELATION__SOURCE);
+			relations = new EObjectContainmentWithInverseEList<GenDomainBlockRelation>(GenDomainBlockRelation.class,
+					this, ZDLGenPackage.GEN_DOMAIN_BLOCK__RELATION, ZDLGenPackage.GEN_DOMAIN_BLOCK_RELATION__SOURCE);
 		}
 		return relations;
 	}
@@ -321,8 +305,7 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl
 			if (domainBlock != oldDomainBlock) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ZDLGenPackage.GEN_DOMAIN_BLOCK__DOMAIN_BLOCK,
-							oldDomainBlock, domainBlock));
+							ZDLGenPackage.GEN_DOMAIN_BLOCK__DOMAIN_BLOCK, oldDomainBlock, domainBlock));
 			}
 		}
 		return domainBlock;
@@ -347,8 +330,7 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl
 		org.eclipse.uml2.uml.Package oldDomainBlock = domainBlock;
 		domainBlock = newDomainBlock;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_BLOCK__DOMAIN_BLOCK,
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_BLOCK__DOMAIN_BLOCK,
 					oldDomainBlock, domainBlock));
 	}
 
@@ -363,23 +345,16 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<GenDomainBlockImport> result = (EList<GenDomainBlockImport>) cache
-					.get(eResource, this,
-							ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK__IMPORT);
+			EList<GenDomainBlockImport> result = (EList<GenDomainBlockImport>) cache.get(eResource, this,
+					ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK__IMPORT);
 			if (result == null) {
-				cache.put(
-						eResource,
-						this,
-						ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK__IMPORT,
-						result = new DerivedSubsetEObjectEList<GenDomainBlockImport>(
-								GenDomainBlockImport.class, this,
-								ZDLGenPackage.GEN_DOMAIN_BLOCK__IMPORT,
-								IMPORT_ESUPERSETS));
+				cache.put(eResource, this, ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK__IMPORT,
+						result = new DerivedSubsetEObjectEList<GenDomainBlockImport>(GenDomainBlockImport.class, this,
+								ZDLGenPackage.GEN_DOMAIN_BLOCK__IMPORT, IMPORT_ESUPERSETS));
 			}
 			return result;
 		}
-		return new DerivedSubsetEObjectEList<GenDomainBlockImport>(
-				GenDomainBlockImport.class, this,
+		return new DerivedSubsetEObjectEList<GenDomainBlockImport>(GenDomainBlockImport.class, this,
 				ZDLGenPackage.GEN_DOMAIN_BLOCK__IMPORT, IMPORT_ESUPERSETS);
 	}
 
@@ -404,23 +379,16 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<GenDomainBlockMerge> result = (EList<GenDomainBlockMerge>) cache
-					.get(eResource, this,
-							ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK__MERGE);
+			EList<GenDomainBlockMerge> result = (EList<GenDomainBlockMerge>) cache.get(eResource, this,
+					ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK__MERGE);
 			if (result == null) {
-				cache.put(
-						eResource,
-						this,
-						ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK__MERGE,
-						result = new DerivedSubsetEObjectEList<GenDomainBlockMerge>(
-								GenDomainBlockMerge.class, this,
-								ZDLGenPackage.GEN_DOMAIN_BLOCK__MERGE,
-								MERGE_ESUPERSETS));
+				cache.put(eResource, this, ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK__MERGE,
+						result = new DerivedSubsetEObjectEList<GenDomainBlockMerge>(GenDomainBlockMerge.class, this,
+								ZDLGenPackage.GEN_DOMAIN_BLOCK__MERGE, MERGE_ESUPERSETS));
 			}
 			return result;
 		}
-		return new DerivedSubsetEObjectEList<GenDomainBlockMerge>(
-				GenDomainBlockMerge.class, this,
+		return new DerivedSubsetEObjectEList<GenDomainBlockMerge>(GenDomainBlockMerge.class, this,
 				ZDLGenPackage.GEN_DOMAIN_BLOCK__MERGE, MERGE_ESUPERSETS);
 	}
 
@@ -458,8 +426,8 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl
 			eFlags &= ~RSM_STEREOTYPES_SUPPRESSED_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_BLOCK__RSM_STEREOTYPES_SUPPRESSED,
-					oldRsmStereotypesSuppressed, newRsmStereotypesSuppressed));
+					ZDLGenPackage.GEN_DOMAIN_BLOCK__RSM_STEREOTYPES_SUPPRESSED, oldRsmStereotypesSuppressed,
+					newRsmStereotypesSuppressed));
 	}
 
 	/**
@@ -485,11 +453,9 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl
 		else
 			eFlags &= ~RSM_STEREOTYPES_UI_READ_ONLY_EFLAG;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_BLOCK__RSM_STEREOTYPES_UI_READ_ONLY,
-					oldRsmStereotypesUIReadOnly, newRsmStereotypesUIReadOnly));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ZDLGenPackage.GEN_DOMAIN_BLOCK__RSM_STEREOTYPES_UI_READ_ONLY, oldRsmStereotypesUIReadOnly,
+					newRsmStereotypesUIReadOnly));
 	}
 
 	/**
@@ -508,20 +474,16 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl
 	 * @generated
 	 */
 	@Override
-	public void setRsmStereotypesPropertiesUIReadOnly(
-			boolean newRsmStereotypesPropertiesUIReadOnly) {
+	public void setRsmStereotypesPropertiesUIReadOnly(boolean newRsmStereotypesPropertiesUIReadOnly) {
 		boolean oldRsmStereotypesPropertiesUIReadOnly = (eFlags & RSM_STEREOTYPES_PROPERTIES_UI_READ_ONLY_EFLAG) != 0;
 		if (newRsmStereotypesPropertiesUIReadOnly)
 			eFlags |= RSM_STEREOTYPES_PROPERTIES_UI_READ_ONLY_EFLAG;
 		else
 			eFlags &= ~RSM_STEREOTYPES_PROPERTIES_UI_READ_ONLY_EFLAG;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
+			eNotify(new ENotificationImpl(this, Notification.SET,
 					ZDLGenPackage.GEN_DOMAIN_BLOCK__RSM_STEREOTYPES_PROPERTIES_UI_READ_ONLY,
-					oldRsmStereotypesPropertiesUIReadOnly,
-					newRsmStereotypesPropertiesUIReadOnly));
+					oldRsmStereotypesPropertiesUIReadOnly, newRsmStereotypesPropertiesUIReadOnly));
 	}
 
 	/**
@@ -530,24 +492,7 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl
 	 * @generated
 	 */
 	@Override
-	public EList<GenDomainClassifier> allClassifiers(
-			GenAllDomainCassifiersMode mode) {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			@SuppressWarnings("unchecked")
-			EList<GenDomainClassifier> result = (EList<GenDomainClassifier>) cache
-					.get(this, ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK
-							.getEOperations().get(0));
-			if (result == null) {
-				cache.put(
-						this,
-						ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK
-								.getEOperations().get(0),
-						result = GenDomainBlockOperations.allClassifiers(this,
-								mode));
-			}
-			return result;
-		}
+	public EList<GenDomainClassifier> allClassifiers(GenAllDomainCassifiersMode mode) {
 		return GenDomainBlockOperations.allClassifiers(this, mode);
 	}
 
@@ -558,15 +503,12 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_BLOCK__RELATION:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getRelations())
-					.basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getRelations()).basicAdd(otherEnd, msgs);
 		case ZDLGenPackage.GEN_DOMAIN_BLOCK__CLASSIFIER:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getClassifiers())
-					.basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getClassifiers()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -577,15 +519,12 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_BLOCK__RELATION:
-			return ((InternalEList<?>) getRelations()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getRelations()).basicRemove(otherEnd, msgs);
 		case ZDLGenPackage.GEN_DOMAIN_BLOCK__CLASSIFIER:
-			return ((InternalEList<?>) getClassifiers()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getClassifiers()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -631,13 +570,11 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_BLOCK__RELATION:
 			getRelations().clear();
-			getRelations().addAll(
-					(Collection<? extends GenDomainBlockRelation>) newValue);
+			getRelations().addAll((Collection<? extends GenDomainBlockRelation>) newValue);
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_BLOCK__CLASSIFIER:
 			getClassifiers().clear();
-			getClassifiers().addAll(
-					(Collection<? extends GenDomainClassifier>) newValue);
+			getClassifiers().addAll((Collection<? extends GenDomainClassifier>) newValue);
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_BLOCK__DOMAIN_BLOCK:
 			setDomainBlock((org.eclipse.uml2.uml.Package) newValue);
@@ -693,6 +630,10 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case ZDLGenPackage.GEN_DOMAIN_BLOCK__OWNED_OBJECT:
+			return isSetOwnedObjects();
+		case ZDLGenPackage.GEN_DOMAIN_BLOCK__DOMAIN_ELEMENT:
+			return isSetDomainElement();
 		case ZDLGenPackage.GEN_DOMAIN_BLOCK__RELATION:
 			return relations != null && !relations.isEmpty();
 		case ZDLGenPackage.GEN_DOMAIN_BLOCK__CLASSIFIER:
@@ -708,7 +649,8 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl
 		case ZDLGenPackage.GEN_DOMAIN_BLOCK__RSM_STEREOTYPES_UI_READ_ONLY:
 			return ((eFlags & RSM_STEREOTYPES_UI_READ_ONLY_EFLAG) != 0) != RSM_STEREOTYPES_UI_READ_ONLY_EDEFAULT;
 		case ZDLGenPackage.GEN_DOMAIN_BLOCK__RSM_STEREOTYPES_PROPERTIES_UI_READ_ONLY:
-			return ((eFlags & RSM_STEREOTYPES_PROPERTIES_UI_READ_ONLY_EFLAG) != 0) != RSM_STEREOTYPES_PROPERTIES_UI_READ_ONLY_EDEFAULT;
+			return ((eFlags
+					& RSM_STEREOTYPES_PROPERTIES_UI_READ_ONLY_EFLAG) != 0) != RSM_STEREOTYPES_PROPERTIES_UI_READ_ONLY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -723,7 +665,7 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (rsmStereotypesSuppressed: "); //$NON-NLS-1$
 		result.append((eFlags & RSM_STEREOTYPES_SUPPRESSED_EFLAG) != 0);
 		result.append(", rsmStereotypesUIReadOnly: "); //$NON-NLS-1$
@@ -741,8 +683,7 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl
 	 */
 	@Override
 	public boolean isSetOwnedObjects() {
-		return super.isSetOwnedObjects()
-				|| eIsSet(ZDLGenPackage.GEN_DOMAIN_BLOCK__CLASSIFIER)
+		return super.isSetOwnedObjects() || eIsSet(ZDLGenPackage.GEN_DOMAIN_BLOCK__CLASSIFIER)
 				|| eIsSet(ZDLGenPackage.GEN_DOMAIN_BLOCK__RELATION);
 	}
 
@@ -753,8 +694,7 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl
 	 */
 	@Override
 	public boolean isSetDomainElement() {
-		return super.isSetDomainElement()
-				|| eIsSet(ZDLGenPackage.GEN_DOMAIN_BLOCK__DOMAIN_BLOCK);
+		return super.isSetDomainElement() || eIsSet(ZDLGenPackage.GEN_DOMAIN_BLOCK__DOMAIN_BLOCK);
 	}
 
 } //GenDomainBlockImpl

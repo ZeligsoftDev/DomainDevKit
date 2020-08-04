@@ -24,11 +24,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenMenuModel#getItems <em>Items</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenMenuModel#getUmlMeni <em>Uml Menus</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenMenuModel()
  * @model

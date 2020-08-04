@@ -24,10 +24,10 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnum#getLiterals <em>Literal</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainEnum()
  * @model
@@ -41,10 +41,10 @@ public interface GenDomainEnum extends GenDomainDataType {
 	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnumLiteral#getEnumeration <em>Enumeration</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwnedObjects() <em>Owned Object</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Literal</em>' containment reference list isn't clear,
@@ -55,6 +55,7 @@ public interface GenDomainEnum extends GenDomainDataType {
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainEnum_Literal()
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnumLiteral#getEnumeration
 	 * @model opposite="enumeration" containment="true" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	EList<GenDomainEnumLiteral> getLiterals();

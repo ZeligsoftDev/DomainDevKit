@@ -32,10 +32,10 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  *
  * <p>
  * The following operations are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenMenuItem#overridenBy() <em>Overriden By</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -62,8 +62,7 @@ public class GenMenuItemOperations extends GenDomainObjectOperations {
 			result = null;
 		} else {
 			List<EObject> inverseObjects = new UniqueEList<EObject>(4);
-			for (EStructuralFeature.Setting setting : cache
-					.getInverseReferences(genMenuItem)) {
+			for (EStructuralFeature.Setting setting : cache.getInverseReferences(genMenuItem)) {
 				if (setting.getEStructuralFeature() == ZDLGenPackage.Literals.GEN_MENU_ITEM__OVERRIDES) {
 					inverseObjects.add(setting.getEObject());
 				}

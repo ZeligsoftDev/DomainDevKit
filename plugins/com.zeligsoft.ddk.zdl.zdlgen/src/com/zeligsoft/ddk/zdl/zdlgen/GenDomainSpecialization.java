@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getDomainSpecialization <em>Domain Specialization</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getDomainConcepts <em>Domain Concept</em>}</li>
@@ -42,7 +43,6 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getIncludedUMLMeni <em>Included UML Menus</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getDomainBlocks <em>Domain Block</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainSpecialization()
  * @model
@@ -56,10 +56,10 @@ public interface GenDomainSpecialization extends GenDomainPackageableElement {
 	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockReference#getDomainSpecialization <em>Domain Specialization</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwnedObjects() <em>Owned Object</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Domain Block</em>' containment reference list isn't clear,
@@ -70,6 +70,7 @@ public interface GenDomainSpecialization extends GenDomainPackageableElement {
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainSpecialization_DomainBlock()
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockReference#getDomainSpecialization
 	 * @model opposite="domainSpecialization" containment="true" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	EList<GenDomainBlockReference> getDomainBlocks();
@@ -102,10 +103,10 @@ public interface GenDomainSpecialization extends GenDomainPackageableElement {
 	 * Returns the value of the '<em><b>Domain Specialization</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainNamedElement#getDomainElement() <em>Domain Element</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Domain Specialization</em>' reference isn't clear,
@@ -116,6 +117,7 @@ public interface GenDomainSpecialization extends GenDomainPackageableElement {
 	 * @see #setDomainSpecialization(org.eclipse.uml2.uml.Class)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainSpecialization_DomainSpecialization()
 	 * @model required="true" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	org.eclipse.uml2.uml.Class getDomainSpecialization();
@@ -219,10 +221,10 @@ public interface GenDomainSpecialization extends GenDomainPackageableElement {
 	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModelLibraryReference#getDomainSpecialization <em>Domain Specialization</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwnedObjects() <em>Owned Object</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Domain Model Library</em>' containment reference list isn't clear,
@@ -233,6 +235,7 @@ public interface GenDomainSpecialization extends GenDomainPackageableElement {
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainSpecialization_DomainModelLibrary()
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainModelLibraryReference#getDomainSpecialization
 	 * @model opposite="domainSpecialization" containment="true" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	EList<GenDomainModelLibraryReference> getDomainModelLibraries();
@@ -459,8 +462,7 @@ public interface GenDomainSpecialization extends GenDomainPackageableElement {
 	 * @see #getExcludedPaletteItems()
 	 * @generated
 	 */
-	GenPaletteItem getExcludedPaletteItem(String name, boolean ignoreCase,
-			EClass eClass);
+	GenPaletteItem getExcludedPaletteItem(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Included UML Menus</b></em>' reference list.

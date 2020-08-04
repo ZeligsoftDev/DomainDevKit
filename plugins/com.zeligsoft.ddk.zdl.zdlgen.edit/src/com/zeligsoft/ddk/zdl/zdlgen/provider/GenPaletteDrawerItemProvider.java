@@ -39,10 +39,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenPaletteDrawerItemProvider extends
-		GenPaletteToolContainerItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class GenPaletteDrawerItemProvider extends GenPaletteToolContainerItemProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -78,15 +75,11 @@ public class GenPaletteDrawerItemProvider extends
 	 */
 	protected void addSpecializesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenPaletteDrawer_specializes_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenPaletteDrawer_specializes_feature", "_UI_GenPaletteDrawer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_PALETTE_DRAWER__SPECIALIZES,
-						true, false, true, null, null, null));
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenPaletteDrawer_specializes_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenPaletteDrawer_specializes_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenPaletteDrawer_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_PALETTE_DRAWER__SPECIALIZES, true, false, true, null, null, null));
 	}
 
 	/**
@@ -97,8 +90,7 @@ public class GenPaletteDrawerItemProvider extends
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/GenPaletteDrawer")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/GenPaletteDrawer")); //$NON-NLS-1$
 	}
 
 	/**
@@ -125,8 +117,7 @@ public class GenPaletteDrawerItemProvider extends
 		drawerName = (drawerName == null || drawerName.length() == 0) ? "???" : drawerName; //$NON-NLS-1$
 
 		String key = "_Label_" + drawer.eClass().getName(); //$NON-NLS-1$
-		return getResourceLocator().getString(key,
-				new Object[] { modelName, drawerName });
+		return getResourceLocator().getString(key, new Object[] { modelName, drawerName });
 	}
 
 	/**
@@ -139,7 +130,6 @@ public class GenPaletteDrawerItemProvider extends
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-		super.notifyChanged(notification);
 	}
 
 	/**
@@ -150,8 +140,7 @@ public class GenPaletteDrawerItemProvider extends
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 }

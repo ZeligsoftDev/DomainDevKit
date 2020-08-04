@@ -24,19 +24,18 @@ import org.eclipse.uml2.uml.Association;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainReference#getTarget <em>Target</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainReference#getSource <em>Source</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainReference#getDomainReference <em>Domain Reference</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainReference()
  * @model
  * @generated
  */
-public interface GenDomainReference extends GenDomainStructuralFeature,
-		GenPalettable {
+public interface GenDomainReference extends GenDomainStructuralFeature, GenPalettable {
 
 	/**
 	 * Returns the value of the '<em><b>Target</b></em>' reference.
@@ -68,10 +67,10 @@ public interface GenDomainReference extends GenDomainStructuralFeature,
 	 * Returns the value of the '<em><b>Source</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature#getConcept() <em>Concept</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Source</em>' reference isn't clear,
@@ -82,6 +81,7 @@ public interface GenDomainReference extends GenDomainStructuralFeature,
 	 * @see #setSource(GenDomainConcept)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainReference_Source()
 	 * @model required="true" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	GenDomainConcept getSource();
@@ -100,10 +100,10 @@ public interface GenDomainReference extends GenDomainStructuralFeature,
 	 * Returns the value of the '<em><b>Domain Reference</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainNamedElement#getDomainElement() <em>Domain Element</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Domain Reference</em>' reference isn't clear,
@@ -114,6 +114,7 @@ public interface GenDomainReference extends GenDomainStructuralFeature,
 	 * @see #setDomainReference(Association)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainReference_DomainReference()
 	 * @model required="true" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	Association getDomainReference();

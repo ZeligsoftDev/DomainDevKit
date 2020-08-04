@@ -26,12 +26,12 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteToolContainer#getOwnedTools <em>Owned Tool</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteToolContainer#getTools <em>Tool</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteToolContainer#getTargetDiagrams <em>Target Diagram</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenPaletteToolContainer()
  * @model abstract="true"
@@ -45,11 +45,11 @@ public interface GenPaletteToolContainer extends GenPaletteItem {
 	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteTool#getContainer <em>Container</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteToolContainer#getTools() <em>Tool</em>}'</li>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwnedObjects() <em>Owned Object</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Tool</em>' containment reference list isn't clear,
@@ -60,6 +60,7 @@ public interface GenPaletteToolContainer extends GenPaletteItem {
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenPaletteToolContainer_OwnedTool()
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenPaletteTool#getContainer
 	 * @model opposite="container" containment="true" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	EList<GenPaletteTool> getOwnedTools();

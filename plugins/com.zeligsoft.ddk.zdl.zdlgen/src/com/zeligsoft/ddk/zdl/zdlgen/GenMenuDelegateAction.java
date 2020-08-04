@@ -22,11 +22,11 @@ package com.zeligsoft.ddk.zdl.zdlgen;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenMenuDelegateAction#getHostBundle <em>Host Bundle</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenMenuDelegateAction#getClassName <em>Class Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenMenuDelegateAction()
  * @model

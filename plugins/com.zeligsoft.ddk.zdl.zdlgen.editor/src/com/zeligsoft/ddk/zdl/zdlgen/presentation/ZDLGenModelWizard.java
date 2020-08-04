@@ -108,10 +108,8 @@ public class ZDLGenModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<String> FILE_EXTENSIONS = Collections
-			.unmodifiableList(Arrays
-					.asList(ZDLGenEditorPlugin.INSTANCE
-							.getString("_UI_ZDLGenEditorFilenameExtensions").split("\\s*,\\s*"))); //$NON-NLS-1$ //$NON-NLS-2$
+	public static final List<String> FILE_EXTENSIONS = Collections.unmodifiableList(Arrays
+			.asList(ZDLGenEditorPlugin.INSTANCE.getString("_UI_ZDLGenEditorFilenameExtensions").split("\\s*,\\s*"))); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * A formatted list of supported file extensions, suitable for display.
@@ -187,11 +185,9 @@ public class ZDLGenModelWizard extends Wizard implements INewWizard {
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		this.workbench = workbench;
 		this.selection = selection;
-		setWindowTitle(ZDLGenEditorPlugin.INSTANCE
-				.getString("_UI_Wizard_label")); //$NON-NLS-1$
+		setWindowTitle(ZDLGenEditorPlugin.INSTANCE.getString("_UI_Wizard_label")); //$NON-NLS-1$
 		setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE
-				.getImageDescriptor(ZDLGenEditorPlugin.INSTANCE
-						.getImage("full/wizban/NewZDLGen"))); //$NON-NLS-1$
+				.getImageDescriptor(ZDLGenEditorPlugin.INSTANCE.getImage("full/wizban/NewZDLGen"))); //$NON-NLS-1$
 	}
 
 	/**
@@ -211,8 +207,7 @@ public class ZDLGenModelWizard extends Wizard implements INewWizard {
 					}
 				}
 			}
-			Collections.sort(initialObjectNames,
-					CommonPlugin.INSTANCE.getComparator());
+			Collections.sort(initialObjectNames, CommonPlugin.INSTANCE.getComparator());
 		}
 		return initialObjectNames;
 	}
@@ -224,9 +219,7 @@ public class ZDLGenModelWizard extends Wizard implements INewWizard {
 	 * @generated
 	 */
 	protected EObject createInitialModel() {
-		EClass eClass = (EClass) zdlGenPackage
-				.getEClassifier(initialObjectCreationPage
-						.getInitialObjectName());
+		EClass eClass = (EClass) zdlGenPackage.getEClassifier(initialObjectCreationPage.getInitialObjectName());
 		EObject rootObject = zdlGenFactory.create(eClass);
 		return rootObject;
 	}
@@ -256,8 +249,7 @@ public class ZDLGenModelWizard extends Wizard implements INewWizard {
 
 						// Get the URI of the model file.
 						//
-						URI fileURI = URI.createPlatformResourceURI(modelFile
-								.getFullPath().toString(), true);
+						URI fileURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
 
 						// Create a resource for this file.
 						//
@@ -273,8 +265,7 @@ public class ZDLGenModelWizard extends Wizard implements INewWizard {
 						// Save the contents of the resource to the file system.
 						//
 						Map<Object, Object> options = new HashMap<Object, Object>();
-						options.put(XMLResource.OPTION_ENCODING,
-								initialObjectCreationPage.getEncoding());
+						options.put(XMLResource.OPTION_ENCODING, initialObjectCreationPage.getEncoding());
 						resource.save(options);
 					} catch (Exception exception) {
 						ZDLGenEditorPlugin.INSTANCE.log(exception);
@@ -288,17 +279,14 @@ public class ZDLGenModelWizard extends Wizard implements INewWizard {
 
 			// Select the new file resource in the current view.
 			//
-			IWorkbenchWindow workbenchWindow = workbench
-					.getActiveWorkbenchWindow();
+			IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
 			IWorkbenchPage page = workbenchWindow.getActivePage();
 			final IWorkbenchPart activePart = page.getActivePart();
 			if (activePart instanceof ISetSelectionTarget) {
-				final ISelection targetSelection = new StructuredSelection(
-						modelFile);
+				final ISelection targetSelection = new StructuredSelection(modelFile);
 				getShell().getDisplay().asyncExec(new Runnable() {
 					public void run() {
-						((ISetSelectionTarget) activePart)
-								.selectReveal(targetSelection);
+						((ISetSelectionTarget) activePart).selectReveal(targetSelection);
 					}
 				});
 			}
@@ -306,19 +294,11 @@ public class ZDLGenModelWizard extends Wizard implements INewWizard {
 			// Open an editor on the new file.
 			//
 			try {
-				page.openEditor(
-						new FileEditorInput(modelFile),
-						workbench
-								.getEditorRegistry()
-								.getDefaultEditor(
-										modelFile.getFullPath().toString())
-								.getId());
+				page.openEditor(new FileEditorInput(modelFile),
+						workbench.getEditorRegistry().getDefaultEditor(modelFile.getFullPath().toString()).getId());
 			} catch (PartInitException exception) {
-				MessageDialog
-						.openError(
-								workbenchWindow.getShell(),
-								ZDLGenEditorPlugin.INSTANCE
-										.getString("_UI_OpenEditorError_label"), exception.getMessage()); //$NON-NLS-1$
+				MessageDialog.openError(workbenchWindow.getShell(),
+						ZDLGenEditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"), exception.getMessage()); //$NON-NLS-1$
 				return false;
 			}
 
@@ -335,16 +315,14 @@ public class ZDLGenModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public class ZDLGenModelWizardNewFileCreationPage extends
-			WizardNewFileCreationPage {
+	public class ZDLGenModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
 		/**
 		 * Pass in the selection.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public ZDLGenModelWizardNewFileCreationPage(String pageId,
-				IStructuredSelection selection) {
+		public ZDLGenModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection) {
 			super(pageId, selection);
 		}
 
@@ -360,8 +338,8 @@ public class ZDLGenModelWizard extends Wizard implements INewWizard {
 				String extension = new Path(getFileName()).getFileExtension();
 				if (extension == null || !FILE_EXTENSIONS.contains(extension)) {
 					String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension"; //$NON-NLS-1$ //$NON-NLS-2$
-					setErrorMessage(ZDLGenEditorPlugin.INSTANCE.getString(key,
-							new Object[] { FORMATTED_FILE_EXTENSIONS }));
+					setErrorMessage(
+							ZDLGenEditorPlugin.INSTANCE.getString(key, new Object[] { FORMATTED_FILE_EXTENSIONS }));
 					return false;
 				}
 				return true;
@@ -375,8 +353,7 @@ public class ZDLGenModelWizard extends Wizard implements INewWizard {
 		 * @generated
 		 */
 		public IFile getModelFile() {
-			return ResourcesPlugin.getWorkspace().getRoot()
-					.getFile(getContainerFullPath().append(getFileName()));
+			return ResourcesPlugin.getWorkspace().getRoot().getFile(getContainerFullPath().append(getFileName()));
 		}
 	}
 
@@ -440,8 +417,7 @@ public class ZDLGenModelWizard extends Wizard implements INewWizard {
 
 			Label containerLabel = new Label(composite, SWT.LEFT);
 			{
-				containerLabel.setText(ZDLGenEditorPlugin.INSTANCE
-						.getString("_UI_ModelObject")); //$NON-NLS-1$
+				containerLabel.setText(ZDLGenEditorPlugin.INSTANCE.getString("_UI_ModelObject")); //$NON-NLS-1$
 
 				GridData data = new GridData();
 				data.horizontalAlignment = GridData.FILL;
@@ -467,8 +443,7 @@ public class ZDLGenModelWizard extends Wizard implements INewWizard {
 
 			Label encodingLabel = new Label(composite, SWT.LEFT);
 			{
-				encodingLabel.setText(ZDLGenEditorPlugin.INSTANCE
-						.getString("_UI_XMLEncoding")); //$NON-NLS-1$
+				encodingLabel.setText(ZDLGenEditorPlugin.INSTANCE.getString("_UI_XMLEncoding")); //$NON-NLS-1$
 
 				GridData data = new GridData();
 				data.horizontalAlignment = GridData.FILL;
@@ -510,8 +485,7 @@ public class ZDLGenModelWizard extends Wizard implements INewWizard {
 		 * @generated
 		 */
 		protected boolean validatePage() {
-			return getInitialObjectName() != null
-					&& getEncodings().contains(encodingField.getText());
+			return getInitialObjectName() != null && getEncodings().contains(encodingField.getText());
 		}
 
 		/**
@@ -566,8 +540,7 @@ public class ZDLGenModelWizard extends Wizard implements INewWizard {
 		 */
 		protected String getLabel(String typeName) {
 			try {
-				return ZDLGenEditPlugin.INSTANCE
-						.getString("_UI_" + typeName + "_type"); //$NON-NLS-1$ //$NON-NLS-2$
+				return ZDLGenEditPlugin.INSTANCE.getString("_UI_" + typeName + "_type"); //$NON-NLS-1$ //$NON-NLS-2$
 			} catch (MissingResourceException mre) {
 				ZDLGenEditorPlugin.INSTANCE.log(mre);
 			}
@@ -583,9 +556,8 @@ public class ZDLGenModelWizard extends Wizard implements INewWizard {
 			if (encodings == null) {
 				encodings = new ArrayList<String>();
 				for (StringTokenizer stringTokenizer = new StringTokenizer(
-						ZDLGenEditorPlugin.INSTANCE
-								.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens();) //$NON-NLS-1$
-				{
+						ZDLGenEditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer //$NON-NLS-1$
+								.hasMoreTokens();) {
 					encodings.add(stringTokenizer.nextToken());
 				}
 			}
@@ -603,15 +575,11 @@ public class ZDLGenModelWizard extends Wizard implements INewWizard {
 	public void addPages() {
 		// Create a page, set the title, and the initial model file name.
 		//
-		newFileCreationPage = new ZDLGenModelWizardNewFileCreationPage(
-				"Whatever", selection); //$NON-NLS-1$
-		newFileCreationPage.setTitle(ZDLGenEditorPlugin.INSTANCE
-				.getString("_UI_ZDLGenModelWizard_label")); //$NON-NLS-1$
-		newFileCreationPage.setDescription(ZDLGenEditorPlugin.INSTANCE
-				.getString("_UI_ZDLGenModelWizard_description")); //$NON-NLS-1$
-		newFileCreationPage
-				.setFileName(ZDLGenEditorPlugin.INSTANCE
-						.getString("_UI_ZDLGenEditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0)); //$NON-NLS-1$ //$NON-NLS-2$
+		newFileCreationPage = new ZDLGenModelWizardNewFileCreationPage("Whatever", selection); //$NON-NLS-1$
+		newFileCreationPage.setTitle(ZDLGenEditorPlugin.INSTANCE.getString("_UI_ZDLGenModelWizard_label")); //$NON-NLS-1$
+		newFileCreationPage.setDescription(ZDLGenEditorPlugin.INSTANCE.getString("_UI_ZDLGenModelWizard_description")); //$NON-NLS-1$
+		newFileCreationPage.setFileName(ZDLGenEditorPlugin.INSTANCE.getString("_UI_ZDLGenEditorFilenameDefaultBase") //$NON-NLS-1$
+				+ "." + FILE_EXTENSIONS.get(0)); //$NON-NLS-1$
 		addPage(newFileCreationPage);
 
 		// Try and get the resource selection to determine a current directory for the file dialog.
@@ -630,36 +598,28 @@ public class ZDLGenModelWizard extends Wizard implements INewWizard {
 
 				// This gives us a directory...
 				//
-				if (selectedResource instanceof IFolder
-						|| selectedResource instanceof IProject) {
+				if (selectedResource instanceof IFolder || selectedResource instanceof IProject) {
 					// Set this for the container.
 					//
-					newFileCreationPage.setContainerFullPath(selectedResource
-							.getFullPath());
+					newFileCreationPage.setContainerFullPath(selectedResource.getFullPath());
 
 					// Make up a unique new name here.
 					//
 					String defaultModelBaseFilename = ZDLGenEditorPlugin.INSTANCE
 							.getString("_UI_ZDLGenEditorFilenameDefaultBase"); //$NON-NLS-1$
-					String defaultModelFilenameExtension = FILE_EXTENSIONS
-							.get(0);
-					String modelFilename = defaultModelBaseFilename
-							+ "." + defaultModelFilenameExtension; //$NON-NLS-1$
-					for (int i = 1; ((IContainer) selectedResource)
-							.findMember(modelFilename) != null; ++i) {
-						modelFilename = defaultModelBaseFilename + i
-								+ "." + defaultModelFilenameExtension; //$NON-NLS-1$
+					String defaultModelFilenameExtension = FILE_EXTENSIONS.get(0);
+					String modelFilename = defaultModelBaseFilename + "." + defaultModelFilenameExtension; //$NON-NLS-1$
+					for (int i = 1; ((IContainer) selectedResource).findMember(modelFilename) != null; ++i) {
+						modelFilename = defaultModelBaseFilename + i + "." + defaultModelFilenameExtension; //$NON-NLS-1$
 					}
 					newFileCreationPage.setFileName(modelFilename);
 				}
 			}
 		}
-		initialObjectCreationPage = new ZDLGenModelWizardInitialObjectCreationPage(
-				"Whatever2"); //$NON-NLS-1$
-		initialObjectCreationPage.setTitle(ZDLGenEditorPlugin.INSTANCE
-				.getString("_UI_ZDLGenModelWizard_label")); //$NON-NLS-1$
-		initialObjectCreationPage.setDescription(ZDLGenEditorPlugin.INSTANCE
-				.getString("_UI_Wizard_initial_object_description")); //$NON-NLS-1$
+		initialObjectCreationPage = new ZDLGenModelWizardInitialObjectCreationPage("Whatever2"); //$NON-NLS-1$
+		initialObjectCreationPage.setTitle(ZDLGenEditorPlugin.INSTANCE.getString("_UI_ZDLGenModelWizard_label")); //$NON-NLS-1$
+		initialObjectCreationPage
+				.setDescription(ZDLGenEditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description")); //$NON-NLS-1$
 		addPage(initialObjectCreationPage);
 	}
 

@@ -44,10 +44,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.codegen.DDKCodegenTarget;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenDomainSpecializationItemProvider extends
-		GenDomainPackageableElementItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class GenDomainSpecializationItemProvider extends GenDomainPackageableElementItemProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -94,18 +91,14 @@ public class GenDomainSpecializationItemProvider extends
 	 * @generated
 	 */
 	protected void addDomainSpecializationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainSpecialization_domainSpecialization_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainSpecialization_domainSpecialization_feature", "_UI_GenDomainSpecialization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__DOMAIN_SPECIALIZATION,
-						false, false, true, null,
-						getString("_UI_DomainPropertyCategory"), //$NON-NLS-1$
-						null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_GenDomainSpecialization_domainSpecialization_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+						"_UI_GenDomainSpecialization_domainSpecialization_feature", "_UI_GenDomainSpecialization_type"), //$NON-NLS-1$ //$NON-NLS-2$
+				ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__DOMAIN_SPECIALIZATION, false, false, true, null,
+				getString("_UI_DomainPropertyCategory"), //$NON-NLS-1$
+				null));
 	}
 
 	/**
@@ -115,18 +108,14 @@ public class GenDomainSpecializationItemProvider extends
 	 * @generated
 	 */
 	protected void addDomainConceptPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainSpecialization_domainConcept_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainSpecialization_domainConcept_feature", "_UI_GenDomainSpecialization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__DOMAIN_CONCEPT,
-						false, false, false, null,
-						getString("_UI_ZDLGeneratorPropertyCategory"), //$NON-NLS-1$
-						null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_GenDomainSpecialization_domainConcept_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_GenDomainSpecialization_domainConcept_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_GenDomainSpecialization_type"), //$NON-NLS-1$
+				ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__DOMAIN_CONCEPT, false, false, false, null,
+				getString("_UI_ZDLGeneratorPropertyCategory"), //$NON-NLS-1$
+				null));
 	}
 
 	/**
@@ -137,17 +126,12 @@ public class GenDomainSpecializationItemProvider extends
 	 */
 	protected void addPluginNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainSpecialization_pluginName_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainSpecialization_pluginName_feature", "_UI_GenDomainSpecialization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__PLUGIN_NAME,
-						true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_ProfileMappingPropertyCategory"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainSpecialization_pluginName_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+								"_UI_GenDomainSpecialization_pluginName_feature", "_UI_GenDomainSpecialization_type"), //$NON-NLS-1$ //$NON-NLS-2$
+						ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__PLUGIN_NAME, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_ProfileMappingPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -159,17 +143,12 @@ public class GenDomainSpecializationItemProvider extends
 	 */
 	protected void addResourceNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainSpecialization_resourceName_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainSpecialization_resourceName_feature", "_UI_GenDomainSpecialization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__RESOURCE_NAME,
-						true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_ProfileMappingPropertyCategory"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainSpecialization_resourceName_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+								"_UI_GenDomainSpecialization_resourceName_feature", "_UI_GenDomainSpecialization_type"), //$NON-NLS-1$ //$NON-NLS-2$
+						ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__RESOURCE_NAME, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_ProfileMappingPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -181,16 +160,13 @@ public class GenDomainSpecializationItemProvider extends
 	 */
 	protected void addModelLibraryNamesPackagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainSpecialization_modelLibraryNamesPackage_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainSpecialization_modelLibraryNamesPackage_feature", "_UI_GenDomainSpecialization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__MODEL_LIBRARY_NAMES_PACKAGE,
-						true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainSpecialization_modelLibraryNamesPackage_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+								"_UI_GenDomainSpecialization_modelLibraryNamesPackage_feature", //$NON-NLS-1$
+								"_UI_GenDomainSpecialization_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__MODEL_LIBRARY_NAMES_PACKAGE, true, false,
+						false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -201,16 +177,13 @@ public class GenDomainSpecializationItemProvider extends
 	 */
 	protected void addModelLibrarySourceFolderPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainSpecialization_modelLibrarySourceFolder_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainSpecialization_modelLibrarySourceFolder_feature", "_UI_GenDomainSpecialization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__MODEL_LIBRARY_SOURCE_FOLDER,
-						true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainSpecialization_modelLibrarySourceFolder_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+								"_UI_GenDomainSpecialization_modelLibrarySourceFolder_feature", //$NON-NLS-1$
+								"_UI_GenDomainSpecialization_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__MODEL_LIBRARY_SOURCE_FOLDER, true, false,
+						false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -221,16 +194,11 @@ public class GenDomainSpecializationItemProvider extends
 	 */
 	protected void addMenuModelResourcePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainSpecialization_menuModelResource_feature"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainSpecialization_menuModelResource_feature"), //$NON-NLS-1$
 						getString("_UI_GenDomainSpecialization_menuModelResource_description"), //$NON-NLS-1$
-						ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__MENU_MODEL_RESOURCE,
-						true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_MenumodelPropertyCategory"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__MENU_MODEL_RESOURCE, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_MenumodelPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -242,15 +210,11 @@ public class GenDomainSpecializationItemProvider extends
 	 */
 	protected void addVersionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainSpecialization_version_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainSpecialization_version_feature", "_UI_GenDomainSpecialization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__VERSION,
-						true, false, false,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainSpecialization_version_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainSpecialization_version_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainSpecialization_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__VERSION, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -261,91 +225,81 @@ public class GenDomainSpecializationItemProvider extends
 	 * @generated NOT
 	 */
 	protected void addCodeGenTargetPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(new ItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainSpecialization_codeGenTarget_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainSpecialization_codeGenTarget_feature", "_UI_GenDomainSpecialization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__CODE_GEN_TARGET,
-						true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_ProfileMappingPropertyCategory"), //$NON-NLS-1$
-						null) {
+		itemPropertyDescriptors.add(new ItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_GenDomainSpecialization_codeGenTarget_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_GenDomainSpecialization_codeGenTarget_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_GenDomainSpecialization_type"), //$NON-NLS-1$
+				ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__CODE_GEN_TARGET, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_ProfileMappingPropertyCategory"), //$NON-NLS-1$
+				null) {
 
-					@SuppressWarnings({ "rawtypes", "unchecked" })
-					@Override
-					public Collection getChoiceOfValues(Object object) {
-						return CodegenTargetRegistry.INSTANCE.getTargets();
+			@SuppressWarnings({ "rawtypes", "unchecked" })
+			@Override
+			public Collection getChoiceOfValues(Object object) {
+				return CodegenTargetRegistry.INSTANCE.getTargets();
+			}
+
+			@Override
+			public Object getPropertyValue(Object object) {
+				if (object instanceof GenDomainSpecialization) {
+					final GenDomainSpecialization specialization = (GenDomainSpecialization) object;
+					final String value = specialization.getCodeGenTarget();
+
+					if (value != null) {
+						return CodegenTargetRegistry.INSTANCE.getTarget(value);
 					}
+				}
+				return super.getPropertyValue(object);
+			}
+
+			@Override
+			public IItemLabelProvider getLabelProvider(Object object) {
+				return new IItemLabelProvider() {
 
 					@Override
-					public Object getPropertyValue(Object object) {
-						if (object instanceof GenDomainSpecialization) {
-							final GenDomainSpecialization specialization = (GenDomainSpecialization) object;
-							final String value = specialization
-									.getCodeGenTarget();
+					public String getText(Object object) {
+						String result = null;
+						if (object instanceof DDKCodegenTarget) {
+							final DDKCodegenTarget extension = (DDKCodegenTarget) object;
 
-							if (value != null) {
-								return CodegenTargetRegistry.INSTANCE
-										.getTarget(value);
+							if (extension.getName() != null && !extension.getName().isEmpty()) {
+								result = extension.getName();
+							} else {
+								result = extension.getId();
 							}
 						}
-						return super.getPropertyValue(object);
+						return result;
 					}
 
 					@Override
-					public IItemLabelProvider getLabelProvider(Object object) {
-						return new IItemLabelProvider() {
-
-							@Override
-							public String getText(Object object) {
-								String result = null;
-								if (object instanceof DDKCodegenTarget) {
-									final DDKCodegenTarget extension = (DDKCodegenTarget) object;
-
-									if (extension.getName() != null
-											&& !extension.getName().isEmpty()) {
-										result = extension.getName();
-									} else {
-										result = extension.getId();
-									}
-								}
-								return result;
-							}
-
-							@Override
-							public Object getImage(Object object) {
-								return null;
-							}
-						};
+					public Object getImage(Object object) {
+						return null;
 					}
+				};
+			}
 
-					@Override
-					public void setPropertyValue(Object object, Object value) {
-						if (object instanceof GenDomainSpecialization) {
-							final GenDomainSpecialization specialization = (GenDomainSpecialization) object;
+			@Override
+			public void setPropertyValue(Object object, Object value) {
+				if (object instanceof GenDomainSpecialization) {
+					final GenDomainSpecialization specialization = (GenDomainSpecialization) object;
 
-							if (value instanceof DDKCodegenTarget) {
-								final EditingDomain editingDomain = getEditingDomain(object);
-								final DDKCodegenTarget extension = (DDKCodegenTarget) value;
-								final EStructuralFeature feature = ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__CODE_GEN_TARGET;
-								final String codegenTarget = extension.getId();
+					if (value instanceof DDKCodegenTarget) {
+						final EditingDomain editingDomain = getEditingDomain(object);
+						final DDKCodegenTarget extension = (DDKCodegenTarget) value;
+						final EStructuralFeature feature = ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__CODE_GEN_TARGET;
+						final String codegenTarget = extension.getId();
 
-								if (editingDomain == null) {
-									specialization.eSet(feature, codegenTarget);
-								} else {
-									editingDomain.getCommandStack().execute(
-											SetCommand.create(editingDomain,
-													specialization, feature,
-													codegenTarget));
-								}
-							}
+						if (editingDomain == null) {
+							specialization.eSet(feature, codegenTarget);
+						} else {
+							editingDomain.getCommandStack()
+									.execute(SetCommand.create(editingDomain, specialization, feature, codegenTarget));
 						}
 					}
-				});
+				}
+			}
+		});
 	}
 
 	/**
@@ -355,19 +309,14 @@ public class GenDomainSpecializationItemProvider extends
 	 * @generated
 	 */
 	protected void addRhapsodyJavaProjectPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainSpecialization_rhapsodyJavaProject_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainSpecialization_rhapsodyJavaProject_feature", "_UI_GenDomainSpecialization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__RHAPSODY_JAVA_PROJECT,
-						true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_RhapsodyPropertyCategory"), //$NON-NLS-1$
-						null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_GenDomainSpecialization_rhapsodyJavaProject_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+						"_UI_GenDomainSpecialization_rhapsodyJavaProject_feature", "_UI_GenDomainSpecialization_type"), //$NON-NLS-1$ //$NON-NLS-2$
+				ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__RHAPSODY_JAVA_PROJECT, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_RhapsodyPropertyCategory"), //$NON-NLS-1$
+				null));
 	}
 
 	/**
@@ -378,17 +327,13 @@ public class GenDomainSpecializationItemProvider extends
 	 */
 	protected void addRhapsodyJDTJavaLibraryPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainSpecialization_rhapsodyJDTJavaLibrary_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainSpecialization_rhapsodyJDTJavaLibrary_feature", "_UI_GenDomainSpecialization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__RHAPSODY_JDT_JAVA_LIBRARY,
-						true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_RhapsodyPropertyCategory"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainSpecialization_rhapsodyJDTJavaLibrary_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+								"_UI_GenDomainSpecialization_rhapsodyJDTJavaLibrary_feature", //$NON-NLS-1$
+								"_UI_GenDomainSpecialization_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__RHAPSODY_JDT_JAVA_LIBRARY, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_RhapsodyPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -400,15 +345,11 @@ public class GenDomainSpecializationItemProvider extends
 	 */
 	protected void addExcludedPaletteItemPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainSpecialization_excludedPaletteItem_feature"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainSpecialization_excludedPaletteItem_feature"), //$NON-NLS-1$
 						getString("_UI_GenDomainSpecialization_excludedPaletteItem_description"), //$NON-NLS-1$
-						ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__EXCLUDED_PALETTE_ITEM,
-						true, false, true, null,
-						getString("_UI_DiagramEditorPalettePropertyCategory"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__EXCLUDED_PALETTE_ITEM, true, false, true,
+						null, getString("_UI_DiagramEditorPalettePropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -419,18 +360,14 @@ public class GenDomainSpecializationItemProvider extends
 	 * @generated
 	 */
 	protected void addIncludedUMLMenusPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainSpecialization_includedUMLMenus_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainSpecialization_includedUMLMenus_feature", "_UI_GenDomainSpecialization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__INCLUDED_UML_MENUS,
-						true, false, true, null,
-						getString("_UI_MenumodelPropertyCategory"), //$NON-NLS-1$
-						null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_GenDomainSpecialization_includedUMLMenus_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_GenDomainSpecialization_includedUMLMenus_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_GenDomainSpecialization_type"), //$NON-NLS-1$
+				ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__INCLUDED_UML_MENUS, true, false, true, null,
+				getString("_UI_MenumodelPropertyCategory"), //$NON-NLS-1$
+				null));
 	}
 
 	/**
@@ -442,14 +379,11 @@ public class GenDomainSpecializationItemProvider extends
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures
-					.add(ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__DOMAIN_MODEL_LIBRARY);
-			childrenFeatures
-					.add(ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK);
+			childrenFeatures.add(ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__DOMAIN_MODEL_LIBRARY);
+			childrenFeatures.add(ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK);
 		}
 		return childrenFeatures;
 	}
@@ -475,10 +409,7 @@ public class GenDomainSpecializationItemProvider extends
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(
-				object,
-				getResourceLocator().getImage(
-						"full/obj16/GenDomainSpecialization")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/GenDomainSpecialization")); //$NON-NLS-1$
 	}
 
 	/**
@@ -515,13 +446,11 @@ public class GenDomainSpecializationItemProvider extends
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__CODE_GEN_TARGET:
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__RHAPSODY_JAVA_PROJECT:
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__RHAPSODY_JDT_JAVA_LIBRARY:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_MODEL_LIBRARY:
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), true, false));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -535,8 +464,7 @@ public class GenDomainSpecializationItemProvider extends
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

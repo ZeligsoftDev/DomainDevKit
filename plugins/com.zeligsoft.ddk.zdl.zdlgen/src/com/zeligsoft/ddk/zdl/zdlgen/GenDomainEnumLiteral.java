@@ -24,11 +24,11 @@ import org.eclipse.uml2.uml.EnumerationLiteral;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnumLiteral#getDomainEnumLiteral <em>Domain Enum Literal</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnumLiteral#getEnumeration <em>Enumeration</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainEnumLiteral()
  * @model
@@ -40,10 +40,10 @@ public interface GenDomainEnumLiteral extends GenDomainNamedElement {
 	 * Returns the value of the '<em><b>Domain Enum Literal</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainNamedElement#getDomainElement() <em>Domain Element</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Domain Enum Literal</em>' reference isn't clear,
@@ -54,6 +54,7 @@ public interface GenDomainEnumLiteral extends GenDomainNamedElement {
 	 * @see #setDomainEnumLiteral(EnumerationLiteral)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainEnumLiteral_DomainEnumLiteral()
 	 * @model required="true" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	EnumerationLiteral getDomainEnumLiteral();
@@ -73,10 +74,10 @@ public interface GenDomainEnumLiteral extends GenDomainNamedElement {
 	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnum#getLiterals <em>Literal</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwner() <em>Owner</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Enumeration</em>' container reference isn't clear,
@@ -88,6 +89,7 @@ public interface GenDomainEnumLiteral extends GenDomainNamedElement {
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainEnumLiteral_Enumeration()
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnum#getLiterals
 	 * @model opposite="literal" required="true" transient="false" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	GenDomainEnum getEnumeration();

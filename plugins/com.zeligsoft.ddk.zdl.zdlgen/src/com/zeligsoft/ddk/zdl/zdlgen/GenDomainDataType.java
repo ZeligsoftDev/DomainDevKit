@@ -24,10 +24,10 @@ import org.eclipse.uml2.uml.DataType;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainDataType#getDomainDataType <em>Domain Data Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainDataType()
  * @model
@@ -39,10 +39,10 @@ public interface GenDomainDataType extends GenDomainClassifier {
 	 * Returns the value of the '<em><b>Domain Data Type</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainNamedElement#getDomainElement() <em>Domain Element</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Domain Data Type</em>' reference isn't clear,
@@ -53,6 +53,7 @@ public interface GenDomainDataType extends GenDomainClassifier {
 	 * @see #setDomainDataType(DataType)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainDataType_DomainDataType()
 	 * @model required="true" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	DataType getDomainDataType();

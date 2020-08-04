@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlock#getClassifiers <em>Classifier</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlock#getRelations <em>Relation</em>}</li>
@@ -35,7 +36,6 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlock#isRsmStereotypesUIReadOnly <em>Rsm Stereotypes UI Read Only</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlock#isRsmStereotypesPropertiesUIReadOnly <em>Rsm Stereotypes Properties UI Read Only</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainBlock()
  * @model
@@ -49,10 +49,10 @@ public interface GenDomainBlock extends GenDomainPackageableElement {
 	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainClassifier#getBlock <em>Block</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwnedObjects() <em>Owned Object</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Classifier</em>' containment reference list isn't clear,
@@ -63,6 +63,7 @@ public interface GenDomainBlock extends GenDomainPackageableElement {
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainBlock_Classifier()
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainClassifier#getBlock
 	 * @model opposite="block" containment="true" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	EList<GenDomainClassifier> getClassifiers();
@@ -89,8 +90,7 @@ public interface GenDomainBlock extends GenDomainPackageableElement {
 	 * @see #getClassifiers()
 	 * @generated
 	 */
-	GenDomainClassifier getClassifier(String name, boolean ignoreCase,
-			EClass eClass);
+	GenDomainClassifier getClassifier(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Relation</b></em>' containment reference list.
@@ -98,10 +98,10 @@ public interface GenDomainBlock extends GenDomainPackageableElement {
 	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockRelation#getSource <em>Source</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwnedObjects() <em>Owned Object</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Relation</em>' containment reference list isn't clear,
@@ -112,6 +112,7 @@ public interface GenDomainBlock extends GenDomainPackageableElement {
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainBlock_Relation()
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockRelation#getSource
 	 * @model opposite="source" containment="true" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	EList<GenDomainBlockRelation> getRelations();
@@ -120,10 +121,10 @@ public interface GenDomainBlock extends GenDomainPackageableElement {
 	 * Returns the value of the '<em><b>Domain Block</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainNamedElement#getDomainElement() <em>Domain Element</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Domain Block</em>' reference isn't clear,
@@ -134,6 +135,7 @@ public interface GenDomainBlock extends GenDomainPackageableElement {
 	 * @see #setDomainBlock(org.eclipse.uml2.uml.Package)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainBlock_DomainBlock()
 	 * @model required="true" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	org.eclipse.uml2.uml.Package getDomainBlock();
@@ -153,10 +155,10 @@ public interface GenDomainBlock extends GenDomainPackageableElement {
 	 * The list contents are of type {@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockImport}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlock#getRelations() <em>Relation</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Import</em>' reference list isn't clear,
@@ -166,6 +168,7 @@ public interface GenDomainBlock extends GenDomainPackageableElement {
 	 * @return the value of the '<em>Import</em>' reference list.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainBlock_Import()
 	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	EList<GenDomainBlockImport> getImports();
@@ -175,10 +178,10 @@ public interface GenDomainBlock extends GenDomainPackageableElement {
 	 * The list contents are of type {@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockMerge}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlock#getRelations() <em>Relation</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Merge</em>' reference list isn't clear,
@@ -188,6 +191,7 @@ public interface GenDomainBlock extends GenDomainPackageableElement {
 	 * @return the value of the '<em>Merge</em>' reference list.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainBlock_Merge()
 	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	EList<GenDomainBlockMerge> getMerges();

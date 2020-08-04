@@ -48,13 +48,13 @@ import org.eclipse.uml2.uml.Model;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenModelImpl#getDomainModels <em>Domain Model</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenModelImpl#getOwnedObjects <em>Owned Object</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenModelImpl#getOwnedModels <em>Owned Model</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenModelImpl#getReferencedModels <em>Referenced Model</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -110,23 +110,16 @@ public class GenModelImpl extends GenDomainObjectImpl implements GenModel {
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<GenDomainModel> domainModels = (EList<GenDomainModel>) cache
-					.get(eResource, this,
-							ZDLGenPackage.Literals.GEN_MODEL__DOMAIN_MODEL);
+			EList<GenDomainModel> domainModels = (EList<GenDomainModel>) cache.get(eResource, this,
+					ZDLGenPackage.Literals.GEN_MODEL__DOMAIN_MODEL);
 			if (domainModels == null) {
-				cache.put(
-						eResource,
-						this,
-						ZDLGenPackage.Literals.GEN_MODEL__DOMAIN_MODEL,
-						domainModels = new DerivedUnionEObjectEList<GenDomainModel>(
-								GenDomainModel.class, this,
-								ZDLGenPackage.GEN_MODEL__DOMAIN_MODEL,
-								DOMAIN_MODEL_ESUBSETS));
+				cache.put(eResource, this, ZDLGenPackage.Literals.GEN_MODEL__DOMAIN_MODEL,
+						domainModels = new DerivedUnionEObjectEList<GenDomainModel>(GenDomainModel.class, this,
+								ZDLGenPackage.GEN_MODEL__DOMAIN_MODEL, DOMAIN_MODEL_ESUBSETS));
 			}
 			return domainModels;
 		}
-		return new DerivedUnionEObjectEList<GenDomainModel>(
-				GenDomainModel.class, this,
+		return new DerivedUnionEObjectEList<GenDomainModel>(GenDomainModel.class, this,
 				ZDLGenPackage.GEN_MODEL__DOMAIN_MODEL, DOMAIN_MODEL_ESUBSETS);
 	}
 
@@ -138,8 +131,7 @@ public class GenModelImpl extends GenDomainObjectImpl implements GenModel {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] DOMAIN_MODEL_ESUBSETS = new int[] {
-			ZDLGenPackage.GEN_MODEL__OWNED_MODEL,
+	protected static final int[] DOMAIN_MODEL_ESUBSETS = new int[] { ZDLGenPackage.GEN_MODEL__OWNED_MODEL,
 			ZDLGenPackage.GEN_MODEL__REFERENCED_MODEL };
 
 	/**
@@ -160,9 +152,8 @@ public class GenModelImpl extends GenDomainObjectImpl implements GenModel {
 	@Override
 	public GenDomainModel getDomainModel(String name, boolean ignoreCase) {
 		domainModelLoop: for (GenDomainModel domainModel : getDomainModels()) {
-			if (name != null
-					&& !(ignoreCase ? name.equalsIgnoreCase(domainModel
-							.getName()) : name.equals(domainModel.getName())))
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(domainModel.getName())
+					: name.equals(domainModel.getName())))
 				continue domainModelLoop;
 			return domainModel;
 		}
@@ -180,24 +171,16 @@ public class GenModelImpl extends GenDomainObjectImpl implements GenModel {
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<GenDomainObject> ownedObjects = (EList<GenDomainObject>) cache
-					.get(eResource,
-							this,
-							ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
+			EList<GenDomainObject> ownedObjects = (EList<GenDomainObject>) cache.get(eResource, this,
+					ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
 			if (ownedObjects == null) {
-				cache.put(
-						eResource,
-						this,
-						ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT,
-						ownedObjects = new DerivedUnionEObjectEList<GenDomainObject>(
-								GenDomainObject.class, this,
-								ZDLGenPackage.GEN_MODEL__OWNED_OBJECT,
-								OWNED_OBJECT_ESUBSETS));
+				cache.put(eResource, this, ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT,
+						ownedObjects = new DerivedUnionEObjectEList<GenDomainObject>(GenDomainObject.class, this,
+								ZDLGenPackage.GEN_MODEL__OWNED_OBJECT, OWNED_OBJECT_ESUBSETS));
 			}
 			return ownedObjects;
 		}
-		return new DerivedUnionEObjectEList<GenDomainObject>(
-				GenDomainObject.class, this,
+		return new DerivedUnionEObjectEList<GenDomainObject>(GenDomainObject.class, this,
 				ZDLGenPackage.GEN_MODEL__OWNED_OBJECT, OWNED_OBJECT_ESUBSETS);
 	}
 
@@ -219,8 +202,7 @@ public class GenModelImpl extends GenDomainObjectImpl implements GenModel {
 	@Override
 	public EList<GenDomainModel> getReferencedModels() {
 		if (referencedModels == null) {
-			referencedModels = new EObjectResolvingEList<GenDomainModel>(
-					GenDomainModel.class, this,
+			referencedModels = new EObjectResolvingEList<GenDomainModel>(GenDomainModel.class, this,
 					ZDLGenPackage.GEN_MODEL__REFERENCED_MODEL);
 		}
 		return referencedModels;
@@ -244,10 +226,8 @@ public class GenModelImpl extends GenDomainObjectImpl implements GenModel {
 	@Override
 	public GenDomainModel getReferencedModel(String name, boolean ignoreCase) {
 		referencedModelLoop: for (GenDomainModel referencedModel : getReferencedModels()) {
-			if (name != null
-					&& !(ignoreCase ? name.equalsIgnoreCase(referencedModel
-							.getName()) : name
-							.equals(referencedModel.getName())))
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(referencedModel.getName())
+					: name.equals(referencedModel.getName())))
 				continue referencedModelLoop;
 			return referencedModel;
 		}
@@ -262,10 +242,8 @@ public class GenModelImpl extends GenDomainObjectImpl implements GenModel {
 	@Override
 	public EList<GenDomainModel> getOwnedModels() {
 		if (ownedModels == null) {
-			ownedModels = new EObjectContainmentWithInverseEList<GenDomainModel>(
-					GenDomainModel.class, this,
-					ZDLGenPackage.GEN_MODEL__OWNED_MODEL,
-					ZDLGenPackage.GEN_DOMAIN_MODEL__OWNING_GEN_MODEL);
+			ownedModels = new EObjectContainmentWithInverseEList<GenDomainModel>(GenDomainModel.class, this,
+					ZDLGenPackage.GEN_MODEL__OWNED_MODEL, ZDLGenPackage.GEN_DOMAIN_MODEL__OWNING_GEN_MODEL);
 		}
 		return ownedModels;
 	}
@@ -289,8 +267,7 @@ public class GenModelImpl extends GenDomainObjectImpl implements GenModel {
 	public GenDomainModel getOwnedModel(String name, boolean ignoreCase) {
 		ownedModelLoop: for (GenDomainModel ownedModel : getOwnedModels()) {
 			if (name != null
-					&& !(ignoreCase ? name.equalsIgnoreCase(ownedModel
-							.getName()) : name.equals(ownedModel.getName())))
+					&& !(ignoreCase ? name.equalsIgnoreCase(ownedModel.getName()) : name.equals(ownedModel.getName())))
 				continue ownedModelLoop;
 			return ownedModel;
 		}
@@ -324,12 +301,10 @@ public class GenModelImpl extends GenDomainObjectImpl implements GenModel {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_MODEL__OWNED_MODEL:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedModels())
-					.basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedModels()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -340,12 +315,10 @@ public class GenModelImpl extends GenDomainObjectImpl implements GenModel {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_MODEL__OWNED_MODEL:
-			return ((InternalEList<?>) getOwnedModels()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getOwnedModels()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -379,13 +352,11 @@ public class GenModelImpl extends GenDomainObjectImpl implements GenModel {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_MODEL__OWNED_MODEL:
 			getOwnedModels().clear();
-			getOwnedModels().addAll(
-					(Collection<? extends GenDomainModel>) newValue);
+			getOwnedModels().addAll((Collection<? extends GenDomainModel>) newValue);
 			return;
 		case ZDLGenPackage.GEN_MODEL__REFERENCED_MODEL:
 			getReferencedModels().clear();
-			getReferencedModels().addAll(
-					(Collection<? extends GenDomainModel>) newValue);
+			getReferencedModels().addAll((Collection<? extends GenDomainModel>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -419,6 +390,8 @@ public class GenModelImpl extends GenDomainObjectImpl implements GenModel {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_MODEL__DOMAIN_MODEL:
 			return isSetDomainModels();
+		case ZDLGenPackage.GEN_MODEL__OWNED_OBJECT:
+			return isSetOwnedObjects();
 		case ZDLGenPackage.GEN_MODEL__OWNED_MODEL:
 			return ownedModels != null && !ownedModels.isEmpty();
 		case ZDLGenPackage.GEN_MODEL__REFERENCED_MODEL:
@@ -433,8 +406,7 @@ public class GenModelImpl extends GenDomainObjectImpl implements GenModel {
 	 * @generated
 	 */
 	public boolean isSetDomainModels() {
-		return eIsSet(ZDLGenPackage.GEN_MODEL__OWNED_MODEL)
-				|| eIsSet(ZDLGenPackage.GEN_MODEL__REFERENCED_MODEL);
+		return eIsSet(ZDLGenPackage.GEN_MODEL__OWNED_MODEL) || eIsSet(ZDLGenPackage.GEN_MODEL__REFERENCED_MODEL);
 	}
 
 	/**
@@ -444,8 +416,7 @@ public class GenModelImpl extends GenDomainObjectImpl implements GenModel {
 	 */
 	@Override
 	public boolean isSetOwnedObjects() {
-		return super.isSetOwnedObjects()
-				|| eIsSet(ZDLGenPackage.GEN_MODEL__OWNED_MODEL);
+		return super.isSetOwnedObjects() || eIsSet(ZDLGenPackage.GEN_MODEL__OWNED_MODEL);
 	}
 
 } //GenModelImpl

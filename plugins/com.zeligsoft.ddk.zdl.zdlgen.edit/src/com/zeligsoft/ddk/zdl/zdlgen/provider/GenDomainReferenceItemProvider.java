@@ -42,10 +42,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenDomainReferenceItemProvider extends
-		GenDomainStructuralFeatureItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class GenDomainReferenceItemProvider extends GenDomainStructuralFeatureItemProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -82,15 +79,11 @@ public class GenDomainReferenceItemProvider extends
 	 */
 	protected void addTargetPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainReference_target_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainReference_target_feature", "_UI_GenDomainReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_REFERENCE__TARGET,
-						false, false, true, null,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainReference_target_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainReference_target_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainReference_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_REFERENCE__TARGET, false, false, true, null,
 						getString("_UI_ZDLGeneratorPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
@@ -103,15 +96,11 @@ public class GenDomainReferenceItemProvider extends
 	 */
 	protected void addDomainReferencePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainReference_domainReference_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainReference_domainReference_feature", "_UI_GenDomainReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_REFERENCE__DOMAIN_REFERENCE,
-						false, false, true, null,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainReference_domainReference_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+								"_UI_GenDomainReference_domainReference_feature", "_UI_GenDomainReference_type"), //$NON-NLS-1$ //$NON-NLS-2$
+						ZDLGenPackage.Literals.GEN_DOMAIN_REFERENCE__DOMAIN_REFERENCE, false, false, true, null,
 						getString("_UI_DomainPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
@@ -124,8 +113,7 @@ public class GenDomainReferenceItemProvider extends
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/GenDomainReference")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/GenDomainReference")); //$NON-NLS-1$
 	}
 
 	/**
@@ -140,11 +128,9 @@ public class GenDomainReferenceItemProvider extends
 		GenDomainReference ref = (GenDomainReference) object;
 
 		if (ref.getDomainAttribute() != null) {
-			label = ref.getConcept().getDomainConcept().getLabel()
-					+ "::" + ref.getDomainAttribute().getName(); //$NON-NLS-1$
+			label = ref.getConcept().getDomainConcept().getLabel() + "::" + ref.getDomainAttribute().getName(); //$NON-NLS-1$
 
-			label = label
-					+ " - " + ref.getConcept().getBlock().getDomainBlock().getQualifiedName(); //$NON-NLS-1$
+			label = label + " - " + ref.getConcept().getBlock().getDomainBlock().getQualifiedName(); //$NON-NLS-1$
 		}
 
 		return label == null || label.length() == 0 ? getString("_UI_GenDomainReference_type") : //$NON-NLS-1$
@@ -161,7 +147,6 @@ public class GenDomainReferenceItemProvider extends
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-		super.notifyChanged(notification);
 	}
 
 	/**
@@ -172,8 +157,7 @@ public class GenDomainReferenceItemProvider extends
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -184,24 +168,15 @@ public class GenDomainReferenceItemProvider extends
 	 * @generated
 	 */
 	@Override
-	protected Command createSetCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Object value) {
+	protected Command createSetCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Object value) {
 		if (feature == ZDLGenPackage.Literals.GEN_DOMAIN_REFERENCE__SOURCE) {
-			return new SubsetSupersetSetCommand(
-					domain,
-					owner,
-					feature,
-					new EStructuralFeature[] { ZDLGenPackage.Literals.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT },
-					null, value);
+			return new SubsetSupersetSetCommand(domain, owner, feature,
+					new EStructuralFeature[] { ZDLGenPackage.Literals.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT }, null,
+					value);
 		}
 		if (feature == ZDLGenPackage.Literals.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT) {
-			return new SubsetSupersetSetCommand(
-					domain,
-					owner,
-					feature,
-					null,
-					new EStructuralFeature[] { ZDLGenPackage.Literals.GEN_DOMAIN_REFERENCE__SOURCE },
-					value);
+			return new SubsetSupersetSetCommand(domain, owner, feature, null,
+					new EStructuralFeature[] { ZDLGenPackage.Literals.GEN_DOMAIN_REFERENCE__SOURCE }, value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

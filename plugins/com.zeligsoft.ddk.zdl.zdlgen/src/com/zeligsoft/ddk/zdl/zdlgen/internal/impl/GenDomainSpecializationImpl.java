@@ -48,6 +48,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.internal.operations.GenDomainSpecializationO
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainSpecializationImpl#getDomainElement <em>Domain Element</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainSpecializationImpl#getOwnedObjects <em>Owned Object</em>}</li>
@@ -67,12 +68,10 @@ import com.zeligsoft.ddk.zdl.zdlgen.internal.operations.GenDomainSpecializationO
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainSpecializationImpl#getIncludedUMLMeni <em>Included UML Menus</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainSpecializationImpl#getDomainBlocks <em>Domain Block</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class GenDomainSpecializationImpl extends
-		GenDomainPackageableElementImpl implements GenDomainSpecialization {
+public class GenDomainSpecializationImpl extends GenDomainPackageableElementImpl implements GenDomainSpecialization {
 
 	/**
 	 * The cached value of the '{@link #getDomainSpecialization() <em>Domain Specialization</em>}' reference.
@@ -334,27 +333,17 @@ public class GenDomainSpecializationImpl extends
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<GenDomainObject> ownedObjects = (EList<GenDomainObject>) cache
-					.get(eResource,
-							this,
-							ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
+			EList<GenDomainObject> ownedObjects = (EList<GenDomainObject>) cache.get(eResource, this,
+					ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
 			if (ownedObjects == null) {
-				cache.put(
-						eResource,
-						this,
-						ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT,
-						ownedObjects = new DerivedUnionEObjectEList<GenDomainObject>(
-								GenDomainObject.class,
-								this,
-								ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__OWNED_OBJECT,
-								OWNED_OBJECT_ESUBSETS));
+				cache.put(eResource, this, ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT,
+						ownedObjects = new DerivedUnionEObjectEList<GenDomainObject>(GenDomainObject.class, this,
+								ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__OWNED_OBJECT, OWNED_OBJECT_ESUBSETS));
 			}
 			return ownedObjects;
 		}
-		return new DerivedUnionEObjectEList<GenDomainObject>(
-				GenDomainObject.class, this,
-				ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__OWNED_OBJECT,
-				OWNED_OBJECT_ESUBSETS);
+		return new DerivedUnionEObjectEList<GenDomainObject>(GenDomainObject.class, this,
+				ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__OWNED_OBJECT, OWNED_OBJECT_ESUBSETS);
 	}
 
 	/**
@@ -377,7 +366,8 @@ public class GenDomainSpecializationImpl extends
 	@Override
 	public NamedElement getDomainElement() {
 		NamedElement domainElement = basicGetDomainElement();
-		return domainElement != null && domainElement.eIsProxy() ? (NamedElement) eResolveProxy((InternalEObject) domainElement)
+		return domainElement != null && domainElement.eIsProxy()
+				? (NamedElement) eResolveProxy((InternalEObject) domainElement)
 				: domainElement;
 	}
 
@@ -403,9 +393,7 @@ public class GenDomainSpecializationImpl extends
 	public EList<GenDomainBlockReference> getDomainBlocks() {
 		if (domainBlocks == null) {
 			domainBlocks = new EObjectContainmentWithInverseEList<GenDomainBlockReference>(
-					GenDomainBlockReference.class,
-					this,
-					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK,
+					GenDomainBlockReference.class, this, ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK,
 					ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION);
 		}
 		return domainBlocks;
@@ -418,8 +406,7 @@ public class GenDomainSpecializationImpl extends
 	 */
 	@Override
 	public String getUniqueName(GenDomainClassifier classifier) {
-		return GenDomainSpecializationOperations
-				.getUniqueName(this, classifier);
+		return GenDomainSpecializationOperations.getUniqueName(this, classifier);
 	}
 
 	/**
@@ -432,16 +419,11 @@ public class GenDomainSpecializationImpl extends
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
-			EList<GenDomainClassifier> result = (EList<GenDomainClassifier>) cache
-					.get(this, ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION
-							.getEOperations().get(1));
+			EList<GenDomainClassifier> result = (EList<GenDomainClassifier>) cache.get(this,
+					ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION.getEOperations().get(1));
 			if (result == null) {
-				cache.put(
-						this,
-						ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION
-								.getEOperations().get(1),
-						result = GenDomainSpecializationOperations
-								.allClassifiers(this));
+				cache.put(this, ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION.getEOperations().get(1),
+						result = GenDomainSpecializationOperations.allClassifiers(this));
 			}
 			return result;
 		}
@@ -465,15 +447,13 @@ public class GenDomainSpecializationImpl extends
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_MODEL_LIBRARY:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getDomainModelLibraries())
-					.basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getDomainModelLibraries()).basicAdd(otherEnd,
+					msgs);
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getDomainBlocks())
-					.basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getDomainBlocks()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -490,11 +470,9 @@ public class GenDomainSpecializationImpl extends
 			domainSpecialization = (org.eclipse.uml2.uml.Class) eResolveProxy(oldDomainSpecialization);
 			if (domainSpecialization != oldDomainSpecialization) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_SPECIALIZATION,
-							oldDomainSpecialization, domainSpecialization));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_SPECIALIZATION, oldDomainSpecialization,
+							domainSpecialization));
 			}
 		}
 		return domainSpecialization;
@@ -515,16 +493,13 @@ public class GenDomainSpecializationImpl extends
 	 * @generated
 	 */
 	@Override
-	public void setDomainSpecialization(
-			org.eclipse.uml2.uml.Class newDomainSpecialization) {
+	public void setDomainSpecialization(org.eclipse.uml2.uml.Class newDomainSpecialization) {
 		org.eclipse.uml2.uml.Class oldDomainSpecialization = domainSpecialization;
 		domainSpecialization = newDomainSpecialization;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_SPECIALIZATION,
-					oldDomainSpecialization, domainSpecialization));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_SPECIALIZATION, oldDomainSpecialization,
+					domainSpecialization));
 	}
 
 	/**
@@ -539,15 +514,11 @@ public class GenDomainSpecializationImpl extends
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
-			EList<GenDomainConcept> result = (EList<GenDomainConcept>) cache
-					.get(this,
-							ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__DOMAIN_CONCEPT);
+			EList<GenDomainConcept> result = (EList<GenDomainConcept>) cache.get(this,
+					ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__DOMAIN_CONCEPT);
 			if (result == null) {
-				cache.put(
-						this,
-						ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__DOMAIN_CONCEPT,
-						result = GenDomainSpecializationOperations
-								.getDomainConcepts(this));
+				cache.put(this, ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__DOMAIN_CONCEPT,
+						result = GenDomainSpecializationOperations.getDomainConcepts(this));
 			}
 			return result;
 		}
@@ -572,9 +543,8 @@ public class GenDomainSpecializationImpl extends
 	@Override
 	public GenDomainConcept getDomainConcept(String name, boolean ignoreCase) {
 		domainConceptLoop: for (GenDomainConcept domainConcept : getDomainConcepts()) {
-			if (name != null
-					&& !(ignoreCase ? name.equalsIgnoreCase(domainConcept
-							.getName()) : name.equals(domainConcept.getName())))
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(domainConcept.getName())
+					: name.equals(domainConcept.getName())))
 				continue domainConceptLoop;
 			return domainConcept;
 		}
@@ -601,8 +571,7 @@ public class GenDomainSpecializationImpl extends
 		String oldPluginName = pluginName;
 		pluginName = newPluginName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__PLUGIN_NAME,
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__PLUGIN_NAME,
 					oldPluginName, pluginName));
 	}
 
@@ -627,8 +596,7 @@ public class GenDomainSpecializationImpl extends
 		resourceName = newResourceName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__RESOURCE_NAME,
-					oldResourceName, resourceName));
+					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__RESOURCE_NAME, oldResourceName, resourceName));
 	}
 
 	/**
@@ -640,8 +608,7 @@ public class GenDomainSpecializationImpl extends
 	public EList<GenDomainModelLibraryReference> getDomainModelLibraries() {
 		if (domainModelLibraries == null) {
 			domainModelLibraries = new EObjectContainmentWithInverseEList<GenDomainModelLibraryReference>(
-					GenDomainModelLibraryReference.class,
-					this,
+					GenDomainModelLibraryReference.class, this,
 					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_MODEL_LIBRARY,
 					ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION);
 		}
@@ -668,11 +635,9 @@ public class GenDomainSpecializationImpl extends
 		String oldModelLibraryNamesPackage = modelLibraryNamesPackage;
 		modelLibraryNamesPackage = newModelLibraryNamesPackage;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__MODEL_LIBRARY_NAMES_PACKAGE,
-					oldModelLibraryNamesPackage, modelLibraryNamesPackage));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__MODEL_LIBRARY_NAMES_PACKAGE, oldModelLibraryNamesPackage,
+					modelLibraryNamesPackage));
 	}
 
 	/**
@@ -695,11 +660,9 @@ public class GenDomainSpecializationImpl extends
 		String oldModelLibrarySourceFolder = modelLibrarySourceFolder;
 		modelLibrarySourceFolder = newModelLibrarySourceFolder;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__MODEL_LIBRARY_SOURCE_FOLDER,
-					oldModelLibrarySourceFolder, modelLibrarySourceFolder));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__MODEL_LIBRARY_SOURCE_FOLDER, oldModelLibrarySourceFolder,
+					modelLibrarySourceFolder));
 	}
 
 	/**
@@ -722,11 +685,9 @@ public class GenDomainSpecializationImpl extends
 		String oldMenuModelResource = menuModelResource;
 		menuModelResource = newMenuModelResource;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__MENU_MODEL_RESOURCE,
-					oldMenuModelResource, menuModelResource));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__MENU_MODEL_RESOURCE, oldMenuModelResource,
+					menuModelResource));
 	}
 
 	/**
@@ -749,8 +710,7 @@ public class GenDomainSpecializationImpl extends
 		String oldVersion = version;
 		version = newVersion;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__VERSION,
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__VERSION,
 					oldVersion, version));
 	}
 
@@ -773,8 +733,7 @@ public class GenDomainSpecializationImpl extends
 		codeGenTarget = newCodeGenTarget;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__CODE_GEN_TARGET,
-					oldCodeGenTarget, codeGenTarget));
+					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__CODE_GEN_TARGET, oldCodeGenTarget, codeGenTarget));
 	}
 
 	/**
@@ -795,11 +754,9 @@ public class GenDomainSpecializationImpl extends
 		String oldRhapsodyJavaProject = rhapsodyJavaProject;
 		rhapsodyJavaProject = newRhapsodyJavaProject;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__RHAPSODY_JAVA_PROJECT,
-					oldRhapsodyJavaProject, rhapsodyJavaProject));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__RHAPSODY_JAVA_PROJECT, oldRhapsodyJavaProject,
+					rhapsodyJavaProject));
 	}
 
 	/**
@@ -820,11 +777,9 @@ public class GenDomainSpecializationImpl extends
 		String oldRhapsodyJDTJavaLibrary = rhapsodyJDTJavaLibrary;
 		rhapsodyJDTJavaLibrary = newRhapsodyJDTJavaLibrary;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__RHAPSODY_JDT_JAVA_LIBRARY,
-					oldRhapsodyJDTJavaLibrary, rhapsodyJDTJavaLibrary));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__RHAPSODY_JDT_JAVA_LIBRARY, oldRhapsodyJDTJavaLibrary,
+					rhapsodyJDTJavaLibrary));
 	}
 
 	/**
@@ -835,9 +790,7 @@ public class GenDomainSpecializationImpl extends
 	@Override
 	public EList<GenPaletteItem> getExcludedPaletteItems() {
 		if (excludedPaletteItems == null) {
-			excludedPaletteItems = new EObjectResolvingEList<GenPaletteItem>(
-					GenPaletteItem.class,
-					this,
+			excludedPaletteItems = new EObjectResolvingEList<GenPaletteItem>(GenPaletteItem.class, this,
 					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__EXCLUDED_PALETTE_ITEM);
 		}
 		return excludedPaletteItems;
@@ -859,15 +812,12 @@ public class GenDomainSpecializationImpl extends
 	 * @generated
 	 */
 	@Override
-	public GenPaletteItem getExcludedPaletteItem(String name,
-			boolean ignoreCase, EClass eClass) {
+	public GenPaletteItem getExcludedPaletteItem(String name, boolean ignoreCase, EClass eClass) {
 		excludedPaletteItemLoop: for (GenPaletteItem excludedPaletteItem : getExcludedPaletteItems()) {
 			if (eClass != null && !eClass.isInstance(excludedPaletteItem))
 				continue excludedPaletteItemLoop;
-			if (name != null
-					&& !(ignoreCase ? name.equalsIgnoreCase(excludedPaletteItem
-							.getName()) : name.equals(excludedPaletteItem
-							.getName())))
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(excludedPaletteItem.getName())
+					: name.equals(excludedPaletteItem.getName())))
 				continue excludedPaletteItemLoop;
 			return excludedPaletteItem;
 		}
@@ -882,8 +832,7 @@ public class GenDomainSpecializationImpl extends
 	@Override
 	public EList<GenUMLMenu> getIncludedUMLMeni() {
 		if (includedUMLMeni == null) {
-			includedUMLMeni = new EObjectResolvingEList<GenUMLMenu>(
-					GenUMLMenu.class, this,
+			includedUMLMeni = new EObjectResolvingEList<GenUMLMenu>(GenUMLMenu.class, this,
 					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__INCLUDED_UML_MENUS);
 		}
 		return includedUMLMeni;
@@ -895,15 +844,12 @@ public class GenDomainSpecializationImpl extends
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_MODEL_LIBRARY:
-			return ((InternalEList<?>) getDomainModelLibraries()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getDomainModelLibraries()).basicRemove(otherEnd, msgs);
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK:
-			return ((InternalEList<?>) getDomainBlocks()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getDomainBlocks()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -972,8 +918,7 @@ public class GenDomainSpecializationImpl extends
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_MODEL_LIBRARY:
 			getDomainModelLibraries().clear();
-			getDomainModelLibraries()
-					.addAll((Collection<? extends GenDomainModelLibraryReference>) newValue);
+			getDomainModelLibraries().addAll((Collection<? extends GenDomainModelLibraryReference>) newValue);
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__MODEL_LIBRARY_NAMES_PACKAGE:
 			setModelLibraryNamesPackage((String) newValue);
@@ -998,18 +943,15 @@ public class GenDomainSpecializationImpl extends
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__EXCLUDED_PALETTE_ITEM:
 			getExcludedPaletteItems().clear();
-			getExcludedPaletteItems().addAll(
-					(Collection<? extends GenPaletteItem>) newValue);
+			getExcludedPaletteItems().addAll((Collection<? extends GenPaletteItem>) newValue);
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__INCLUDED_UML_MENUS:
 			getIncludedUMLMeni().clear();
-			getIncludedUMLMeni().addAll(
-					(Collection<? extends GenUMLMenu>) newValue);
+			getIncludedUMLMeni().addAll((Collection<? extends GenUMLMenu>) newValue);
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK:
 			getDomainBlocks().clear();
-			getDomainBlocks().addAll(
-					(Collection<? extends GenDomainBlockReference>) newValue);
+			getDomainBlocks().addAll((Collection<? extends GenDomainBlockReference>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -1077,47 +1019,42 @@ public class GenDomainSpecializationImpl extends
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_ELEMENT:
+			return isSetDomainElement();
+		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__OWNED_OBJECT:
+			return isSetOwnedObjects();
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_SPECIALIZATION:
 			return domainSpecialization != null;
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_CONCEPT:
 			return !getDomainConcepts().isEmpty();
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__PLUGIN_NAME:
-			return PLUGIN_NAME_EDEFAULT == null ? pluginName != null
-					: !PLUGIN_NAME_EDEFAULT.equals(pluginName);
+			return PLUGIN_NAME_EDEFAULT == null ? pluginName != null : !PLUGIN_NAME_EDEFAULT.equals(pluginName);
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__RESOURCE_NAME:
-			return RESOURCE_NAME_EDEFAULT == null ? resourceName != null
-					: !RESOURCE_NAME_EDEFAULT.equals(resourceName);
+			return RESOURCE_NAME_EDEFAULT == null ? resourceName != null : !RESOURCE_NAME_EDEFAULT.equals(resourceName);
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_MODEL_LIBRARY:
-			return domainModelLibraries != null
-					&& !domainModelLibraries.isEmpty();
+			return domainModelLibraries != null && !domainModelLibraries.isEmpty();
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__MODEL_LIBRARY_NAMES_PACKAGE:
 			return MODEL_LIBRARY_NAMES_PACKAGE_EDEFAULT == null ? modelLibraryNamesPackage != null
-					: !MODEL_LIBRARY_NAMES_PACKAGE_EDEFAULT
-							.equals(modelLibraryNamesPackage);
+					: !MODEL_LIBRARY_NAMES_PACKAGE_EDEFAULT.equals(modelLibraryNamesPackage);
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__MODEL_LIBRARY_SOURCE_FOLDER:
 			return MODEL_LIBRARY_SOURCE_FOLDER_EDEFAULT == null ? modelLibrarySourceFolder != null
-					: !MODEL_LIBRARY_SOURCE_FOLDER_EDEFAULT
-							.equals(modelLibrarySourceFolder);
+					: !MODEL_LIBRARY_SOURCE_FOLDER_EDEFAULT.equals(modelLibrarySourceFolder);
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__MENU_MODEL_RESOURCE:
 			return MENU_MODEL_RESOURCE_EDEFAULT == null ? menuModelResource != null
 					: !MENU_MODEL_RESOURCE_EDEFAULT.equals(menuModelResource);
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__VERSION:
-			return VERSION_EDEFAULT == null ? version != null
-					: !VERSION_EDEFAULT.equals(version);
+			return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__CODE_GEN_TARGET:
 			return CODE_GEN_TARGET_EDEFAULT == null ? codeGenTarget != null
 					: !CODE_GEN_TARGET_EDEFAULT.equals(codeGenTarget);
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__RHAPSODY_JAVA_PROJECT:
 			return RHAPSODY_JAVA_PROJECT_EDEFAULT == null ? rhapsodyJavaProject != null
-					: !RHAPSODY_JAVA_PROJECT_EDEFAULT
-							.equals(rhapsodyJavaProject);
+					: !RHAPSODY_JAVA_PROJECT_EDEFAULT.equals(rhapsodyJavaProject);
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__RHAPSODY_JDT_JAVA_LIBRARY:
 			return RHAPSODY_JDT_JAVA_LIBRARY_EDEFAULT == null ? rhapsodyJDTJavaLibrary != null
-					: !RHAPSODY_JDT_JAVA_LIBRARY_EDEFAULT
-							.equals(rhapsodyJDTJavaLibrary);
+					: !RHAPSODY_JDT_JAVA_LIBRARY_EDEFAULT.equals(rhapsodyJDTJavaLibrary);
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__EXCLUDED_PALETTE_ITEM:
-			return excludedPaletteItems != null
-					&& !excludedPaletteItems.isEmpty();
+			return excludedPaletteItems != null && !excludedPaletteItems.isEmpty();
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__INCLUDED_UML_MENUS:
 			return includedUMLMeni != null && !includedUMLMeni.isEmpty();
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK:
@@ -1136,7 +1073,7 @@ public class GenDomainSpecializationImpl extends
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (pluginName: "); //$NON-NLS-1$
 		result.append(pluginName);
 		result.append(", resourceName: "); //$NON-NLS-1$
@@ -1166,8 +1103,7 @@ public class GenDomainSpecializationImpl extends
 	 */
 	@Override
 	public boolean isSetOwnedObjects() {
-		return super.isSetOwnedObjects()
-				|| eIsSet(ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_MODEL_LIBRARY)
+		return super.isSetOwnedObjects() || eIsSet(ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_MODEL_LIBRARY)
 				|| eIsSet(ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK);
 	}
 
@@ -1178,8 +1114,7 @@ public class GenDomainSpecializationImpl extends
 	 */
 	@Override
 	public boolean isSetDomainElement() {
-		return super.isSetDomainElement()
-				|| eIsSet(ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_SPECIALIZATION);
+		return super.isSetDomainElement() || eIsSet(ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_SPECIALIZATION);
 	}
 
 } //GenDomainSpecializationImpl

@@ -39,9 +39,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenMenuModelItemProvider extends GenDomainObjectItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class GenMenuModelItemProvider extends GenDomainObjectItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -76,13 +74,11 @@ public class GenMenuModelItemProvider extends GenDomainObjectItemProvider
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ZDLGenPackage.Literals.GEN_MENU_MODEL__ITEMS);
-			childrenFeatures
-					.add(ZDLGenPackage.Literals.GEN_MENU_MODEL__UML_MENUS);
+			childrenFeatures.add(ZDLGenPackage.Literals.GEN_MENU_MODEL__UML_MENUS);
 		}
 		return childrenFeatures;
 	}
@@ -108,8 +104,7 @@ public class GenMenuModelItemProvider extends GenDomainObjectItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/GenMenuModel")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/GenMenuModel")); //$NON-NLS-1$
 	}
 
 	/**
@@ -137,8 +132,7 @@ public class GenMenuModelItemProvider extends GenDomainObjectItemProvider
 		switch (notification.getFeatureID(GenMenuModel.class)) {
 		case ZDLGenPackage.GEN_MENU_MODEL__ITEMS:
 		case ZDLGenPackage.GEN_MENU_MODEL__UML_MENUS:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), true, false));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -152,28 +146,22 @@ public class GenMenuModelItemProvider extends GenDomainObjectItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-				ZDLGenPackage.Literals.GEN_MENU_MODEL__ITEMS,
+		newChildDescriptors.add(createChildParameter(ZDLGenPackage.Literals.GEN_MENU_MODEL__ITEMS,
 				ZDLGenFactory.eINSTANCE.createGenMenu()));
 
-		newChildDescriptors.add(createChildParameter(
-				ZDLGenPackage.Literals.GEN_MENU_MODEL__ITEMS,
+		newChildDescriptors.add(createChildParameter(ZDLGenPackage.Literals.GEN_MENU_MODEL__ITEMS,
 				ZDLGenFactory.eINSTANCE.createGenMenuDelegateAction()));
 
-		newChildDescriptors.add(createChildParameter(
-				ZDLGenPackage.Literals.GEN_MENU_MODEL__ITEMS,
+		newChildDescriptors.add(createChildParameter(ZDLGenPackage.Literals.GEN_MENU_MODEL__ITEMS,
 				ZDLGenFactory.eINSTANCE.createGenMenuCreateAction()));
 
-		newChildDescriptors.add(createChildParameter(
-				ZDLGenPackage.Literals.GEN_MENU_MODEL__ITEMS,
+		newChildDescriptors.add(createChildParameter(ZDLGenPackage.Literals.GEN_MENU_MODEL__ITEMS,
 				ZDLGenFactory.eINSTANCE.createGenMenuSeparator()));
 
-		newChildDescriptors.add(createChildParameter(
-				ZDLGenPackage.Literals.GEN_MENU_MODEL__UML_MENUS,
+		newChildDescriptors.add(createChildParameter(ZDLGenPackage.Literals.GEN_MENU_MODEL__UML_MENUS,
 				ZDLGenFactory.eINSTANCE.createGenUMLMenu()));
 	}
 

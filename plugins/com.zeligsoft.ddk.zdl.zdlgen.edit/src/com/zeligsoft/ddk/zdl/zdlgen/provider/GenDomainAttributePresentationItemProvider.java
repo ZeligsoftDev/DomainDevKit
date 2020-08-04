@@ -43,9 +43,8 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenDomainAttributePresentationItemProvider extends
-		ItemProviderAdapter implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider,
+public class GenDomainAttributePresentationItemProvider extends ItemProviderAdapter
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
 		IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -53,8 +52,7 @@ public class GenDomainAttributePresentationItemProvider extends
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GenDomainAttributePresentationItemProvider(
-			AdapterFactory adapterFactory) {
+	public GenDomainAttributePresentationItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -85,19 +83,14 @@ public class GenDomainAttributePresentationItemProvider extends
 	 * @generated
 	 */
 	protected void addVisiblePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainAttributePresentation_visible_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainAttributePresentation_visible_feature", "_UI_GenDomainAttributePresentation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE,
-						true, false, false,
-						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-						getString("_UI_PresentationPropertyCategory"), //$NON-NLS-1$
-						null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_GenDomainAttributePresentation_visible_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_GenDomainAttributePresentation_visible_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_GenDomainAttributePresentation_type"), //$NON-NLS-1$
+				ZDLGenPackage.Literals.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE, true, false, false,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_PresentationPropertyCategory"), //$NON-NLS-1$
+				null));
 	}
 
 	/**
@@ -107,19 +100,14 @@ public class GenDomainAttributePresentationItemProvider extends
 	 * @generated
 	 */
 	protected void addReadOnlyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainAttributePresentation_readOnly_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainAttributePresentation_readOnly_feature", "_UI_GenDomainAttributePresentation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__READ_ONLY,
-						true, false, false,
-						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-						getString("_UI_PresentationPropertyCategory"), //$NON-NLS-1$
-						null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_GenDomainAttributePresentation_readOnly_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_GenDomainAttributePresentation_readOnly_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_GenDomainAttributePresentation_type"), //$NON-NLS-1$
+				ZDLGenPackage.Literals.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__READ_ONLY, true, false, false,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_PresentationPropertyCategory"), //$NON-NLS-1$
+				null));
 	}
 
 	/**
@@ -130,17 +118,13 @@ public class GenDomainAttributePresentationItemProvider extends
 	 */
 	protected void addPresentationHintPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainAttributePresentation_presentationHint_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainAttributePresentation_presentationHint_feature", "_UI_GenDomainAttributePresentation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__PRESENTATION_HINT,
-						true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_PresentationPropertyCategory"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainAttributePresentation_presentationHint_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+								"_UI_GenDomainAttributePresentation_presentationHint_feature", //$NON-NLS-1$
+								"_UI_GenDomainAttributePresentation_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__PRESENTATION_HINT, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_PresentationPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -152,17 +136,13 @@ public class GenDomainAttributePresentationItemProvider extends
 	 */
 	protected void addPresentationKindPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainAttributePresentation_presentationKind_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainAttributePresentation_presentationKind_feature", "_UI_GenDomainAttributePresentation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__PRESENTATION_KIND,
-						true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_PresentationPropertyCategory"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainAttributePresentation_presentationKind_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+								"_UI_GenDomainAttributePresentation_presentationKind_feature", //$NON-NLS-1$
+								"_UI_GenDomainAttributePresentation_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__PRESENTATION_KIND, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_PresentationPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -173,19 +153,14 @@ public class GenDomainAttributePresentationItemProvider extends
 	 * @generated
 	 */
 	protected void addOrderPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainAttributePresentation_order_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainAttributePresentation_order_feature", "_UI_GenDomainAttributePresentation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER,
-						true, false, false,
-						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-						getString("_UI_PresentationPropertyCategory"), //$NON-NLS-1$
-						null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_GenDomainAttributePresentation_order_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_GenDomainAttributePresentation_order_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_GenDomainAttributePresentation_type"), //$NON-NLS-1$
+				ZDLGenPackage.Literals.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER, true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, getString("_UI_PresentationPropertyCategory"), //$NON-NLS-1$
+				null));
 	}
 
 	/**
@@ -217,8 +192,7 @@ public class GenDomainAttributePresentationItemProvider extends
 		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__PRESENTATION_HINT:
 		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__PRESENTATION_KIND:
 		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -232,8 +206,7 @@ public class GenDomainAttributePresentationItemProvider extends
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

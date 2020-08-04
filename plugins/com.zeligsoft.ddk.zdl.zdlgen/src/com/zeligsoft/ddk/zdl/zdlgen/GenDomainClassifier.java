@@ -22,10 +22,10 @@ package com.zeligsoft.ddk.zdl.zdlgen;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainClassifier#getBlock <em>Block</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainClassifier()
  * @model abstract="true"
@@ -38,10 +38,10 @@ public interface GenDomainClassifier extends GenDomainNamedElement {
 	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlock#getClassifiers <em>Classifier</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwner() <em>Owner</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Block</em>' container reference isn't clear,
@@ -53,6 +53,7 @@ public interface GenDomainClassifier extends GenDomainNamedElement {
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainClassifier_Block()
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlock#getClassifiers
 	 * @model opposite="classifier" required="true" transient="false" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	GenDomainBlock getBlock();

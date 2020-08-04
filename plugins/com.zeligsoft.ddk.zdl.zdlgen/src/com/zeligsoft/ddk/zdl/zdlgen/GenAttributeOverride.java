@@ -22,17 +22,16 @@ package com.zeligsoft.ddk.zdl.zdlgen;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenAttributeOverride#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenAttributeOverride()
  * @model
  * @generated
  */
-public interface GenAttributeOverride extends GenDomainAttributePresentation,
-		GenDomainObject {
+public interface GenAttributeOverride extends GenDomainAttributePresentation, GenDomainObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

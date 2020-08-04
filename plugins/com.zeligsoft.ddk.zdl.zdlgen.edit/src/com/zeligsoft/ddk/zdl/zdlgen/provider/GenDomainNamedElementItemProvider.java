@@ -40,10 +40,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenDomainNamedElementItemProvider extends
-		GenDomainObjectItemProvider implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider,
-		IItemLabelProvider, IItemPropertySource {
+public class GenDomainNamedElementItemProvider extends GenDomainObjectItemProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -79,17 +76,12 @@ public class GenDomainNamedElementItemProvider extends
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainNamedElement_name_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainNamedElement_name_feature", "_UI_GenDomainNamedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_NAMED_ELEMENT__NAME,
-						false, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_ZDLGeneratorPropertyCategory"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainNamedElement_name_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainNamedElement_name_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainNamedElement_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_NAMED_ELEMENT__NAME, false, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_ZDLGeneratorPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -109,8 +101,7 @@ public class GenDomainNamedElementItemProvider extends
 	@Override
 	public String getTextForTree(EObject object) {
 		String key = "_TreeText_" + object.eClass().getName(); //$NON-NLS-1$
-		return getResourceLocator().getString(key,
-				new Object[] { ((GenDomainNamedElement) object).getName() });
+		return getResourceLocator().getString(key, new Object[] { ((GenDomainNamedElement) object).getName() });
 	}
 
 	/**
@@ -126,8 +117,7 @@ public class GenDomainNamedElementItemProvider extends
 
 		switch (notification.getFeatureID(GenDomainNamedElement.class)) {
 		case ZDLGenPackage.GEN_DOMAIN_NAMED_ELEMENT__NAME:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -141,8 +131,7 @@ public class GenDomainNamedElementItemProvider extends
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

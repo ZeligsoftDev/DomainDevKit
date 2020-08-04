@@ -46,10 +46,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenPaletteCreationToolItemProvider extends
-		GenPaletteToolItemProvider implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider,
-		IItemLabelProvider, IItemPropertySource {
+public class GenPaletteCreationToolItemProvider extends GenPaletteToolItemProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -85,37 +82,33 @@ public class GenPaletteCreationToolItemProvider extends
 	 * @generated NOT
 	 */
 	protected void addTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(new ItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_GenPaletteCreationTool_type_feature"), //$NON-NLS-1$
-				getString("_UI_GenPaletteCreationTool_type_description"), //$NON-NLS-1$
-				ZDLGenPackage.Literals.GEN_PALETTE_CREATION_TOOL__TYPE, true,
-				false, true, null,
-				getString("_UI_DiagramEditorPalettePropertyCategory"), //$NON-NLS-1$
-				null) {
+		itemPropertyDescriptors
+				.add(new ItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenPaletteCreationTool_type_feature"), //$NON-NLS-1$
+						getString("_UI_GenPaletteCreationTool_type_description"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_PALETTE_CREATION_TOOL__TYPE, true, false, true, null,
+						getString("_UI_DiagramEditorPalettePropertyCategory"), //$NON-NLS-1$
+						null) {
 
-			@Override
-			public Collection<?> getChoiceOfValues(Object object) {
-				Collection<?> result = super.getChoiceOfValues(object);
+					@Override
+					public Collection<?> getChoiceOfValues(Object object) {
+						Collection<?> result = super.getChoiceOfValues(object);
 
-				for (Iterator<?> iter = result.iterator(); iter.hasNext();) {
-					Object next = iter.next();
+						for (Iterator<?> iter = result.iterator(); iter.hasNext();) {
+							Object next = iter.next();
 
-					if (next instanceof GenDomainConcept) {
-						GenDomainConcept concept = (GenDomainConcept) next;
+							if (next instanceof GenDomainConcept) {
+								GenDomainConcept concept = (GenDomainConcept) next;
 
-						if ((concept.getDomainConcept() != null)
-								&& concept.getDomainConcept().isAbstract()) {
-							iter.remove();
+								if ((concept.getDomainConcept() != null) && concept.getDomainConcept().isAbstract()) {
+									iter.remove();
+								}
+							}
 						}
-					}
-				}
 
-				return result;
-			}
-		});
+						return result;
+					}
+				});
 	}
 
 	/**
@@ -125,18 +118,13 @@ public class GenPaletteCreationToolItemProvider extends
 	 * @generated
 	 */
 	protected void addElementTypeHintPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenPaletteCreationTool_elementTypeHint_feature"), //$NON-NLS-1$
-						getString("_UI_GenPaletteCreationTool_elementTypeHint_description"), //$NON-NLS-1$
-						ZDLGenPackage.Literals.GEN_PALETTE_CREATION_TOOL__ELEMENT_TYPE_HINT,
-						true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_DiagramEditorPalettePropertyCategory"), //$NON-NLS-1$
-						null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_GenPaletteCreationTool_elementTypeHint_feature"), //$NON-NLS-1$
+				getString("_UI_GenPaletteCreationTool_elementTypeHint_description"), //$NON-NLS-1$
+				ZDLGenPackage.Literals.GEN_PALETTE_CREATION_TOOL__ELEMENT_TYPE_HINT, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DiagramEditorPalettePropertyCategory"), //$NON-NLS-1$
+				null));
 	}
 
 	/**
@@ -148,12 +136,10 @@ public class GenPaletteCreationToolItemProvider extends
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures
-					.add(ZDLGenPackage.Literals.GEN_PALETTE_CREATION_TOOL__EXPRESSION);
+			childrenFeatures.add(ZDLGenPackage.Literals.GEN_PALETTE_CREATION_TOOL__EXPRESSION);
 		}
 		return childrenFeatures;
 	}
@@ -179,10 +165,7 @@ public class GenPaletteCreationToolItemProvider extends
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(
-				object,
-				getResourceLocator().getImage(
-						"full/obj16/GenPaletteCreationTool")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/GenPaletteCreationTool")); //$NON-NLS-1$
 	}
 
 	/**
@@ -211,8 +194,7 @@ public class GenPaletteCreationToolItemProvider extends
 			args = new Object[0];
 		} else if (type instanceof GenDomainReference) {
 			GenDomainReference ref = (GenDomainReference) type;
-			args = new Object[] { ref.getConcept().getName(),
-					ref.getDomainAttribute().getName() };
+			args = new Object[] { ref.getConcept().getName(), ref.getDomainAttribute().getName() };
 		} else {
 			args = new Object[] { ((GenDomainConcept) type).getName() };
 		}
@@ -233,12 +215,10 @@ public class GenPaletteCreationToolItemProvider extends
 
 		switch (notification.getFeatureID(GenPaletteCreationTool.class)) {
 		case ZDLGenPackage.GEN_PALETTE_CREATION_TOOL__ELEMENT_TYPE_HINT:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case ZDLGenPackage.GEN_PALETTE_CREATION_TOOL__EXPRESSION:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), true, false));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -252,16 +232,13 @@ public class GenPaletteCreationToolItemProvider extends
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-				ZDLGenPackage.Literals.GEN_PALETTE_CREATION_TOOL__EXPRESSION,
+		newChildDescriptors.add(createChildParameter(ZDLGenPackage.Literals.GEN_PALETTE_CREATION_TOOL__EXPRESSION,
 				ZDLGenFactory.eINSTANCE.createOawExpression()));
 
-		newChildDescriptors.add(createChildParameter(
-				ZDLGenPackage.Literals.GEN_PALETTE_CREATION_TOOL__EXPRESSION,
+		newChildDescriptors.add(createChildParameter(ZDLGenPackage.Literals.GEN_PALETTE_CREATION_TOOL__EXPRESSION,
 				ZDLGenFactory.eINSTANCE.createOawXtend()));
 	}
 

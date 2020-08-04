@@ -22,17 +22,16 @@ package com.zeligsoft.ddk.zdl.zdlgen;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteStack#getActiveTool <em>Active Tool</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenPaletteStack()
  * @model
  * @generated
  */
-public interface GenPaletteStack extends GenPaletteToolContainer,
-		GenPaletteTool {
+public interface GenPaletteStack extends GenPaletteToolContainer, GenPaletteTool {
 
 	/**
 	 * Returns the value of the '<em><b>Active Tool</b></em>' reference.

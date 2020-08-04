@@ -38,16 +38,15 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenMenuModelImpl#getItems <em>Items</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenMenuModelImpl#getUmlMeni <em>Uml Menus</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class GenMenuModelImpl extends GenDomainObjectImpl implements
-		GenMenuModel {
+public class GenMenuModelImpl extends GenDomainObjectImpl implements GenMenuModel {
 	/**
 	 * The cached value of the '{@link #getItems() <em>Items</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -95,8 +94,8 @@ public class GenMenuModelImpl extends GenDomainObjectImpl implements
 	@Override
 	public EList<GenMenuItem> getItems() {
 		if (items == null) {
-			items = new EObjectContainmentEList<GenMenuItem>(GenMenuItem.class,
-					this, ZDLGenPackage.GEN_MENU_MODEL__ITEMS);
+			items = new EObjectContainmentEList<GenMenuItem>(GenMenuItem.class, this,
+					ZDLGenPackage.GEN_MENU_MODEL__ITEMS);
 		}
 		return items;
 	}
@@ -109,8 +108,8 @@ public class GenMenuModelImpl extends GenDomainObjectImpl implements
 	@Override
 	public EList<GenUMLMenu> getUmlMeni() {
 		if (umlMeni == null) {
-			umlMeni = new EObjectContainmentEList<GenUMLMenu>(GenUMLMenu.class,
-					this, ZDLGenPackage.GEN_MENU_MODEL__UML_MENUS);
+			umlMeni = new EObjectContainmentEList<GenUMLMenu>(GenUMLMenu.class, this,
+					ZDLGenPackage.GEN_MENU_MODEL__UML_MENUS);
 		}
 		return umlMeni;
 	}
@@ -121,14 +120,12 @@ public class GenMenuModelImpl extends GenDomainObjectImpl implements
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_MENU_MODEL__ITEMS:
 			return ((InternalEList<?>) getItems()).basicRemove(otherEnd, msgs);
 		case ZDLGenPackage.GEN_MENU_MODEL__UML_MENUS:
-			return ((InternalEList<?>) getUmlMeni())
-					.basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getUmlMeni()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

@@ -38,10 +38,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenDomainGeneralizationItemProvider extends
-		GenDomainObjectItemProvider implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider,
-		IItemLabelProvider, IItemPropertySource {
+public class GenDomainGeneralizationItemProvider extends GenDomainObjectItemProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -78,15 +75,11 @@ public class GenDomainGeneralizationItemProvider extends
 	 */
 	protected void addGeneralPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainGeneralization_general_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainGeneralization_general_feature", "_UI_GenDomainGeneralization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_GENERALIZATION__GENERAL,
-						false, false, true, null,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainGeneralization_general_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainGeneralization_general_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainGeneralization_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_GENERALIZATION__GENERAL, false, false, true, null,
 						getString("_UI_ZDLGeneratorPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
@@ -98,18 +91,14 @@ public class GenDomainGeneralizationItemProvider extends
 	 * @generated
 	 */
 	protected void addDomainGeneralizationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainGeneralization_domainGeneralization_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainGeneralization_domainGeneralization_feature", "_UI_GenDomainGeneralization_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_GENERALIZATION__DOMAIN_GENERALIZATION,
-						false, false, true, null,
-						getString("_UI_DomainPropertyCategory"), //$NON-NLS-1$
-						null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_GenDomainGeneralization_domainGeneralization_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+						"_UI_GenDomainGeneralization_domainGeneralization_feature", "_UI_GenDomainGeneralization_type"), //$NON-NLS-1$ //$NON-NLS-2$
+				ZDLGenPackage.Literals.GEN_DOMAIN_GENERALIZATION__DOMAIN_GENERALIZATION, false, false, true, null,
+				getString("_UI_DomainPropertyCategory"), //$NON-NLS-1$
+				null));
 	}
 
 	/**
@@ -120,10 +109,7 @@ public class GenDomainGeneralizationItemProvider extends
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(
-				object,
-				getResourceLocator().getImage(
-						"full/obj16/GenDomainGeneralization")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/GenDomainGeneralization")); //$NON-NLS-1$
 	}
 
 	/**
@@ -144,8 +130,7 @@ public class GenDomainGeneralizationItemProvider extends
 		GenDomainGeneralization gen = (GenDomainGeneralization) object;
 
 		if (gen.getGeneral() != null) {
-			return getResourceLocator().getString(key,
-					new Object[] { gen.getGeneral().getName() });
+			return getResourceLocator().getString(key, new Object[] { gen.getGeneral().getName() });
 		}
 
 		return super.getTextForTree(object);
@@ -161,7 +146,6 @@ public class GenDomainGeneralizationItemProvider extends
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-		super.notifyChanged(notification);
 	}
 
 	/**
@@ -172,8 +156,7 @@ public class GenDomainGeneralizationItemProvider extends
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

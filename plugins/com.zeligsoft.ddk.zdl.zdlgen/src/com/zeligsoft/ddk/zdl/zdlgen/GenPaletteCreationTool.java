@@ -24,12 +24,12 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteCreationTool#getType <em>Type</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteCreationTool#getElementTypeHint <em>Element Type Hint</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteCreationTool#getExpressions <em>Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenPaletteCreationTool()
  * @model

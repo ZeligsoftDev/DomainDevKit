@@ -38,16 +38,15 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainEnumImpl#getOwnedObjects <em>Owned Object</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainEnumImpl#getLiterals <em>Literal</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class GenDomainEnumImpl extends GenDomainDataTypeImpl implements
-		GenDomainEnum {
+public class GenDomainEnumImpl extends GenDomainDataTypeImpl implements GenDomainEnum {
 
 	/**
 	 * The cached value of the '{@link #getLiterals() <em>Literal</em>}' containment reference list.
@@ -89,26 +88,17 @@ public class GenDomainEnumImpl extends GenDomainDataTypeImpl implements
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<GenDomainObject> ownedObjects = (EList<GenDomainObject>) cache
-					.get(eResource,
-							this,
-							ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
+			EList<GenDomainObject> ownedObjects = (EList<GenDomainObject>) cache.get(eResource, this,
+					ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
 			if (ownedObjects == null) {
-				cache.put(
-						eResource,
-						this,
-						ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT,
-						ownedObjects = new DerivedUnionEObjectEList<GenDomainObject>(
-								GenDomainObject.class, this,
-								ZDLGenPackage.GEN_DOMAIN_ENUM__OWNED_OBJECT,
-								OWNED_OBJECT_ESUBSETS));
+				cache.put(eResource, this, ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT,
+						ownedObjects = new DerivedUnionEObjectEList<GenDomainObject>(GenDomainObject.class, this,
+								ZDLGenPackage.GEN_DOMAIN_ENUM__OWNED_OBJECT, OWNED_OBJECT_ESUBSETS));
 			}
 			return ownedObjects;
 		}
-		return new DerivedUnionEObjectEList<GenDomainObject>(
-				GenDomainObject.class, this,
-				ZDLGenPackage.GEN_DOMAIN_ENUM__OWNED_OBJECT,
-				OWNED_OBJECT_ESUBSETS);
+		return new DerivedUnionEObjectEList<GenDomainObject>(GenDomainObject.class, this,
+				ZDLGenPackage.GEN_DOMAIN_ENUM__OWNED_OBJECT, OWNED_OBJECT_ESUBSETS);
 	}
 
 	/**
@@ -129,10 +119,8 @@ public class GenDomainEnumImpl extends GenDomainDataTypeImpl implements
 	@Override
 	public EList<GenDomainEnumLiteral> getLiterals() {
 		if (literals == null) {
-			literals = new EObjectContainmentWithInverseEList<GenDomainEnumLiteral>(
-					GenDomainEnumLiteral.class, this,
-					ZDLGenPackage.GEN_DOMAIN_ENUM__LITERAL,
-					ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION);
+			literals = new EObjectContainmentWithInverseEList<GenDomainEnumLiteral>(GenDomainEnumLiteral.class, this,
+					ZDLGenPackage.GEN_DOMAIN_ENUM__LITERAL, ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION);
 		}
 		return literals;
 	}
@@ -156,8 +144,7 @@ public class GenDomainEnumImpl extends GenDomainDataTypeImpl implements
 	public GenDomainEnumLiteral getLiteral(String name, boolean ignoreCase) {
 		literalLoop: for (GenDomainEnumLiteral literal : getLiterals()) {
 			if (name != null
-					&& !(ignoreCase ? name.equalsIgnoreCase(literal.getName())
-							: name.equals(literal.getName())))
+					&& !(ignoreCase ? name.equalsIgnoreCase(literal.getName()) : name.equals(literal.getName())))
 				continue literalLoop;
 			return literal;
 		}
@@ -171,12 +158,10 @@ public class GenDomainEnumImpl extends GenDomainDataTypeImpl implements
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_ENUM__LITERAL:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getLiterals())
-					.basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getLiterals()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -187,12 +172,10 @@ public class GenDomainEnumImpl extends GenDomainDataTypeImpl implements
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_ENUM__LITERAL:
-			return ((InternalEList<?>) getLiterals()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getLiterals()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -222,8 +205,7 @@ public class GenDomainEnumImpl extends GenDomainDataTypeImpl implements
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_ENUM__LITERAL:
 			getLiterals().clear();
-			getLiterals().addAll(
-					(Collection<? extends GenDomainEnumLiteral>) newValue);
+			getLiterals().addAll((Collection<? extends GenDomainEnumLiteral>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -252,6 +234,8 @@ public class GenDomainEnumImpl extends GenDomainDataTypeImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case ZDLGenPackage.GEN_DOMAIN_ENUM__OWNED_OBJECT:
+			return isSetOwnedObjects();
 		case ZDLGenPackage.GEN_DOMAIN_ENUM__LITERAL:
 			return literals != null && !literals.isEmpty();
 		}
@@ -265,8 +249,7 @@ public class GenDomainEnumImpl extends GenDomainDataTypeImpl implements
 	 */
 	@Override
 	public boolean isSetOwnedObjects() {
-		return super.isSetOwnedObjects()
-				|| eIsSet(ZDLGenPackage.GEN_DOMAIN_ENUM__LITERAL);
+		return super.isSetOwnedObjects() || eIsSet(ZDLGenPackage.GEN_DOMAIN_ENUM__LITERAL);
 	}
 
 } //GenDomainEnumImpl

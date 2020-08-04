@@ -37,9 +37,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenMenuItemProvider extends GenMenuItemItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class GenMenuItemProvider extends GenMenuItemItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -75,15 +73,11 @@ public class GenMenuItemProvider extends GenMenuItemItemProvider implements
 	 */
 	protected void addExtendsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenMenu_extends_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenMenu_extends_feature", "_UI_GenMenu_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_MENU__EXTENDS, true, false,
-						true, null,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenMenu_extends_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenMenu_extends_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenMenu_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_MENU__EXTENDS, true, false, true, null,
 						getString("_UI_DomainMenuAdvancedPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
@@ -96,15 +90,10 @@ public class GenMenuItemProvider extends GenMenuItemItemProvider implements
 	 */
 	protected void addItemPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenMenu_item_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenMenu_item_feature", "_UI_GenMenu_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_MENU__ITEM, true, false,
-						true, null,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenMenu_item_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenMenu_item_feature", "_UI_GenMenu_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+						ZDLGenPackage.Literals.GEN_MENU__ITEM, true, false, true, null,
 						getString("_UI_DomainMenuPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
@@ -117,8 +106,7 @@ public class GenMenuItemProvider extends GenMenuItemItemProvider implements
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/GenMenu")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/GenMenu")); //$NON-NLS-1$
 	}
 
 	/**
@@ -142,7 +130,6 @@ public class GenMenuItemProvider extends GenMenuItemItemProvider implements
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-		super.notifyChanged(notification);
 	}
 
 	/**
@@ -153,8 +140,7 @@ public class GenMenuItemProvider extends GenMenuItemItemProvider implements
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

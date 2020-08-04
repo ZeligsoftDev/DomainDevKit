@@ -54,8 +54,7 @@ public final class ZDLGenEditPlugin extends EMFPlugin {
 	 * @generated
 	 */
 	public ZDLGenEditPlugin() {
-		super(new ResourceLocator[] { EcoreEditPlugin.INSTANCE,
-				UMLEditPlugin.INSTANCE, });
+		super(new ResourceLocator[] { EcoreEditPlugin.INSTANCE, UMLEditPlugin.INSTANCE, });
 	}
 
 	/**

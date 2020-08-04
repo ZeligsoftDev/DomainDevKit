@@ -46,10 +46,9 @@ import com.zeligsoft.ddk.zdl.zdlgen.provider.util.ITreeTextProvider;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenDomainObjectItemProvider extends ItemProviderAdapter implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
-		ITreeTextProvider {
+public class GenDomainObjectItemProvider extends ItemProviderAdapter
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
+		IItemLabelProvider, IItemPropertySource, ITreeTextProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -86,15 +85,11 @@ public class GenDomainObjectItemProvider extends ItemProviderAdapter implements
 	 */
 	protected void addOwnerPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainObject_owner_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainObject_owner_feature", "_UI_GenDomainObject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNER, false,
-						false, false, null,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainObject_owner_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainObject_owner_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainObject_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNER, false, false, false, null,
 						getString("_UI_ZDLGeneratorPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
@@ -107,15 +102,11 @@ public class GenDomainObjectItemProvider extends ItemProviderAdapter implements
 	 */
 	protected void addOwnedObjectPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainObject_ownedObject_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainObject_ownedObject_feature", "_UI_GenDomainObject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT,
-						false, false, false, null,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainObject_ownedObject_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainObject_ownedObject_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainObject_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT, false, false, false, null,
 						getString("_UI_ZDLGeneratorPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
@@ -147,7 +138,6 @@ public class GenDomainObjectItemProvider extends ItemProviderAdapter implements
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-		super.notifyChanged(notification);
 	}
 
 	/**
@@ -158,8 +148,7 @@ public class GenDomainObjectItemProvider extends ItemProviderAdapter implements
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -175,9 +164,8 @@ public class GenDomainObjectItemProvider extends ItemProviderAdapter implements
 	}
 
 	@Override
-	protected Command createDragAndDropCommand(EditingDomain domain,
-			Object owner, float location, int operations, int operation,
-			Collection<?> collection) {
+	protected Command createDragAndDropCommand(EditingDomain domain, Object owner, float location, int operations,
+			int operation, Collection<?> collection) {
 
 		boolean shouldCreateCommand = !(owner instanceof GenDomainObject);
 		if (shouldCreateCommand) {
@@ -189,14 +177,13 @@ public class GenDomainObjectItemProvider extends ItemProviderAdapter implements
 			}
 		}
 
-		return shouldCreateCommand ? super.createDragAndDropCommand(domain,
-				owner, location, operations, operation, collection)
+		return shouldCreateCommand
+				? super.createDragAndDropCommand(domain, owner, location, operations, operation, collection)
 				: UnexecutableCommand.INSTANCE;
 	}
 
 	@Override
-	protected Command createCopyCommand(EditingDomain domain, EObject owner,
-			Helper helper) {
+	protected Command createCopyCommand(EditingDomain domain, EObject owner, Helper helper) {
 		return (owner instanceof GenDomainObject) ? UnexecutableCommand.INSTANCE
 				: super.createCopyCommand(domain, owner, helper);
 	}

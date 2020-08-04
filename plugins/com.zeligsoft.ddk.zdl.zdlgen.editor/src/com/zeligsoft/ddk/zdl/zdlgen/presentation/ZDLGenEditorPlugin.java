@@ -64,8 +64,7 @@ public final class ZDLGenEditorPlugin extends EMFPlugin {
 	 * @generated
 	 */
 	public ZDLGenEditorPlugin() {
-		super(new ResourceLocator[] { EcoreEditPlugin.INSTANCE,
-				UMLEditPlugin.INSTANCE, });
+		super(new ResourceLocator[] { EcoreEditPlugin.INSTANCE, UMLEditPlugin.INSTANCE, });
 	}
 
 	/**
@@ -102,9 +101,8 @@ public final class ZDLGenEditorPlugin extends EMFPlugin {
 		/**
 		 * @generated NOT
 		 */
-		public static final String PLUGIN_ID = 
-				"com.zeligsoft.ddk.zdl.zdlgen.editor"; //$NON-NLS-1$
-		
+		public static final String PLUGIN_ID = "com.zeligsoft.ddk.zdl.zdlgen.editor"; //$NON-NLS-1$
+
 		/**
 		 * Creates an instance.
 		 * <!-- begin-user-doc -->
@@ -118,8 +116,7 @@ public final class ZDLGenEditorPlugin extends EMFPlugin {
 			//
 			plugin = this;
 		}
-		
-		
+
 		/**
 		 * Write error log with the given exception
 		 * 

@@ -41,18 +41,17 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPaletteToolContainerImpl#getOwnedObjects <em>Owned Object</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPaletteToolContainerImpl#getTools <em>Tool</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPaletteToolContainerImpl#getOwnedTools <em>Owned Tool</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPaletteToolContainerImpl#getTargetDiagrams <em>Target Diagram</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class GenPaletteToolContainerImpl extends GenPaletteItemImpl
-		implements GenPaletteToolContainer {
+public abstract class GenPaletteToolContainerImpl extends GenPaletteItemImpl implements GenPaletteToolContainer {
 
 	/**
 	 * The cached value of the '{@link #getTools() <em>Tool</em>}' reference list.
@@ -114,27 +113,17 @@ public abstract class GenPaletteToolContainerImpl extends GenPaletteItemImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<GenDomainObject> ownedObjects = (EList<GenDomainObject>) cache
-					.get(eResource,
-							this,
-							ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
+			EList<GenDomainObject> ownedObjects = (EList<GenDomainObject>) cache.get(eResource, this,
+					ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
 			if (ownedObjects == null) {
-				cache.put(
-						eResource,
-						this,
-						ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT,
-						ownedObjects = new DerivedUnionEObjectEList<GenDomainObject>(
-								GenDomainObject.class,
-								this,
-								ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__OWNED_OBJECT,
-								OWNED_OBJECT_ESUBSETS));
+				cache.put(eResource, this, ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT,
+						ownedObjects = new DerivedUnionEObjectEList<GenDomainObject>(GenDomainObject.class, this,
+								ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__OWNED_OBJECT, OWNED_OBJECT_ESUBSETS));
 			}
 			return ownedObjects;
 		}
-		return new DerivedUnionEObjectEList<GenDomainObject>(
-				GenDomainObject.class, this,
-				ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__OWNED_OBJECT,
-				OWNED_OBJECT_ESUBSETS);
+		return new DerivedUnionEObjectEList<GenDomainObject>(GenDomainObject.class, this,
+				ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__OWNED_OBJECT, OWNED_OBJECT_ESUBSETS);
 	}
 
 	/**
@@ -145,7 +134,8 @@ public abstract class GenPaletteToolContainerImpl extends GenPaletteItemImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] OWNED_OBJECT_ESUBSETS = new int[] { ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__OWNED_TOOL };
+	protected static final int[] OWNED_OBJECT_ESUBSETS = new int[] {
+			ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__OWNED_TOOL };
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -155,10 +145,8 @@ public abstract class GenPaletteToolContainerImpl extends GenPaletteItemImpl
 	@Override
 	public EList<GenPaletteTool> getOwnedTools() {
 		if (ownedTools == null) {
-			ownedTools = new SubsetSupersetEObjectContainmentWithInverseEList<GenPaletteTool>(
-					GenPaletteTool.class, this,
-					ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__OWNED_TOOL,
-					OWNED_TOOL_ESUPERSETS, null,
+			ownedTools = new SubsetSupersetEObjectContainmentWithInverseEList<GenPaletteTool>(GenPaletteTool.class,
+					this, ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__OWNED_TOOL, OWNED_TOOL_ESUPERSETS, null,
 					ZDLGenPackage.GEN_PALETTE_TOOL__CONTAINER);
 		}
 		return ownedTools;
@@ -180,15 +168,12 @@ public abstract class GenPaletteToolContainerImpl extends GenPaletteItemImpl
 	 * @generated
 	 */
 	@Override
-	public GenPaletteTool getOwnedTool(String name, boolean ignoreCase,
-			EClass eClass) {
+	public GenPaletteTool getOwnedTool(String name, boolean ignoreCase, EClass eClass) {
 		ownedToolLoop: for (GenPaletteTool ownedTool : getOwnedTools()) {
 			if (eClass != null && !eClass.isInstance(ownedTool))
 				continue ownedToolLoop;
 			if (name != null
-					&& !(ignoreCase ? name
-							.equalsIgnoreCase(ownedTool.getName()) : name
-							.equals(ownedTool.getName())))
+					&& !(ignoreCase ? name.equalsIgnoreCase(ownedTool.getName()) : name.equals(ownedTool.getName())))
 				continue ownedToolLoop;
 			return ownedTool;
 		}
@@ -203,8 +188,7 @@ public abstract class GenPaletteToolContainerImpl extends GenPaletteItemImpl
 	@Override
 	public EList<GenPaletteDiagramKind> getTargetDiagrams() {
 		if (targetDiagrams == null) {
-			targetDiagrams = new EDataTypeUniqueEList<GenPaletteDiagramKind>(
-					GenPaletteDiagramKind.class, this,
+			targetDiagrams = new EDataTypeUniqueEList<GenPaletteDiagramKind>(GenPaletteDiagramKind.class, this,
 					ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__TARGET_DIAGRAM);
 		}
 		return targetDiagrams;
@@ -218,10 +202,8 @@ public abstract class GenPaletteToolContainerImpl extends GenPaletteItemImpl
 	@Override
 	public EList<GenPaletteTool> getTools() {
 		if (tools == null) {
-			tools = new SubsetSupersetEObjectResolvingEList<GenPaletteTool>(
-					GenPaletteTool.class, this,
-					ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__TOOL, null,
-					TOOL_ESUBSETS);
+			tools = new SubsetSupersetEObjectResolvingEList<GenPaletteTool>(GenPaletteTool.class, this,
+					ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__TOOL, null, TOOL_ESUBSETS);
 		}
 		return tools;
 	}
@@ -266,9 +248,7 @@ public abstract class GenPaletteToolContainerImpl extends GenPaletteItemImpl
 		toolLoop: for (GenPaletteTool tool : getTools()) {
 			if (eClass != null && !eClass.isInstance(tool))
 				continue toolLoop;
-			if (name != null
-					&& !(ignoreCase ? name.equalsIgnoreCase(tool.getName())
-							: name.equals(tool.getName())))
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(tool.getName()) : name.equals(tool.getName())))
 				continue toolLoop;
 			return tool;
 		}
@@ -282,12 +262,10 @@ public abstract class GenPaletteToolContainerImpl extends GenPaletteItemImpl
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__OWNED_TOOL:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedTools())
-					.basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedTools()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -298,12 +276,10 @@ public abstract class GenPaletteToolContainerImpl extends GenPaletteItemImpl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__OWNED_TOOL:
-			return ((InternalEList<?>) getOwnedTools()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getOwnedTools()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -341,13 +317,11 @@ public abstract class GenPaletteToolContainerImpl extends GenPaletteItemImpl
 			return;
 		case ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__OWNED_TOOL:
 			getOwnedTools().clear();
-			getOwnedTools().addAll(
-					(Collection<? extends GenPaletteTool>) newValue);
+			getOwnedTools().addAll((Collection<? extends GenPaletteTool>) newValue);
 			return;
 		case ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__TARGET_DIAGRAM:
 			getTargetDiagrams().clear();
-			getTargetDiagrams().addAll(
-					(Collection<? extends GenPaletteDiagramKind>) newValue);
+			getTargetDiagrams().addAll((Collection<? extends GenPaletteDiagramKind>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -382,6 +356,8 @@ public abstract class GenPaletteToolContainerImpl extends GenPaletteItemImpl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__OWNED_OBJECT:
+			return isSetOwnedObjects();
 		case ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__TOOL:
 			return tools != null && !tools.isEmpty();
 		case ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__OWNED_TOOL:
@@ -402,7 +378,7 @@ public abstract class GenPaletteToolContainerImpl extends GenPaletteItemImpl
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (targetDiagram: "); //$NON-NLS-1$
 		result.append(targetDiagrams);
 		result.append(')');
@@ -416,8 +392,7 @@ public abstract class GenPaletteToolContainerImpl extends GenPaletteItemImpl
 	 */
 	@Override
 	public boolean isSetOwnedObjects() {
-		return super.isSetOwnedObjects()
-				|| eIsSet(ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__OWNED_TOOL);
+		return super.isSetOwnedObjects() || eIsSet(ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__OWNED_TOOL);
 	}
 
 } //GenPaletteToolContainerImpl

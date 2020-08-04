@@ -25,12 +25,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getGenModel <em>Gen Model</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwner <em>Owner</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwnedObjects <em>Owned Object</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainObject()
  * @model abstract="true"
@@ -52,6 +52,7 @@ public interface GenDomainObject extends EObject {
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainObject_Owner()
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwnedObjects
 	 * @model opposite="ownedObject" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 *        annotation="union"
 	 * @generated
 	 */
 	GenDomainObject getOwner();
@@ -71,6 +72,7 @@ public interface GenDomainObject extends EObject {
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainObject_OwnedObject()
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwner
 	 * @model opposite="owner" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 *        annotation="union"
 	 * @generated
 	 */
 	EList<GenDomainObject> getOwnedObjects();

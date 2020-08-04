@@ -62,8 +62,7 @@ import org.eclipse.ui.PartInitException;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ZDLGenActionBarContributor extends
-		EditingDomainActionBarContributor implements ISelectionChangedListener {
+public class ZDLGenActionBarContributor extends EditingDomainActionBarContributor implements ISelectionChangedListener {
 
 	/**
 	 * This keeps track of the active editor.
@@ -88,8 +87,7 @@ public class ZDLGenActionBarContributor extends
 	 * @generated
 	 */
 	protected IAction showPropertiesViewAction = new Action(
-			ZDLGenEditorPlugin.INSTANCE
-					.getString("_UI_ShowPropertiesView_menu_item")) //$NON-NLS-1$
+			ZDLGenEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) //$NON-NLS-1$
 	{
 		@Override
 		public void run() {
@@ -109,8 +107,7 @@ public class ZDLGenActionBarContributor extends
 	 * @generated
 	 */
 	protected IAction refreshViewerAction = new Action(
-			ZDLGenEditorPlugin.INSTANCE
-					.getString("_UI_RefreshViewer_menu_item")) //$NON-NLS-1$
+			ZDLGenEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) //$NON-NLS-1$
 	{
 		@Override
 		public boolean isEnabled() {
@@ -120,8 +117,7 @@ public class ZDLGenActionBarContributor extends
 		@Override
 		public void run() {
 			if (activeEditorPart instanceof IViewerProvider) {
-				Viewer viewer = ((IViewerProvider) activeEditorPart)
-						.getViewer();
+				Viewer viewer = ((IViewerProvider) activeEditorPart).getViewer();
 				if (viewer != null) {
 					viewer.refresh();
 				}
@@ -200,6 +196,7 @@ public class ZDLGenActionBarContributor extends
 	 */
 	@Override
 	public void contributeToToolBar(IToolBarManager toolBarManager) {
+		super.contributeToToolBar(toolBarManager);
 		toolBarManager.add(new Separator("zdlgen-settings")); //$NON-NLS-1$
 		toolBarManager.add(new Separator("zdlgen-additions")); //$NON-NLS-1$
 	}
@@ -215,8 +212,8 @@ public class ZDLGenActionBarContributor extends
 	public void contributeToMenu(IMenuManager menuManager) {
 		super.contributeToMenu(menuManager);
 
-		IMenuManager submenuManager = new MenuManager(
-				ZDLGenEditorPlugin.INSTANCE.getString("_UI_ZDLGenEditor_menu"), "com.zeligsoft.ddk.zdl.zdlgenMenuID"); //$NON-NLS-1$ //$NON-NLS-2$
+		IMenuManager submenuManager = new MenuManager(ZDLGenEditorPlugin.INSTANCE.getString("_UI_ZDLGenEditor_menu"), //$NON-NLS-1$
+				"com.zeligsoft.ddk.zdl.zdlgenMenuID"); //$NON-NLS-1$
 		menuManager.insertAfter("additions", submenuManager); //$NON-NLS-1$
 		submenuManager.add(new Separator("settings")); //$NON-NLS-1$
 		submenuManager.add(new Separator("actions")); //$NON-NLS-1$
@@ -225,16 +222,13 @@ public class ZDLGenActionBarContributor extends
 
 		// Prepare for CreateChild item addition or removal.
 		//
-		createChildMenuManager = new MenuManager(
-				ZDLGenEditorPlugin.INSTANCE
-						.getString("_UI_CreateChild_menu_item")); //$NON-NLS-1$
+		createChildMenuManager = new MenuManager(ZDLGenEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item")); //$NON-NLS-1$
 		submenuManager.insertBefore("additions", createChildMenuManager); //$NON-NLS-1$
 
 		// Prepare for CreateSibling item addition or removal.
 		//
 		createSiblingMenuManager = new MenuManager(
-				ZDLGenEditorPlugin.INSTANCE
-						.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
+				ZDLGenEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
 		submenuManager.insertBefore("additions", createSiblingMenuManager); //$NON-NLS-1$
 
 		// Force an update because Eclipse hides empty menus now.
@@ -273,8 +267,7 @@ public class ZDLGenActionBarContributor extends
 			// Fake a selection changed event to update the menus.
 			//
 			if (selectionProvider.getSelection() != null) {
-				selectionChanged(new SelectionChangedEvent(selectionProvider,
-						selectionProvider.getSelection()));
+				selectionChanged(new SelectionChangedEvent(selectionProvider, selectionProvider.getSelection()));
 			}
 		}
 	}
@@ -296,8 +289,7 @@ public class ZDLGenActionBarContributor extends
 			depopulateManager(createChildMenuManager, createChildActions);
 		}
 		if (createSiblingMenuManager != null) {
-			depopulateManager(createSiblingMenuManager,
-					createSiblingSubmenuActions);
+			depopulateManager(createSiblingMenuManager, createSiblingSubmenuActions);
 			depopulateManager(createSiblingMenuManager, createSiblingActions);
 		}
 
@@ -307,13 +299,10 @@ public class ZDLGenActionBarContributor extends
 		Collection<?> newSiblingDescriptors = null;
 
 		ISelection selection = event.getSelection();
-		if (selection instanceof IStructuredSelection
-				&& ((IStructuredSelection) selection).size() == 1) {
-			Object object = ((IStructuredSelection) selection)
-					.getFirstElement();
+		if (selection instanceof IStructuredSelection && ((IStructuredSelection) selection).size() == 1) {
+			Object object = ((IStructuredSelection) selection).getFirstElement();
 
-			EditingDomain domain = ((IEditingDomainProvider) activeEditorPart)
-					.getEditingDomain();
+			EditingDomain domain = ((IEditingDomainProvider) activeEditorPart).getEditingDomain();
 
 			newChildDescriptors = domain.getNewChildDescriptors(object, null);
 			newSiblingDescriptors = domain.getNewChildDescriptors(null, object);
@@ -321,24 +310,19 @@ public class ZDLGenActionBarContributor extends
 
 		// Generate actions for selection; populate and redraw the menus.
 		//
-		createChildActions = generateCreateChildActions(newChildDescriptors,
-				selection);
+		createChildActions = generateCreateChildActions(newChildDescriptors, selection);
 		createChildSubmenuActions = extractSubmenuActions(createChildActions);
-		createSiblingActions = generateCreateSiblingActions(
-				newSiblingDescriptors, selection);
+		createSiblingActions = generateCreateSiblingActions(newSiblingDescriptors, selection);
 		createSiblingSubmenuActions = extractSubmenuActions(createSiblingActions);
 
 		if (createChildMenuManager != null) {
-			populateManager(createChildMenuManager, createChildSubmenuActions,
-					null);
+			populateManager(createChildMenuManager, createChildSubmenuActions, null);
 			populateManager(createChildMenuManager, createChildActions, null);
 			createChildMenuManager.update(true);
 		}
 		if (createSiblingMenuManager != null) {
-			populateManager(createSiblingMenuManager,
-					createSiblingSubmenuActions, null);
-			populateManager(createSiblingMenuManager, createSiblingActions,
-					null);
+			populateManager(createSiblingMenuManager, createSiblingSubmenuActions, null);
+			populateManager(createSiblingMenuManager, createSiblingActions, null);
 			createSiblingMenuManager.update(true);
 		}
 	}
@@ -350,13 +334,11 @@ public class ZDLGenActionBarContributor extends
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection<IAction> generateCreateChildActions(
-			Collection<?> descriptors, ISelection selection) {
+	protected Collection<IAction> generateCreateChildActions(Collection<?> descriptors, ISelection selection) {
 		Collection<IAction> actions = new ArrayList<IAction>();
 		if (descriptors != null) {
 			for (Object descriptor : descriptors) {
-				actions.add(new CreateChildAction(activeEditorPart, selection,
-						descriptor));
+				actions.add(new CreateChildAction(activeEditorPart, selection, descriptor));
 			}
 		}
 		return actions;
@@ -369,13 +351,11 @@ public class ZDLGenActionBarContributor extends
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection<IAction> generateCreateSiblingActions(
-			Collection<?> descriptors, ISelection selection) {
+	protected Collection<IAction> generateCreateSiblingActions(Collection<?> descriptors, ISelection selection) {
 		Collection<IAction> actions = new ArrayList<IAction>();
 		if (descriptors != null) {
 			for (Object descriptor : descriptors) {
-				actions.add(new CreateSiblingAction(activeEditorPart,
-						selection, descriptor));
+				actions.add(new CreateSiblingAction(activeEditorPart, selection, descriptor));
 			}
 		}
 		return actions;
@@ -390,8 +370,8 @@ public class ZDLGenActionBarContributor extends
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void populateManager(IContributionManager manager,
-			Collection<? extends IAction> actions, String contributionID) {
+	protected void populateManager(IContributionManager manager, Collection<? extends IAction> actions,
+			String contributionID) {
 		if (actions != null) {
 			for (IAction action : actions) {
 				if (contributionID != null) {
@@ -410,8 +390,7 @@ public class ZDLGenActionBarContributor extends
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void depopulateManager(IContributionManager manager,
-			Collection<? extends IAction> actions) {
+	protected void depopulateManager(IContributionManager manager, Collection<? extends IAction> actions) {
 		if (actions != null) {
 			IContributionItem[] items = manager.getItems();
 			for (int i = 0; i < items.length; i++) {
@@ -419,15 +398,13 @@ public class ZDLGenActionBarContributor extends
 				//
 				IContributionItem contributionItem = items[i];
 				while (contributionItem instanceof SubContributionItem) {
-					contributionItem = ((SubContributionItem) contributionItem)
-							.getInnerItem();
+					contributionItem = ((SubContributionItem) contributionItem).getInnerItem();
 				}
 
 				// Delete the ActionContributionItems with matching action.
 				//
 				if (contributionItem instanceof ActionContributionItem) {
-					IAction action = ((ActionContributionItem) contributionItem)
-							.getAction();
+					IAction action = ((ActionContributionItem) contributionItem).getAction();
 					if (actions.contains(action)) {
 						manager.remove(contributionItem);
 					}
@@ -443,21 +420,17 @@ public class ZDLGenActionBarContributor extends
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Map<String, Collection<IAction>> extractSubmenuActions(
-			Collection<IAction> createActions) {
+	protected Map<String, Collection<IAction>> extractSubmenuActions(Collection<IAction> createActions) {
 		Map<String, Collection<IAction>> createSubmenuActions = new LinkedHashMap<String, Collection<IAction>>();
 		if (createActions != null) {
-			for (Iterator<IAction> actions = createActions.iterator(); actions
-					.hasNext();) {
+			for (Iterator<IAction> actions = createActions.iterator(); actions.hasNext();) {
 				IAction action = actions.next();
 				StringTokenizer st = new StringTokenizer(action.getText(), "|"); //$NON-NLS-1$
 				if (st.countTokens() == 2) {
 					String text = st.nextToken().trim();
-					Collection<IAction> submenuActions = createSubmenuActions
-							.get(text);
+					Collection<IAction> submenuActions = createSubmenuActions.get(text);
 					if (submenuActions == null) {
-						createSubmenuActions.put(text,
-								submenuActions = new ArrayList<IAction>());
+						createSubmenuActions.put(text, submenuActions = new ArrayList<IAction>());
 					}
 					action.setText(st.nextToken().trim());
 					submenuActions.add(action);
@@ -478,12 +451,10 @@ public class ZDLGenActionBarContributor extends
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void populateManager(IContributionManager manager,
-			Map<String, Collection<IAction>> submenuActions,
+	protected void populateManager(IContributionManager manager, Map<String, Collection<IAction>> submenuActions,
 			String contributionID) {
 		if (submenuActions != null) {
-			for (Map.Entry<String, Collection<IAction>> entry : submenuActions
-					.entrySet()) {
+			for (Map.Entry<String, Collection<IAction>> entry : submenuActions.entrySet()) {
 				MenuManager submenuManager = new MenuManager(entry.getKey());
 				if (contributionID != null) {
 					manager.insertBefore(contributionID, submenuManager);
@@ -503,18 +474,15 @@ public class ZDLGenActionBarContributor extends
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void depopulateManager(IContributionManager manager,
-			Map<String, Collection<IAction>> submenuActions) {
+	protected void depopulateManager(IContributionManager manager, Map<String, Collection<IAction>> submenuActions) {
 		if (submenuActions != null) {
 			IContributionItem[] items = manager.getItems();
 			for (int i = 0; i < items.length; i++) {
 				IContributionItem contributionItem = items[i];
 				if (contributionItem instanceof MenuManager) {
 					MenuManager submenuManager = (MenuManager) contributionItem;
-					if (submenuActions
-							.containsKey(submenuManager.getMenuText())) {
-						depopulateManager(submenuManager,
-								submenuActions.get(contributionItem));
+					if (submenuActions.containsKey(submenuManager.getMenuText())) {
+						depopulateManager(submenuManager, submenuActions.get(submenuManager.getMenuText()));
 						manager.remove(contributionItem);
 					}
 				}
@@ -533,16 +501,12 @@ public class ZDLGenActionBarContributor extends
 		super.menuAboutToShow(menuManager);
 		MenuManager submenuManager = null;
 
-		submenuManager = new MenuManager(
-				ZDLGenEditorPlugin.INSTANCE
-						.getString("_UI_CreateChild_menu_item")); //$NON-NLS-1$
+		submenuManager = new MenuManager(ZDLGenEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item")); //$NON-NLS-1$
 		populateManager(submenuManager, createChildSubmenuActions, null);
 		populateManager(submenuManager, createChildActions, null);
 		menuManager.insertBefore("edit", submenuManager); //$NON-NLS-1$
 
-		submenuManager = new MenuManager(
-				ZDLGenEditorPlugin.INSTANCE
-						.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
+		submenuManager = new MenuManager(ZDLGenEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
 		populateManager(submenuManager, createSiblingSubmenuActions, null);
 		populateManager(submenuManager, createSiblingActions, null);
 		menuManager.insertBefore("edit", submenuManager); //$NON-NLS-1$

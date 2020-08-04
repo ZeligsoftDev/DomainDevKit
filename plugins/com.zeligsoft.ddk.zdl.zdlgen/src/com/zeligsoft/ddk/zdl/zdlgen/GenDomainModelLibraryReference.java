@@ -24,13 +24,13 @@ import org.eclipse.uml2.uml.Dependency;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModelLibraryReference#getTarget <em>Target</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModelLibraryReference#getDomainModelLibraryReference <em>Domain Model Library Reference</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModelLibraryReference#getResourceName <em>Resource Name</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModelLibraryReference#getDomainSpecialization <em>Domain Specialization</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainModelLibraryReference()
  * @model
@@ -121,10 +121,10 @@ public interface GenDomainModelLibraryReference extends GenDomainObject {
 	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getDomainModelLibraries <em>Domain Model Library</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwner() <em>Owner</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Domain Specialization</em>' container reference isn't clear,
@@ -136,6 +136,7 @@ public interface GenDomainModelLibraryReference extends GenDomainObject {
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainModelLibraryReference_DomainSpecialization()
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getDomainModelLibraries
 	 * @model opposite="domainModelLibrary" required="true" transient="false" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	GenDomainSpecialization getDomainSpecialization();

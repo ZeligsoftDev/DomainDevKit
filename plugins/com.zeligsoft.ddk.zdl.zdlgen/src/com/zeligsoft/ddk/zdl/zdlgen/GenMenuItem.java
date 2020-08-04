@@ -22,12 +22,12 @@ package com.zeligsoft.ddk.zdl.zdlgen;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenMenuItem#getDescription <em>Description</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenMenuItem#getName <em>Name</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenMenuItem#getOverrides <em>Overrides</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenMenuItem()
  * @model abstract="true"

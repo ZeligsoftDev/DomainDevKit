@@ -35,10 +35,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.GenDomainClassifier;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenDomainClassifierItemProvider extends
-		GenDomainNamedElementItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class GenDomainClassifierItemProvider extends GenDomainNamedElementItemProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -88,7 +85,6 @@ public class GenDomainClassifierItemProvider extends
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-		super.notifyChanged(notification);
 	}
 
 	/**
@@ -99,8 +95,7 @@ public class GenDomainClassifierItemProvider extends
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

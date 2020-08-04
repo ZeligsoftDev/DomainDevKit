@@ -31,10 +31,10 @@ import com.zeligsoft.ddk.zdl.zdlgen.GenPaletteTool;
  *
  * <p>
  * The following operations are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteDrawer#allTools() <em>All Tools</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -53,8 +53,7 @@ public class GenPaletteDrawerOperations extends GenDomainObjectOperations {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList<GenPaletteTool> allTools(
-			GenPaletteDrawer genPaletteDrawer) {
+	public static EList<GenPaletteTool> allTools(GenPaletteDrawer genPaletteDrawer) {
 
 		if (genPaletteDrawer.getSpecializes() == null) {
 			return ECollections.unmodifiableEList(genPaletteDrawer.getTools());
@@ -71,8 +70,7 @@ public class GenPaletteDrawerOperations extends GenDomainObjectOperations {
 				}
 			}
 
-			EList<GenPaletteTool> inheritedTools = genPaletteDrawer
-					.getSpecializes().allTools();
+			EList<GenPaletteTool> inheritedTools = genPaletteDrawer.getSpecializes().allTools();
 
 			for (GenPaletteTool it : inheritedTools) {
 				if (overridenList.containsKey(it)) {

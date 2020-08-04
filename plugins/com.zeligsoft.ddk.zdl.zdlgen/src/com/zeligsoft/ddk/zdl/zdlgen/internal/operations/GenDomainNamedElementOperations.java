@@ -26,10 +26,10 @@ import com.zeligsoft.ddk.zdl.zdlgen.GenDomainNamedElement;
  *
  * <p>
  * The following operations are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainNamedElement#getName() <em>Get Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

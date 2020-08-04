@@ -39,6 +39,7 @@ import org.eclipse.uml2.uml.Dependency;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelLibraryReferenceImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelLibraryReferenceImpl#getTarget <em>Target</em>}</li>
@@ -46,12 +47,10 @@ import org.eclipse.uml2.uml.Dependency;
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelLibraryReferenceImpl#getResourceName <em>Resource Name</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelLibraryReferenceImpl#getDomainSpecialization <em>Domain Specialization</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl
-		implements GenDomainModelLibraryReference {
+public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl implements GenDomainModelLibraryReference {
 
 	/**
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
@@ -120,8 +119,7 @@ public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl
 	@Override
 	public GenDomainObject getOwner() {
 		GenDomainObject owner = basicGetOwner();
-		return owner != null && owner.eIsProxy() ? (GenDomainObject) eResolveProxy((InternalEObject) owner)
-				: owner;
+		return owner != null && owner.eIsProxy() ? (GenDomainObject) eResolveProxy((InternalEObject) owner) : owner;
 	}
 
 	/**
@@ -150,11 +148,8 @@ public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl
 			target = (GenDomainModelLibrary) eResolveProxy(oldTarget);
 			if (target != oldTarget) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__TARGET,
-							oldTarget, target));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__TARGET, oldTarget, target));
 			}
 		}
 		return target;
@@ -180,8 +175,7 @@ public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl
 		target = newTarget;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__TARGET,
-					oldTarget, target));
+					ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__TARGET, oldTarget, target));
 	}
 
 	/**
@@ -191,18 +185,14 @@ public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl
 	 */
 	@Override
 	public Dependency getDomainModelLibraryReference() {
-		if (domainModelLibraryReference != null
-				&& domainModelLibraryReference.eIsProxy()) {
+		if (domainModelLibraryReference != null && domainModelLibraryReference.eIsProxy()) {
 			InternalEObject oldDomainModelLibraryReference = (InternalEObject) domainModelLibraryReference;
 			domainModelLibraryReference = (Dependency) eResolveProxy(oldDomainModelLibraryReference);
 			if (domainModelLibraryReference != oldDomainModelLibraryReference) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 							ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_MODEL_LIBRARY_REFERENCE,
-							oldDomainModelLibraryReference,
-							domainModelLibraryReference));
+							oldDomainModelLibraryReference, domainModelLibraryReference));
 			}
 		}
 		return domainModelLibraryReference;
@@ -223,14 +213,11 @@ public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl
 	 * @generated
 	 */
 	@Override
-	public void setDomainModelLibraryReference(
-			Dependency newDomainModelLibraryReference) {
+	public void setDomainModelLibraryReference(Dependency newDomainModelLibraryReference) {
 		Dependency oldDomainModelLibraryReference = domainModelLibraryReference;
 		domainModelLibraryReference = newDomainModelLibraryReference;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
+			eNotify(new ENotificationImpl(this, Notification.SET,
 					ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_MODEL_LIBRARY_REFERENCE,
 					oldDomainModelLibraryReference, domainModelLibraryReference));
 	}
@@ -255,11 +242,8 @@ public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl
 		String oldResourceName = resourceName;
 		resourceName = newResourceName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__RESOURCE_NAME,
-					oldResourceName, resourceName));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__RESOURCE_NAME, oldResourceName, resourceName));
 	}
 
 	/**
@@ -271,7 +255,7 @@ public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl
 	public GenDomainSpecialization getDomainSpecialization() {
 		if (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION)
 			return null;
-		return (GenDomainSpecialization) eContainer();
+		return (GenDomainSpecialization) eInternalContainer();
 	}
 
 	/**
@@ -279,13 +263,10 @@ public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDomainSpecialization(
-			GenDomainSpecialization newDomainSpecialization,
+	public NotificationChain basicSetDomainSpecialization(GenDomainSpecialization newDomainSpecialization,
 			NotificationChain msgs) {
-		msgs = eBasicSetContainer(
-				(InternalEObject) newDomainSpecialization,
-				ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION,
-				msgs);
+		msgs = eBasicSetContainer((InternalEObject) newDomainSpecialization,
+				ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION, msgs);
 		return msgs;
 	}
 
@@ -295,31 +276,26 @@ public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl
 	 * @generated
 	 */
 	@Override
-	public void setDomainSpecialization(
-			GenDomainSpecialization newDomainSpecialization) {
+	public void setDomainSpecialization(GenDomainSpecialization newDomainSpecialization) {
 		if (newDomainSpecialization != eInternalContainer()
-				|| (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION && newDomainSpecialization != null)) {
+				|| (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION
+						&& newDomainSpecialization != null)) {
 			if (EcoreUtil.isAncestor(this, newDomainSpecialization))
-				throw new IllegalArgumentException(
-						"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newDomainSpecialization != null)
-				msgs = ((InternalEObject) newDomainSpecialization)
-						.eInverseAdd(
-								this,
-								ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_MODEL_LIBRARY,
-								GenDomainSpecialization.class, msgs);
+				msgs = ((InternalEObject) newDomainSpecialization).eInverseAdd(this,
+						ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_MODEL_LIBRARY, GenDomainSpecialization.class,
+						msgs);
 			msgs = basicSetDomainSpecialization(newDomainSpecialization, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION,
-					newDomainSpecialization, newDomainSpecialization));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION, newDomainSpecialization,
+					newDomainSpecialization));
 	}
 
 	/**
@@ -328,14 +304,12 @@ public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION:
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			return basicSetDomainSpecialization(
-					(GenDomainSpecialization) otherEnd, msgs);
+			return basicSetDomainSpecialization((GenDomainSpecialization) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -346,8 +320,7 @@ public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION:
 			return basicSetDomainSpecialization(null, msgs);
@@ -361,15 +334,11 @@ public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(
-			NotificationChain msgs) {
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION:
-			return eInternalContainer()
-					.eInverseRemove(
-							this,
-							ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_MODEL_LIBRARY,
-							GenDomainSpecialization.class, msgs);
+			return eInternalContainer().eInverseRemove(this,
+					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_MODEL_LIBRARY, GenDomainSpecialization.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -454,13 +423,14 @@ public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__OWNER:
+			return isSetOwner();
 		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__TARGET:
 			return target != null;
 		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_MODEL_LIBRARY_REFERENCE:
 			return domainModelLibraryReference != null;
 		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__RESOURCE_NAME:
-			return RESOURCE_NAME_EDEFAULT == null ? resourceName != null
-					: !RESOURCE_NAME_EDEFAULT.equals(resourceName);
+			return RESOURCE_NAME_EDEFAULT == null ? resourceName != null : !RESOURCE_NAME_EDEFAULT.equals(resourceName);
 		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION:
 			return getDomainSpecialization() != null;
 		}
@@ -477,7 +447,7 @@ public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (resourceName: "); //$NON-NLS-1$
 		result.append(resourceName);
 		result.append(')');
@@ -491,8 +461,7 @@ public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl
 	 */
 	@Override
 	public boolean isSetOwner() {
-		return super.isSetOwner()
-				|| eIsSet(ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION);
+		return super.isSetOwner() || eIsSet(ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION);
 	}
 
 } //GenDomainModelLibraryReferenceImpl

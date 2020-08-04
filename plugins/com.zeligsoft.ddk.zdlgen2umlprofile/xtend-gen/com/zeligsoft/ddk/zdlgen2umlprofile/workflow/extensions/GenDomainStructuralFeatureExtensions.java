@@ -1,18 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2020 Northrop Grumman Systems Corporation.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *******************************************************************************/
 package com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions;
 
 import com.google.common.base.Objects;
@@ -32,16 +17,17 @@ import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Feature;
-import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class GenDomainStructuralFeatureExtensions {
   @Inject
+  @Extension
   private JavaNamingExtensions _javaNamingExtensions;
   
   protected String _typeAsString(final GenDomainAttribute feature) {
@@ -50,19 +36,15 @@ public class GenDomainStructuralFeatureExtensions {
     boolean _equals = Objects.equal(_type, null);
     if (_equals) {
       String _xifexpression_1 = null;
-      Property _domainAttribute = feature.getDomainAttribute();
-      Type _type_1 = _domainAttribute.getType();
+      Type _type_1 = feature.getDomainAttribute().getType();
       boolean _equals_1 = Objects.equal(_type_1, null);
       if (_equals_1) {
         String _xifexpression_2 = null;
         Property _umlMetaattribute = feature.getUmlMetaattribute();
         boolean _notEquals = (!Objects.equal(_umlMetaattribute, null));
         if (_notEquals) {
-          Property _umlMetaattribute_1 = feature.getUmlMetaattribute();
-          Type _type_2 = _umlMetaattribute_1.getType();
-          String _name = _type_2.getName();
-          String _plus = ("org.eclipse.uml2.uml." + _name);
-          _xifexpression_2 = _plus;
+          String _name = feature.getUmlMetaattribute().getType().getName();
+          _xifexpression_2 = ("org.eclipse.uml2.uml." + _name);
         } else {
           _xifexpression_2 = "TYPE IS NULL";
         }
@@ -70,9 +52,7 @@ public class GenDomainStructuralFeatureExtensions {
       } else {
         String _xblockexpression = null;
         {
-          Property _domainAttribute_1 = feature.getDomainAttribute();
-          Type _type_3 = _domainAttribute_1.getType();
-          final String type = _type_3.getName();
+          final String type = feature.getDomainAttribute().getType().getName();
           String _xifexpression_3 = null;
           boolean _equals_2 = Objects.equal(type, "UnlimitedNatural");
           if (_equals_2) {
@@ -80,15 +60,13 @@ public class GenDomainStructuralFeatureExtensions {
           } else {
             _xifexpression_3 = type;
           }
-          _xblockexpression = (_xifexpression_3);
+          _xblockexpression = _xifexpression_3;
         }
         _xifexpression_1 = _xblockexpression;
       }
       _xifexpression = _xifexpression_1;
     } else {
-      GenDomainDataType _type_3 = feature.getType();
-      String _javaInterfaceName = this._javaNamingExtensions.javaInterfaceName(_type_3);
-      _xifexpression = _javaInterfaceName;
+      _xifexpression = this._javaNamingExtensions.javaInterfaceName(feature.getType());
     }
     return _xifexpression;
   }
@@ -100,49 +78,38 @@ public class GenDomainStructuralFeatureExtensions {
       GenDomainConcept _target = feature.getTarget();
       boolean _equals = Objects.equal(_target, null);
       if (_equals) {
-        Property _domainAttribute = feature.getDomainAttribute();
-        Type _type = _domainAttribute.getType();
+        Type _type = feature.getDomainAttribute().getType();
         boolean _equals_1 = Objects.equal(_type, null);
         if (_equals_1) {
           result = false;
         } else {
-          Property _domainAttribute_1 = feature.getDomainAttribute();
-          Type _type_1 = _domainAttribute_1.getType();
-          String _name = _type_1.getName();
-          final String _switchValue = _name;
-          boolean _matched = false;
-          if (!_matched) {
-            if (Objects.equal(_switchValue,"Integer")) {
-              _matched=true;
-              result = false;
+          String _name = feature.getDomainAttribute().getType().getName();
+          if (_name != null) {
+            switch (_name) {
+              case "Integer":
+                result = false;
+                break;
+              case "UnlimitedNatural":
+                result = false;
+                break;
+              case "String":
+                result = false;
+                break;
+              case "Boolean":
+                result = false;
+                break;
+              default:
+                result = true;
+                break;
             }
-          }
-          if (!_matched) {
-            if (Objects.equal(_switchValue,"UnlimitedNatural")) {
-              _matched=true;
-              result = false;
-            }
-          }
-          if (!_matched) {
-            if (Objects.equal(_switchValue,"String")) {
-              _matched=true;
-              result = false;
-            }
-          }
-          if (!_matched) {
-            if (Objects.equal(_switchValue,"Boolean")) {
-              _matched=true;
-              result = false;
-            }
-          }
-          if (!_matched) {
+          } else {
             result = true;
           }
         }
       } else {
         result = true;
       }
-      _xblockexpression = (result);
+      _xblockexpression = result;
     }
     return _xblockexpression;
   }
@@ -154,49 +121,38 @@ public class GenDomainStructuralFeatureExtensions {
       GenDomainDataType _type = feature.getType();
       boolean _equals = Objects.equal(_type, null);
       if (_equals) {
-        Property _domainAttribute = feature.getDomainAttribute();
-        Type _type_1 = _domainAttribute.getType();
+        Type _type_1 = feature.getDomainAttribute().getType();
         boolean _equals_1 = Objects.equal(_type_1, null);
         if (_equals_1) {
           result = false;
         } else {
-          Property _domainAttribute_1 = feature.getDomainAttribute();
-          Type _type_2 = _domainAttribute_1.getType();
-          String _name = _type_2.getName();
-          final String _switchValue = _name;
-          boolean _matched = false;
-          if (!_matched) {
-            if (Objects.equal(_switchValue,"Integer")) {
-              _matched=true;
-              result = false;
+          String _name = feature.getDomainAttribute().getType().getName();
+          if (_name != null) {
+            switch (_name) {
+              case "Integer":
+                result = false;
+                break;
+              case "UnlimitedNatural":
+                result = false;
+                break;
+              case "String":
+                result = false;
+                break;
+              case "Boolean":
+                result = false;
+                break;
+              default:
+                result = true;
+                break;
             }
-          }
-          if (!_matched) {
-            if (Objects.equal(_switchValue,"UnlimitedNatural")) {
-              _matched=true;
-              result = false;
-            }
-          }
-          if (!_matched) {
-            if (Objects.equal(_switchValue,"String")) {
-              _matched=true;
-              result = false;
-            }
-          }
-          if (!_matched) {
-            if (Objects.equal(_switchValue,"Boolean")) {
-              _matched=true;
-              result = false;
-            }
-          }
-          if (!_matched) {
+          } else {
             result = true;
           }
         }
       } else {
         result = true;
       }
-      _xblockexpression = (result);
+      _xblockexpression = result;
     }
     return _xblockexpression;
   }
@@ -208,8 +164,7 @@ public class GenDomainStructuralFeatureExtensions {
       GenDomainConcept _target = feature.getTarget();
       boolean _equals = Objects.equal(_target, null);
       if (_equals) {
-        Property _domainAttribute = feature.getDomainAttribute();
-        Type _type = _domainAttribute.getType();
+        Type _type = feature.getDomainAttribute().getType();
         boolean _equals_1 = Objects.equal(_type, null);
         if (_equals_1) {
           Property _umlMetaattribute = feature.getUmlMetaattribute();
@@ -225,7 +180,7 @@ public class GenDomainStructuralFeatureExtensions {
       } else {
         result = false;
       }
-      _xblockexpression = (result);
+      _xblockexpression = result;
     }
     return _xblockexpression;
   }
@@ -237,8 +192,7 @@ public class GenDomainStructuralFeatureExtensions {
       GenDomainDataType _type = feature.getType();
       boolean _equals = Objects.equal(_type, null);
       if (_equals) {
-        Property _domainAttribute = feature.getDomainAttribute();
-        Type _type_1 = _domainAttribute.getType();
+        Type _type_1 = feature.getDomainAttribute().getType();
         boolean _equals_1 = Objects.equal(_type_1, null);
         if (_equals_1) {
           Property _umlMetaattribute = feature.getUmlMetaattribute();
@@ -254,7 +208,7 @@ public class GenDomainStructuralFeatureExtensions {
       } else {
         result = false;
       }
-      _xblockexpression = (result);
+      _xblockexpression = result;
     }
     return _xblockexpression;
   }
@@ -264,42 +218,31 @@ public class GenDomainStructuralFeatureExtensions {
     GenDomainConcept _target = feature.getTarget();
     boolean _equals = Objects.equal(_target, null);
     if (_equals) {
-      Property _domainAttribute = feature.getDomainAttribute();
-      Type _type = _domainAttribute.getType();
+      Type _type = feature.getDomainAttribute().getType();
       boolean _equals_1 = Objects.equal(_type, null);
       if (_equals_1) {
         result = false;
       } else {
-        Property _domainAttribute_1 = feature.getDomainAttribute();
-        Type _type_1 = _domainAttribute_1.getType();
-        String _name = _type_1.getName();
-        final String _switchValue = _name;
-        boolean _matched = false;
-        if (!_matched) {
-          if (Objects.equal(_switchValue,"Integer")) {
-            _matched=true;
-            result = true;
+        String _name = feature.getDomainAttribute().getType().getName();
+        if (_name != null) {
+          switch (_name) {
+            case "Integer":
+              result = true;
+              break;
+            case "UnlimitedNatural":
+              result = true;
+              break;
+            case "String":
+              result = true;
+              break;
+            case "Boolean":
+              result = true;
+              break;
+            default:
+              result = false;
+              break;
           }
-        }
-        if (!_matched) {
-          if (Objects.equal(_switchValue,"UnlimitedNatural")) {
-            _matched=true;
-            result = true;
-          }
-        }
-        if (!_matched) {
-          if (Objects.equal(_switchValue,"String")) {
-            _matched=true;
-            result = true;
-          }
-        }
-        if (!_matched) {
-          if (Objects.equal(_switchValue,"Boolean")) {
-            _matched=true;
-            result = true;
-          }
-        }
-        if (!_matched) {
+        } else {
           result = false;
         }
       }
@@ -314,47 +257,36 @@ public class GenDomainStructuralFeatureExtensions {
       GenDomainDataType _type = feature.getType();
       boolean _equals = Objects.equal(_type, null);
       if (_equals) {
-        Property _domainAttribute = feature.getDomainAttribute();
-        Type _type_1 = _domainAttribute.getType();
+        Type _type_1 = feature.getDomainAttribute().getType();
         boolean _equals_1 = Objects.equal(_type_1, null);
         if (_equals_1) {
           result = false;
         } else {
-          Property _domainAttribute_1 = feature.getDomainAttribute();
-          Type _type_2 = _domainAttribute_1.getType();
-          String _name = _type_2.getName();
-          final String _switchValue = _name;
-          boolean _matched = false;
-          if (!_matched) {
-            if (Objects.equal(_switchValue,"Integer")) {
-              _matched=true;
-              result = true;
+          String _name = feature.getDomainAttribute().getType().getName();
+          if (_name != null) {
+            switch (_name) {
+              case "Integer":
+                result = true;
+                break;
+              case "UnlimitedNatural":
+                result = true;
+                break;
+              case "String":
+                result = true;
+                break;
+              case "Boolean":
+                result = true;
+                break;
+              default:
+                result = false;
+                break;
             }
-          }
-          if (!_matched) {
-            if (Objects.equal(_switchValue,"UnlimitedNatural")) {
-              _matched=true;
-              result = true;
-            }
-          }
-          if (!_matched) {
-            if (Objects.equal(_switchValue,"String")) {
-              _matched=true;
-              result = true;
-            }
-          }
-          if (!_matched) {
-            if (Objects.equal(_switchValue,"Boolean")) {
-              _matched=true;
-              result = true;
-            }
-          }
-          if (!_matched) {
+          } else {
             result = false;
           }
         }
       }
-      _xblockexpression = (result);
+      _xblockexpression = result;
     }
     return _xblockexpression;
   }
@@ -368,19 +300,14 @@ public class GenDomainStructuralFeatureExtensions {
       Property _umlMetaattribute = feature.getUmlMetaattribute();
       boolean _notEquals = (!Objects.equal(_umlMetaattribute, null));
       if (_notEquals) {
-        Property _umlMetaattribute_1 = feature.getUmlMetaattribute();
-        Type _type = _umlMetaattribute_1.getType();
-        String _name = _type.getName();
-        String _plus = ("org.eclipse.uml2.uml." + _name);
-        _xifexpression_1 = _plus;
+        String _name = feature.getUmlMetaattribute().getType().getName();
+        _xifexpression_1 = ("org.eclipse.uml2.uml." + _name);
       } else {
         _xifexpression_1 = "TYPE IS NULL";
       }
       _xifexpression = _xifexpression_1;
     } else {
-      GenDomainConcept _target_1 = feature.getTarget();
-      String _javaInterfaceName = this._javaNamingExtensions.javaInterfaceName(_target_1);
-      _xifexpression = _javaInterfaceName;
+      _xifexpression = this._javaNamingExtensions.javaInterfaceName(feature.getTarget());
     }
     return _xifexpression;
   }
@@ -396,55 +323,43 @@ public class GenDomainStructuralFeatureExtensions {
   }
   
   public String conceptQualifiedName(final GenDomainStructuralFeature feature) {
-    GenDomainConcept _concept = feature.getConcept();
-    NamedElement _domainElement = _concept.getDomainElement();
-    String _qualifiedName = _domainElement.getQualifiedName();
-    return _qualifiedName;
+    return feature.getConcept().getDomainElement().getQualifiedName();
   }
   
   public CharSequence featureAccessorReturnType(final GenDomainStructuralFeature feature) {
     CharSequence _xifexpression = null;
-    Property _domainAttribute = feature.getDomainAttribute();
-    boolean _isMultivalued = _domainAttribute.isMultivalued();
+    boolean _isMultivalued = feature.getDomainAttribute().isMultivalued();
     if (_isMultivalued) {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("java.util.List<");
       String _typeAsString = this.typeAsString(feature);
-      _builder.append(_typeAsString, "");
+      _builder.append(_typeAsString);
       _builder.append(">");
       _xifexpression = _builder;
     } else {
-      String _typeAsString_1 = this.typeAsString(feature);
-      _xifexpression = _typeAsString_1;
+      _xifexpression = this.typeAsString(feature);
     }
     return _xifexpression;
   }
   
   public String featureModifierType(final GenDomainStructuralFeature feature) {
-    String _typeAsString = this.typeAsString(feature);
-    return _typeAsString;
+    return this.typeAsString(feature);
   }
   
   public boolean isConsistentOverride(final GenDomainStructuralFeature feature, final GenDomainStructuralFeature overriden) {
     boolean _xblockexpression = false;
     {
       boolean result = false;
-      Property _domainAttribute = feature.getDomainAttribute();
-      String _name = _domainAttribute.getName();
-      Property _domainAttribute_1 = overriden.getDomainAttribute();
-      String _name_1 = _domainAttribute_1.getName();
-      boolean _equalsIgnoreCase = _name.equalsIgnoreCase(_name_1);
+      boolean _equalsIgnoreCase = feature.getDomainAttribute().getName().equalsIgnoreCase(overriden.getDomainAttribute().getName());
       if (_equalsIgnoreCase) {
-        Property _domainAttribute_2 = feature.getDomainAttribute();
-        final Type featureType = _domainAttribute_2.getType();
-        Property _domainAttribute_3 = overriden.getDomainAttribute();
-        final Type overridenType = _domainAttribute_3.getType();
+        final Type featureType = feature.getDomainAttribute().getType();
+        final Type overridenType = overriden.getDomainAttribute().getType();
         boolean _conformsTo = featureType.conformsTo(overridenType);
         if (_conformsTo) {
           result = true;
         }
       }
-      _xblockexpression = (result);
+      _xblockexpression = result;
     }
     return _xblockexpression;
   }
@@ -453,23 +368,17 @@ public class GenDomainStructuralFeatureExtensions {
     boolean _xblockexpression = false;
     {
       boolean result = false;
-      Property _domainAttribute = feature.getDomainAttribute();
-      String _name = _domainAttribute.getName();
-      Property _domainAttribute_1 = overriden.getDomainAttribute();
-      String _name_1 = _domainAttribute_1.getName();
-      boolean _equalsIgnoreCase = _name.equalsIgnoreCase(_name_1);
+      boolean _equalsIgnoreCase = feature.getDomainAttribute().getName().equalsIgnoreCase(overriden.getDomainAttribute().getName());
       if (_equalsIgnoreCase) {
-        Property _domainAttribute_2 = feature.getDomainAttribute();
-        final Type featureType = _domainAttribute_2.getType();
-        Property _domainAttribute_3 = overriden.getDomainAttribute();
-        final Type overridenType = _domainAttribute_3.getType();
+        final Type featureType = feature.getDomainAttribute().getType();
+        final Type overridenType = overriden.getDomainAttribute().getType();
         boolean _conformsTo = featureType.conformsTo(overridenType);
         boolean _not = (!_conformsTo);
         if (_not) {
           result = true;
         }
       }
-      _xblockexpression = (result);
+      _xblockexpression = result;
     }
     return _xblockexpression;
   }
@@ -484,7 +393,7 @@ public class GenDomainStructuralFeatureExtensions {
       if (_not) {
         result = true;
       }
-      _xblockexpression = (result);
+      _xblockexpression = result;
     }
     return _xblockexpression;
   }
@@ -496,16 +405,14 @@ public class GenDomainStructuralFeatureExtensions {
       final Set<Property> overridenFeature = this.overridenFeatures(feature);
       for (final Property next : overridenFeature) {
         {
-          Property _domainAttribute = feature.getDomainAttribute();
-          final Type featureType = _domainAttribute.getType();
+          final Type featureType = feature.getDomainAttribute().getType();
           final Type overridenType = next.getType();
           boolean _conformsTo = featureType.conformsTo(overridenType);
           boolean _not = (!_conformsTo);
           if (_not) {
             result = true;
           } else {
-            Property _domainAttribute_1 = feature.getDomainAttribute();
-            boolean _isMultivalued = _domainAttribute_1.isMultivalued();
+            boolean _isMultivalued = feature.getDomainAttribute().isMultivalued();
             boolean _isMultivalued_1 = next.isMultivalued();
             boolean _notEquals = (_isMultivalued != _isMultivalued_1);
             if (_notEquals) {
@@ -514,7 +421,7 @@ public class GenDomainStructuralFeatureExtensions {
           }
         }
       }
-      _xblockexpression = (result);
+      _xblockexpression = result;
     }
     return _xblockexpression;
   }
@@ -526,42 +433,35 @@ public class GenDomainStructuralFeatureExtensions {
       final Set<Property> overridenFeature = this.overridenFeatures(feature);
       for (final Property next : overridenFeature) {
         {
-          Property _domainAttribute = feature.getDomainAttribute();
-          final Type featureType = _domainAttribute.getType();
+          final Type featureType = feature.getDomainAttribute().getType();
           final Type overridenType = next.getType();
           boolean _conformsTo = featureType.conformsTo(overridenType);
           boolean _not = (!_conformsTo);
           if (_not) {
-            int _plus = (count + 1);
-            count = _plus;
+            count = (count + 1);
           } else {
-            Property _domainAttribute_1 = feature.getDomainAttribute();
-            boolean _isMultivalued = _domainAttribute_1.isMultivalued();
+            boolean _isMultivalued = feature.getDomainAttribute().isMultivalued();
             boolean _isMultivalued_1 = next.isMultivalued();
             boolean _notEquals = (_isMultivalued != _isMultivalued_1);
             if (_notEquals) {
-              int _plus_1 = (count + 1);
-              count = _plus_1;
+              count = (count + 1);
             }
           }
         }
       }
       String _xifexpression = null;
-      boolean _equals = (count == 1);
-      if (_equals) {
+      if ((count == 1)) {
         _xifexpression = "Override";
       } else {
         String _xifexpression_1 = null;
-        boolean _greaterThan = (count > 1);
-        if (_greaterThan) {
-          String _plus = ("Override" + Integer.valueOf(count));
-          _xifexpression_1 = _plus;
+        if ((count > 1)) {
+          _xifexpression_1 = ("Override" + Integer.valueOf(count));
         } else {
           _xifexpression_1 = "";
         }
         _xifexpression = _xifexpression_1;
       }
-      _xblockexpression = (_xifexpression);
+      _xblockexpression = _xifexpression;
     }
     return _xblockexpression;
   }
@@ -570,32 +470,15 @@ public class GenDomainStructuralFeatureExtensions {
     Set<Property> _xblockexpression = null;
     {
       final GenDomainConcept concept = feature.getConcept();
-      org.eclipse.uml2.uml.Class _domainConcept = concept.getDomainConcept();
-      final EList<Classifier> generals = _domainConcept.allParents();
+      final EList<Classifier> generals = concept.getDomainConcept().allParents();
       final Set<Property> overridenFeatures = Sets.<Property>newHashSet();
       for (final Classifier c : generals) {
-        EList<Property> _attributes = c.getAttributes();
-        final Function1<Feature,Boolean> _function = new Function1<Feature,Boolean>() {
-            public Boolean apply(final Feature f) {
-              boolean _and = false;
-              Property _domainAttribute = feature.getDomainAttribute();
-              boolean _notEquals = (!Objects.equal(f, _domainAttribute));
-              if (!_notEquals) {
-                _and = false;
-              } else {
-                Property _domainAttribute_1 = feature.getDomainAttribute();
-                String _name = _domainAttribute_1.getName();
-                String _name_1 = f.getName();
-                boolean _equalsIgnoreCase = _name.equalsIgnoreCase(_name_1);
-                _and = (_notEquals && _equalsIgnoreCase);
-              }
-              return Boolean.valueOf(_and);
-            }
-          };
-        Iterable<Property> _filter = IterableExtensions.<Property>filter(_attributes, _function);
-        Iterables.<Property>addAll(overridenFeatures, _filter);
+        final Function1<Feature, Boolean> _function = (Feature f) -> {
+          return Boolean.valueOf(((!Objects.equal(f, feature.getDomainAttribute())) && feature.getDomainAttribute().getName().equalsIgnoreCase(f.getName())));
+        };
+        Iterables.<Property>addAll(overridenFeatures, IterableExtensions.<Property>filter(c.getAttributes(), _function));
       }
-      _xblockexpression = (overridenFeatures);
+      _xblockexpression = overridenFeatures;
     }
     return _xblockexpression;
   }
@@ -607,49 +490,30 @@ public class GenDomainStructuralFeatureExtensions {
       final EList<GenDomainConcept> generals = concept.allGenerals();
       final Set<GenDomainStructuralFeature> overridenFeatures = Sets.<GenDomainStructuralFeature>newHashSet();
       for (final GenDomainConcept c : generals) {
-        EList<GenDomainStructuralFeature> _features = c.getFeatures();
-        final Function1<GenDomainStructuralFeature,Boolean> _function = new Function1<GenDomainStructuralFeature,Boolean>() {
-            public Boolean apply(final GenDomainStructuralFeature f) {
-              boolean _and = false;
-              boolean _notEquals = (!Objects.equal(f, feature));
-              if (!_notEquals) {
-                _and = false;
-              } else {
-                String _featureName = GenDomainStructuralFeatureExtensions.this.featureName(feature);
-                String _featureName_1 = GenDomainStructuralFeatureExtensions.this.featureName(f);
-                boolean _equals = _featureName.equals(_featureName_1);
-                _and = (_notEquals && _equals);
-              }
-              return Boolean.valueOf(_and);
-            }
-          };
-        Iterable<GenDomainStructuralFeature> _filter = IterableExtensions.<GenDomainStructuralFeature>filter(_features, _function);
-        Iterables.<GenDomainStructuralFeature>addAll(overridenFeatures, _filter);
+        final Function1<GenDomainStructuralFeature, Boolean> _function = (GenDomainStructuralFeature f) -> {
+          return Boolean.valueOf(((!Objects.equal(f, feature)) && this.featureName(feature).equals(this.featureName(f))));
+        };
+        Iterables.<GenDomainStructuralFeature>addAll(overridenFeatures, IterableExtensions.<GenDomainStructuralFeature>filter(c.getFeatures(), _function));
       }
-      _xblockexpression = (overridenFeatures);
+      _xblockexpression = overridenFeatures;
     }
     return _xblockexpression;
   }
   
   protected String _featureName(final GenDomainAttribute attr) {
-    String _name = attr.getName();
-    return _name;
+    return attr.getName();
   }
   
   protected String _featureName(final GenDomainReference ref) {
-    Property _domainAttribute = ref.getDomainAttribute();
-    String _name = _domainAttribute.getName();
-    return _name;
+    return ref.getDomainAttribute().getName();
   }
   
   protected GenDomainClassifier _featureType(final GenDomainAttribute attr) {
-    GenDomainDataType _type = attr.getType();
-    return _type;
+    return attr.getType();
   }
   
   protected GenDomainClassifier _featureType(final GenDomainReference ref) {
-    GenDomainConcept _target = ref.getTarget();
-    return _target;
+    return ref.getTarget();
   }
   
   public String featureTypeQualifiedName(final GenDomainStructuralFeature feat) {
@@ -661,11 +525,9 @@ public class GenDomainStructuralFeatureExtensions {
       if (_equals) {
         _xifexpression = "";
       } else {
-        NamedElement _domainElement = featureType.getDomainElement();
-        String _qualifiedName = _domainElement.getQualifiedName();
-        _xifexpression = _qualifiedName;
+        _xifexpression = featureType.getDomainElement().getQualifiedName();
       }
-      _xblockexpression = (_xifexpression);
+      _xblockexpression = _xifexpression;
     }
     return _xblockexpression;
   }
@@ -673,22 +535,17 @@ public class GenDomainStructuralFeatureExtensions {
   protected boolean _typeIsAbstract(final GenDomainAttribute attr) {
     boolean _xblockexpression = false;
     {
-      Property _domainAttribute = attr.getDomainAttribute();
-      final Type attrType = _domainAttribute.getType();
+      final Type attrType = attr.getDomainAttribute().getType();
       boolean _switchResult = false;
       boolean _matched = false;
-      if (!_matched) {
-        if (attrType instanceof Classifier) {
-          final Classifier _classifier = (Classifier)attrType;
-          _matched=true;
-          boolean _isAbstract = _classifier.isAbstract();
-          _switchResult = _isAbstract;
-        }
+      if (attrType instanceof Classifier) {
+        _matched=true;
+        _switchResult = ((Classifier)attrType).isAbstract();
       }
       if (!_matched) {
         _switchResult = false;
       }
-      _xblockexpression = (_switchResult);
+      _xblockexpression = _switchResult;
     }
     return _xblockexpression;
   }
@@ -696,22 +553,17 @@ public class GenDomainStructuralFeatureExtensions {
   protected boolean _typeIsAbstract(final GenDomainReference attr) {
     boolean _xblockexpression = false;
     {
-      Property _domainAttribute = attr.getDomainAttribute();
-      final Type attrType = _domainAttribute.getType();
+      final Type attrType = attr.getDomainAttribute().getType();
       boolean _switchResult = false;
       boolean _matched = false;
-      if (!_matched) {
-        if (attrType instanceof Classifier) {
-          final Classifier _classifier = (Classifier)attrType;
-          _matched=true;
-          boolean _isAbstract = _classifier.isAbstract();
-          _switchResult = _isAbstract;
-        }
+      if (attrType instanceof Classifier) {
+        _matched=true;
+        _switchResult = ((Classifier)attrType).isAbstract();
       }
       if (!_matched) {
         _switchResult = false;
       }
-      _xblockexpression = (_switchResult);
+      _xblockexpression = _switchResult;
     }
     return _xblockexpression;
   }

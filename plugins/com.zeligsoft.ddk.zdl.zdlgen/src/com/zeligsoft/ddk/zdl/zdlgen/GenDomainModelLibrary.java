@@ -22,10 +22,10 @@ package com.zeligsoft.ddk.zdl.zdlgen;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModelLibrary#getDomainModelLibrary <em>Domain Model Library</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainModelLibrary()
  * @model
@@ -37,10 +37,10 @@ public interface GenDomainModelLibrary extends GenDomainPackageableElement {
 	 * Returns the value of the '<em><b>Domain Model Library</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainNamedElement#getDomainElement() <em>Domain Element</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Domain Model Library</em>' reference isn't clear,
@@ -51,6 +51,7 @@ public interface GenDomainModelLibrary extends GenDomainPackageableElement {
 	 * @see #setDomainModelLibrary(org.eclipse.uml2.uml.Package)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainModelLibrary_DomainModelLibrary()
 	 * @model required="true" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	org.eclipse.uml2.uml.Package getDomainModelLibrary();

@@ -30,10 +30,10 @@ import com.zeligsoft.ddk.zdl.zdlgen.GenDomainClassifier;
  *
  * <p>
  * The following operations are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlock#allClassifiers(com.zeligsoft.ddk.zdl.zdlgen.GenAllDomainCassifiersMode) <em>All Classifiers</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -53,8 +53,8 @@ public class GenDomainBlockOperations extends GenDomainNamedElementOperations {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList<GenDomainClassifier> allClassifiers(
-			GenDomainBlock genDomainBlock, GenAllDomainCassifiersMode mode) {
+	public static EList<GenDomainClassifier> allClassifiers(GenDomainBlock genDomainBlock,
+			GenAllDomainCassifiersMode mode) {
 
 		EList<GenDomainClassifier> list = new BasicEList<GenDomainClassifier>();
 		list.addAll(genDomainBlock.getClassifiers());

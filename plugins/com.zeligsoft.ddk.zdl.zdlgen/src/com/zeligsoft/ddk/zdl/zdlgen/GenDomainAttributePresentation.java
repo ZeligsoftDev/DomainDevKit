@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainAttributePresentation#isVisible <em>Visible</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainAttributePresentation#isReadOnly <em>Read Only</em>}</li>
@@ -31,7 +32,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainAttributePresentation#getPresentationKind <em>Presentation Kind</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainAttributePresentation#getOrder <em>Order</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainAttributePresentation()
  * @model abstract="true"

@@ -31,16 +31,15 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainDataTypeImpl#getDomainElement <em>Domain Element</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainDataTypeImpl#getDomainDataType <em>Domain Data Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class GenDomainDataTypeImpl extends GenDomainClassifierImpl implements
-		GenDomainDataType {
+public class GenDomainDataTypeImpl extends GenDomainClassifierImpl implements GenDomainDataType {
 
 	/**
 	 * The cached value of the '{@link #getDomainDataType() <em>Domain Data Type</em>}' reference.
@@ -79,7 +78,8 @@ public class GenDomainDataTypeImpl extends GenDomainClassifierImpl implements
 	@Override
 	public NamedElement getDomainElement() {
 		NamedElement domainElement = basicGetDomainElement();
-		return domainElement != null && domainElement.eIsProxy() ? (NamedElement) eResolveProxy((InternalEObject) domainElement)
+		return domainElement != null && domainElement.eIsProxy()
+				? (NamedElement) eResolveProxy((InternalEObject) domainElement)
 				: domainElement;
 	}
 
@@ -108,11 +108,8 @@ public class GenDomainDataTypeImpl extends GenDomainClassifierImpl implements
 			domainDataType = (DataType) eResolveProxy(oldDomainDataType);
 			if (domainDataType != oldDomainDataType) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							ZDLGenPackage.GEN_DOMAIN_DATA_TYPE__DOMAIN_DATA_TYPE,
-							oldDomainDataType, domainDataType));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							ZDLGenPackage.GEN_DOMAIN_DATA_TYPE__DOMAIN_DATA_TYPE, oldDomainDataType, domainDataType));
 			}
 		}
 		return domainDataType;
@@ -137,8 +134,7 @@ public class GenDomainDataTypeImpl extends GenDomainClassifierImpl implements
 		DataType oldDomainDataType = domainDataType;
 		domainDataType = newDomainDataType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_DATA_TYPE__DOMAIN_DATA_TYPE,
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_DATA_TYPE__DOMAIN_DATA_TYPE,
 					oldDomainDataType, domainDataType));
 	}
 
@@ -196,6 +192,8 @@ public class GenDomainDataTypeImpl extends GenDomainClassifierImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case ZDLGenPackage.GEN_DOMAIN_DATA_TYPE__DOMAIN_ELEMENT:
+			return isSetDomainElement();
 		case ZDLGenPackage.GEN_DOMAIN_DATA_TYPE__DOMAIN_DATA_TYPE:
 			return domainDataType != null;
 		}
@@ -209,8 +207,7 @@ public class GenDomainDataTypeImpl extends GenDomainClassifierImpl implements
 	 */
 	@Override
 	public boolean isSetDomainElement() {
-		return super.isSetDomainElement()
-				|| eIsSet(ZDLGenPackage.GEN_DOMAIN_DATA_TYPE__DOMAIN_DATA_TYPE);
+		return super.isSetDomainElement() || eIsSet(ZDLGenPackage.GEN_DOMAIN_DATA_TYPE__DOMAIN_DATA_TYPE);
 	}
 
 } //GenDomainDataTypeImpl

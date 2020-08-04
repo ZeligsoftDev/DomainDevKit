@@ -33,16 +33,16 @@ import org.eclipse.emf.common.notify.NotificationChain;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainPackageableElementImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainPackageableElementImpl#getPackage <em>Package</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class GenDomainPackageableElementImpl extends
-		GenDomainNamedElementImpl implements GenDomainPackageableElement {
+public abstract class GenDomainPackageableElementImpl extends GenDomainNamedElementImpl
+		implements GenDomainPackageableElement {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -71,8 +71,7 @@ public abstract class GenDomainPackageableElementImpl extends
 	@Override
 	public GenDomainObject getOwner() {
 		GenDomainObject owner = basicGetOwner();
-		return owner != null && owner.eIsProxy() ? (GenDomainObject) eResolveProxy((InternalEObject) owner)
-				: owner;
+		return owner != null && owner.eIsProxy() ? (GenDomainObject) eResolveProxy((InternalEObject) owner) : owner;
 	}
 
 	/**
@@ -98,7 +97,7 @@ public abstract class GenDomainPackageableElementImpl extends
 	public GenDomainPackage getPackage() {
 		if (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE)
 			return null;
-		return (GenDomainPackage) eContainer();
+		return (GenDomainPackage) eInternalContainer();
 	}
 
 	/**
@@ -106,10 +105,9 @@ public abstract class GenDomainPackageableElementImpl extends
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetPackage(GenDomainPackage newPackage,
-			NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newPackage,
-				ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE, msgs);
+	public NotificationChain basicSetPackage(GenDomainPackage newPackage, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newPackage, ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE,
+				msgs);
 		return msgs;
 	}
 
@@ -121,23 +119,21 @@ public abstract class GenDomainPackageableElementImpl extends
 	@Override
 	public void setPackage(GenDomainPackage newPackage) {
 		if (newPackage != eInternalContainer()
-				|| (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE && newPackage != null)) {
+				|| (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE
+						&& newPackage != null)) {
 			if (EcoreUtil.isAncestor(this, newPackage))
-				throw new IllegalArgumentException(
-						"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newPackage != null)
-				msgs = ((InternalEObject) newPackage).eInverseAdd(this,
-						ZDLGenPackage.GEN_DOMAIN_PACKAGE__ELEMENT,
+				msgs = ((InternalEObject) newPackage).eInverseAdd(this, ZDLGenPackage.GEN_DOMAIN_PACKAGE__ELEMENT,
 						GenDomainPackage.class, msgs);
 			msgs = basicSetPackage(newPackage, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE,
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE,
 					newPackage, newPackage));
 	}
 
@@ -147,8 +143,7 @@ public abstract class GenDomainPackageableElementImpl extends
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE:
 			if (eInternalContainer() != null)
@@ -164,8 +159,7 @@ public abstract class GenDomainPackageableElementImpl extends
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE:
 			return basicSetPackage(null, msgs);
@@ -179,12 +173,10 @@ public abstract class GenDomainPackageableElementImpl extends
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(
-			NotificationChain msgs) {
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 		case ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE:
-			return eInternalContainer().eInverseRemove(this,
-					ZDLGenPackage.GEN_DOMAIN_PACKAGE__ELEMENT,
+			return eInternalContainer().eInverseRemove(this, ZDLGenPackage.GEN_DOMAIN_PACKAGE__ELEMENT,
 					GenDomainPackage.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
@@ -242,6 +234,8 @@ public abstract class GenDomainPackageableElementImpl extends
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__OWNER:
+			return isSetOwner();
 		case ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE:
 			return getPackage() != null;
 		}
@@ -255,8 +249,7 @@ public abstract class GenDomainPackageableElementImpl extends
 	 */
 	@Override
 	public boolean isSetOwner() {
-		return super.isSetOwner()
-				|| eIsSet(ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE);
+		return super.isSetOwner() || eIsSet(ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE);
 	}
 
 } //GenDomainPackageableElementImpl

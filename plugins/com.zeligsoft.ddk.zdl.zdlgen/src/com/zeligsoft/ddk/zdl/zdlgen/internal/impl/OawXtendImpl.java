@@ -30,10 +30,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.OawXtendImpl#getExtensionFile <em>Extension File</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -97,9 +97,8 @@ public class OawXtendImpl extends ExpressionImpl implements OawXtend {
 		String oldExtensionFile = extensionFile;
 		extensionFile = newExtensionFile;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.OAW_XTEND__EXTENSION_FILE, oldExtensionFile,
-					extensionFile));
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.OAW_XTEND__EXTENSION_FILE,
+					oldExtensionFile, extensionFile));
 	}
 
 	/**
@@ -171,7 +170,7 @@ public class OawXtendImpl extends ExpressionImpl implements OawXtend {
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (extensionFile: "); //$NON-NLS-1$
 		result.append(extensionFile);
 		result.append(')');

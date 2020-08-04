@@ -33,16 +33,15 @@ import org.eclipse.uml2.uml.NamedElement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelLibraryImpl#getDomainElement <em>Domain Element</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelLibraryImpl#getDomainModelLibrary <em>Domain Model Library</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class GenDomainModelLibraryImpl extends GenDomainPackageableElementImpl
-		implements GenDomainModelLibrary {
+public class GenDomainModelLibraryImpl extends GenDomainPackageableElementImpl implements GenDomainModelLibrary {
 
 	/**
 	 * The cached value of the '{@link #getDomainModelLibrary() <em>Domain Model Library</em>}' reference.
@@ -81,7 +80,8 @@ public class GenDomainModelLibraryImpl extends GenDomainPackageableElementImpl
 	@Override
 	public NamedElement getDomainElement() {
 		NamedElement domainElement = basicGetDomainElement();
-		return domainElement != null && domainElement.eIsProxy() ? (NamedElement) eResolveProxy((InternalEObject) domainElement)
+		return domainElement != null && domainElement.eIsProxy()
+				? (NamedElement) eResolveProxy((InternalEObject) domainElement)
 				: domainElement;
 	}
 
@@ -110,11 +110,9 @@ public class GenDomainModelLibraryImpl extends GenDomainPackageableElementImpl
 			domainModelLibrary = (org.eclipse.uml2.uml.Package) eResolveProxy(oldDomainModelLibrary);
 			if (domainModelLibrary != oldDomainModelLibrary) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY__DOMAIN_MODEL_LIBRARY,
-							oldDomainModelLibrary, domainModelLibrary));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY__DOMAIN_MODEL_LIBRARY, oldDomainModelLibrary,
+							domainModelLibrary));
 			}
 		}
 		return domainModelLibrary;
@@ -135,16 +133,13 @@ public class GenDomainModelLibraryImpl extends GenDomainPackageableElementImpl
 	 * @generated
 	 */
 	@Override
-	public void setDomainModelLibrary(
-			org.eclipse.uml2.uml.Package newDomainModelLibrary) {
+	public void setDomainModelLibrary(org.eclipse.uml2.uml.Package newDomainModelLibrary) {
 		org.eclipse.uml2.uml.Package oldDomainModelLibrary = domainModelLibrary;
 		domainModelLibrary = newDomainModelLibrary;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY__DOMAIN_MODEL_LIBRARY,
-					oldDomainModelLibrary, domainModelLibrary));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY__DOMAIN_MODEL_LIBRARY, oldDomainModelLibrary,
+					domainModelLibrary));
 	}
 
 	/**
@@ -201,6 +196,8 @@ public class GenDomainModelLibraryImpl extends GenDomainPackageableElementImpl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY__DOMAIN_ELEMENT:
+			return isSetDomainElement();
 		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY__DOMAIN_MODEL_LIBRARY:
 			return domainModelLibrary != null;
 		}
@@ -214,8 +211,7 @@ public class GenDomainModelLibraryImpl extends GenDomainPackageableElementImpl
 	 */
 	@Override
 	public boolean isSetDomainElement() {
-		return super.isSetDomainElement()
-				|| eIsSet(ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY__DOMAIN_MODEL_LIBRARY);
+		return super.isSetDomainElement() || eIsSet(ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY__DOMAIN_MODEL_LIBRARY);
 	}
 
 } //GenDomainModelLibraryImpl

@@ -38,10 +38,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenDomainBlockReferenceItemProvider extends
-		GenDomainObjectItemProvider implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider,
-		IItemLabelProvider, IItemPropertySource {
+public class GenDomainBlockReferenceItemProvider extends GenDomainObjectItemProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -78,15 +75,11 @@ public class GenDomainBlockReferenceItemProvider extends
 	 */
 	protected void addTargetPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainBlockReference_target_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainBlockReference_target_feature", "_UI_GenDomainBlockReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK_REFERENCE__TARGET,
-						false, false, true, null,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainBlockReference_target_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainBlockReference_target_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainBlockReference_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK_REFERENCE__TARGET, false, false, true, null,
 						getString("_UI_ZDLGeneratorPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
@@ -98,18 +91,14 @@ public class GenDomainBlockReferenceItemProvider extends
 	 * @generated
 	 */
 	protected void addDomainBlockReferencePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainBlockReference_domainBlockReference_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainBlockReference_domainBlockReference_feature", "_UI_GenDomainBlockReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_BLOCK_REFERENCE,
-						false, false, true, null,
-						getString("_UI_DomainPropertyCategory"), //$NON-NLS-1$
-						null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_GenDomainBlockReference_domainBlockReference_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+						"_UI_GenDomainBlockReference_domainBlockReference_feature", "_UI_GenDomainBlockReference_type"), //$NON-NLS-1$ //$NON-NLS-2$
+				ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_BLOCK_REFERENCE, false, false, true, null,
+				getString("_UI_DomainPropertyCategory"), //$NON-NLS-1$
+				null));
 	}
 
 	/**
@@ -120,10 +109,7 @@ public class GenDomainBlockReferenceItemProvider extends
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(
-				object,
-				getResourceLocator().getImage(
-						"full/obj16/GenDomainBlockReference")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/GenDomainBlockReference")); //$NON-NLS-1$
 	}
 
 	/**
@@ -144,8 +130,7 @@ public class GenDomainBlockReferenceItemProvider extends
 		GenDomainBlockReference ref = (GenDomainBlockReference) object;
 
 		if (ref.getTarget() != null) {
-			return getResourceLocator().getString(key,
-					new Object[] { ref.getTarget().getName() });
+			return getResourceLocator().getString(key, new Object[] { ref.getTarget().getName() });
 		}
 
 		return super.getTextForTree(object);
@@ -161,7 +146,6 @@ public class GenDomainBlockReferenceItemProvider extends
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-		super.notifyChanged(notification);
 	}
 
 	/**
@@ -172,8 +156,7 @@ public class GenDomainBlockReferenceItemProvider extends
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

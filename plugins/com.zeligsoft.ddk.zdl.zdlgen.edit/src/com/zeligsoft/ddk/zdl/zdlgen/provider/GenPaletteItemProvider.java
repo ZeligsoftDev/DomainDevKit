@@ -34,6 +34,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.uml2.common.edit.command.SubsetAddCommand;
 import org.eclipse.uml2.common.edit.command.SubsetSupersetReplaceCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSupersetSetCommand;
 import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
 
 import com.zeligsoft.ddk.zdl.zdlgen.GenPalette;
@@ -46,9 +47,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenPaletteItemProvider extends GenPaletteItemItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class GenPaletteItemProvider extends GenPaletteItemItemProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -83,15 +82,13 @@ public class GenPaletteItemProvider extends GenPaletteItemItemProvider
 	 * @generated
 	 */
 	protected void addDrawerPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_GenPalette_drawer_feature"), //$NON-NLS-1$
-				getString("_UI_GenPalette_drawer_description"), //$NON-NLS-1$
-				ZDLGenPackage.Literals.GEN_PALETTE__DRAWER, true, false, true,
-				null, getString("_UI_DiagramEditorPalettePropertyCategory"), //$NON-NLS-1$
-				null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenPalette_drawer_feature"), //$NON-NLS-1$
+						getString("_UI_GenPalette_drawer_description"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_PALETTE__DRAWER, true, false, true, null,
+						getString("_UI_DiagramEditorPalettePropertyCategory"), //$NON-NLS-1$
+						null));
 	}
 
 	/**
@@ -103,12 +100,10 @@ public class GenPaletteItemProvider extends GenPaletteItemItemProvider
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures
-					.add(ZDLGenPackage.Literals.GEN_PALETTE__OWNED_DRAWER);
+			childrenFeatures.add(ZDLGenPackage.Literals.GEN_PALETTE__OWNED_DRAWER);
 		}
 		return childrenFeatures;
 	}
@@ -134,8 +129,7 @@ public class GenPaletteItemProvider extends GenPaletteItemItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/GenPalette")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/GenPalette")); //$NON-NLS-1$
 	}
 
 	/**
@@ -164,8 +158,7 @@ public class GenPaletteItemProvider extends GenPaletteItemItemProvider
 
 		switch (notification.getFeatureID(GenPalette.class)) {
 		case ZDLGenPackage.GEN_PALETTE__OWNED_DRAWER:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), true, false));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -179,12 +172,10 @@ public class GenPaletteItemProvider extends GenPaletteItemItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-				ZDLGenPackage.Literals.GEN_PALETTE__OWNED_DRAWER,
+		newChildDescriptors.add(createChildParameter(ZDLGenPackage.Literals.GEN_PALETTE__OWNED_DRAWER,
 				ZDLGenFactory.eINSTANCE.createGenPaletteDrawer()));
 	}
 
@@ -195,18 +186,13 @@ public class GenPaletteItemProvider extends GenPaletteItemItemProvider
 	 * @generated
 	 */
 	@Override
-	protected Command createAddCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Collection<?> collection, int index) {
+	protected Command createAddCommand(EditingDomain domain, EObject owner, EStructuralFeature feature,
+			Collection<?> collection, int index) {
 		if (feature == ZDLGenPackage.Literals.GEN_PALETTE__OWNED_DRAWER) {
-			return new SubsetAddCommand(
-					domain,
-					owner,
-					feature,
-					new EStructuralFeature[] { ZDLGenPackage.Literals.GEN_PALETTE__DRAWER },
-					collection, index);
+			return new SubsetAddCommand(domain, owner, feature,
+					new EStructuralFeature[] { ZDLGenPackage.Literals.GEN_PALETTE__DRAWER }, collection, index);
 		}
-		return super
-				.createAddCommand(domain, owner, feature, collection, index);
+		return super.createAddCommand(domain, owner, feature, collection, index);
 	}
 
 	/**
@@ -216,47 +202,52 @@ public class GenPaletteItemProvider extends GenPaletteItemItemProvider
 	 * @generated
 	 */
 	@Override
-	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Collection<?> collection) {
+	protected Command createRemoveCommand(EditingDomain domain, EObject owner, EStructuralFeature feature,
+			Collection<?> collection) {
 		if (feature == ZDLGenPackage.Literals.GEN_PALETTE__DRAWER) {
-			return new SupersetRemoveCommand(
-					domain,
-					owner,
-					feature,
-					new EStructuralFeature[] { ZDLGenPackage.Literals.GEN_PALETTE__OWNED_DRAWER },
-					collection);
+			return new SupersetRemoveCommand(domain, owner, feature,
+					new EStructuralFeature[] { ZDLGenPackage.Literals.GEN_PALETTE__OWNED_DRAWER }, collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
 	}
 
 	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject, java.util.Collection)
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object, java.util.Collection)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, EObject value, Collection<?> collection) {
+	protected Command createReplaceCommand(EditingDomain domain, EObject owner, EStructuralFeature feature,
+			Object value, Collection<?> collection) {
 		if (feature == ZDLGenPackage.Literals.GEN_PALETTE__OWNED_DRAWER) {
-			return new SubsetSupersetReplaceCommand(
-					domain,
-					owner,
-					feature,
-					new EStructuralFeature[] { ZDLGenPackage.Literals.GEN_PALETTE__DRAWER },
-					null, value, collection);
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
+					new EStructuralFeature[] { ZDLGenPackage.Literals.GEN_PALETTE__DRAWER }, null, value, collection);
 		}
 		if (feature == ZDLGenPackage.Literals.GEN_PALETTE__DRAWER) {
-			return new SubsetSupersetReplaceCommand(
-					domain,
-					owner,
-					feature,
-					null,
-					new EStructuralFeature[] { ZDLGenPackage.Literals.GEN_PALETTE__OWNED_DRAWER },
-					value, collection);
+			return new SubsetSupersetReplaceCommand(domain, owner, feature, null,
+					new EStructuralFeature[] { ZDLGenPackage.Literals.GEN_PALETTE__OWNED_DRAWER }, value, collection);
 		}
-		return super.createReplaceCommand(domain, owner, feature, value,
-				collection);
+		return super.createReplaceCommand(domain, owner, feature, value, collection);
+	}
+
+	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected Command createSetCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Object value) {
+		if (feature == ZDLGenPackage.Literals.GEN_PALETTE__OWNED_DRAWER) {
+			return new SubsetSupersetSetCommand(domain, owner, feature,
+					new EStructuralFeature[] { ZDLGenPackage.Literals.GEN_PALETTE__DRAWER }, null, value);
+		}
+		if (feature == ZDLGenPackage.Literals.GEN_PALETTE__DRAWER) {
+			return new SubsetSupersetSetCommand(domain, owner, feature, null,
+					new EStructuralFeature[] { ZDLGenPackage.Literals.GEN_PALETTE__OWNED_DRAWER }, value);
+		}
+		return super.createSetCommand(domain, owner, feature, value);
 	}
 
 }

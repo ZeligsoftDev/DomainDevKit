@@ -37,10 +37,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenDomainAttributeItemProvider extends
-		GenDomainStructuralFeatureItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class GenDomainAttributeItemProvider extends GenDomainStructuralFeatureItemProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -76,15 +73,11 @@ public class GenDomainAttributeItemProvider extends
 	 */
 	protected void addTypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainAttribute_type_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainAttribute_type_feature", "_UI_GenDomainAttribute_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_ATTRIBUTE__TYPE,
-						false, false, true, null,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainAttribute_type_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainAttribute_type_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainAttribute_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_ATTRIBUTE__TYPE, false, false, true, null,
 						getString("_UI_ZDLGeneratorPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
@@ -97,8 +90,7 @@ public class GenDomainAttributeItemProvider extends
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/GenDomainAttribute")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/GenDomainAttribute")); //$NON-NLS-1$
 	}
 
 	/**
@@ -124,7 +116,6 @@ public class GenDomainAttributeItemProvider extends
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-		super.notifyChanged(notification);
 	}
 
 	/**
@@ -135,8 +126,7 @@ public class GenDomainAttributeItemProvider extends
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

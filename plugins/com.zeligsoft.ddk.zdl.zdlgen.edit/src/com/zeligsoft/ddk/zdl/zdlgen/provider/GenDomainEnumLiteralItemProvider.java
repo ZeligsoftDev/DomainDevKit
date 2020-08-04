@@ -37,10 +37,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenDomainEnumLiteralItemProvider extends
-		GenDomainNamedElementItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class GenDomainEnumLiteralItemProvider extends GenDomainNamedElementItemProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -76,15 +73,11 @@ public class GenDomainEnumLiteralItemProvider extends
 	 */
 	protected void addDomainEnumLiteralPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainEnumLiteral_domainEnumLiteral_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainEnumLiteral_domainEnumLiteral_feature", "_UI_GenDomainEnumLiteral_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_ENUM_LITERAL__DOMAIN_ENUM_LITERAL,
-						false, false, true, null,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainEnumLiteral_domainEnumLiteral_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+								"_UI_GenDomainEnumLiteral_domainEnumLiteral_feature", "_UI_GenDomainEnumLiteral_type"), //$NON-NLS-1$ //$NON-NLS-2$
+						ZDLGenPackage.Literals.GEN_DOMAIN_ENUM_LITERAL__DOMAIN_ENUM_LITERAL, false, false, true, null,
 						getString("_UI_DomainPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
@@ -97,9 +90,7 @@ public class GenDomainEnumLiteralItemProvider extends
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator()
-						.getImage("full/obj16/GenDomainEnumLiteral")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/GenDomainEnumLiteral")); //$NON-NLS-1$
 	}
 
 	/**
@@ -125,7 +116,6 @@ public class GenDomainEnumLiteralItemProvider extends
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-		super.notifyChanged(notification);
 	}
 
 	/**
@@ -136,8 +126,7 @@ public class GenDomainEnumLiteralItemProvider extends
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

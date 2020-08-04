@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getCategory <em>Category</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getFeatures <em>Feature</em>}</li>
@@ -33,6 +34,7 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getGenerals <em>General</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getReferences <em>Reference</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getAttributes <em>Attribute</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getIconUri <em>Icon Uri</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#isRSMSuppressed <em>Is RSM Suppressed</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#isRSMUIReadOnly <em>Is RSMUI Read Only</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#isRSMPropertiesUIReadOnly <em>Is RSM Properties UI Read Only</em>}</li>
@@ -46,14 +48,12 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getOverrides <em>Override</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getGeneralizations <em>Generalization</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainConcept()
  * @model
  * @generated
  */
-public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget,
-		GenPalettable {
+public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget, GenPalettable {
 
 	/**
 	 * Returns the value of the '<em><b>Category</b></em>' attribute.
@@ -90,10 +90,10 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget,
 	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature#getConcept <em>Concept</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwnedObjects() <em>Owned Object</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Feature</em>' containment reference list isn't clear,
@@ -104,6 +104,7 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget,
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainConcept_Feature()
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature#getConcept
 	 * @model opposite="concept" containment="true" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	EList<GenDomainStructuralFeature> getFeatures();
@@ -130,8 +131,7 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget,
 	 * @see #getFeatures()
 	 * @generated
 	 */
-	GenDomainStructuralFeature getFeature(String name, boolean ignoreCase,
-			EClass eClass);
+	GenDomainStructuralFeature getFeature(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Generalization</b></em>' containment reference list.
@@ -139,10 +139,10 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget,
 	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainGeneralization#getSpecific <em>Specific</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwnedObjects() <em>Owned Object</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Generalization</em>' containment reference list isn't clear,
@@ -153,6 +153,7 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget,
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainConcept_Generalization()
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainGeneralization#getSpecific
 	 * @model opposite="specific" containment="true" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	EList<GenDomainGeneralization> getGeneralizations();
@@ -161,10 +162,10 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget,
 	 * Returns the value of the '<em><b>Domain Concept</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainNamedElement#getDomainElement() <em>Domain Element</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Domain Concept</em>' reference isn't clear,
@@ -175,6 +176,7 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget,
 	 * @see #setDomainConcept(org.eclipse.uml2.uml.Class)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainConcept_DomainConcept()
 	 * @model required="true" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	org.eclipse.uml2.uml.Class getDomainConcept();
@@ -227,8 +229,7 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget,
 	 * @see #getUmlMetaclasses()
 	 * @generated
 	 */
-	org.eclipse.uml2.uml.Class getUmlMetaclass(String name, boolean ignoreCase,
-			EClass eClass);
+	org.eclipse.uml2.uml.Class getUmlMetaclass(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>General</b></em>' reference list.
@@ -274,10 +275,10 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget,
 	 * The list contents are of type {@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainReference}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getFeatures() <em>Feature</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Reference</em>' reference list isn't clear,
@@ -287,6 +288,7 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget,
 	 * @return the value of the '<em>Reference</em>' reference list.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainConcept_Reference()
 	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	EList<GenDomainReference> getReferences();
@@ -319,10 +321,10 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget,
 	 * The list contents are of type {@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainAttribute}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getFeatures() <em>Feature</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Attribute</em>' reference list isn't clear,
@@ -332,6 +334,7 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget,
 	 * @return the value of the '<em>Attribute</em>' reference list.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainConcept_Attribute()
 	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	EList<GenDomainAttribute> getAttributes();
@@ -358,6 +361,28 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget,
 	 * @generated
 	 */
 	GenDomainAttribute getAttribute(String name, boolean ignoreCase);
+
+	/**
+	 * Returns the value of the '<em><b>Icon Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Icon Uri</em>' attribute.
+	 * @see #setIconUri(String)
+	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainConcept_IconUri()
+	 * @model required="true" ordered="false"
+	 * @generated
+	 */
+	String getIconUri();
+
+	/**
+	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getIconUri <em>Icon Uri</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Icon Uri</em>' attribute.
+	 * @see #getIconUri()
+	 * @generated
+	 */
+	void setIconUri(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Is RSM Suppressed</b></em>' attribute.

@@ -30,15 +30,14 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainAttributeImpl#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class GenDomainAttributeImpl extends GenDomainStructuralFeatureImpl
-		implements GenDomainAttribute {
+public class GenDomainAttributeImpl extends GenDomainStructuralFeatureImpl implements GenDomainAttribute {
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
@@ -81,9 +80,8 @@ public class GenDomainAttributeImpl extends GenDomainStructuralFeatureImpl
 			type = (GenDomainDataType) eResolveProxy(oldType);
 			if (type != oldType) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE__TYPE, oldType,
-							type));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE__TYPE,
+							oldType, type));
 			}
 		}
 		return type;
@@ -108,8 +106,8 @@ public class GenDomainAttributeImpl extends GenDomainStructuralFeatureImpl
 		GenDomainDataType oldType = type;
 		type = newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE__TYPE, oldType,
+					type));
 	}
 
 	/**

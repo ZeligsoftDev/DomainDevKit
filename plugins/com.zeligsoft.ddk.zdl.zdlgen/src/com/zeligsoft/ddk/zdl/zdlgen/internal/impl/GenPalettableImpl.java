@@ -28,13 +28,10 @@ import org.eclipse.uml2.common.util.CacheAdapter;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Gen Palettable</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public abstract class GenPalettableImpl extends EObjectImpl implements
-		GenPalettable {
+public abstract class GenPalettableImpl extends EObjectImpl implements GenPalettable {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -63,7 +60,7 @@ public abstract class GenPalettableImpl extends EObjectImpl implements
 	 * @generated
 	 */
 	protected CacheAdapter getCacheAdapter() {
-		return CacheAdapter.getCacheAdapter(this);
+		return CacheAdapter.getInstance();
 	}
 
 } //GenPalettableImpl

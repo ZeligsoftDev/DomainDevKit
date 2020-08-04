@@ -42,9 +42,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenMenuItemItemProvider extends GenDomainObjectItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class GenMenuItemItemProvider extends GenDomainObjectItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -81,17 +79,12 @@ public class GenMenuItemItemProvider extends GenDomainObjectItemProvider
 	 */
 	protected void addDescriptionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenMenuItem_description_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenMenuItem_description_feature", "_UI_GenMenuItem_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_MENU_ITEM__DESCRIPTION,
-						true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_DomainMenuPropertyCategory"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenMenuItem_description_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenMenuItem_description_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenMenuItem_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_MENU_ITEM__DESCRIPTION, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DomainMenuPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -103,17 +96,12 @@ public class GenMenuItemItemProvider extends GenDomainObjectItemProvider
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenMenuItem_name_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenMenuItem_name_feature", "_UI_GenMenuItem_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_MENU_ITEM__NAME, true,
-						false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-						getString("_UI_DomainMenuPropertyCategory"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenMenuItem_name_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenMenuItem_name_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenMenuItem_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_MENU_ITEM__NAME, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DomainMenuPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -125,15 +113,11 @@ public class GenMenuItemItemProvider extends GenDomainObjectItemProvider
 	 */
 	protected void addOverridesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenMenuItem_overrides_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenMenuItem_overrides_feature", "_UI_GenMenuItem_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_MENU_ITEM__OVERRIDES, true,
-						false, true, null,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenMenuItem_overrides_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenMenuItem_overrides_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenMenuItem_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_MENU_ITEM__OVERRIDES, true, false, true, null,
 						getString("_UI_DomainMenuAdvancedPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
@@ -167,8 +151,7 @@ public class GenMenuItemItemProvider extends GenDomainObjectItemProvider
 		menuItemName = (menuItemName == null || menuItemName.length() == 0) ? "???" : menuItemName; //$NON-NLS-1$
 
 		String key = "_Label_" + item.eClass().getName(); //$NON-NLS-1$
-		return getResourceLocator().getString(key,
-				new Object[] { modelName, menuItemName });
+		return getResourceLocator().getString(key, new Object[] { modelName, menuItemName });
 	}
 
 	/**
@@ -185,8 +168,7 @@ public class GenMenuItemItemProvider extends GenDomainObjectItemProvider
 		switch (notification.getFeatureID(GenMenuItem.class)) {
 		case ZDLGenPackage.GEN_MENU_ITEM__DESCRIPTION:
 		case ZDLGenPackage.GEN_MENU_ITEM__NAME:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -200,8 +182,7 @@ public class GenMenuItemItemProvider extends GenDomainObjectItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -209,8 +190,7 @@ public class GenMenuItemItemProvider extends GenDomainObjectItemProvider
 	public String getTextForTree(EObject object) {
 		GenMenuItem mi = (GenMenuItem) object;
 		String key = "_TreeText_" + object.eClass().getName(); //$NON-NLS-1$
-		return getResourceLocator().getString(key,
-				new Object[] { mi.getName() });
+		return getResourceLocator().getString(key, new Object[] { mi.getName() });
 	}
 
 }

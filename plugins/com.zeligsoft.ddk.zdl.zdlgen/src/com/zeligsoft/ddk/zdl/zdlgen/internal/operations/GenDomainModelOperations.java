@@ -30,10 +30,10 @@ import com.zeligsoft.ddk.zdl.zdlgen.GenDomainPackageableElement;
  *
  * <p>
  * The following operations are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel#getDomainBlock(java.lang.String) <em>Get Domain Block</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -52,8 +52,7 @@ public class GenDomainModelOperations extends GenDomainNamedElementOperations {
 	 * 
 	 * @generated NOT
 	 */
-	public static GenDomainBlock getDomainBlock(GenDomainModel genDomainModel,
-			String qualifiedName) {
+	public static GenDomainBlock getDomainBlock(GenDomainModel genDomainModel, String qualifiedName) {
 		GenDomainBlock result;
 
 		String[] path = qualifiedName.split(NamedElement.SEPARATOR);
@@ -62,8 +61,7 @@ public class GenDomainModelOperations extends GenDomainNamedElementOperations {
 
 		if (result == null) {
 			// perhaps the first element of the path is my name?
-			if ((path.length > 0)
-					&& UML2Util.safeEquals(path[0], genDomainModel.getName())) {
+			if ((path.length > 0) && UML2Util.safeEquals(path[0], genDomainModel.getName())) {
 				result = getDomainBlockHelper(genDomainModel, path, 1);
 			}
 		}
@@ -71,8 +69,7 @@ public class GenDomainModelOperations extends GenDomainNamedElementOperations {
 		return result;
 	}
 
-	private static GenDomainBlock getDomainBlockHelper(
-			GenDomainPackage genPackage, String[] path, int start) {
+	private static GenDomainBlock getDomainBlockHelper(GenDomainPackage genPackage, String[] path, int start) {
 		GenDomainBlock result = null;
 
 		GenDomainPackageableElement child;

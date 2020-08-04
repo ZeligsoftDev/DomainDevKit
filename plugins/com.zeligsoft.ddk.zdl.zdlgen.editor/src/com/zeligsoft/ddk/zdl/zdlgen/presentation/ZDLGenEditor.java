@@ -90,6 +90,7 @@ import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -106,10 +107,12 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.dnd.DND;
+import org.eclipse.swt.dnd.FileTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
@@ -148,9 +151,8 @@ import com.zeligsoft.ddk.zdl.zdlgen.provider.ZDLGenItemProviderAdapterFactory;
  * end-user-doc -->
  * @generated
  */
-public class ZDLGenEditor extends MultiPageEditorPart implements
-		IEditingDomainProvider, ISelectionProvider, IMenuListener,
-		IViewerProvider, IGotoMarker {
+public class ZDLGenEditor extends MultiPageEditorPart
+		implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider, IGotoMarker {
 
 	/**
 	 * This keeps track of the editing domain that is used to track all changes to the model.
@@ -191,11 +193,11 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 
 	/**
 	 * This is the property sheet page.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PropertySheetPage propertySheetPage;
+	protected List<PropertySheetPage> propertySheetPages = new ArrayList<PropertySheetPage>();
 
 	/**
 	 * This is the viewer that shadows the selection in the content outline. The
@@ -307,15 +309,13 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 		public void partActivated(IWorkbenchPart p) {
 			if (p instanceof ContentOutline) {
 				if (((ContentOutline) p).getCurrentPage() == contentOutlinePage) {
-					getActionBarContributor()
-							.setActiveEditor(ZDLGenEditor.this);
+					getActionBarContributor().setActiveEditor(ZDLGenEditor.this);
 
 					setCurrentViewer(contentOutlineViewer);
 				}
 			} else if (p instanceof PropertySheet) {
-				if (((PropertySheet) p).getCurrentPage() == propertySheetPage) {
-					getActionBarContributor()
-							.setActiveEditor(ZDLGenEditor.this);
+				if (propertySheetPages.contains(((PropertySheet) p).getCurrentPage())) {
+					getActionBarContributor().setActiveEditor(ZDLGenEditor.this);
 					handleActivate();
 				}
 			} else if (p == ZDLGenEditor.this) {
@@ -386,6 +386,8 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 	 * @generated
 	 */
 	protected EContentAdapter problemIndicationAdapter = new EContentAdapter() {
+		protected boolean dispatching;
+
 		@Override
 		public void notifyChanged(Notification notification) {
 			if (notification.getNotifier() instanceof Resource) {
@@ -394,27 +396,30 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 				case Resource.RESOURCE__ERRORS:
 				case Resource.RESOURCE__WARNINGS: {
 					Resource resource = (Resource) notification.getNotifier();
-					Diagnostic diagnostic = analyzeResourceProblems(resource,
-							null);
+					Diagnostic diagnostic = analyzeResourceProblems(resource, null);
 					if (diagnostic.getSeverity() != Diagnostic.OK) {
 						resourceToDiagnosticMap.put(resource, diagnostic);
 					} else {
 						resourceToDiagnosticMap.remove(resource);
 					}
-
-					if (updateProblemIndication) {
-						getSite().getShell().getDisplay()
-								.asyncExec(new Runnable() {
-									public void run() {
-										updateProblemIndication();
-									}
-								});
-					}
+					dispatchUpdateProblemIndication();
 					break;
 				}
 				}
 			} else {
 				super.notifyChanged(notification);
+			}
+		}
+
+		protected void dispatchUpdateProblemIndication() {
+			if (updateProblemIndication && !dispatching) {
+				dispatching = true;
+				getSite().getShell().getDisplay().asyncExec(new Runnable() {
+					public void run() {
+						dispatching = false;
+						updateProblemIndication();
+					}
+				});
 			}
 		}
 
@@ -426,6 +431,8 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 		@Override
 		protected void unsetTarget(Resource target) {
 			basicUnsetTarget(target);
+			resourceToDiagnosticMap.remove(target);
+			dispatchUpdateProblemIndication();
 		}
 	};
 
@@ -440,22 +447,16 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 			IResourceDelta delta = event.getDelta();
 			try {
 				class ResourceDeltaVisitor implements IResourceDeltaVisitor {
-					protected ResourceSet resourceSet = editingDomain
-							.getResourceSet();
+					protected ResourceSet resourceSet = editingDomain.getResourceSet();
 					protected Collection<Resource> changedResources = new ArrayList<Resource>();
 					protected Collection<Resource> removedResources = new ArrayList<Resource>();
 
 					public boolean visit(IResourceDelta delta) {
 						if (delta.getResource().getType() == IResource.FILE) {
-							if (delta.getKind() == IResourceDelta.REMOVED
-									|| delta.getKind() == IResourceDelta.CHANGED
+							if (delta.getKind() == IResourceDelta.REMOVED || delta.getKind() == IResourceDelta.CHANGED
 									&& delta.getFlags() != IResourceDelta.MARKERS) {
-								Resource resource = resourceSet
-										.getResource(URI
-												.createPlatformResourceURI(
-														delta.getFullPath()
-																.toString(),
-														true), false);
+								Resource resource = resourceSet.getResource(
+										URI.createPlatformResourceURI(delta.getFullPath().toString(), true), false);
 								if (resource != null) {
 									if (delta.getKind() == IResourceDelta.REMOVED) {
 										removedResources.add(resource);
@@ -464,6 +465,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 									}
 								}
 							}
+							return false;
 						}
 
 						return true;
@@ -484,11 +486,9 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 				if (!visitor.getRemovedResources().isEmpty()) {
 					getSite().getShell().getDisplay().asyncExec(new Runnable() {
 						public void run() {
-							removedResources.addAll(visitor
-									.getRemovedResources());
+							removedResources.addAll(visitor.getRemovedResources());
 							if (!isDirty()) {
-								getSite().getPage().closeEditor(
-										ZDLGenEditor.this, false);
+								getSite().getPage().closeEditor(ZDLGenEditor.this, false);
 							}
 						}
 					});
@@ -497,8 +497,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 				if (!visitor.getChangedResources().isEmpty()) {
 					getSite().getShell().getDisplay().asyncExec(new Runnable() {
 						public void run() {
-							changedResources.addAll(visitor
-									.getChangedResources());
+							changedResources.addAll(visitor.getChangedResources());
 							if (getSite().getPage().getActiveEditor() == ZDLGenEditor.this) {
 								handleActivate();
 							}
@@ -551,11 +550,10 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 	 * @generated
 	 */
 	protected void handleChangedResources() {
-		if (!changedResources.isEmpty()
-				&& (!isDirty() || handleDirtyConflict())) {
+		if (!changedResources.isEmpty() && (!isDirty() || handleDirtyConflict())) {
+			ResourceSet resourceSet = editingDomain.getResourceSet();
 			if (isDirty()) {
-				changedResources.addAll(editingDomain.getResourceSet()
-						.getResources());
+				changedResources.addAll(resourceSet.getResources());
 			}
 			editingDomain.getCommandStack().flush();
 
@@ -564,13 +562,10 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 				if (resource.isLoaded()) {
 					resource.unload();
 					try {
-						resource.load(Collections.EMPTY_MAP);
+						resource.load(resourceSet.getLoadOptions());
 					} catch (IOException exception) {
 						if (!resourceToDiagnosticMap.containsKey(resource)) {
-							resourceToDiagnosticMap
-									.put(resource,
-											analyzeResourceProblems(resource,
-													exception));
+							resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
 						}
 					}
 				}
@@ -592,8 +587,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 	 */
 	protected void updateProblemIndication() {
 		if (updateProblemIndication) {
-			BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK,
-					"com.zeligsoft.ddk.zdl.zdlgen.editor", //$NON-NLS-1$
+			BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK, "com.zeligsoft.ddk.zdl.zdlgen.editor", //$NON-NLS-1$
 					0, null, new Object[] { editingDomain.getResourceSet() });
 			for (Diagnostic childDiagnostic : resourceToDiagnosticMap.values()) {
 				if (childDiagnostic.getSeverity() != Diagnostic.OK) {
@@ -602,10 +596,8 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 			}
 
 			int lastEditorPage = getPageCount() - 1;
-			if (lastEditorPage >= 0
-					&& getEditor(lastEditorPage) instanceof ProblemEditorPart) {
-				((ProblemEditorPart) getEditor(lastEditorPage))
-						.setDiagnostic(diagnostic);
+			if (lastEditorPage >= 0 && getEditor(lastEditorPage) instanceof ProblemEditorPart) {
+				((ProblemEditorPart) getEditor(lastEditorPage)).setDiagnostic(diagnostic);
 				if (diagnostic.getSeverity() != Diagnostic.OK) {
 					setActivePage(lastEditorPage);
 				}
@@ -614,8 +606,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 				problemEditorPart.setDiagnostic(diagnostic);
 				problemEditorPart.setMarkerHelper(markerHelper);
 				try {
-					addPage(++lastEditorPage, problemEditorPart,
-							getEditorInput());
+					addPage(++lastEditorPage, problemEditorPart, getEditorInput());
 					setPageText(lastEditorPage, problemEditorPart.getPartName());
 					setActivePage(lastEditorPage);
 					showTabs();
@@ -625,13 +616,10 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 			}
 
 			if (markerHelper.hasMarkers(editingDomain.getResourceSet())) {
-				markerHelper.deleteMarkers(editingDomain.getResourceSet());
-				if (diagnostic.getSeverity() != Diagnostic.OK) {
-					try {
-						markerHelper.createMarkers(diagnostic);
-					} catch (CoreException exception) {
-						ZDLGenEditorPlugin.INSTANCE.log(exception);
-					}
+				try {
+					markerHelper.updateMarkers(diagnostic);
+				} catch (CoreException exception) {
+					ZDLGenEditorPlugin.INSTANCE.log(exception);
 				}
 			}
 		}
@@ -644,8 +632,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 	 * @generated
 	 */
 	protected boolean handleDirtyConflict() {
-		return MessageDialog.openQuestion(getSite().getShell(),
-				getString("_UI_FileConflict_label"), //$NON-NLS-1$
+		return MessageDialog.openQuestion(getSite().getShell(), getString("_UI_FileConflict_label"), //$NON-NLS-1$
 				getString("_WARN_FileConflict")); //$NON-NLS-1$
 	}
 
@@ -669,21 +656,16 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 	protected void initializeEditingDomainGen() {
 		// Create an adapter factory that yields item providers.
 		//
-		adapterFactory = new ComposedAdapterFactory(
-				ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
-		adapterFactory
-				.addAdapterFactory(new ResourceItemProviderAdapterFactory());
-		adapterFactory
-				.addAdapterFactory(new ZDLGenItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new ZDLGenItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new EcoreItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new UMLItemProviderAdapterFactory());
-		adapterFactory
-				.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
-		
+		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
+
 		// Create a transactional editing domain
-		TransactionalEditingDomain domain = GMFEditingDomainFactory
-				.getInstance().createEditingDomain();
+		TransactionalEditingDomain domain = GMFEditingDomainFactory.getInstance().createEditingDomain();
 		domain.setID("com.zeligsoft.ddk.zdl.zdlgen.editor.EditingDomain"); //$NON-NLS-1$
 
 		// Create the command stack that will notify this editor as commands are executed.
@@ -700,15 +682,12 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 
 						// Try to select the affected objects.
 						//
-						Command mostRecentCommand = ((CommandStack) event
-								.getSource()).getMostRecentCommand();
+						Command mostRecentCommand = ((CommandStack) event.getSource()).getMostRecentCommand();
 						if (mostRecentCommand != null) {
-							setSelectionToViewer(mostRecentCommand
-									.getAffectedObjects());
+							setSelectionToViewer(mostRecentCommand.getAffectedObjects());
 						}
-						if (propertySheetPage != null
-								&& !propertySheetPage.getControl().isDisposed()) {
-							propertySheetPage.refresh();
+						if (getPropertySheetPage() != null && !getPropertySheetPage().getControl().isDisposed()) {
+							((PropertySheetPage)getPropertySheetPage()).refresh();
 						}
 					}
 				});
@@ -719,7 +698,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 		//
 		//editingDomain = new AdapterFactoryEditingDomain(adapterFactory,
 		//		commandStack, new HashMap<Resource, Boolean>());
-		editingDomain = (AdapterFactoryEditingDomain)domain;
+		editingDomain = (AdapterFactoryEditingDomain) domain;
 	}
 
 	/**
@@ -729,8 +708,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 	protected void initializeEditingDomain() {
 		initializeEditingDomainGen(); // default behaviour
 
-		TransactionalEditingDomain domain = GMFEditingDomainFactory
-				.getInstance().createEditingDomain();
+		TransactionalEditingDomain domain = GMFEditingDomainFactory.getInstance().createEditingDomain();
 
 		if (domain != null) {
 			for (Adapter next : domain.getResourceSet().eAdapters()) {
@@ -773,8 +751,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 					// Try to select the items in the current content viewer of the editor.
 					//
 					if (currentViewer != null) {
-						currentViewer.setSelection(new StructuredSelection(
-								theSelection.toArray()), true);
+						currentViewer.setSelection(new StructuredSelection(theSelection.toArray()), true);
 					}
 				}
 			};
@@ -798,15 +775,13 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public class ReverseAdapterFactoryContentProvider extends
-			AdapterFactoryContentProvider {
+	public class ReverseAdapterFactoryContentProvider extends AdapterFactoryContentProvider {
 
 		/**
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @generated
 		 */
-		public ReverseAdapterFactoryContentProvider(
-				AdapterFactory adapterFactory) {
+		public ReverseAdapterFactoryContentProvider(AdapterFactory adapterFactory) {
 			super(adapterFactory);
 		}
 
@@ -817,8 +792,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 		@Override
 		public Object[] getElements(Object object) {
 			Object parent = super.getParent(object);
-			return (parent == null ? Collections.EMPTY_SET : Collections
-					.singleton(parent)).toArray();
+			return (parent == null ? Collections.EMPTY_SET : Collections.singleton(parent)).toArray();
 		}
 
 		/**
@@ -828,8 +802,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 		@Override
 		public Object[] getChildren(Object object) {
 			Object parent = super.getParent(object);
-			return (parent == null ? Collections.EMPTY_SET : Collections
-					.singleton(parent)).toArray();
+			return (parent == null ? Collections.EMPTY_SET : Collections.singleton(parent)).toArray();
 		}
 
 		/**
@@ -883,8 +856,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 				selectionChangedListener = new ISelectionChangedListener() {
 					// This just notifies those things that are affected by the section.
 					//
-					public void selectionChanged(
-							SelectionChangedEvent selectionChangedEvent) {
+					public void selectionChanged(SelectionChangedEvent selectionChangedEvent) {
 						setSelection(selectionChangedEvent.getSelection());
 					}
 				};
@@ -893,8 +865,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 			// Stop listening to the old one.
 			//
 			if (currentViewer != null) {
-				currentViewer
-						.removeSelectionChangedListener(selectionChangedListener);
+				currentViewer.removeSelectionChangedListener(selectionChangedListener);
 			}
 
 			// Start listening to the new one.
@@ -909,8 +880,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 
 			// Set the editors selection based on the current viewer's selection.
 			//
-			setSelection(currentViewer == null ? StructuredSelection.EMPTY
-					: currentViewer.getSelection());
+			setSelection(currentViewer == null ? StructuredSelection.EMPTY : currentViewer.getSelection());
 		}
 	}
 
@@ -937,15 +907,13 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 		contextMenu.addMenuListener(this);
 		Menu menu = contextMenu.createContextMenu(viewer.getControl());
 		viewer.getControl().setMenu(menu);
-		getSite().registerContextMenu(contextMenu,
-				new UnwrappingSelectionProvider(viewer));
+		getSite().registerContextMenu(contextMenu, new UnwrappingSelectionProvider(viewer));
 
 		int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
-		Transfer[] transfers = new Transfer[] { LocalTransfer.getInstance() };
-		viewer.addDragSupport(dndOperations, transfers, new ViewerDragAdapter(
-				viewer));
-		viewer.addDropSupport(dndOperations, transfers,
-				new EditingDomainViewerDropAdapter(editingDomain, viewer));
+		Transfer[] transfers = new Transfer[] { LocalTransfer.getInstance(), LocalSelectionTransfer.getTransfer(),
+				FileTransfer.getInstance() };
+		viewer.addDragSupport(dndOperations, transfers, new ViewerDragAdapter(viewer));
+		viewer.addDropSupport(dndOperations, transfers, new EditingDomainViewerDropAdapter(editingDomain, viewer));
 	}
 
 	/**
@@ -962,27 +930,22 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 		try {
 			// Load the resource through the editing domain.
 			//
-			resource = editingDomain.getResourceSet().getResource(resourceURI,
-					true);
+			resource = editingDomain.getResourceSet().getResource(resourceURI, true);
 		} catch (Exception e) {
 			exception = e;
-			resource = editingDomain.getResourceSet().getResource(resourceURI,
-					false);
+			resource = editingDomain.getResourceSet().getResource(resourceURI, false);
 		}
 
 		Diagnostic diagnostic = analyzeResourceProblems(resource, exception);
 		if (diagnostic.getSeverity() != Diagnostic.OK) {
-			resourceToDiagnosticMap.put(resource,
-					analyzeResourceProblems(resource, exception));
+			resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
 		}
-		editingDomain.getResourceSet().eAdapters()
-				.add(problemIndicationAdapter);
+		editingDomain.getResourceSet().eAdapters().add(problemIndicationAdapter);
 
 		// Enable live validation for the resource
 		Collection<Adapter> adapters = resource.eAdapters();
 		boolean found = false;
-		for (Iterator<Adapter> iterator = adapters.iterator(); iterator
-				.hasNext();) {
+		for (Iterator<Adapter> iterator = adapters.iterator(); iterator.hasNext();) {
 			Object obj = iterator.next();
 			if (obj instanceof ZDLGenLiveValidationContentAdapter) {
 				found = true;
@@ -991,8 +954,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 		}
 
 		if (!found) {
-			EContentAdapter liveValidationAdapter = new ZDLGenLiveValidationContentAdapter(
-					this);
+			EContentAdapter liveValidationAdapter = new ZDLGenLiveValidationContentAdapter(this);
 			resource.eAdapters().add(liveValidationAdapter);
 		}
 
@@ -1005,23 +967,18 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Diagnostic analyzeResourceProblems(Resource resource,
-			Exception exception) {
-		if (!resource.getErrors().isEmpty()
-				|| !resource.getWarnings().isEmpty()) {
-			BasicDiagnostic basicDiagnostic = new BasicDiagnostic(
-					Diagnostic.ERROR, "com.zeligsoft.ddk.zdl.zdlgen.editor", //$NON-NLS-1$
-					0, getString(
-							"_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
-					new Object[] { exception == null ? (Object) resource
-							: exception });
+	public Diagnostic analyzeResourceProblems(Resource resource, Exception exception) {
+		boolean hasErrors = !resource.getErrors().isEmpty();
+		if (hasErrors || !resource.getWarnings().isEmpty()) {
+			BasicDiagnostic basicDiagnostic = new BasicDiagnostic(hasErrors ? Diagnostic.ERROR : Diagnostic.WARNING,
+					"com.zeligsoft.ddk.zdl.zdlgen.editor", //$NON-NLS-1$
+					0, getString("_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
+					new Object[] { exception == null ? (Object) resource : exception });
 			basicDiagnostic.merge(EcoreUtil.computeDiagnostic(resource, true));
 			return basicDiagnostic;
 		} else if (exception != null) {
-			return new BasicDiagnostic(Diagnostic.ERROR,
-					"com.zeligsoft.ddk.zdl.zdlgen.editor", //$NON-NLS-1$
-					0, getString(
-							"_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
+			return new BasicDiagnostic(Diagnostic.ERROR, "com.zeligsoft.ddk.zdl.zdlgen.editor", //$NON-NLS-1$
+					0, getString("_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
 					new Object[] { exception });
 		} else {
 			return Diagnostic.OK_INSTANCE;
@@ -1042,13 +999,11 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 		// Only creates the other pages if there is something that can be edited
 		//
 		if (!getEditingDomain().getResourceSet().getResources().isEmpty()
-				&& !(getEditingDomain().getResourceSet().getResources().get(0))
-						.getContents().isEmpty()) {
+				&& !(getEditingDomain().getResourceSet().getResources().get(0)).getContents().isEmpty()) {
 			// Create a page for the selection tree view.
 			//
 			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(),
-						ZDLGenEditor.this) {
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), ZDLGenEditor.this) {
 
 					@Override
 					public Viewer createViewer(Composite composite) {
@@ -1066,21 +1021,16 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 				viewerPane.createControl(getContainer());
 
 				selectionViewer = (TreeViewer) viewerPane.getViewer();
-				selectionViewer
-						.setContentProvider(new AdapterFactoryContentProvider(
-								adapterFactory));
+				selectionViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
 
-				selectionViewer.setLabelProvider(new TreeLabelProvider(
-						adapterFactory));
+				selectionViewer.setLabelProvider(new TreeLabelProvider(adapterFactory));
 				Resource zdlGenResource = editingDomain.getResourceSet()
 						.getResource(EditUIUtil.getURI(getEditorInput()), true);
 				selectionViewer.setInput(zdlGenResource);
-				selectionViewer.setSelection(new StructuredSelection(
-						zdlGenResource), true);
+				selectionViewer.setSelection(new StructuredSelection(zdlGenResource), true);
 				viewerPane.setTitle(zdlGenResource);
 
-				new AdapterFactoryTreeEditor(selectionViewer.getTree(),
-						adapterFactory);
+				new AdapterFactoryTreeEditor(selectionViewer.getTree(), adapterFactory);
 
 				createContextMenuFor(selectionViewer);
 				int pageIndex = addPage(viewerPane.getControl());
@@ -1132,9 +1082,9 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 		if (getPageCount() <= 1) {
 			setPageText(0, ""); //$NON-NLS-1$
 			if (getContainer() instanceof CTabFolder) {
-				((CTabFolder) getContainer()).setTabHeight(1);
 				Point point = getContainer().getSize();
-				getContainer().setSize(point.x, point.y + 6);
+				Rectangle clientArea = getContainer().getClientArea();
+				getContainer().setSize(point.x, 2 * point.y - clientArea.height - clientArea.y);
 			}
 		}
 	}
@@ -1149,9 +1099,9 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 		if (getPageCount() > 1) {
 			setPageText(0, getString("_UI_SelectionPage_label")); //$NON-NLS-1$
 			if (getContainer() instanceof CTabFolder) {
-				((CTabFolder) getContainer()).setTabHeight(SWT.DEFAULT);
 				Point point = getContainer().getSize();
-				getContainer().setSize(point.x, point.y - 6);
+				Rectangle clientArea = getContainer().getClientArea();
+				getContainer().setSize(point.x, clientArea.height + clientArea.y);
 			}
 		}
 	}
@@ -1179,13 +1129,13 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 	 */
 	@SuppressWarnings("rawtypes")
 	@Override
-	public Object getAdapter(Class key) {
+	public <T> T getAdapter(Class<T> key) {
 		if (key.equals(IContentOutlinePage.class)) {
-			return showOutlineView() ? getContentOutlinePage() : null;
+			return showOutlineView() ? key.cast(getContentOutlinePage()) : null;
 		} else if (key.equals(IPropertySheetPage.class)) {
-			return getPropertySheetPage();
+			return key.cast(getPropertySheetPage());
 		} else if (key.equals(IGotoMarker.class)) {
-			return this;
+			return key.cast(this);
 		} else {
 			return super.getAdapter(key);
 		}
@@ -1211,44 +1161,33 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 
 					// Set up the tree viewer.
 					//
-					contentOutlineViewer
-							.setContentProvider(new AdapterFactoryContentProvider(
-									adapterFactory));
-					contentOutlineViewer
-							.setLabelProvider(new TreeLabelProvider(
-									adapterFactory));
-					contentOutlineViewer.setInput(editingDomain
-							.getResourceSet());
+					contentOutlineViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
+					contentOutlineViewer.setLabelProvider(new TreeLabelProvider(adapterFactory));
+					contentOutlineViewer.setInput(editingDomain.getResourceSet());
 
 					// Make sure our popups work.
 					//
 					createContextMenuFor(contentOutlineViewer);
 
-					if (!editingDomain.getResourceSet().getResources()
-							.isEmpty()) {
+					if (!editingDomain.getResourceSet().getResources().isEmpty()) {
 						// Select the root object in the view.
 						//
-						contentOutlineViewer
-								.setSelection(new StructuredSelection(
-										editingDomain.getResourceSet()
-												.getResources().get(0)), true);
+						contentOutlineViewer.setSelection(
+								new StructuredSelection(editingDomain.getResourceSet().getResources().get(0)), true);
 					}
 				}
 
 				@Override
-				public void makeContributions(IMenuManager menuManager,
-						IToolBarManager toolBarManager,
+				public void makeContributions(IMenuManager menuManager, IToolBarManager toolBarManager,
 						IStatusLineManager statusLineManager) {
-					super.makeContributions(menuManager, toolBarManager,
-							statusLineManager);
+					super.makeContributions(menuManager, toolBarManager, statusLineManager);
 					contentOutlineStatusLineManager = statusLineManager;
 				}
 
 				@Override
 				public void setActionBars(IActionBars actionBars) {
 					super.setActionBars(actionBars);
-					getActionBarContributor().shareGlobalActions(this,
-							actionBars);
+					getActionBarContributor().shareGlobalActions(this, actionBars);
 				}
 			}
 
@@ -1256,16 +1195,15 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 
 			// Listen to selection so that we can handle it is a special way.
 			//
-			contentOutlinePage
-					.addSelectionChangedListener(new ISelectionChangedListener() {
+			contentOutlinePage.addSelectionChangedListener(new ISelectionChangedListener() {
 
-						// This ensures that we handle selections correctly.
-						//
-						@Override
-						public void selectionChanged(SelectionChangedEvent event) {
-							handleContentOutlineSelection(event.getSelection());
-						}
-					});
+				// This ensures that we handle selections correctly.
+				//
+				@Override
+				public void selectionChanged(SelectionChangedEvent event) {
+					handleContentOutlineSelection(event.getSelection());
+				}
+			});
 		}
 
 		return contentOutlinePage;
@@ -1278,25 +1216,22 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 	 * @generated
 	 */
 	public IPropertySheetPage getPropertySheetPage() {
-		if (propertySheetPage == null) {
-			propertySheetPage = new ExtendedPropertySheetPage(editingDomain) {
-				@Override
-				public void setSelectionToViewer(List<?> selection) {
-					ZDLGenEditor.this.setSelectionToViewer(selection);
-					ZDLGenEditor.this.setFocus();
-				}
+		PropertySheetPage propertySheetPage = new ExtendedPropertySheetPage(editingDomain,
+				ExtendedPropertySheetPage.Decoration.NONE, null, 0, false) {
+			@Override
+			public void setSelectionToViewer(List<?> selection) {
+				ZDLGenEditor.this.setSelectionToViewer(selection);
+				ZDLGenEditor.this.setFocus();
+			}
 
-				@Override
-				public void setActionBars(IActionBars actionBars) {
-					super.setActionBars(actionBars);
-					getActionBarContributor().shareGlobalActions(this,
-							actionBars);
-				}
-			};
-			propertySheetPage
-					.setPropertySourceProvider(new AdapterFactoryContentProvider(
-							adapterFactory));
-		}
+			@Override
+			public void setActionBars(IActionBars actionBars) {
+				super.setActionBars(actionBars);
+				getActionBarContributor().shareGlobalActions(this, actionBars);
+			}
+		};
+		propertySheetPage.setPropertySourceProvider(new AdapterFactoryContentProvider(adapterFactory));
+		propertySheetPages.add(propertySheetPage);
 
 		return propertySheetPage;
 	}
@@ -1307,10 +1242,8 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 	 * @generated
 	 */
 	public void handleContentOutlineSelection(ISelection selection) {
-		if (currentViewerPane != null && !selection.isEmpty()
-				&& selection instanceof IStructuredSelection) {
-			Iterator<?> selectedElements = ((IStructuredSelection) selection)
-					.iterator();
+		if (currentViewerPane != null && !selection.isEmpty() && selection instanceof IStructuredSelection) {
+			Iterator<?> selectedElements = ((IStructuredSelection) selection).iterator();
 			if (selectedElements.hasNext()) {
 				// Get the first selected element.
 				//
@@ -1327,8 +1260,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 
 					// Set the selection to the widget.
 					//
-					selectionViewer.setSelection(new StructuredSelection(
-							selectionList));
+					selectionViewer.setSelection(new StructuredSelection(selectionList));
 				} else {
 					// Set the input to the widget.
 					//
@@ -1348,8 +1280,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 	 */
 	@Override
 	public boolean isDirty() {
-		return ((BasicCommandStack) editingDomain.getCommandStack())
-				.isSaveNeeded();
+		return ((BasicCommandStack) editingDomain.getCommandStack()).isSaveNeeded();
 	}
 
 	/**
@@ -1362,8 +1293,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 		// Save only resources that have actually changed.
 		//
 		final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
-		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED,
-				Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
+		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
 
 		// Do the work within an operation because this is a long running activity that modifies the workbench.
 		//
@@ -1374,12 +1304,10 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 			public void execute(IProgressMonitor monitor) {
 				// Save the resources to the file system.
 				//
-				for (Resource resource : editingDomain.getResourceSet()
-						.getResources()) {
-					URI normalizedResourceURI = URIConverter.INSTANCE
-							.normalize(resource.getURI());
-					if (normalizedResourceURI.equals(URIConverter.INSTANCE
-							.normalize(EditUIUtil.getURI(getEditorInput())))
+				for (Resource resource : editingDomain.getResourceSet().getResources()) {
+					URI normalizedResourceURI = URIConverter.INSTANCE.normalize(resource.getURI());
+					if (normalizedResourceURI
+							.equals(URIConverter.INSTANCE.normalize(EditUIUtil.getURI(getEditorInput())))
 							&& !editingDomain.isReadOnly(resource)) {
 						try {
 							long timeStamp = resource.getTimeStamp();
@@ -1388,10 +1316,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 								savedResources.add(resource);
 							}
 						} catch (Exception exception) {
-							resourceToDiagnosticMap
-									.put(resource,
-											analyzeResourceProblems(resource,
-													exception));
+							resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
 						}
 					}
 				}
@@ -1402,8 +1327,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 		try {
 			// This runs the options, and shows progress.
 			//
-			new ProgressMonitorDialog(getSite().getShell()).run(true, false,
-					operation);
+			new ProgressMonitorDialog(getSite().getShell()).run(true, false, operation);
 
 			// Refresh the necessary state.
 			//
@@ -1420,7 +1344,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 
 	/**
 	 * This returns whether something has been persisted to the URI of the specified resource.
-	 * The implementation uses the URI converter from the editor's resource set to try to open an input stream. 
+	 * The implementation uses the URI converter from the editor's resource set to try to open an input stream.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
 	 * @generated
@@ -1428,8 +1352,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 	protected boolean isPersisted(Resource resource) {
 		boolean result = false;
 		try {
-			InputStream stream = editingDomain.getResourceSet()
-					.getURIConverter().createInputStream(resource.getURI());
+			InputStream stream = editingDomain.getResourceSet().getURIConverter().createInputStream(resource.getURI());
 			if (stream != null) {
 				result = true;
 				stream.close();
@@ -1465,8 +1388,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 		if (path != null) {
 			IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
 			if (file != null) {
-				doSaveAs(URI.createPlatformResourceURI(file.getFullPath()
-						.toString(), true), new FileEditorInput(file));
+				doSaveAs(URI.createPlatformResourceURI(file.getFullPath().toString(), true), new FileEditorInput(file));
 			}
 		}
 	}
@@ -1479,9 +1401,8 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 		(editingDomain.getResourceSet().getResources().get(0)).setURI(uri);
 		setInputWithNotify(editorInput);
 		setPartName(editorInput.getName());
-		IProgressMonitor progressMonitor = getActionBars()
-				.getStatusLineManager() != null ? getActionBars()
-				.getStatusLineManager().getProgressMonitor()
+		IProgressMonitor progressMonitor = getActionBars().getStatusLineManager() != null
+				? getActionBars().getStatusLineManager().getProgressMonitor()
 				: new NullProgressMonitor();
 		doSave(progressMonitor);
 	}
@@ -1492,22 +1413,9 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 	 */
 	@Override
 	public void gotoMarker(IMarker marker) {
-		try {
-			if (marker.getType().equals(EValidator.MARKER)) {
-				String uriAttribute = marker.getAttribute(
-						EValidator.URI_ATTRIBUTE, null);
-				if (uriAttribute != null) {
-					URI uri = URI.createURI(uriAttribute);
-					EObject eObject = editingDomain.getResourceSet()
-							.getEObject(uri, true);
-					if (eObject != null) {
-						setSelectionToViewer(Collections
-								.singleton(editingDomain.getWrapper(eObject)));
-					}
-				}
-			}
-		} catch (CoreException exception) {
-			ZDLGenEditorPlugin.INSTANCE.log(exception);
+		List<?> targetObjects = markerHelper.getTargetObjects(editingDomain, marker);
+		if (!targetObjects.isEmpty()) {
+			setSelectionToViewer(targetObjects);
 		}
 	}
 
@@ -1524,8 +1432,8 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 		setPartName(editorInput.getName());
 		site.setSelectionProvider(this);
 		site.getPage().addPartListener(partListener);
-		ResourcesPlugin.getWorkspace().addResourceChangeListener(
-				resourceChangeListener, IResourceChangeEvent.POST_CHANGE);
+		ResourcesPlugin.getWorkspace().addResourceChangeListener(resourceChangeListener,
+				IResourceChangeEvent.POST_CHANGE);
 	}
 
 	/**
@@ -1557,8 +1465,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 	 * @generated
 	 */
 	@Override
-	public void removeSelectionChangedListener(
-			ISelectionChangedListener listener) {
+	public void removeSelectionChangedListener(ISelectionChangedListener listener) {
 		selectionChangedListeners.remove(listener);
 	}
 
@@ -1594,32 +1501,26 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 	 * @generated
 	 */
 	public void setStatusLineManager(ISelection selection) {
-		IStatusLineManager statusLineManager = currentViewer != null
-				&& currentViewer == contentOutlineViewer ? contentOutlineStatusLineManager
+		IStatusLineManager statusLineManager = currentViewer != null && currentViewer == contentOutlineViewer
+				? contentOutlineStatusLineManager
 				: getActionBars().getStatusLineManager();
 
 		if (statusLineManager != null) {
 			if (selection instanceof IStructuredSelection) {
-				Collection<?> collection = ((IStructuredSelection) selection)
-						.toList();
+				Collection<?> collection = ((IStructuredSelection) selection).toList();
 				switch (collection.size()) {
 				case 0: {
-					statusLineManager
-							.setMessage(getString("_UI_NoObjectSelected")); //$NON-NLS-1$
+					statusLineManager.setMessage(getString("_UI_NoObjectSelected")); //$NON-NLS-1$
 					break;
 				}
 				case 1: {
-					String text = new AdapterFactoryItemDelegator(
-							adapterFactory).getText(collection.iterator()
-							.next());
-					statusLineManager.setMessage(getString(
-							"_UI_SingleObjectSelected", text)); //$NON-NLS-1$
+					String text = new AdapterFactoryItemDelegator(adapterFactory).getText(collection.iterator().next());
+					statusLineManager.setMessage(getString("_UI_SingleObjectSelected", text)); //$NON-NLS-1$
 					break;
 				}
 				default: {
 					statusLineManager
-							.setMessage(getString(
-									"_UI_MultiObjectSelected", Integer.toString(collection.size()))); //$NON-NLS-1$
+							.setMessage(getString("_UI_MultiObjectSelected", Integer.toString(collection.size()))); //$NON-NLS-1$
 					break;
 				}
 				}
@@ -1658,8 +1559,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 	 */
 	@Override
 	public void menuAboutToShow(IMenuManager menuManager) {
-		((IMenuListener) getEditorSite().getActionBarContributor())
-				.menuAboutToShow(menuManager);
+		((IMenuListener) getEditorSite().getActionBarContributor()).menuAboutToShow(menuManager);
 	}
 
 	/**
@@ -1667,8 +1567,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 	 * @generated
 	 */
 	public EditingDomainActionBarContributor getActionBarContributor() {
-		return (EditingDomainActionBarContributor) getEditorSite()
-				.getActionBarContributor();
+		return (EditingDomainActionBarContributor) getEditorSite().getActionBarContributor();
 	}
 
 	/**
@@ -1695,8 +1594,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 	public void dispose() {
 		updateProblemIndication = false;
 
-		ResourcesPlugin.getWorkspace().removeResourceChangeListener(
-				resourceChangeListener);
+		ResourcesPlugin.getWorkspace().removeResourceChangeListener(resourceChangeListener);
 
 		getSite().getPage().removePartListener(partListener);
 
@@ -1706,7 +1604,7 @@ public class ZDLGenEditor extends MultiPageEditorPart implements
 			getActionBarContributor().setActiveEditor(null);
 		}
 
-		if (propertySheetPage != null) {
+		for (PropertySheetPage propertySheetPage : propertySheetPages) {
 			propertySheetPage.dispose();
 		}
 

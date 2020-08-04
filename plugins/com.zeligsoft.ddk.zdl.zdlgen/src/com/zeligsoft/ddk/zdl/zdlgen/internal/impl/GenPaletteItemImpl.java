@@ -30,16 +30,15 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPaletteItemImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPaletteItemImpl#getDescription <em>Description</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class GenPaletteItemImpl extends GenDomainObjectImpl implements
-		GenPaletteItem {
+public abstract class GenPaletteItemImpl extends GenDomainObjectImpl implements GenPaletteItem {
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -120,8 +119,7 @@ public abstract class GenPaletteItemImpl extends GenDomainObjectImpl implements
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_PALETTE_ITEM__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_PALETTE_ITEM__NAME, oldName, name));
 	}
 
 	/**
@@ -144,8 +142,7 @@ public abstract class GenPaletteItemImpl extends GenDomainObjectImpl implements
 		String oldDescription = description;
 		description = newDescription;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_PALETTE_ITEM__DESCRIPTION,
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_PALETTE_ITEM__DESCRIPTION,
 					oldDescription, description));
 	}
 
@@ -210,11 +207,9 @@ public abstract class GenPaletteItemImpl extends GenDomainObjectImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_PALETTE_ITEM__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case ZDLGenPackage.GEN_PALETTE_ITEM__DESCRIPTION:
-			return DESCRIPTION_EDEFAULT == null ? description != null
-					: !DESCRIPTION_EDEFAULT.equals(description);
+			return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -229,7 +224,7 @@ public abstract class GenPaletteItemImpl extends GenDomainObjectImpl implements
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
 		result.append(", description: "); //$NON-NLS-1$

@@ -8,8 +8,8 @@
     updateClasspath="false" nonNLSMarkers="true" featureMapWrapperInterface="" featureMapWrapperInternalInterface=""
     featureMapWrapperClass="" codeFormatting="true" testsDirectory="/com.zeligsoft.ddk.zdl.zdlgen.test/src"
     testSuiteClass="com.zeligsoft.ddk.zdl.zdlgen.test.AllTests" booleanFlagsField="eFlags"
-    booleanFlagsReservedBits="8" importerID="org.eclipse.uml2.uml.ecore.importer"
-    complianceLevel="5.0" copyrightFields="false" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore platform:/plugin/org.eclipse.uml2.uml/model/UML.genmodel#//uml"
+    booleanFlagsReservedBits="8" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
+    copyrightFields="false" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore platform:/plugin/org.eclipse.uml2.uml/model/UML.genmodel#//uml platform:/plugin/org.eclipse.uml2.types/model/Types.genmodel#//types"
     pluralizedGetters="true" cacheAdapterSupport="true" invariantPrefix="check">
   <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/importer/org.eclipse.uml2.uml.ecore.importer">
     <details key="DUPLICATE_FEATURE_INHERITANCE" value="PROCESS"/>
@@ -29,7 +29,7 @@
     <details key="INVARIANT_CONSTRAINTS" value="PROCESS"/>
     <details key="CAMEL_CASE_NAMES" value="IGNORE"/>
   </genAnnotations>
-  <foreignModel>ZDLGen.merged.uml</foreignModel>
+  <foreignModel>zdlgen.ecore</foreignModel>
   <genPackages xsi:type="genmodel:GenPackage" prefix="ZDLGen" basePackage="com.zeligsoft.ddk.zdl"
       resource="XMI" disposableProviderFactory="true" classPackageSuffix="internal.impl"
       testsPackageSuffix="test" ecorePackage="zdlgen.ecore#/" resourceInterfaces="true"
@@ -220,8 +220,7 @@
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="RSM"
           propertyDescription="Default stereotype properties read-only state for IBM Rational Software Modeler"
           ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainBlock/rsmStereotypesPropertiesUIReadOnly"/>
-      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="zdlgen.ecore#//GenDomainBlock/allClassifiers"
-          cacheAdapterScope="Global">
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="zdlgen.ecore#//GenDomainBlock/allClassifiers">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="zdlgen.ecore#//GenDomainBlock/allClassifiers/mode"/>
       </genOperations>
     </genClasses>
@@ -263,6 +262,7 @@
           propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainConcept/reference"/>
       <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" createChild="false"
           propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainConcept/attribute"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainConcept/iconUri"/>
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="RSM"
           propertyDescription="Whether to suppress the stereotype in IBM Rational Software Modeler.  Unset to inherit block default."
           ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainConcept/isRSMSuppressed"/>

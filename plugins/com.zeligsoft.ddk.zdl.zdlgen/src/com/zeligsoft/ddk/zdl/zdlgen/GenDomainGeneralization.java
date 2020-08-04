@@ -24,12 +24,12 @@ import org.eclipse.uml2.uml.Generalization;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainGeneralization#getSpecific <em>Specific</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainGeneralization#getGeneral <em>General</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainGeneralization#getDomainGeneralization <em>Domain Generalization</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainGeneralization()
  * @model
@@ -94,10 +94,10 @@ public interface GenDomainGeneralization extends GenDomainObject {
 	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getGeneralizations <em>Generalization</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwner() <em>Owner</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Specific</em>' container reference isn't clear,
@@ -109,6 +109,7 @@ public interface GenDomainGeneralization extends GenDomainObject {
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainGeneralization_Specific()
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getGeneralizations
 	 * @model opposite="generalization" required="true" transient="false" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	GenDomainConcept getSpecific();

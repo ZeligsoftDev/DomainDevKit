@@ -35,15 +35,14 @@ import org.eclipse.uml2.common.util.CacheAdapter;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenMenuTargetImpl#getMenu <em>Menu</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class GenMenuTargetImpl extends EObjectImpl implements
-		GenMenuTarget {
+public abstract class GenMenuTargetImpl extends EObjectImpl implements GenMenuTarget {
 	/**
 	 * The cached value of the '{@link #getMenu() <em>Menu</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -85,8 +84,8 @@ public abstract class GenMenuTargetImpl extends EObjectImpl implements
 			menu = (GenMenu) eResolveProxy(oldMenu);
 			if (menu != oldMenu) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ZDLGenPackage.GEN_MENU_TARGET__MENU, oldMenu, menu));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ZDLGenPackage.GEN_MENU_TARGET__MENU,
+							oldMenu, menu));
 			}
 		}
 		return menu;
@@ -111,8 +110,7 @@ public abstract class GenMenuTargetImpl extends EObjectImpl implements
 		GenMenu oldMenu = menu;
 		menu = newMenu;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_MENU_TARGET__MENU, oldMenu, menu));
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_MENU_TARGET__MENU, oldMenu, menu));
 	}
 
 	/**
@@ -183,7 +181,7 @@ public abstract class GenMenuTargetImpl extends EObjectImpl implements
 	 * @generated
 	 */
 	protected CacheAdapter getCacheAdapter() {
-		return CacheAdapter.getCacheAdapter(this);
+		return CacheAdapter.getInstance();
 	}
 
 } //GenMenuTargetImpl

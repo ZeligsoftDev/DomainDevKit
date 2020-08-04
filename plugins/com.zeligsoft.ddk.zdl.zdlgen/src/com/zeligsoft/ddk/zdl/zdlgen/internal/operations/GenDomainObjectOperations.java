@@ -27,10 +27,10 @@ import com.zeligsoft.ddk.zdl.zdlgen.GenModel;
  *
  * <p>
  * The following operations are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getGenModel() <em>Get Gen Model</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

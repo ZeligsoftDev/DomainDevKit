@@ -40,10 +40,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenDomainBlockItemProvider extends
-		GenDomainPackageableElementItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class GenDomainBlockItemProvider extends GenDomainPackageableElementItemProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -84,15 +81,11 @@ public class GenDomainBlockItemProvider extends
 	 */
 	protected void addDomainBlockPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainBlock_domainBlock_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainBlock_domainBlock_feature", "_UI_GenDomainBlock_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK__DOMAIN_BLOCK,
-						false, false, true, null,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainBlock_domainBlock_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainBlock_domainBlock_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainBlock_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK__DOMAIN_BLOCK, false, false, true, null,
 						getString("_UI_DomainPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
@@ -105,15 +98,11 @@ public class GenDomainBlockItemProvider extends
 	 */
 	protected void addImportPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainBlock_import_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainBlock_import_feature", "_UI_GenDomainBlock_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK__IMPORT, false,
-						false, false, null,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainBlock_import_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainBlock_import_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainBlock_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK__IMPORT, false, false, false, null,
 						getString("_UI_ZDLGeneratorPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
@@ -126,15 +115,11 @@ public class GenDomainBlockItemProvider extends
 	 */
 	protected void addMergePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainBlock_merge_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainBlock_merge_feature", "_UI_GenDomainBlock_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK__MERGE, false,
-						false, false, null,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainBlock_merge_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_GenDomainBlock_merge_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_GenDomainBlock_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK__MERGE, false, false, false, null,
 						getString("_UI_ZDLGeneratorPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
@@ -147,16 +132,11 @@ public class GenDomainBlockItemProvider extends
 	 */
 	protected void addRsmStereotypesSuppressedPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainBlock_rsmStereotypesSuppressed_feature"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainBlock_rsmStereotypesSuppressed_feature"), //$NON-NLS-1$
 						getString("_UI_GenDomainBlock_rsmStereotypesSuppressed_description"), //$NON-NLS-1$
-						ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK__RSM_STEREOTYPES_SUPPRESSED,
-						true, false, false,
-						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-						getString("_UI_RSMPropertyCategory"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK__RSM_STEREOTYPES_SUPPRESSED, true, false, false,
+						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_RSMPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -168,16 +148,11 @@ public class GenDomainBlockItemProvider extends
 	 */
 	protected void addRsmStereotypesUIReadOnlyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainBlock_rsmStereotypesUIReadOnly_feature"), //$NON-NLS-1$
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainBlock_rsmStereotypesUIReadOnly_feature"), //$NON-NLS-1$
 						getString("_UI_GenDomainBlock_rsmStereotypesUIReadOnly_description"), //$NON-NLS-1$
-						ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK__RSM_STEREOTYPES_UI_READ_ONLY,
-						true, false, false,
-						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-						getString("_UI_RSMPropertyCategory"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK__RSM_STEREOTYPES_UI_READ_ONLY, true, false, false,
+						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_RSMPropertyCategory"), //$NON-NLS-1$
 						null));
 	}
 
@@ -187,20 +162,14 @@ public class GenDomainBlockItemProvider extends
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addRsmStereotypesPropertiesUIReadOnlyPropertyDescriptor(
-			Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainBlock_rsmStereotypesPropertiesUIReadOnly_feature"), //$NON-NLS-1$
-						getString("_UI_GenDomainBlock_rsmStereotypesPropertiesUIReadOnly_description"), //$NON-NLS-1$
-						ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK__RSM_STEREOTYPES_PROPERTIES_UI_READ_ONLY,
-						true, false, false,
-						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-						getString("_UI_RSMPropertyCategory"), //$NON-NLS-1$
-						null));
+	protected void addRsmStereotypesPropertiesUIReadOnlyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_GenDomainBlock_rsmStereotypesPropertiesUIReadOnly_feature"), //$NON-NLS-1$
+				getString("_UI_GenDomainBlock_rsmStereotypesPropertiesUIReadOnly_description"), //$NON-NLS-1$
+				ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK__RSM_STEREOTYPES_PROPERTIES_UI_READ_ONLY, true, false, false,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_RSMPropertyCategory"), //$NON-NLS-1$
+				null));
 	}
 
 	/**
@@ -212,14 +181,11 @@ public class GenDomainBlockItemProvider extends
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures
-					.add(ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK__CLASSIFIER);
-			childrenFeatures
-					.add(ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK__RELATION);
+			childrenFeatures.add(ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK__CLASSIFIER);
+			childrenFeatures.add(ZDLGenPackage.Literals.GEN_DOMAIN_BLOCK__RELATION);
 		}
 		return childrenFeatures;
 	}
@@ -245,8 +211,7 @@ public class GenDomainBlockItemProvider extends
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/GenDomainBlock")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/GenDomainBlock")); //$NON-NLS-1$
 	}
 
 	/**
@@ -279,13 +244,11 @@ public class GenDomainBlockItemProvider extends
 		case ZDLGenPackage.GEN_DOMAIN_BLOCK__RSM_STEREOTYPES_SUPPRESSED:
 		case ZDLGenPackage.GEN_DOMAIN_BLOCK__RSM_STEREOTYPES_UI_READ_ONLY:
 		case ZDLGenPackage.GEN_DOMAIN_BLOCK__RSM_STEREOTYPES_PROPERTIES_UI_READ_ONLY:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_BLOCK__CLASSIFIER:
 		case ZDLGenPackage.GEN_DOMAIN_BLOCK__RELATION:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), true, false));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -299,8 +262,7 @@ public class GenDomainBlockItemProvider extends
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

@@ -153,6 +153,8 @@ public enum GenDomainAttributePresentationKind implements Enumerator {
 	 * Returns the '<em><b>Gen Domain Attribute Presentation Kind</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static GenDomainAttributePresentationKind get(String literal) {
@@ -169,6 +171,8 @@ public enum GenDomainAttributePresentationKind implements Enumerator {
 	 * Returns the '<em><b>Gen Domain Attribute Presentation Kind</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static GenDomainAttributePresentationKind getByName(String name) {
@@ -185,6 +189,8 @@ public enum GenDomainAttributePresentationKind implements Enumerator {
 	 * Returns the '<em><b>Gen Domain Attribute Presentation Kind</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static GenDomainAttributePresentationKind get(int value) {
@@ -228,8 +234,7 @@ public enum GenDomainAttributePresentationKind implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private GenDomainAttributePresentationKind(int value, String name,
-			String literal) {
+	private GenDomainAttributePresentationKind(int value, String name, String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;

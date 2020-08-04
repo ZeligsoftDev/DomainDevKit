@@ -24,11 +24,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteDrawer#getSpecializes <em>Specializes</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteDrawer#getPalette <em>Palette</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenPaletteDrawer()
  * @model
@@ -67,10 +67,10 @@ public interface GenPaletteDrawer extends GenPaletteToolContainer {
 	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenPalette#getOwnedDrawers <em>Owned Drawer</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwner() <em>Owner</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Palette</em>' container reference isn't clear,
@@ -82,6 +82,7 @@ public interface GenPaletteDrawer extends GenPaletteToolContainer {
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenPaletteDrawer_Palette()
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenPalette#getOwnedDrawers
 	 * @model opposite="ownedDrawer" required="true" transient="false" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	GenPalette getPalette();

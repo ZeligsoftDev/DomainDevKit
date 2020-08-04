@@ -37,10 +37,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GenDomainModelLibraryItemProvider extends
-		GenDomainPackageableElementItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class GenDomainModelLibraryItemProvider extends GenDomainPackageableElementItemProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -75,18 +72,14 @@ public class GenDomainModelLibraryItemProvider extends
 	 * @generated
 	 */
 	protected void addDomainModelLibraryPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_GenDomainModelLibrary_domainModelLibrary_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_GenDomainModelLibrary_domainModelLibrary_feature", "_UI_GenDomainModelLibrary_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						ZDLGenPackage.Literals.GEN_DOMAIN_MODEL_LIBRARY__DOMAIN_MODEL_LIBRARY,
-						false, false, true, null,
-						getString("_UI_DomainPropertyCategory"), //$NON-NLS-1$
-						null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_GenDomainModelLibrary_domainModelLibrary_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_GenDomainModelLibrary_domainModelLibrary_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_GenDomainModelLibrary_type"), //$NON-NLS-1$
+				ZDLGenPackage.Literals.GEN_DOMAIN_MODEL_LIBRARY__DOMAIN_MODEL_LIBRARY, false, false, true, null,
+				getString("_UI_DomainPropertyCategory"), //$NON-NLS-1$
+				null));
 	}
 
 	/**
@@ -97,10 +90,7 @@ public class GenDomainModelLibraryItemProvider extends
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(
-				object,
-				getResourceLocator().getImage(
-						"full/obj16/GenDomainModelLibrary")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/GenDomainModelLibrary")); //$NON-NLS-1$
 	}
 
 	/**
@@ -126,7 +116,6 @@ public class GenDomainModelLibraryItemProvider extends
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-		super.notifyChanged(notification);
 	}
 
 	/**
@@ -137,8 +126,7 @@ public class GenDomainModelLibraryItemProvider extends
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

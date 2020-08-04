@@ -38,18 +38,17 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenAttributeOverrideImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenAttributeOverrideImpl#getOwnedObjects <em>Owned Object</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenAttributeOverrideImpl#getGenModel <em>Gen Model</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenAttributeOverrideImpl#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class GenAttributeOverrideImpl extends
-		GenDomainAttributePresentationImpl implements GenAttributeOverride {
+public class GenAttributeOverrideImpl extends GenDomainAttributePresentationImpl implements GenAttributeOverride {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -97,8 +96,7 @@ public class GenAttributeOverrideImpl extends
 	@Override
 	public GenDomainObject getOwner() {
 		GenDomainObject owner = basicGetOwner();
-		return owner != null && owner.eIsProxy() ? (GenDomainObject) eResolveProxy((InternalEObject) owner)
-				: owner;
+		return owner != null && owner.eIsProxy() ? (GenDomainObject) eResolveProxy((InternalEObject) owner) : owner;
 	}
 
 	/**
@@ -121,25 +119,16 @@ public class GenAttributeOverrideImpl extends
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<GenDomainObject> ownedObjects = (EList<GenDomainObject>) cache
-					.get(eResource,
-							this,
-							ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
+			EList<GenDomainObject> ownedObjects = (EList<GenDomainObject>) cache.get(eResource, this,
+					ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
 			if (ownedObjects == null) {
-				cache.put(
-						eResource,
-						this,
-						ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT,
-						ownedObjects = new DerivedUnionEObjectEList<GenDomainObject>(
-								GenDomainObject.class,
-								this,
-								ZDLGenPackage.GEN_ATTRIBUTE_OVERRIDE__OWNED_OBJECT,
-								null));
+				cache.put(eResource, this, ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT,
+						ownedObjects = new DerivedUnionEObjectEList<GenDomainObject>(GenDomainObject.class, this,
+								ZDLGenPackage.GEN_ATTRIBUTE_OVERRIDE__OWNED_OBJECT, null));
 			}
 			return ownedObjects;
 		}
-		return new DerivedUnionEObjectEList<GenDomainObject>(
-				GenDomainObject.class, this,
+		return new DerivedUnionEObjectEList<GenDomainObject>(GenDomainObject.class, this,
 				ZDLGenPackage.GEN_ATTRIBUTE_OVERRIDE__OWNED_OBJECT, null);
 	}
 
@@ -184,8 +173,8 @@ public class GenAttributeOverrideImpl extends
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_ATTRIBUTE_OVERRIDE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_ATTRIBUTE_OVERRIDE__NAME, oldName,
+					name));
 	}
 
 	/**
@@ -257,8 +246,7 @@ public class GenAttributeOverrideImpl extends
 		case ZDLGenPackage.GEN_ATTRIBUTE_OVERRIDE__GEN_MODEL:
 			return basicGetGenModel() != null;
 		case ZDLGenPackage.GEN_ATTRIBUTE_OVERRIDE__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -317,7 +305,7 @@ public class GenAttributeOverrideImpl extends
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
 		result.append(')');

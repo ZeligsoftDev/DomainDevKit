@@ -42,12 +42,12 @@ import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPaletteImpl#getOwnedObjects <em>Owned Object</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPaletteImpl#getDrawers <em>Drawer</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPaletteImpl#getOwnedDrawers <em>Owned Drawer</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -103,24 +103,16 @@ public class GenPaletteImpl extends GenPaletteItemImpl implements GenPalette {
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<GenDomainObject> ownedObjects = (EList<GenDomainObject>) cache
-					.get(eResource,
-							this,
-							ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
+			EList<GenDomainObject> ownedObjects = (EList<GenDomainObject>) cache.get(eResource, this,
+					ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
 			if (ownedObjects == null) {
-				cache.put(
-						eResource,
-						this,
-						ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT,
-						ownedObjects = new DerivedUnionEObjectEList<GenDomainObject>(
-								GenDomainObject.class, this,
-								ZDLGenPackage.GEN_PALETTE__OWNED_OBJECT,
-								OWNED_OBJECT_ESUBSETS));
+				cache.put(eResource, this, ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT,
+						ownedObjects = new DerivedUnionEObjectEList<GenDomainObject>(GenDomainObject.class, this,
+								ZDLGenPackage.GEN_PALETTE__OWNED_OBJECT, OWNED_OBJECT_ESUBSETS));
 			}
 			return ownedObjects;
 		}
-		return new DerivedUnionEObjectEList<GenDomainObject>(
-				GenDomainObject.class, this,
+		return new DerivedUnionEObjectEList<GenDomainObject>(GenDomainObject.class, this,
 				ZDLGenPackage.GEN_PALETTE__OWNED_OBJECT, OWNED_OBJECT_ESUBSETS);
 	}
 
@@ -142,8 +134,7 @@ public class GenPaletteImpl extends GenPaletteItemImpl implements GenPalette {
 	@Override
 	public EList<GenPaletteDrawer> getDrawers() {
 		if (drawers == null) {
-			drawers = new SubsetSupersetEObjectResolvingEList<GenPaletteDrawer>(
-					GenPaletteDrawer.class, this,
+			drawers = new SubsetSupersetEObjectResolvingEList<GenPaletteDrawer>(GenPaletteDrawer.class, this,
 					ZDLGenPackage.GEN_PALETTE__DRAWER, null, DRAWER_ESUBSETS);
 		}
 		return drawers;
@@ -177,9 +168,7 @@ public class GenPaletteImpl extends GenPaletteItemImpl implements GenPalette {
 	@Override
 	public GenPaletteDrawer getDrawer(String name, boolean ignoreCase) {
 		drawerLoop: for (GenPaletteDrawer drawer : getDrawers()) {
-			if (name != null
-					&& !(ignoreCase ? name.equalsIgnoreCase(drawer.getName())
-							: name.equals(drawer.getName())))
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(drawer.getName()) : name.equals(drawer.getName())))
 				continue drawerLoop;
 			return drawer;
 		}
@@ -195,10 +184,8 @@ public class GenPaletteImpl extends GenPaletteItemImpl implements GenPalette {
 	public EList<GenPaletteDrawer> getOwnedDrawers() {
 		if (ownedDrawers == null) {
 			ownedDrawers = new SubsetSupersetEObjectContainmentWithInverseEList<GenPaletteDrawer>(
-					GenPaletteDrawer.class, this,
-					ZDLGenPackage.GEN_PALETTE__OWNED_DRAWER,
-					OWNED_DRAWER_ESUPERSETS, null,
-					ZDLGenPackage.GEN_PALETTE_DRAWER__PALETTE);
+					GenPaletteDrawer.class, this, ZDLGenPackage.GEN_PALETTE__OWNED_DRAWER, OWNED_DRAWER_ESUPERSETS,
+					null, ZDLGenPackage.GEN_PALETTE_DRAWER__PALETTE);
 		}
 		return ownedDrawers;
 	}
@@ -231,9 +218,8 @@ public class GenPaletteImpl extends GenPaletteItemImpl implements GenPalette {
 	@Override
 	public GenPaletteDrawer getOwnedDrawer(String name, boolean ignoreCase) {
 		ownedDrawerLoop: for (GenPaletteDrawer ownedDrawer : getOwnedDrawers()) {
-			if (name != null
-					&& !(ignoreCase ? name.equalsIgnoreCase(ownedDrawer
-							.getName()) : name.equals(ownedDrawer.getName())))
+			if (name != null && !(ignoreCase ? name.equalsIgnoreCase(ownedDrawer.getName())
+					: name.equals(ownedDrawer.getName())))
 				continue ownedDrawerLoop;
 			return ownedDrawer;
 		}
@@ -247,12 +233,10 @@ public class GenPaletteImpl extends GenPaletteItemImpl implements GenPalette {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_PALETTE__OWNED_DRAWER:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedDrawers())
-					.basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedDrawers()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -263,12 +247,10 @@ public class GenPaletteImpl extends GenPaletteItemImpl implements GenPalette {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_PALETTE__OWNED_DRAWER:
-			return ((InternalEList<?>) getOwnedDrawers()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getOwnedDrawers()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -300,13 +282,11 @@ public class GenPaletteImpl extends GenPaletteItemImpl implements GenPalette {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_PALETTE__DRAWER:
 			getDrawers().clear();
-			getDrawers().addAll(
-					(Collection<? extends GenPaletteDrawer>) newValue);
+			getDrawers().addAll((Collection<? extends GenPaletteDrawer>) newValue);
 			return;
 		case ZDLGenPackage.GEN_PALETTE__OWNED_DRAWER:
 			getOwnedDrawers().clear();
-			getOwnedDrawers().addAll(
-					(Collection<? extends GenPaletteDrawer>) newValue);
+			getOwnedDrawers().addAll((Collection<? extends GenPaletteDrawer>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -338,6 +318,8 @@ public class GenPaletteImpl extends GenPaletteItemImpl implements GenPalette {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case ZDLGenPackage.GEN_PALETTE__OWNED_OBJECT:
+			return isSetOwnedObjects();
 		case ZDLGenPackage.GEN_PALETTE__DRAWER:
 			return drawers != null && !drawers.isEmpty();
 		case ZDLGenPackage.GEN_PALETTE__OWNED_DRAWER:
@@ -353,8 +335,7 @@ public class GenPaletteImpl extends GenPaletteItemImpl implements GenPalette {
 	 */
 	@Override
 	public boolean isSetOwnedObjects() {
-		return super.isSetOwnedObjects()
-				|| eIsSet(ZDLGenPackage.GEN_PALETTE__OWNED_DRAWER);
+		return super.isSetOwnedObjects() || eIsSet(ZDLGenPackage.GEN_PALETTE__OWNED_DRAWER);
 	}
 
 } //GenPaletteImpl

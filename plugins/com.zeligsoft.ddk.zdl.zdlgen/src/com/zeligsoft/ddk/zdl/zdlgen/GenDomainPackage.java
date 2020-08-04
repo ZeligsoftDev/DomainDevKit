@@ -25,11 +25,11 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainPackage#getElements <em>Element</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainPackage#getDomainPackage <em>Domain Package</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainPackage()
  * @model
@@ -43,10 +43,10 @@ public interface GenDomainPackage extends GenDomainPackageableElement {
 	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainPackageableElement#getPackage <em>Package</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwnedObjects() <em>Owned Object</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Element</em>' containment reference list isn't clear,
@@ -57,6 +57,7 @@ public interface GenDomainPackage extends GenDomainPackageableElement {
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainPackage_Element()
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainPackageableElement#getPackage
 	 * @model opposite="package" containment="true"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	EList<GenDomainPackageableElement> getElements();
@@ -83,17 +84,16 @@ public interface GenDomainPackage extends GenDomainPackageableElement {
 	 * @see #getElements()
 	 * @generated
 	 */
-	GenDomainPackageableElement getElement(String name, boolean ignoreCase,
-			EClass eClass);
+	GenDomainPackageableElement getElement(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Domain Package</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainNamedElement#getDomainElement() <em>Domain Element</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Domain Package</em>' reference isn't clear,
@@ -104,6 +104,7 @@ public interface GenDomainPackage extends GenDomainPackageableElement {
 	 * @see #setDomainPackage(org.eclipse.uml2.uml.Package)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainPackage_DomainPackage()
 	 * @model required="true" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	org.eclipse.uml2.uml.Package getDomainPackage();

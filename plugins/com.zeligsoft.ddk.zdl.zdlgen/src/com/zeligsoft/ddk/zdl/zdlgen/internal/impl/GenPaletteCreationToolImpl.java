@@ -38,17 +38,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPaletteCreationToolImpl#getType <em>Type</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPaletteCreationToolImpl#getElementTypeHint <em>Element Type Hint</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPaletteCreationToolImpl#getExpressions <em>Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class GenPaletteCreationToolImpl extends GenPaletteToolImpl implements
-		GenPaletteCreationTool {
+public class GenPaletteCreationToolImpl extends GenPaletteToolImpl implements GenPaletteCreationTool {
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
@@ -122,8 +121,7 @@ public class GenPaletteCreationToolImpl extends GenPaletteToolImpl implements
 			if (type != oldType) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ZDLGenPackage.GEN_PALETTE_CREATION_TOOL__TYPE,
-							oldType, type));
+							ZDLGenPackage.GEN_PALETTE_CREATION_TOOL__TYPE, oldType, type));
 			}
 		}
 		return type;
@@ -148,9 +146,8 @@ public class GenPaletteCreationToolImpl extends GenPaletteToolImpl implements
 		GenPalettable oldType = type;
 		type = newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_PALETTE_CREATION_TOOL__TYPE, oldType,
-					type));
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_PALETTE_CREATION_TOOL__TYPE,
+					oldType, type));
 	}
 
 	/**
@@ -174,8 +171,7 @@ public class GenPaletteCreationToolImpl extends GenPaletteToolImpl implements
 		elementTypeHint = newElementTypeHint;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_PALETTE_CREATION_TOOL__ELEMENT_TYPE_HINT,
-					oldElementTypeHint, elementTypeHint));
+					ZDLGenPackage.GEN_PALETTE_CREATION_TOOL__ELEMENT_TYPE_HINT, oldElementTypeHint, elementTypeHint));
 	}
 
 	/**
@@ -186,8 +182,7 @@ public class GenPaletteCreationToolImpl extends GenPaletteToolImpl implements
 	@Override
 	public EList<Expression> getExpressions() {
 		if (expressions == null) {
-			expressions = new EObjectContainmentEList<Expression>(
-					Expression.class, this,
+			expressions = new EObjectContainmentEList<Expression>(Expression.class, this,
 					ZDLGenPackage.GEN_PALETTE_CREATION_TOOL__EXPRESSION);
 		}
 		return expressions;
@@ -199,12 +194,10 @@ public class GenPaletteCreationToolImpl extends GenPaletteToolImpl implements
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_PALETTE_CREATION_TOOL__EXPRESSION:
-			return ((InternalEList<?>) getExpressions()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getExpressions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -246,8 +239,7 @@ public class GenPaletteCreationToolImpl extends GenPaletteToolImpl implements
 			return;
 		case ZDLGenPackage.GEN_PALETTE_CREATION_TOOL__EXPRESSION:
 			getExpressions().clear();
-			getExpressions()
-					.addAll((Collection<? extends Expression>) newValue);
+			getExpressions().addAll((Collection<? extends Expression>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -303,7 +295,7 @@ public class GenPaletteCreationToolImpl extends GenPaletteToolImpl implements
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (elementTypeHint: "); //$NON-NLS-1$
 		result.append(elementTypeHint);
 		result.append(')');

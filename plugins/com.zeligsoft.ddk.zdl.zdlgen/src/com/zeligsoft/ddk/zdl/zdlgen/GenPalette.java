@@ -24,11 +24,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenPalette#getOwnedDrawers <em>Owned Drawer</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenPalette#getDrawers <em>Drawer</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenPalette()
  * @model
@@ -42,11 +42,11 @@ public interface GenPalette extends GenPaletteItem {
 	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteDrawer#getPalette <em>Palette</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenPalette#getDrawers() <em>Drawer</em>}'</li>
 	 *   <li>'{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwnedObjects() <em>Owned Object</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Drawer</em>' containment reference list isn't clear,
@@ -57,6 +57,7 @@ public interface GenPalette extends GenPaletteItem {
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenPalette_OwnedDrawer()
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenPaletteDrawer#getPalette
 	 * @model opposite="palette" containment="true" ordered="false"
+	 *        annotation="subsets"
 	 * @generated
 	 */
 	EList<GenPaletteDrawer> getOwnedDrawers();
