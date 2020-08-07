@@ -388,6 +388,7 @@
           propertyCategory="Menu model" propertySortChoices="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainSpecialization/includedUMLMenus"/>
       <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
           createChild="false" propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainSpecialization/domainBlock"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainSpecialization/elementtypeConfigurationContainerUri"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="zdlgen.ecore#//GenDomainSpecialization/getUniqueName">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="zdlgen.ecore#//GenDomainSpecialization/getUniqueName/classifier"/>
       </genOperations>

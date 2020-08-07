@@ -67,6 +67,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.internal.operations.GenDomainSpecializationO
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainSpecializationImpl#getExcludedPaletteItems <em>Excluded Palette Item</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainSpecializationImpl#getIncludedUMLMeni <em>Included UML Menus</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainSpecializationImpl#getDomainBlocks <em>Domain Block</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainSpecializationImpl#getElementtypeConfigurationContainerUri <em>Elementtype Configuration Container Uri</em>}</li>
  * </ul>
  *
  * @generated
@@ -304,6 +305,26 @@ public class GenDomainSpecializationImpl extends GenDomainPackageableElementImpl
 	protected EList<GenDomainBlockReference> domainBlocks;
 
 	/**
+	 * The default value of the '{@link #getElementtypeConfigurationContainerUri() <em>Elementtype Configuration Container Uri</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getElementtypeConfigurationContainerUri()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ELEMENTTYPE_CONFIGURATION_CONTAINER_URI_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getElementtypeConfigurationContainerUri() <em>Elementtype Configuration Container Uri</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getElementtypeConfigurationContainerUri()
+	 * @generated
+	 * @ordered
+	 */
+	protected String elementtypeConfigurationContainerUri = ELEMENTTYPE_CONFIGURATION_CONTAINER_URI_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -397,6 +418,29 @@ public class GenDomainSpecializationImpl extends GenDomainPackageableElementImpl
 					ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION);
 		}
 		return domainBlocks;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getElementtypeConfigurationContainerUri() {
+		return elementtypeConfigurationContainerUri;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setElementtypeConfigurationContainerUri(String newElementtypeConfigurationContainerUri) {
+		String oldElementtypeConfigurationContainerUri = elementtypeConfigurationContainerUri;
+		elementtypeConfigurationContainerUri = newElementtypeConfigurationContainerUri;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__ELEMENTTYPE_CONFIGURATION_CONTAINER_URI,
+					oldElementtypeConfigurationContainerUri, elementtypeConfigurationContainerUri));
 	}
 
 	/**
@@ -894,6 +938,8 @@ public class GenDomainSpecializationImpl extends GenDomainPackageableElementImpl
 			return getIncludedUMLMeni();
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK:
 			return getDomainBlocks();
+		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__ELEMENTTYPE_CONFIGURATION_CONTAINER_URI:
+			return getElementtypeConfigurationContainerUri();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -953,6 +999,9 @@ public class GenDomainSpecializationImpl extends GenDomainPackageableElementImpl
 			getDomainBlocks().clear();
 			getDomainBlocks().addAll((Collection<? extends GenDomainBlockReference>) newValue);
 			return;
+		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__ELEMENTTYPE_CONFIGURATION_CONTAINER_URI:
+			setElementtypeConfigurationContainerUri((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1007,6 +1056,9 @@ public class GenDomainSpecializationImpl extends GenDomainPackageableElementImpl
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK:
 			getDomainBlocks().clear();
 			return;
+		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__ELEMENTTYPE_CONFIGURATION_CONTAINER_URI:
+			setElementtypeConfigurationContainerUri(ELEMENTTYPE_CONFIGURATION_CONTAINER_URI_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1059,6 +1111,10 @@ public class GenDomainSpecializationImpl extends GenDomainPackageableElementImpl
 			return includedUMLMeni != null && !includedUMLMeni.isEmpty();
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK:
 			return domainBlocks != null && !domainBlocks.isEmpty();
+		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__ELEMENTTYPE_CONFIGURATION_CONTAINER_URI:
+			return ELEMENTTYPE_CONFIGURATION_CONTAINER_URI_EDEFAULT == null
+					? elementtypeConfigurationContainerUri != null
+					: !ELEMENTTYPE_CONFIGURATION_CONTAINER_URI_EDEFAULT.equals(elementtypeConfigurationContainerUri);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1092,6 +1148,8 @@ public class GenDomainSpecializationImpl extends GenDomainPackageableElementImpl
 		result.append(rhapsodyJavaProject);
 		result.append(", rhapsodyJDTJavaLibrary: "); //$NON-NLS-1$
 		result.append(rhapsodyJDTJavaLibrary);
+		result.append(", elementtypeConfigurationContainerUri: "); //$NON-NLS-1$
+		result.append(elementtypeConfigurationContainerUri);
 		result.append(')');
 		return result.toString();
 	}

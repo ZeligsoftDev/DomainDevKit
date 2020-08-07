@@ -26,7 +26,9 @@ Require-Bundle: com.zeligsoft.ddk.zdl.zdlgen;bundle-version="[1.4.0,2.0.0)",
  org.eclipse.jface,
  org.eclipse.ui.ide,
  org.eclipse.gmf.runtime.common.core,
- org.eclipse.emf.workspace
+ org.eclipse.emf.workspace,
+ org.eclipse.papyrus.uml.types.core;bundle-version="4.0.0",
+ org.eclipse.papyrus.infra.types;bundle-version="4.0.0"
 Bundle-Activator: com.zeligsoft.ddk.zdlgen2umlprofile.Activator
 Export-Package: com.zeligsoft.ddk.zdlgen2umlprofile,
  com.zeligsoft.ddk.zdlgen2umlprofile.adapter.rsm.extensions,

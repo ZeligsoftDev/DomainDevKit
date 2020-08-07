@@ -436,6 +436,8 @@
         upperBound="-1" eType="#//GenDomainBlockReference" containment="true" eOpposite="#//GenDomainBlockReference/domainSpecialization">
       <eAnnotations source="subsets" references="#//GenDomainObject/ownedObject"/>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="elementtypeConfigurationContainerUri"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GenDomainModelLibraryReference" eSuperTypes="#//GenDomainObject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" ordered="false"

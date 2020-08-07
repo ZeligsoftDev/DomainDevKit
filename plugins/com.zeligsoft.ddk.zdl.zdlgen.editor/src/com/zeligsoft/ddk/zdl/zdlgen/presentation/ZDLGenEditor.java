@@ -687,7 +687,7 @@ public class ZDLGenEditor extends MultiPageEditorPart
 							setSelectionToViewer(mostRecentCommand.getAffectedObjects());
 						}
 						if (getPropertySheetPage() != null && !getPropertySheetPage().getControl().isDisposed()) {
-							((PropertySheetPage)getPropertySheetPage()).refresh();
+							((PropertySheetPage) getPropertySheetPage()).refresh();
 						}
 					}
 				});

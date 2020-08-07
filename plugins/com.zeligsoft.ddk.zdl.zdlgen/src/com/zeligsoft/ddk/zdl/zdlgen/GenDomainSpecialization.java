@@ -42,6 +42,7 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getExcludedPaletteItems <em>Excluded Palette Item</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getIncludedUMLMeni <em>Included UML Menus</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getDomainBlocks <em>Domain Block</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getElementtypeConfigurationContainerUri <em>Elementtype Configuration Container Uri</em>}</li>
  * </ul>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainSpecialization()
@@ -74,6 +75,28 @@ public interface GenDomainSpecialization extends GenDomainPackageableElement {
 	 * @generated
 	 */
 	EList<GenDomainBlockReference> getDomainBlocks();
+
+	/**
+	 * Returns the value of the '<em><b>Elementtype Configuration Container Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Elementtype Configuration Container Uri</em>' attribute.
+	 * @see #setElementtypeConfigurationContainerUri(String)
+	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainSpecialization_ElementtypeConfigurationContainerUri()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getElementtypeConfigurationContainerUri();
+
+	/**
+	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getElementtypeConfigurationContainerUri <em>Elementtype Configuration Container Uri</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Elementtype Configuration Container Uri</em>' attribute.
+	 * @see #getElementtypeConfigurationContainerUri()
+	 * @generated
+	 */
+	void setElementtypeConfigurationContainerUri(String value);
 
 	/**
 	 * <!-- begin-user-doc -->

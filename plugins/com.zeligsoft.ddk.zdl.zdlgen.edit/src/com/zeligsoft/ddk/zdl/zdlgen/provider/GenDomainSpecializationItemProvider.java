@@ -80,6 +80,7 @@ public class GenDomainSpecializationItemProvider extends GenDomainPackageableEle
 			addRhapsodyJDTJavaLibraryPropertyDescriptor(object);
 			addExcludedPaletteItemPropertyDescriptor(object);
 			addIncludedUMLMenusPropertyDescriptor(object);
+			addElementtypeConfigurationContainerUriPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -371,6 +372,23 @@ public class GenDomainSpecializationItemProvider extends GenDomainPackageableEle
 	}
 
 	/**
+	 * This adds a property descriptor for the Elementtype Configuration Container Uri feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addElementtypeConfigurationContainerUriPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_GenDomainSpecialization_elementtypeConfigurationContainerUri_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+						"_UI_GenDomainSpecialization_elementtypeConfigurationContainerUri_feature", //$NON-NLS-1$
+						"_UI_GenDomainSpecialization_type"), //$NON-NLS-1$
+				ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__ELEMENTTYPE_CONFIGURATION_CONTAINER_URI, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -446,6 +464,7 @@ public class GenDomainSpecializationItemProvider extends GenDomainPackageableEle
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__CODE_GEN_TARGET:
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__RHAPSODY_JAVA_PROJECT:
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__RHAPSODY_JDT_JAVA_LIBRARY:
+		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__ELEMENTTYPE_CONFIGURATION_CONTAINER_URI:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_MODEL_LIBRARY:

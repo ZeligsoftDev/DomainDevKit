@@ -1845,6 +1845,15 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getGenDomainSpecialization_ElementtypeConfigurationContainerUri() {
+		return (EAttribute) genDomainSpecializationEClass.getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EClass getGenDomainModelLibraryReference() {
 		return genDomainModelLibraryReferenceEClass;
@@ -2464,6 +2473,8 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		createEReference(genDomainSpecializationEClass, GEN_DOMAIN_SPECIALIZATION__EXCLUDED_PALETTE_ITEM);
 		createEReference(genDomainSpecializationEClass, GEN_DOMAIN_SPECIALIZATION__INCLUDED_UML_MENUS);
 		createEReference(genDomainSpecializationEClass, GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK);
+		createEAttribute(genDomainSpecializationEClass,
+				GEN_DOMAIN_SPECIALIZATION__ELEMENTTYPE_CONFIGURATION_CONTAINER_URI);
 
 		genDomainModelLibraryReferenceEClass = createEClass(GEN_DOMAIN_MODEL_LIBRARY_REFERENCE);
 		createEReference(genDomainModelLibraryReferenceEClass, GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__TARGET);
@@ -3065,6 +3076,9 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 				this.getGenDomainBlockReference_DomainSpecialization(), "domainBlock", null, 0, -1, //$NON-NLS-1$
 				GenDomainSpecialization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getGenDomainSpecialization_ElementtypeConfigurationContainerUri(), ecorePackage.getEString(),
+				"elementtypeConfigurationContainerUri", null, 1, 1, GenDomainSpecialization.class, !IS_TRANSIENT, //$NON-NLS-1$
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(genDomainSpecializationEClass, ecorePackage.getEString(), "getUniqueName", 1, 1, IS_UNIQUE, //$NON-NLS-1$
 				!IS_ORDERED);

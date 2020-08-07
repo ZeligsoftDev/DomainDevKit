@@ -15,7 +15,9 @@
  *******************************************************************************/
 package com.zeligsoft.ddk.zdlgen2umlprofile.ui.actions;
 
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,19 +36,33 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.window.Window;
+import org.eclipse.papyrus.infra.core.resource.ModelSet;
+import org.eclipse.papyrus.infra.core.services.ServicesRegistry;
+import org.eclipse.papyrus.infra.core.utils.ServiceUtils;
+import org.eclipse.papyrus.infra.types.ElementTypeSetConfiguration;
+import org.eclipse.papyrus.infra.types.ElementTypesConfigurationsFactory;
+import org.eclipse.papyrus.infra.ui.editor.IMultiDiagramEditor;
+import org.eclipse.papyrus.infra.ui.util.EditorUtils;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
+import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.progress.IProgressService;
 import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.uml2.uml.Profile;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.resource.UMLResource;
 
+import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainModelLibraryReference;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization;
@@ -209,14 +225,43 @@ public class GenerateProfilePopupAction
 
 		// Open the target profile, if possible, as well as the model libraries
 		if (part != null) {
-			IWorkbenchPage page = part.getSite().getPage();
-			openEditor(page, targetFile);
-			
-			for (URI library : targetModelLibraryURIs) {
-				openEditor(page, getFile(library));
+			IWorkbenchPage page = BaseUIUtil.getActivepage();
+			//open profile in papyrus editor and generate element types
+			try {
+				page.openEditor(new FileEditorInput(targetFile), "org.eclipse.papyrus.infra.core.papyrusEditor", true,
+						IWorkbenchPage.MATCH_ID | IWorkbenchPage.MATCH_INPUT);
+				
+				IMultiDiagramEditor editor = EditorUtils.getMultiDiagramEditor();
+				ServicesRegistry serviceRegistry = editor.getAdapter(ServicesRegistry.class);
+				ModelSet modelSet = ServiceUtils.getInstance().getModelSet(serviceRegistry);
+				Profile profile = UML2Util.load(modelSet, targetProfileURI, UMLPackage.Literals.PROFILE);
+				if(profile != null) {
+					ResourceSet rset = new ResourceSetImpl();
+					Resource umlElementType = rset.getResource(URI.createURI("platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations"), true);
+					com.zeligsoft.ddk.zdlgen2umlprofile.xtend.MainTransform translator = new com.zeligsoft.ddk.zdlgen2umlprofile.xtend.MainTransform();
+					String configPath = specialization.getElementtypeConfigurationContainerUri();
+					Resource resource = rset.getResource(URI.createURI(configPath + profile.getName() + ".elementtypesconfigurations"), true);
+					ElementTypeSetConfiguration config;
+					if(resource.getContents().isEmpty()) {
+						config = ElementTypesConfigurationsFactory.eINSTANCE.createElementTypeSetConfiguration();
+						resource.getContents().add(config);
+					}else {
+						config = (ElementTypeSetConfiguration) resource.getContents().get(0);
+					}
+					translator.mainTransform(profile, (ElementTypeSetConfiguration)umlElementType.getContents().get(0), config);
+					try {
+						resource.save(Collections.EMPTY_MAP);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			} catch (Exception e) {
+				//do nothing
 			}
 		}
 		
+
 		return Status.OK_STATUS;
 	}
 

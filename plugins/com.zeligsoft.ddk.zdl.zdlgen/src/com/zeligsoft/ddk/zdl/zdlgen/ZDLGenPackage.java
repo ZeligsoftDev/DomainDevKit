@@ -3138,13 +3138,23 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 14;
 
 	/**
+	 * The feature id for the '<em><b>Elementtype Configuration Container Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_DOMAIN_SPECIALIZATION__ELEMENTTYPE_CONFIGURATION_CONTAINER_URI = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT
+			+ 15;
+
+	/**
 	 * The number of structural features of the '<em>Gen Domain Specialization</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_SPECIALIZATION_FEATURE_COUNT = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 15;
+	int GEN_DOMAIN_SPECIALIZATION_FEATURE_COUNT = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 16;
 
 	/**
 	 * The meta object id for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelLibraryReferenceImpl <em>Gen Domain Model Library Reference</em>}' class.
@@ -5723,6 +5733,17 @@ public interface ZDLGenPackage extends EPackage {
 	EReference getGenDomainSpecialization_DomainBlock();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getElementtypeConfigurationContainerUri <em>Elementtype Configuration Container Uri</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Elementtype Configuration Container Uri</em>'.
+	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getElementtypeConfigurationContainerUri()
+	 * @see #getGenDomainSpecialization()
+	 * @generated
+	 */
+	EAttribute getGenDomainSpecialization_ElementtypeConfigurationContainerUri();
+
+	/**
 	 * Returns the meta object for class '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModelLibraryReference <em>Gen Domain Model Library Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7383,6 +7404,15 @@ public interface ZDLGenPackage extends EPackage {
 		 * @generated
 		 */
 		EReference GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK = eINSTANCE.getGenDomainSpecialization_DomainBlock();
+
+		/**
+		 * The meta object literal for the '<em><b>Elementtype Configuration Container Uri</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEN_DOMAIN_SPECIALIZATION__ELEMENTTYPE_CONFIGURATION_CONTAINER_URI = eINSTANCE
+				.getGenDomainSpecialization_ElementtypeConfigurationContainerUri();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelLibraryReferenceImpl <em>Gen Domain Model Library Reference</em>}' class.
