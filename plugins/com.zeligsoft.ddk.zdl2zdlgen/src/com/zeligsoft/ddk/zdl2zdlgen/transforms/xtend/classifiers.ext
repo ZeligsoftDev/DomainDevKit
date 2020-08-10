@@ -29,6 +29,7 @@ GenDomainConcept toGenDomainClassifier(DomainConcept dc) :
     
 private create GenDomainConcept createGenDomainClassifier(DomainConcept dc) :
     this.setDomainConcept(dc) ->
+    this.setIconUri(getAbsoluteIconUri(dc)) ->
     this.setCategory(GenDomainConceptCategory::firm) ->
     this.feature.addAll(dc.feature.typeSelect(DomainAttribute).toGenDomainAttribute(this)) ->
     this.generalization.addAll(dc.generalization.typeSelect(DomainGeneralization).toGenDomainGeneralization());
@@ -36,6 +37,9 @@ private create GenDomainConcept createGenDomainClassifier(DomainConcept dc) :
 // oAW doesn't understand that isAbstract is a Boolean when accessed via the stereotype
 private Boolean isAbstract(uml::Classifier classifier) :
     classifier.isAbstract;
+
+private String getAbsoluteIconUri(DomainConcept dc):
+	JAVA com.zeligsoft.ddk.zdl2zdlgen.util.ZDL2ZDLGenUtil.getAbsoluteIconUri(org.eclipse.uml2.uml.Class);
 
 GenDomainDataType toGenDomainClassifier(DomainDataType ddt) :
     ddt.isReferenced()? ddt.refDataType() : ddt.createGenDomainClassifier();

@@ -223,7 +223,7 @@ public class MainTransform {
     IconEntry result = ElementTypesConfigurationsFactory.eINSTANCE.createIconEntry();
     result.setBundleId(iconEntry.getBundleId());
     Path path = Paths.get(iconEntry.getIconPath());
-    result.setIconPath(path.normalize().toString().replaceAll("\\", "/"));
+    result.setIconPath(path.normalize().toString().replace("\\", "/"));
     return result;
   }
   

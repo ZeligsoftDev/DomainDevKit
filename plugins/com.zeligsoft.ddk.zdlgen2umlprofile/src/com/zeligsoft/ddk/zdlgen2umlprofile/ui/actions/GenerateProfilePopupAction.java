@@ -257,6 +257,7 @@ public class GenerateProfilePopupAction
 					}
 				}
 			} catch (Exception e) {
+				e.printStackTrace();
 				//do nothing
 			}
 		}

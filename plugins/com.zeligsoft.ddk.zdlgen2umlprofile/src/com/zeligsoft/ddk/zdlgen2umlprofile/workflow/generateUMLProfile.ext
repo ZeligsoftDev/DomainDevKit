@@ -173,7 +173,7 @@ private Void annotateForRSM(Stereotype self, GenDomainConcept concept) :
 	        
 private Void processIcon(Stereotype self, GenDomainConcept concept) :
 	concept.hasIconUri()?
-		(let icon = self.createIcon(concept.iconUri) : ( 
+		(let icon = self.createIcon(concept.iconUri.replaceFirst("platform:/resource", "platform:/plugin")) : ( 
 			let annot = icon.createEAnnotation("image_papyrus") : (
 				annot.putDetail("image_kind_key", "icon")
 			))) : {};

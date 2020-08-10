@@ -170,7 +170,7 @@ class MainTransform {
 		var result = ElementTypesConfigurationsFactory::eINSTANCE.createIconEntry
 		result.bundleId = iconEntry.bundleId
 		var path = Paths.get(iconEntry.iconPath)
-		result.iconPath = path.normalize.toString.replaceAll("\\", "/")
+		result.iconPath = path.normalize.toString.replace("\\", "/");
 		return result
 	}
 
