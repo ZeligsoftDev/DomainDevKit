@@ -24,7 +24,7 @@ import org.eclipse.uml2.uml.Class
 import org.eclipse.uml2.uml.Profile
 import org.eclipse.uml2.uml.Stereotype
 import org.eclipse.uml2.uml.UMLPackage
-import org.eclipse.uml2.uml.Image
+import org.eclipse.papyrus.uml.types.core.matchers.stereotype.StereotypeApplicationMatcherConfiguration
 
 class MainTransform {
 	ElementTypeSetConfiguration umlElementType
@@ -50,10 +50,6 @@ class MainTransform {
 					if (concept instanceof Class) {
 						val metaClass = ZDLUtil.getBaseMetaclass(profile, concept);
 						if (metaClass !== null && !concept.isAbstract) {
-							var String icon = ""
-							if(!next.icons.empty){
-								icon = next.icons.get(0).location;
-							}
 							concept.processConcept(next)
 						}
 					}
@@ -125,22 +121,8 @@ class MainTransform {
 			}
 		}
 
-//		for (supertype : concept.superClasses) {
-//			if (ZDLUtil.getBaseMetaclass(profile, supertype) !== null) {
-//				val temp = supertype.processConcept
-//				if (temp !== null) {
-//					type.specializedTypes.add(temp)
-//				}
-//			}
-//		}
-
-		if (type.iconEntry !== null) {
-			EcoreUtil.delete(type.iconEntry)
-		}
-		if (type.matcherConfiguration !== null) {
-			EcoreUtil.delete(type.matcherConfiguration)
-		}
 		var URL iconURL = null;
+		var IconEntry iconEntry = null;
 		if(!stereotype.icons.empty){
 			iconURL = new URL(stereotype.icons.get(0).location);
 		}
@@ -148,16 +130,32 @@ class MainTransform {
 			iconURL = ZDLUtil.getIcon(concept)
 		}
 		if (iconURL !== null) {
-			type.iconEntry = iconURL.createIconEntry
+			iconEntry = iconURL.createIconEntry
 		} else {
 			for (st : type.specializedTypes) {
 				if (st.iconEntry !== null && type.iconEntry === null) {
-					type.iconEntry = st.iconEntry.createIconEntry
+					iconEntry = st.iconEntry.createIconEntry
 				}
 			}
 		}
-		type.matcherConfiguration = concept.createStereotypeMatcher
-
+		
+		if(iconEntry !== null){
+			if(type.iconEntry !== null){
+				type.iconEntry.bundleId = iconEntry.bundleId;
+				type.iconEntry.iconPath = iconEntry.iconPath;
+				EcoreUtil.delete(iconEntry)
+			}else{
+				type.iconEntry = iconEntry;
+			}
+		}
+		
+		if(type.matcherConfiguration === null){
+			type.matcherConfiguration = concept.createStereotypeMatcher
+		}else{
+			val stMatcher =	(type.matcherConfiguration as StereotypeApplicationMatcherConfiguration)
+			stMatcher.stereotypesQualifiedNames.clear
+			stMatcher.stereotypesQualifiedNames.add(concept.qualifiedName.domainQualifiedName)
+		} 
 	}
 
 	def create result: ElementTypesConfigurationsFactory::eINSTANCE.createSpecializationTypeConfiguration createSpecializedType(
@@ -206,10 +204,14 @@ class MainTransform {
 		adviceConfig.identifier = concept.applyStereotypeAdviceConfigurationId
 		adviceConfig.inheritance = InheritanceKind::NONE
 		adviceConfig.target = et
+		val stToApply = concept.createStereotypeToApply
 		if (!adviceConfig.stereotypesToApply.empty) {
+			adviceConfig.stereotypesToApply.get(0).stereotypeQualifiedName = stToApply.stereotypeQualifiedName
+			EcoreUtil.delete(stToApply)
+		}else{
 			EcoreUtil.delete(adviceConfig.stereotypesToApply.remove(0))
+			adviceConfig.stereotypesToApply.add(stToApply)
 		}
-		adviceConfig.stereotypesToApply.add(concept.createStereotypeToApply)
 	}
 
 	def String getApplyStereotypeAdviceConfigurationId(Class concept) {
@@ -221,10 +223,6 @@ class MainTransform {
 		Class concept, ElementTypeConfiguration et) {
 		typeSet.adviceBindingsConfigurations.add(result)
 		result.configureApplyStereotypeAdviceConfiguration(concept, et)
-		if (!result.stereotypesToApply.empty) {
-			EcoreUtil.delete(result.stereotypesToApply.remove(0))
-		}
-		result.stereotypesToApply.add(concept.createStereotypeToApply)
 	}
 
 	def create result: ApplyStereotypeAdviceFactory::eINSTANCE.createStereotypeToApply createStereotypeToApply(

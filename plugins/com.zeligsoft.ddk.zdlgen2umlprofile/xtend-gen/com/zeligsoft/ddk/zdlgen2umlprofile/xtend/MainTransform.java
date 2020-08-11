@@ -75,12 +75,6 @@ public class MainTransform {
             if ((concept instanceof org.eclipse.uml2.uml.Class)) {
               final org.eclipse.uml2.uml.Class metaClass = ZDLUtil.getBaseMetaclass(profile, ((org.eclipse.uml2.uml.Class)concept));
               if (((metaClass != null) && (!((org.eclipse.uml2.uml.Class)concept).isAbstract()))) {
-                String icon = "";
-                boolean _isEmpty = ((Stereotype)next).getIcons().isEmpty();
-                boolean _not = (!_isEmpty);
-                if (_not) {
-                  icon = ((Stereotype)next).getIcons().get(0).getLocation();
-                }
                 this.processConcept(((org.eclipse.uml2.uml.Class)concept), ((Stereotype)next));
               }
             }
@@ -160,17 +154,8 @@ public class MainTransform {
           }
         }
       }
-      IconEntry _iconEntry = type.getIconEntry();
-      boolean _tripleNotEquals = (_iconEntry != null);
-      if (_tripleNotEquals) {
-        EcoreUtil.delete(type.getIconEntry());
-      }
-      AbstractMatcherConfiguration _matcherConfiguration = type.getMatcherConfiguration();
-      boolean _tripleNotEquals_1 = (_matcherConfiguration != null);
-      if (_tripleNotEquals_1) {
-        EcoreUtil.delete(type.getMatcherConfiguration());
-      }
       URL iconURL = null;
+      IconEntry iconEntry = null;
       boolean _isEmpty = stereotype.getIcons().isEmpty();
       boolean _not = (!_isEmpty);
       if (_not) {
@@ -182,16 +167,38 @@ public class MainTransform {
         iconURL = ZDLUtil.getIcon(concept);
       }
       if ((iconURL != null)) {
-        type.setIconEntry(this.createIconEntry(iconURL));
+        iconEntry = this.createIconEntry(iconURL);
       } else {
         EList<ElementTypeConfiguration> _specializedTypes = type.getSpecializedTypes();
         for (final ElementTypeConfiguration st : _specializedTypes) {
           if (((st.getIconEntry() != null) && (type.getIconEntry() == null))) {
-            type.setIconEntry(this.createIconEntry(st.getIconEntry()));
+            iconEntry = this.createIconEntry(st.getIconEntry());
           }
         }
       }
-      type.setMatcherConfiguration(this.createStereotypeMatcher(concept));
+      if ((iconEntry != null)) {
+        IconEntry _iconEntry = type.getIconEntry();
+        boolean _tripleNotEquals = (_iconEntry != null);
+        if (_tripleNotEquals) {
+          IconEntry _iconEntry_1 = type.getIconEntry();
+          _iconEntry_1.setBundleId(iconEntry.getBundleId());
+          IconEntry _iconEntry_2 = type.getIconEntry();
+          _iconEntry_2.setIconPath(iconEntry.getIconPath());
+          EcoreUtil.delete(iconEntry);
+        } else {
+          type.setIconEntry(iconEntry);
+        }
+      }
+      AbstractMatcherConfiguration _matcherConfiguration = type.getMatcherConfiguration();
+      boolean _tripleEquals = (_matcherConfiguration == null);
+      if (_tripleEquals) {
+        type.setMatcherConfiguration(this.createStereotypeMatcher(concept));
+      } else {
+        AbstractMatcherConfiguration _matcherConfiguration_1 = type.getMatcherConfiguration();
+        final StereotypeApplicationMatcherConfiguration stMatcher = ((StereotypeApplicationMatcherConfiguration) _matcherConfiguration_1);
+        stMatcher.getStereotypesQualifiedNames().clear();
+        stMatcher.getStereotypesQualifiedNames().add(this.domainQualifiedName(concept.getQualifiedName()));
+      }
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -272,20 +279,31 @@ public class MainTransform {
     result.getStereotypesQualifiedNames().add(qn);
   }
   
-  public boolean configureApplyStereotypeAdviceConfiguration(final ApplyStereotypeAdviceConfiguration adviceConfig, final org.eclipse.uml2.uml.Class concept, final ElementTypeConfiguration et) {
+  public Boolean configureApplyStereotypeAdviceConfiguration(final ApplyStereotypeAdviceConfiguration adviceConfig, final org.eclipse.uml2.uml.Class concept, final ElementTypeConfiguration et) {
     boolean _xblockexpression = false;
     {
       adviceConfig.setIdentifier(this.getApplyStereotypeAdviceConfigurationId(concept));
       adviceConfig.setInheritance(InheritanceKind.NONE);
       adviceConfig.setTarget(et);
+      final StereotypeToApply stToApply = this.createStereotypeToApply(concept);
+      boolean _xifexpression = false;
       boolean _isEmpty = adviceConfig.getStereotypesToApply().isEmpty();
       boolean _not = (!_isEmpty);
       if (_not) {
-        EcoreUtil.delete(adviceConfig.getStereotypesToApply().remove(0));
+        StereotypeToApply _get = adviceConfig.getStereotypesToApply().get(0);
+        _get.setStereotypeQualifiedName(stToApply.getStereotypeQualifiedName());
+        EcoreUtil.delete(stToApply);
+      } else {
+        boolean _xblockexpression_1 = false;
+        {
+          EcoreUtil.delete(adviceConfig.getStereotypesToApply().remove(0));
+          _xblockexpression_1 = adviceConfig.getStereotypesToApply().add(stToApply);
+        }
+        _xifexpression = _xblockexpression_1;
       }
-      _xblockexpression = adviceConfig.getStereotypesToApply().add(this.createStereotypeToApply(concept));
+      _xblockexpression = _xifexpression;
     }
-    return _xblockexpression;
+    return Boolean.valueOf(_xblockexpression);
   }
   
   public String getApplyStereotypeAdviceConfigurationId(final org.eclipse.uml2.uml.Class concept) {
@@ -317,12 +335,6 @@ public class MainTransform {
   private void _init_createApplyStereotypeAdvice(final ApplyStereotypeAdviceConfiguration result, final org.eclipse.uml2.uml.Class concept, final ElementTypeConfiguration et) {
     this.typeSet.getAdviceBindingsConfigurations().add(result);
     this.configureApplyStereotypeAdviceConfiguration(result, concept, et);
-    boolean _isEmpty = result.getStereotypesToApply().isEmpty();
-    boolean _not = (!_isEmpty);
-    if (_not) {
-      EcoreUtil.delete(result.getStereotypesToApply().remove(0));
-    }
-    result.getStereotypesToApply().add(this.createStereotypeToApply(concept));
   }
   
   public StereotypeToApply createStereotypeToApply(final org.eclipse.uml2.uml.Class concept) {
