@@ -53,6 +53,13 @@
                label="%action.label"
                menubarPath="com.zeligsoft.ddk.tools.ui.ddkTools/additions">
          </action>
+         <action
+               class="com.zeligsoft.ddk.tools.ui.internal.actions.AbsorbMergedPackagesActionDelegate"
+               enablesFor="1"
+               id="com.zeligsoft.ddk.tools.ui.absorbMergedPackages"
+               label="%absorb.action.label"
+               menubarPath="com.zeligsoft.ddk.tools.ui.ddkTools/additions">
+         </action>
       </objectContribution>
    </extension>
    <extension
